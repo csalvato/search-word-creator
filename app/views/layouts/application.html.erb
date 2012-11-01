@@ -1,14 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html dir="ltr" lang="en-US">
 <head>
-  <title>SearchWordCreator</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+	<meta content="text/html; charset=UTF-8" />
+	<title>SaaS WP Theme I</title>
+	<%= stylesheet_link_tag    "application", media: "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+	<!--[if IE]>
+	<script src="js/html5.js" type="text/javascript"></script>
+	<![endif]-->
+	<!--[if lt IE 9]>
+	<link href="css/saas-ie-color.css" rel="stylesheet" type="text/css" media="all" />
+	<![endif]-->
+	<!--[if lt IE 8]>
+	<script src="js/saas-ie7.js" type="text/javascript"></script>
+	<![endif]-->
 </head>
-<body>
-
-<%= yield %>
-
+<body class="<%= yield(:page_type) %>">
+	<%= render partial: 'layouts/header', 
+						 locals: { is_plans_page: yield(:page_type) == "page plans",
+											 title: yield(:page_title) } %>
+	
+	<!-- div start container -->
+	<div class="container">
+		<% flash.each do |key, value| %>
+		  <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+		<% end %>
+		<%= yield %>
+	</div>
+	<!--div.container end -->
+	<%= render 'layouts/footer' %>
+	<%= debug(params) if Rails.env.development? %>
+	<%= debug([request.remote_ip.inspect, request.request_method.inspect]) if Rails.env.development? %>
+	<%= debug(:page_type.inspect) if Rails.env.development? %>
 </body>
 </html>

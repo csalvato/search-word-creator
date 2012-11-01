@@ -1,2 +1,49 @@
-<h1>StaticPages#contact</h1>
-<p>Find me in app/views/static_pages/contact.html.erb</p>
+<% provide(:page_title, 'Contact') %>
+	<div class="center">
+		<div class="contacts right">
+			<div>
+				<div>					
+					<div>
+						<h3>Contact Information</h3>
+						<dl>
+							<dt>Toll Free</dt>
+							<dd><p>800-555-1212</p>
+							</dd>
+							
+							<dt>Fax</dt>
+							<dd><p>800-555-1212</p>
+							</dd>
+							
+							<dt>Address</dt>
+							<dd><p>544 Oenoke Ridge<br />
+							New Canaan, CT 06480</p>
+							<p><a class="link-btn" href="#">View Map</a></p>
+							</dd>
+						</dl>
+					</div>				
+				</div>
+			</div>
+		</div>
+		<div class="col-main">
+			<div class="contactForm radius">
+				<h3>Send Us an Email</h3>
+				<div class="wpcf7" id="wpcf7-f1-p18-o1">
+				<form action="#" method="post" class="wpcf7-form">
+					<div class="half left">
+          				<label>Your Name</label><span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" class="wpcf7-validates-as-required" size="40" /></span>
+        			</div>
+					<div class="half right">
+         				<label>Your E-mail Address</label><span class="wpcf7-form-control-wrap your-email"><input type="text" name="your-email" value="" class="wpcf7-validates-as-email wpcf7-validates-as-required" size="40" /></span>
+        			</div>
+					<div class="item">
+          				<label>Your Message</label><span class="wpcf7-form-control-wrap your-message"><textarea name="your-message" cols="40" rows="10"></textarea></span>
+        			</div>
+					<div class="item a-right">
+         				<input type="submit" value="Send Message" />
+        			</div>
+					<div class="wpcf7-response-output wpcf7-display-none"></div>
+				</form>
+				</div>
+			</div>
+		</div>
+	</div>
