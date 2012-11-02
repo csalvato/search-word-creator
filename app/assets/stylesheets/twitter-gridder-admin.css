@@ -1,0 +1,59 @@
+@CHARSET "UTF-8";
+
+div.postbox-container
+{
+	float:none;
+	padding:0;
+	min-width:850px;
+	width:100%;
+}
+
+div.postbox div.inside
+{
+	margin:14px 18px 18px;
+	position:relative;
+}
+
+div.postbox div.inside div.add-more
+{
+	margin-top:15px;
+}
+
+/**
+ * Accounts
+ */
+#gridder-account-pattern
+{
+	display:none;
+}
+
+#gridder-accounts li
+{
+	background:#fafafa;
+	border:1px solid #dfdfdf;
+	cursor:move;
+	overflow:hidden;
+	padding:4px;
+	position: relative;
+	margin-bottom: 10px;
+	min-height: 24px;
+}
+
+#gridder-accounts li.sortable
+{
+	background:#fff;
+	border:2px dashed #dfdfdf;
+	padding:4px;
+}
+
+#gridder-accounts .deleteable
+{
+	border-color: #f00;
+}
+
+#gridder-accounts li .delete-account
+{
+	position: absolute;
+	right: 6px;
+	top: 6px;
+}

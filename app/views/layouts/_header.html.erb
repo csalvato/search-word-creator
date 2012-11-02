@@ -1,0 +1,27 @@
+<div class="header">
+	<div>
+    	<div>
+			<div class="center">
+				<h1 class="logo"><%= link_to image_tag("saas-images/logo.png", alt: "Search Word Creator"), root_path%></h1>
+				<div class="header-right">
+					<div class="topnav">
+						<ul id="menu-top-links" class="menu">
+							<li class="menu-item"><%= link_to "FAQ", faq_path %></li>
+							<li class="menu-item"><%= link_to "Contact", contact_path %></li>
+							<li class="menu-item"><%= link_to "Sign in", "#" %></li>
+						</ul>
+					</div>
+					<div class="nav">
+						<ul id="menu-main-nav" class="menu">
+							<li class="menu-item"><%= link_to "Buy Now!", plans_path %></li>
+						</ul>
+					</div>
+				</div>
+				<%= render 'layouts/plans_grid' if is_plans_page %>
+				<%= render partial: 'layouts/page_title', 
+									 locals: { title: title } unless title.blank? %>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- div.header end -->

@@ -1,0 +1,34 @@
+@charset "utf-8";
+
+#lowrider-slider *, #lowrider-controls * { margin: 0; padding: 0; }
+
+#lowrider-slider ul, #lowrider-slider li,
+#lowrider-controls ul, #lowrider-controls li 
+{ margin: 0; padding: 0; list-style: none; list-position: outside; text-indent: 0; }
+
+#lowrider-slider li: before, #lowrider-controls li: before { content: none; }
+
+#lowrider-slider, #lowrider-slider .overlay { width: 960px;height: 400px;overflow: hidden;position: relative;margin: 0 auto; }
+#lowrider-slider .overlay { position: absolute;top: 0;left: 0; }
+#lowrider-slider .overlay a { position: absolute;top: 192px;right: 302px; text-decoration: none; }
+#lowrider-slider .overlay a span { float: left; }
+#lowrider-slider .overlay.clickable { cursor: pointer; }
+#lowrider-slider div { margin: 0;float: left;overflow: hidden; }
+#lowrider-slider div img { float: left; }
+#lowrider-slider div + div { float: right }
+#lowrider-slider .slide { position: relative; }
+#lowrider-slider .main { width: 630px;height: 400px; }
+#lowrider-slider .second { margin-bottom: 20px;width: 310px;height: 190px; }
+#lowrider-slider .third { width: 310px;height: 190px; }
+#lowrider-slider .overlay { background: transparent url(../assets/saas-images/lr-overlay.png) left top no-repeat; }
+#lowrider-slider .overlay a:hover, #lowrider-slider .overlay a.active { background-position: left bottom; }
+#lowrider-slider .opacity-box { background-color: rgba(0, 0, 0, 0.5); position: absolute; width: 590px; padding: 20px 20px 20px; left: 0; bottom: 0; color: #e5e5e5; }
+#lowrider-slider h2 { font-size: 22px; text-shadow: -1px -1px 0 #000; line-height: 1em; margin: 0 0 10px 0; }
+#lowrider-slider h2 a { color: #fff; }
+#lowrider-slider p { line-height: 1.4em; }
+#lowrider-slider img { border: none; }
+
+#lowrider-controls { text-align: center; width: 960px; float: left; height: 14px; padding: 13px 0;margin: 0 auto; border-bottom: solid 1px #ccc; }
+#lowrider-controls li { display: inline; margin: 0 3px; }
+#lowrider-controls li a { display: inline-block; width: 14px; height: 0; padding-top: 14px; overflow: hidden; background: url(../assets/saas-images/lr-controls.png) no-repeat right top; outline: none; }
+#lowrider-controls li a:hover, #lowrider-controls li a.active { background-position: left top; }

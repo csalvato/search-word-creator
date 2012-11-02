@@ -1,0 +1,12 @@
+<div class="footer">
+	<div>
+		<div class="center">
+			<p>
+		    Copyright © 2012 Christopher Salvato.
+			</p>
+			<%= debug(params) if Rails.env.development? %>
+			<%= debug([request.remote_ip.inspect, request.request_method.inspect]) if Rails.env.development? %>
+		</div>
+	</div>
+</div>
+<!--div.footer end -->

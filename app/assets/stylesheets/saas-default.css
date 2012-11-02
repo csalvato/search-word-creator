@@ -1,0 +1,14 @@
+@charset "utf-8";
+body {
+	background-image: url(../images/default/bg-body.gif);
+}
+.header { background: url(../images/default/bg-header.gif);}
+.header>div {
+	background: url(../images/default/bg-home-header-content.jpg) repeat-x center top;
+}
+.footer>div {
+	background: url(../images/default/bg-footerdiv.gif) repeat-x center top;
+}
+.grid .top,.grid .price {
+	background-image: url(../images/default/bg-grid.gif)!important;
+}

@@ -1,2 +1,33 @@
-<h1>StaticPages#faq</h1>
-<p>Find me in app/views/static_pages/faq.html.erb</p>
+<% provide(:page_title, 'Frequently Asked Questions') %>
+<% provide(:page_type, 'page') %>
+	<div class="center">
+		<div class="contacts right">
+			<div>
+				<div>					
+					<div>
+						<h3>Need our help?</h3>
+						<p>
+							We welcome all emails from customers needing support, or people with questions about the Word Search Creator.
+						</p>
+						<br/>
+						<p>
+							Check out the <%= link_to "Contact Page", contact_path %>.
+						</p>
+					</div>				
+				</div>
+			</div>
+		</div>
+		<div class="col-main">
+			<div class="post">
+				<div class="entry">
+					<p>We're always happy to hear from our customers at Search Word Creator if you have a question, a problem, or if you just want to talk about using word search to teach in your classroom. You can send us an <%= link_to "email", "mailto:support@searchwordcreator.com" %> at any time. We'll do our best to get back to you within 24 hours. If you're not a customer yet but are having problems with our free trial, please don't hesitate to send an email.</p>
+
+					<h3>Q: What is a Search Word Puzzle?</h3>
+					<h4>A: Search Word Puzzles, also known as Word Search Puzzles or Word Find Puzzles, are a fun puzzle that can be used to learn vocabulary words.</h4>
+					<br/>
+					<h3>Q: What is a Search Word Creator?</h3>
+					<h4>A: Search Word Creator is a software that easily makes seaarch word puzzles.  Some people think of it as a Search Word Maker, Search Word Generator, Word Search Maker, Word Search Creator, or Word Search Generator.  Whew, that's a mouthful!</h4>
+				</div>
+			</div>
+		</div>
+	</div>

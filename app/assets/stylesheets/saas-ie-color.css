@@ -1,0 +1,12 @@
+.topnav li a, .nav li a { color:#d5d5d5;}
+.nav li a:hover, .nav li.current_page_item a, .topnav li.current_page_item a { color:#fff;}
+.grid .price {border-left: solid 1px #3a3a3a; border-right: solid 1px #3a3a3a; border-bottom: solid 1px #3a3a3a;}
+.grid .price h2 {border-top: solid 1px #999; border-left: solid 1px #999;}
+.controller a {
+	border-color:  #ddd #ddd #999 #999;
+}
+.controller a:hover, .controller li.ui-tabs-selected a {
+	border-color: #999 #999 #ddd #ddd;
+}
+
+.testimonials li, .content ul, .content ol { zoom:1;}

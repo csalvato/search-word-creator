@@ -1,25 +1,18 @@
 <% provide(:page_title, 'Contact') %>
+<% provide(:page_type, 'page') %>
 	<div class="center">
 		<div class="contacts right">
 			<div>
 				<div>					
 					<div>
-						<h3>Contact Information</h3>
-						<dl>
-							<dt>Toll Free</dt>
-							<dd><p>800-555-1212</p>
-							</dd>
-							
-							<dt>Fax</dt>
-							<dd><p>800-555-1212</p>
-							</dd>
-							
-							<dt>Address</dt>
-							<dd><p>544 Oenoke Ridge<br />
-							New Canaan, CT 06480</p>
-							<p><a class="link-btn" href="#">View Map</a></p>
-							</dd>
-						</dl>
+						<h3>Have a Question?</h3>
+						<p>
+							It's probably already answered!
+						</p>
+						<br/>
+						<p>
+							Check out the <%= link_to "FAQ", faq_path %>.
+						</p>
 					</div>				
 				</div>
 			</div>
@@ -27,6 +20,9 @@
 		<div class="col-main">
 			<div class="contactForm radius">
 				<h3>Send Us an Email</h3>
+				<p> 
+					We're always happy to hear from our customers at Search Word Creator if you have a question, a problem, or if you just want to talk about using word search to teach in your classroom. You can send us an <%= link_to "email", "mailto:support@searchwordcreator.com" %> at any time. We'll do our best to get back to you within 24 hours. If you're not a customer yet but are having problems with our free trial, please don't hesitate to send an email.
+				</p>
 				<div class="wpcf7" id="wpcf7-f1-p18-o1">
 				<form action="#" method="post" class="wpcf7-form">
 					<div class="half left">

@@ -2,7 +2,7 @@
 <html dir="ltr" lang="en-US">
 <head>
 	<meta content="text/html; charset=UTF-8" />
-	<title>SaaS WP Theme I</title>
+	<title>Create your own custom search word puzzles | Search Word Creator</title>
 	<%= stylesheet_link_tag    "application", media: "all" %>
 	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
@@ -30,8 +30,5 @@
 	</div>
 	<!--div.container end -->
 	<%= render 'layouts/footer' %>
-	<%= debug(params) if Rails.env.development? %>
-	<%= debug([request.remote_ip.inspect, request.request_method.inspect]) if Rails.env.development? %>
-	<%= debug(:page_type.inspect) if Rails.env.development? %>
 </body>
 </html>

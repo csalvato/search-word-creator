@@ -1,0 +1,18 @@
+.gridder li { list-style: none;}
+.gridder a { color:#0076a3; text-decoration:none; font-weight:bold;}
+.gridder section, .gridder header, .gridder hgroup, .gridder footer, .gridder aside { display: block;}
+.gridder { width:670px; margin: 0 auto}
+.gridder header { text-align:center; padding: 10px 0 50px;}
+.gridder section {width:636px; margin:0 14px; float:left; border: solid 2px #fff; font-family:"Helvetica Neue", Helvetica, Arial, sans-serif; font-size:14px; color:#000; background:#fff;}
+.gridder ul, .gridder li { margin:0; padding:0; list-style:none; list-position:outside; text-indent: 0;  }
+.gridder section ul { width:666px; margin-top:-1px;}
+.gridder li:before { content: none; }
+.gridder section li { float:left; width:48px; height:48px; background-color:#fff; border: solid 1px #fff; margin-left:-1px; margin-bottom:-1px; position:relative;}
+.gridder section li img { float:left;}
+.gridder section li > a:hover img { opacity:0.7;filter:alpha(opacity=70);}
+.gridder .twitter { display: none; }
+.gridder .twitter, .gridder .twitter > div { background-image: url(../assets/saas-images/bg-bubble.png); background-repeat: no-repeat;}
+.gridder .twitter { background-position: right bottom; width:465px; position:absolute; padding-bottom:17px; z-index:2; left:-5px; bottom: 65px;}
+.gridder .twitter > div { padding: 20px 20px 15px 65px; background-position: left top; min-height:35px; line-height:1.3em;}
+.gridder .twitter p + p { margin-top:5px;}
+.gridder .twitter em { font-family:Georgia, "Times New Roman", Times, serif; color:#999;}

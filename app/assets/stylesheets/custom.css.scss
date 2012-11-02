@@ -1,0 +1,21 @@
+/* mixins */
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
+/* debug */
+
+.debug_dump {
+  clear: both;
+	background: #CCC;
+	float: left;
+	width: 100%;
+	margin-top: 45px;
+	border: 1px double black;
+	padding: 10px 5px;
+	color: black;
+  @include box_sizing;
+}
