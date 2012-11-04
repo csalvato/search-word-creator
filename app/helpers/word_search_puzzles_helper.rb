@@ -6,14 +6,14 @@ module WordSearchPuzzlesHelper
 
 	def generate_puzzle(words, grid_size)
 		# Create the grid and solutions containers
-		puzzle = { grid: initialize_grid(grid_size), solutions: [] }
+		puzzle = { grid: initialize_grid(grid_size), solutions: Hash.new }
 		
 		words = words.each_with_index do |word, index| 
 			# Turn words into letters
 			word = word.upcase.split('')
 
 			# Inject words into the puzzle
-			puzzle[:solutions].push(insert_into_puzzle(word, puzzle))
+			insert_into_puzzle(word, puzzle)
 
 		end
 
@@ -83,6 +83,11 @@ module WordSearchPuzzlesHelper
 			end
 		end
 
+		def insert_letter_into_puzzle(letter, row, col, puzzle)
+			puzzle[:grid][row][col] = letter
+			puzzle[:solutions].merge!([row, col] => letter)
+		end
+
 		def insert_into_puzzle_horiz(word, puzzle)
 			solution = {}
 
@@ -92,8 +97,8 @@ module WordSearchPuzzlesHelper
 			col = rand(0..max_start_column)
 			
 			word.each_with_index do |letter, index|
-				puzzle[:grid][row][col+index] = letter
-				solution.merge!( [row, col+index] => letter)
+				insert_letter_into_puzzle(letter, row, col, puzzle)
+				col += 1
 			end
 			return solution
 		end
@@ -105,8 +110,8 @@ module WordSearchPuzzlesHelper
 			col = rand(0..puzzle[:grid][0].length)
 			
 			word.each_with_index do |letter, index|
-				puzzle[:grid][row+index][col] = letter
-				solution.merge!( [row+index, col] => letter )
+				insert_letter_into_puzzle(letter, row, col, puzzle)
+				row += 1
 			end
 			return solution
 		end
@@ -120,8 +125,9 @@ module WordSearchPuzzlesHelper
 			col = rand(0..max_start_column)
 			
 			word.each_with_index do |letter, index|
-				puzzle[:grid][row+index][col+index] = letter
-				solution.merge!([row+index, col+index] => letter)
+				insert_letter_into_puzzle(letter, row, col, puzzle)
+				row += 1
+				col += 1
 			end
 			return solution
 		end
@@ -136,8 +142,9 @@ module WordSearchPuzzlesHelper
 			col = rand(0..max_start_column)
 			
 			word.each_with_index do |letter, index|
-				puzzle[:grid][row-index][col+index] = letter
-				solution.merge!( [row-index, col+index] => letter )
+				insert_letter_into_puzzle(letter, row, col, puzzle)
+				row -= 1
+				col += 1
 			end
 			return solution
 		end	

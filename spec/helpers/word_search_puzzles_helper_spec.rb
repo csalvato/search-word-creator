@@ -12,7 +12,7 @@ require 'spec_helper'
 describe WordSearchPuzzlesHelper do
     let(:word_list) { ["hello", "world", "foobar"] }
     let(:grid) { initialize_grid( grid_size = 18 ) }
-    let(:solutions) { [{[0,0] => grid[0][0]}]}
+    let(:solutions) { {[0,0] => grid[0][0]}}
     let(:puzzle) { {grid: grid, solutions: solutions} }
 
     it "should not raise an error when inserting a horizontal word into a puzzle" do
@@ -84,7 +84,7 @@ describe WordSearchPuzzlesHelper do
         puzzle[:grid].length.times do |row|
           puzzle[:grid][0].length.times do |col|
             puzzle[:grid][row][col] = "A"
-            puzzle[:solutions].push([{[row,col] => grid[row][col]}])
+            puzzle[:solutions].merge!({[row,col] => grid[row][col]})
           end
         end
       end
