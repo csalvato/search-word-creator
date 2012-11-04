@@ -58,28 +58,28 @@ describe WordSearchPuzzlesHelper do
     describe "should properly detect collisons" do
       
       specify "when there is a collision" do
-        collision?(solutions = [{[0,0] => "B"}],
+        collision?(solutions = {[0,0] => "B"},
                          row = 0, 
                          col = 0, 
                          letter = "A").should be_true
       end
       
       specify "when there is not a collision" do
-        collision?(solutions = [{[1,1] => "A"}],
+        collision?(solutions = {[1,1] => "A"},
                          row = 0, 
                          col = 0, 
                          letter = "A").should be_false
       end
 
       specify "when there is a collison BUT the letter is the same" do
-        collision?(solutions = [{[0,0] => "A"}],
+        collision?(solutions = {[0,0] => "A"},
                          row = 0, 
                          col = 0, 
                          letter = "A").should be_false
       end
     end
 
-    describe "should not overwrite already placed words" do
+    describe "when handling collisons" do
       before do 
         puzzle[:grid].length.times do |row|
           puzzle[:grid][0].length.times do |col|
@@ -88,7 +88,21 @@ describe WordSearchPuzzlesHelper do
           end
         end
       end
-      specify{ insert_into_puzzle_horiz("ABAZABA".split(''), puzzle).should be_nil }
+			
+			specify{ insert_letter_into_puzzle(letter = "B", 
+																				 row = 0,
+																				 col = 0,
+																				 puzzle).should be_false }
+			specify{ insert_letter_into_puzzle(letter = "A", 
+																				 row = 0,
+																				 col = 0,
+																				 puzzle).should be_true }
+
+      specify{ insert_into_puzzle_horiz("ABAZABA".split(''), puzzle).should be_false }
+      specify{ insert_into_puzzle_vert("ABAZABA".split(''), puzzle).should be_false }
+      specify{ insert_into_puzzle_diag_up("ABAZABA".split(''), puzzle).should be_false }
+      specify{ insert_into_puzzle_diag_down("ABAZABA".split(''), puzzle).should be_false }
+
 
     end
 

@@ -14,8 +14,9 @@ module WordSearchPuzzlesHelper
 
 			# Inject words into the puzzle
 			insert_into_puzzle(word, puzzle)
-
 		end
+
+		fill_grid_with_random_letters(puzzle[:grid])
 
 		return puzzle
 	end
@@ -23,7 +24,7 @@ module WordSearchPuzzlesHelper
 
 	def print_puzzle_to_console(grid)
 		puts
-		puzzle.each_with_index do |row, row_num|
+		grid.each_with_index do |row, row_num|
 				print " " if row_num < 10
 				print row_num.inspect + " - " + row.to_s
 				puts
@@ -41,15 +42,24 @@ module WordSearchPuzzlesHelper
 
 	private
 		def initialize_grid(grid_size)
-			# Create the alphabet
-			alphabet = ('A'..'Z').to_a
-
 			# Create grid of letters
 			grid = []
 			grid_size.times.with_index do |row|
 				grid[row] = []
 				grid_size.times.with_index do |column|
-					grid[row][column] = alphabet.shuffle[0]
+					grid[row][column] = nil
+				end
+			end
+			return grid
+		end
+
+		def fill_grid_with_random_letters(grid)
+			# Create the alphabet
+			alphabet = ('A'..'Z').to_a
+
+			grid.length.times.with_index do |row|
+				grid[0].length.times.with_index do |column|
+					grid[row][column] = alphabet.shuffle[0] if grid[row][column].nil?
 				end
 			end
 			return grid
@@ -58,11 +68,7 @@ module WordSearchPuzzlesHelper
 		def collision?(solutions, row, col, letter)
 			# Merge together existing solutions
 			# This gives a hash with all grid positions that are "taken"
-			all_taken_positions = {}
-			
-			solutions.each do |solution|
-				all_taken_positions.merge!(solution)
-			end
+			all_taken_positions = solutions
 			
 			# Check if the position being attempted is taken
 			position_value = all_taken_positions.values_at([row,col])[0]
@@ -71,82 +77,93 @@ module WordSearchPuzzlesHelper
 		end
 
 		def insert_into_puzzle(word, puzzle)
-			roll = rand(0..3)
-			if roll == 0
-				insert_into_puzzle_horiz(word, puzzle)
-			elsif roll == 1
-				insert_into_puzzle_vert(word, puzzle)
-			elsif roll == 2
-				insert_into_puzzle_diag_up(word, puzzle)
-			else
-				insert_into_puzzle_diag_down(word, puzzle)
+			count = 0
+			inserted = false
+
+			while !inserted && count < 10
+				roll = rand(0..3)
+				if roll == 0
+					inserted = insert_into_puzzle_horiz(word, puzzle)
+				elsif roll == 1
+					inserted = insert_into_puzzle_vert(word, puzzle)
+				elsif roll == 2
+					inserted = insert_into_puzzle_diag_up(word, puzzle)
+				else
+					inserted = insert_into_puzzle_diag_down(word, puzzle)
+				end
+				count += 1
 			end
 		end
 
 		def insert_letter_into_puzzle(letter, row, col, puzzle)
-			puzzle[:grid][row][col] = letter
-			puzzle[:solutions].merge!([row, col] => letter)
+			if collision?(puzzle[:solutions], row, col, letter) 
+				return false
+			else
+				puzzle[:grid][row][col] = letter
+				puzzle[:solutions].merge!([row, col] => letter)
+			  return true
+			end
 		end
 
 		def insert_into_puzzle_horiz(word, puzzle)
-			solution = {}
-
 			max_start_column = puzzle[:grid][0].length - word.length
-			
 			row = rand(0..puzzle[:grid].length-1)
 			col = rand(0..max_start_column)
 			
 			word.each_with_index do |letter, index|
-				insert_letter_into_puzzle(letter, row, col, puzzle)
+				break unless insert_letter_into_puzzle(letter, row, col, puzzle)
 				col += 1
+				if index == word.length-1 
+					return true
+				end
 			end
-			return solution
+			
+			return false
 		end
 
 		def insert_into_puzzle_vert(word, puzzle)
-			solution = {}
 			max_start_row = puzzle[:grid].length - word.length
 			row = rand(0..max_start_row)
 			col = rand(0..puzzle[:grid][0].length)
 			
 			word.each_with_index do |letter, index|
-				insert_letter_into_puzzle(letter, row, col, puzzle)
+				break unless insert_letter_into_puzzle(letter, row, col, puzzle)
 				row += 1
+				if index == word.length-1 
+					inserted = true
+				end
 			end
-			return solution
 		end
 			
 		def insert_into_puzzle_diag_down(word, puzzle)
-			solution = {}
-
 			max_start_row = puzzle[:grid].length - word.length
 			max_start_column = puzzle[:grid][0].length - word.length
 			row = rand(0..max_start_row)
 			col = rand(0..max_start_column)
 			
 			word.each_with_index do |letter, index|
-				insert_letter_into_puzzle(letter, row, col, puzzle)
+				break unless insert_letter_into_puzzle(letter, row, col, puzzle)
 				row += 1
 				col += 1
+				if index == word.length-1 
+					inserted = true
+				end
 			end
-			return solution
 		end
 
 		def insert_into_puzzle_diag_up(word, puzzle)
-			solution = {}			
-
 			min_start_row = word.length
 			max_start_column = puzzle[:grid][0].length - word.length
-
 			row = rand(min_start_row..puzzle[:grid].length-1)
 			col = rand(0..max_start_column)
 			
 			word.each_with_index do |letter, index|
-				insert_letter_into_puzzle(letter, row, col, puzzle)
+				break unless insert_letter_into_puzzle(letter, row, col, puzzle)
 				row -= 1
 				col += 1
+				if index == word.length-1 
+					inserted = true
+				end
 			end
-			return solution
 		end	
-
 end
