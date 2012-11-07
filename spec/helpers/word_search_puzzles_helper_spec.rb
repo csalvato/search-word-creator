@@ -97,13 +97,37 @@ describe WordSearchPuzzlesHelper do
 																				 row = 0,
 																				 col = 0,
 																				 puzzle).should be_true }
-
+      
       specify{ insert_into_puzzle_horiz("ABAZABA".split(''), puzzle).should be_false }
       specify{ insert_into_puzzle_vert("ABAZABA".split(''), puzzle).should be_false }
       specify{ insert_into_puzzle_diag_up("ABAZABA".split(''), puzzle).should be_false }
       specify{ insert_into_puzzle_diag_down("ABAZABA".split(''), puzzle).should be_false }
+    end
 
-
+    describe "when inserting a word" do
+      before do
+        puzzle[:grid].length.times do |row|
+          puzzle[:grid][row][0] = "A"
+        end
+        @word_status = insert_word("FOOBAR".split(''), 
+                          row = { location: 0, increment: 1}, 
+                          col = { location: 0, increment: 0},
+                          puzzle ) 
+      end
+      let(:expected_solution){ {[0, 0]=>"F", 
+                                [1, 0]=>"O", 
+                                [2, 0]=>"O", 
+                                [3, 0]=>"B",
+                                [4, 0]=>"A",
+                                [5, 0]=>"R" } }
+      
+      specify { puzzle[:solutions].should == expected_solution }
+      specify { @word_status.should be_true}
+      specify { insert_word("FOOBAZ".split(''), 
+                          row = { location: 0, increment: 1}, 
+                          col = { location: 0, increment: 0},
+                          puzzle).should be_false }
+      specify { puzzle[:solutions].should == expected_solution }
     end
 
   end
