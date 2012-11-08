@@ -55,6 +55,10 @@ describe WordSearchPuzzlesHelper do
       end
     end
 
+    it "should not raise an error when creating a PDF" do
+      expect { generate_pdf(puzzle) }.to_not raise_error
+    end
+
     describe "should properly detect collisons" do
       
       specify "when there is a collision" do

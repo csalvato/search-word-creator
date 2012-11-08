@@ -21,7 +21,6 @@ module WordSearchPuzzlesHelper
 		return puzzle
 	end
 
-
 	def print_puzzle_to_console(grid)
 		puts
 		grid.each_with_index do |row, row_num|
@@ -38,7 +37,6 @@ module WordSearchPuzzlesHelper
 				puts
 		end
 	end
-
 
 	private
 		def initialize_grid(grid_size)
@@ -168,4 +166,10 @@ module WordSearchPuzzlesHelper
 									  col = { location: col, increment: 1},
 									  puzzle )
 		end	
+
+		def generate_pdf(puzzle)
+			pdf = SearchWordDocument.new
+			pdf.create_search_word_document(puzzle)
+			pdf.render_file "app/assets/generated_pdfs/test.pdf"
+		end
 end
