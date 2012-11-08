@@ -8,6 +8,7 @@ gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'jquery-rails', '2.0.2'
+gem 'prawn-print', :git => 'git://github.com/barsoom/prawn-print.git'
 gem 'prawn_rails', '0.0.11'
 
 group :development, :test do
