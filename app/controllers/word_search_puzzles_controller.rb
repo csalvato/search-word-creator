@@ -1,4 +1,4 @@
-class WordSearchPuzzlesController < ApplicationController
+class WordSearchPuzzlesController < ApplicationController 
   def new
   end
 

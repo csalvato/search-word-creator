@@ -13,31 +13,17 @@ module ApplicationHelper
       define_grid(columns: @grid_size + 2,
                   rows: @grid_size + 7)
       grid([@row_offset,@col_offset], 
-           [@row_offset + @grid_size, @col_offset + @grid_size]).bounding_box do
+           [@row_offset + @grid_size - 1, @col_offset + @grid_size - 1]).bounding_box do
         stroke do 
           rounded_rectangle bounds.top_left, bounds.width, bounds.height, 10
         end
       end
     end
 
-
-    def create_search_word_document(puzzle)
-    	rows_count = puzzle[:grid].length
-			cols_count = puzzle[:grid][0].length
-      
-    	rows_count.times.with_index do |row|
-      	cols_count.times.with_index do |col|
-         grid(row + @row_offset, col + @col_offset).bounding_box do
-          text puzzle[:grid][row][col], 
-               size: 0.75.cm, 
-               align: :center, 
-               valign: :center
-         end
-        end
-      end
-    end
-
     def draw_puzzle(puzzle)
+      rows_count = puzzle[:grid].length
+      cols_count = puzzle[:grid][0].length
+
       rows_count.times.with_index do |row|
         cols_count.times.with_index do |col|
          grid(row + @row_offset, col + @col_offset).bounding_box do
@@ -54,5 +40,6 @@ module ApplicationHelper
     end
 
     def draw_word_bank
+    end
   end
 end

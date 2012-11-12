@@ -1,12 +1,13 @@
 module WordSearchPuzzlesHelper
-	
+	include ApplicationHelper
+
 	# Generates the word search puzzle
 	#
 	# @param words Array of words for the puzzle
 
 	def generate_puzzle(words, grid_size)
 		# Create the grid and solutions containers
-		puzzle = { grid: initialize_grid(grid_size), solutions: Hash.new }
+		puzzle = { grid: initialize_grid(grid_size), solutions: [] }
 		
 		words = words.each_with_index do |word, index| 
 			# Turn words into letters
@@ -66,7 +67,11 @@ module WordSearchPuzzlesHelper
 		def collision?(solutions, row, col, letter)
 			# Merge together existing solutions
 			# This gives a hash with all grid positions that are "taken"
-			all_taken_positions = solutions
+			all_taken_positions = {}
+
+			solutions.each do |solution|
+				all_taken_positions.merge!(solution)
+			end
 			
 			# Check if the position being attempted is taken
 			position_value = all_taken_positions.values_at([row,col])[0]
@@ -114,7 +119,7 @@ module WordSearchPuzzlesHelper
 				row[:location] += row[:increment]
 				col[:location] += col[:increment]
 				if index == word.length-1 
-					puzzle[:solutions].merge!(solution)
+					puzzle[:solutions].push(solution)
 					return true
 				end
 			end
@@ -169,7 +174,7 @@ module WordSearchPuzzlesHelper
 
 		def generate_pdf(puzzle)
 			pdf = SearchWordDocument.new
-			pdf.create_search_word_document(puzzle)
+			pdf.draw_puzzle(puzzle)
 			pdf.render_file "app/assets/generated_pdfs/test.pdf"
 		end
 end

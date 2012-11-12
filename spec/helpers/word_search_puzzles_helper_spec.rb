@@ -12,11 +12,11 @@ require 'spec_helper'
 describe WordSearchPuzzlesHelper do
     let(:word_list) { ["hello", "world", "foobar"] }
     let(:grid) { initialize_grid( grid_size = 18 ) }
-    let(:solutions) { {[0,0] => grid[0][0]}}
+    let(:solutions) { [{[0,0] => "A"}]}
     let(:puzzle) { {grid: grid, solutions: solutions} }
-
+    
     it "should not raise an error when inserting a horizontal word into a puzzle" do
-      1000.times do 
+      100.times do 
         expect do
           insert_into_puzzle_horiz("foobar".split(''), puzzle)
         end.to_not raise_error      
@@ -24,7 +24,7 @@ describe WordSearchPuzzlesHelper do
     end
 
     it "should not raise an error when inserting a vertical word into a puzzle" do
-      1000.times do 
+      100.times do 
         expect do
           insert_into_puzzle_vert("foobar".split(''), puzzle)
         end.to_not raise_error      
@@ -32,7 +32,7 @@ describe WordSearchPuzzlesHelper do
     end
 
     it "should not raise an error when inserting a diagonal-up word into a puzzle" do
-      1000.times do 
+      100.times do 
         expect do
           insert_into_puzzle_diag_up("foobar".split(''), puzzle)
         end.to_not raise_error      
@@ -40,7 +40,7 @@ describe WordSearchPuzzlesHelper do
     end
 
     it "should not raise an error when inserting a diagonal-down word into a puzzle" do
-      1000.times do 
+      100.times do 
         expect do
           insert_into_puzzle_diag_down("foobar".split(''), puzzle)
         end.to_not raise_error      
@@ -48,35 +48,39 @@ describe WordSearchPuzzlesHelper do
     end
 
     it "should not raise an error when generating puzzles" do
-      1000.times do
+      100.times do
         expect do
           generate_puzzle(word_list, puzzle[:grid].length)
         end.to_not raise_error
       end
     end
 
-    it "should not raise an error when creating a PDF" do
-      expect { generate_pdf(puzzle) }.to_not raise_error
+    describe "when creating a PDF" do
+      let(:puzzle_for_pdf) { generate_puzzle(['hello', 'world', 'foo'], 18) }
+
+      it "should not generate an error" do
+        expect { generate_pdf(puzzle_for_pdf) }.to_not raise_error
+      end
     end
 
     describe "should properly detect collisons" do
       
       specify "when there is a collision" do
-        collision?(solutions = {[0,0] => "B"},
+        collision?(solutions = [{[0,0] => "B"}],
                          row = 0, 
                          col = 0, 
                          letter = "A").should be_true
       end
       
       specify "when there is not a collision" do
-        collision?(solutions = {[1,1] => "A"},
+        collision?(solutions = [{[1,1] => "A"}],
                          row = 0, 
                          col = 0, 
                          letter = "A").should be_false
       end
 
       specify "when there is a collison BUT the letter is the same" do
-        collision?(solutions = {[0,0] => "A"},
+        collision?(solutions = [{[0,0] => "A"}],
                          row = 0, 
                          col = 0, 
                          letter = "A").should be_false
@@ -85,12 +89,14 @@ describe WordSearchPuzzlesHelper do
 
     describe "when handling collisons" do
       before do 
+        solutions = {}
         puzzle[:grid].length.times do |row|
           puzzle[:grid][0].length.times do |col|
             puzzle[:grid][row][col] = "A"
-            puzzle[:solutions].merge!({[row,col] => grid[row][col]})
+            solutions.merge!({[row,col] => grid[row][col]})
           end
         end
+        puzzle[:solutions] = [solutions]
       end
 			
 			specify{ insert_letter_into_puzzle(letter = "B", 
@@ -113,17 +119,19 @@ describe WordSearchPuzzlesHelper do
         puzzle[:grid].length.times do |row|
           puzzle[:grid][row][0] = "A"
         end
+        puzzle[:solutions] = []
+
         @word_status = insert_word("FOOBAR".split(''), 
                           row = { location: 0, increment: 1}, 
                           col = { location: 0, increment: 0},
                           puzzle ) 
       end
-      let(:expected_solution){ {[0, 0]=>"F", 
+      let(:expected_solution){ [{[0, 0]=>"F", 
                                 [1, 0]=>"O", 
                                 [2, 0]=>"O", 
                                 [3, 0]=>"B",
                                 [4, 0]=>"A",
-                                [5, 0]=>"R" } }
+                                [5, 0]=>"R" }] }
       
       specify { puzzle[:solutions].should == expected_solution }
       specify { @word_status.should be_true}
