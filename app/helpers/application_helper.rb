@@ -30,7 +30,7 @@ module ApplicationHelper
     	col = (grid_position[0]* 1.128.cm)
     	row = 10.5.in - 0.128.cm - (grid_position[1]* 1.128.cm )
     	text_box letter, at: [col, row], 
-    									 :size => 1.128.cm,
+    									 :size => 1.cm,
     									 :width => 1.128.cm,
     									 :height => 1.128.cm,
     									 :align => :center
