@@ -15,7 +15,7 @@
 /tmp
 
 # Ignore all generated pdfs
-app/assets/generated-pdfs/*
+/app/assets/generated-pdfs/*
 
 # Ignore other unneeded files.
 doc/
