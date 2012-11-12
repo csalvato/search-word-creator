@@ -36,7 +36,15 @@ module ApplicationHelper
       end
     end
 
-    def circle_solutions(puzzle)
+    def highlight_solutions(puzzle)
+      puzzle[:solutions].each do |solution|
+        solution.each do |coordinates, letter|
+          grid( coordinates[0] + @row_offset, coordinates[1]+ @col_offset ).bounding_box do
+            rectangle bounds.top_left, bounds.width, bounds.height
+            stroke
+          end
+        end
+      end
     end
 
     def draw_word_bank
