@@ -140,7 +140,7 @@ module WordSearchPuzzlesHelper
 		def insert_into_puzzle_vert(word, puzzle)
 			max_start_row = puzzle[:grid].length - word.length
 			row = rand(0..max_start_row)
-			col = rand(0..puzzle[:grid][0].length)
+			col = rand(0..puzzle[:grid][0].length-1)
 			
 			return insert_word(word, 
 												  row = { location: row, increment: 1}, 

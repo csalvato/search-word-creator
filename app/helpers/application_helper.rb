@@ -47,7 +47,25 @@ module ApplicationHelper
       end
     end
 
-    def draw_word_bank
+    def draw_word_bank(puzzle)
+      columns = ['', '', '']
+
+      puzzle[:solutions].each_with_index do |solution, index|
+        columns[index % 3] += solution.values.join + "\n"
+      end
+
+      puts columns
+
+      grid([19,1], [23,5]).bounding_box do
+        text columns[0]  
+      end
+      grid([19,7], [23,11]).bounding_box do
+        text columns[1]
+      end
+
+      grid([19,13], [23,18]).bounding_box do
+        text columns[2]
+      end
     end
   end
 end
