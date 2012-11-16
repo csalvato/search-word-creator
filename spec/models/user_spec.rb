@@ -155,8 +155,7 @@ describe User do
 	describe "with paid_user attribute set to 'true'" do
 		before do
 			user.save!
-			# Cannot use toggle! since it will not call before_save filter!!
-			user.toggle(:paid_user)
+			user.toggle!(:paid_user)
 			user.save!
 		end
 
