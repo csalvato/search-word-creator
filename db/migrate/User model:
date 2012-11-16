@@ -1,0 +1,31 @@
+User model:
+	id - int
+	name - string
+	email - string
+	password_digest - string
+	remember_token - string
+	created_at - datetime
+	updated_at - datetime
+	last_paid_at - datetime
+	pennies_paid - int
+	subscription_expires_on - datetime
+	paid_user - boolean
+	trial_user - boolean
+
+	has_many - word_search_puzzles
+
+Word Search Puzzle Model:
+	id - int
+	name - string
+	created_at - datetime
+	updated_at - datetime
+	times_used - int
+	words - text (and serialize for array)
+
+Word List Model:
+	id - int
+	created_at - datetime
+	updated_at - datetime
+	times_used - int
+	words - text (and serialize for array)
+
