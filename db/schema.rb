@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121116132108) do
+ActiveRecord::Schema.define(:version => 20121116133102) do
 
   create_table "users", :force => true do |t|
     t.string   "name"
@@ -19,12 +19,12 @@ ActiveRecord::Schema.define(:version => 20121116132108) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.datetime "last_paid_at"
-    t.integer  "pennies_paid"
+    t.integer  "pennies_paid",            :default => 0
     t.datetime "subscription_expires_on"
-    t.boolean  "paid_user"
-    t.boolean  "trial_user"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.boolean  "paid_user",               :default => false
+    t.boolean  "trial_user",              :default => true
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
   end
 
 end
