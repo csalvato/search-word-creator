@@ -83,13 +83,13 @@ describe User do
 	end
 
 	describe "when email address is already taken" do
-		before do
+		let(:user_with_same_email) do
 			user_with_same_email = user.dup
 			user_with_same_email.email = user.email.upcase
-			user_with_same_email.save
+			user_with_same_email
 		end
 
-		it { should_not be_valid }
+		specify { user_with_same_email.should_not be_valid }
 	end
 
   describe "when password is not present" do
