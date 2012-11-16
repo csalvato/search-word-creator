@@ -38,6 +38,7 @@ describe User do
 	it { should respond_to(:updated_at) }
 	it { should respond_to(:admin) }
 	it { should respond_to(:authenticate) }
+	it { should respond_to(:word_search_puzzles) }
 
 	it "should not have paid_user as an accessible attribute" do
 		user.class.accessible_attributes.include?(:paid_user).should be_false

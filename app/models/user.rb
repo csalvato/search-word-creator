@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
 
+	has_many :word_search_puzzles, dependent: :destroy
+
 	# Not sure why, but this must hapeen after_validation, 
 	#   not before_save or before_validation...
 	after_validation { self.trial_user = false if self.paid_user? }
