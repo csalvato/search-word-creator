@@ -2,6 +2,3 @@ to-do list
 
 1) Make WordSearchPuzzlesHelper create grids that are not 18 by 18
 2) Make circling of words prettier
-3) Handle spaces in words properly
-4) Add grid_size to the word search puzzle model
-5) Put validation for the word search puzzle (words too big for grid, etc) into word search puzzle model.

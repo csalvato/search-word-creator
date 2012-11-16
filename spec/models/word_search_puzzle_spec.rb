@@ -42,43 +42,101 @@ describe WordSearchPuzzle do
 		it { should_not be_valid }
 	end
 
-	describe "when words is an empty array" do
-		before { puzzle.words = [] }
-		it { should_not be_valid }
+	describe "when words array" do
+		describe "is an empty array" do
+			before { puzzle.words = [] }
+			it { should_not be_valid }
+		end
+
+		describe "has blank entries" do
+			before { puzzle.words = ["TEST", ""] }
+			it { should_not be_valid }
+		end
+
+		describe "is too large for the grid" do
+			before do
+			  puzzle.words = [ "a" * 20 ]
+			  puzzle.grid_width = puzzle.grid_height = 10
+			end
+
+			it { should_not be_valid }
+		end
+		
+		describe "has only uppercase words without spaces" do
+			before { puzzle.words = ["A" * 10] }
+			
+			it { should be_valid }
+		end
+
+		describe "has uppercase words with spaces" do
+			before { puzzle.words = ["A " * 10] }
+			
+			it { should be_valid }
+		end
+
+		describe "has lowercase words with without spaces" do
+			before { puzzle.words = ["a" * 10] }
+			
+			it { should be_valid }
+		end
+
+		describe "has lowercase words with with spaces" do
+			before { puzzle.words = ["a " * 10] }
+			
+			it { should be_valid }
+		end
+
+		describe "has words with leading or trailing whitespace" do
+			before { puzzle.words = ["A " * 10] }
+			
+			it { should be_valid }
+		end
+
+		describe "has words with hyphens or underscores" do
+			before { puzzle.words = ["A-" * 10] }
+			
+			it { should be_valid }
+		end
+
+		describe "has words with characters other than letters or hypens" do
+			before { puzzle.words = ["\_\!\@\#\$\]\%", "\^\&\*\(\)\{\}"] }
+			
+			it { should_not be_valid }
+		end
+
 	end
 
-	describe "when words has blank entries" do
-		before { puzzle.words = ["TEST", ""] }
-		it { should_not be_valid }
-	end
+	describe "grid parameters" do
+		describe "should not be valid" do
+			describe "when grid_width is nil" do
+				before { puzzle.grid_width = nil }
+				it { should_not be_valid }
+			end
 
-	describe "when grid_width is nil" do
-		before { puzzle.grid_width = nil }
-		it { should_not be_valid }
-	end
+			describe "when grid_height is nil" do
+				before { puzzle.grid_height = nil }
+				it { should_not be_valid }
+			end
 
-	describe "when grid_height is nil" do
-		before { puzzle.grid_height = nil }
-		it { should_not be_valid }
-	end
+			describe "when grid_width is too large" do
+				before { puzzle.grid_width = 100 }
+				it { should_not be_valid }
+			end
 
-	describe "when grid_width is too large" do
-		before { puzzle.grid_width = 100 }
-		it { should_not be_valid }
-	end
+			describe "when grid_height is too large" do
+				before { puzzle.grid_height = 100 }
+				it { should_not be_valid }
+			end
 
-	describe "when grid_height is too large" do
-		before { puzzle.grid_height = 100 }
-		it { should_not be_valid }
-	end
+				describe "when grid_width is too small" do
+				before { puzzle.grid_width = 2 }
+				it { should_not be_valid }
+			end
 
-		describe "when grid_width is too small" do
-		before { puzzle.grid_width = 2 }
-		it { should_not be_valid }
-	end
-
-	describe "when grid_height is too small" do
-		before { puzzle.grid_height = 2 }
-		it { should_not be_valid }
+			describe "when grid_height is too small" do
+				before { puzzle.grid_height = 2 }
+				it { should_not be_valid }
+			end
+		end
 	end
 end
