@@ -20,6 +20,24 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
 
-  
+	# Not sure why, but this must hapeen after_validation, 
+	#   not before_save or before_validation...
+	after_validation { self.trial_user = false if self.paid_user? }
+
+	before_save { self.email.downcase! }
+  before_save :create_remember_token
+
+	validates :name, presence: true, length: { maximum: 50 }
+	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, 
+  									uniqueness: { case_sensitive: false }
+	validates :password, length: { minimum: 6 }  									
+	validates_confirmation_of :password
+	validates :password_confirmation, presence: true
+
+	private
+    def create_remember_token
+      self.remember_token = SecureRandom.urlsafe_base64
+    end
 
 end

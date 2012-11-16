@@ -155,20 +155,22 @@ describe User do
 	describe "with paid_user attribute set to 'true'" do
 		before do
 			user.save!
-			user.toggle!(:paid_user)
+			# Cannot use toggle! since it will not call before_save filter!!
+			user.toggle(:paid_user)
+			user.save!
 		end
 
 		it { should be_paid_user }
 		it { should_not be_trial_user}
 	end
 
-	describe "with trial_user attribute set to 'true'" do
+	describe "with trial_user attribute set to 'false'" do
 		before do
 			user.save!
 			user.toggle!(:trial_user)
 		end
 
-		it { should be_trial_user }
+		it { should_not be_trial_user }
 	end
 
 end
