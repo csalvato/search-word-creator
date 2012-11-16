@@ -8,10 +8,10 @@
 #  password_digest         :string(255)
 #  remember_token          :string(255)
 #  last_paid_at            :datetime
-#  pennies_paid            :integer
+#  pennies_paid            :integer          default(0)
 #  subscription_expires_on :datetime
-#  paid_user               :boolean
-#  trial_user              :boolean
+#  paid_user               :boolean          default(FALSE)
+#  trial_user              :boolean          default(TRUE)
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #
