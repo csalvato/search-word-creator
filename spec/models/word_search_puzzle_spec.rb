@@ -23,5 +23,20 @@ describe WordSearchPuzzle do
 	it "words should be an array" do
 		puzzle.words.should be_kind_of(Array)
 	end
+	
+	describe "when name is too long" do
+		before { puzzle.name = "a" * 51 }
+		it { should_not be_valid }
+	end
+
+	describe "when words is an empty array" do
+		before { puzzle.words = [] }
+		it { should_not be_valid }
+	end
+
+	describe "when words has blank entries" do
+		before { puzzle.words = ["TEST", ""] }
+		it { should_not be_valid }
+	end
 
 end
