@@ -1,21 +1,9 @@
 SearchWordCreator::Application.routes.draw do
-  get "users/create"
-
-  get "users/edit"
-
-  get "users/update"
-
-  get "users/new"
-
-  get "word_search_puzzles/new"
-
-  get "word_search_puzzles/edit"
-
-  get "word_search_puzzles/create"
-
-  get "word_search_puzzles/destroy"
+  resources :users
+  resources :word_search_puzzles
 
   match '/faq', to: 'static_pages#faq'
+  match '/signup', to: 'users#new'
   match "/contact", to: "static_pages#contact"
   match "/plans-and-pricing" => "static_pages#plans", :as => "plans"
 
