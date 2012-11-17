@@ -48,8 +48,26 @@ describe User do
 		user.class.accessible_attributes.include?(:trial_user).should be_false
 	end
 
+	describe "should be valid as created by factory" do
+		it { should be_valid }
+	end
+
 	describe "when name is not present" do
 		before { user.name = " " }
+		it { should_not be_valid }
+	end
+
+	describe "when name is not two or more words" do
+		before { user.name = "Robert" }
+		it { should_not be_valid }
+		
+		before { user.name = "\$kljaglj1!" }
+		it { should_not be_valid }
+		
+		before { user.name = "Robery_brown" }
+		it { should_not be_valid }
+
+		before { user.name = "Robery-brown" }
 		it { should_not be_valid }
 	end
 

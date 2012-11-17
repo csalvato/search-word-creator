@@ -1,9 +1,12 @@
 SearchWordCreator::Application.routes.draw do
   resources :users
   resources :word_search_puzzles
+  resources :sessions, only: [:new, :create, :destroy]
 
   match '/faq', to: 'static_pages#faq'
   match '/signup', to: 'users#new'
+  match '/signin', to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
   match "/contact", to: "static_pages#contact"
   match "/plans-and-pricing" => "static_pages#plans", :as => "plans"
 
