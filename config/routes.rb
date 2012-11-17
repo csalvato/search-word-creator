@@ -1,4 +1,10 @@
 SearchWordCreator::Application.routes.draw do
+  get "users/create"
+
+  get "users/edit"
+
+  get "users/update"
+
   get "users/new"
 
   get "word_search_puzzles/new"
