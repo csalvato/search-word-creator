@@ -38,10 +38,13 @@ describe "StaticPages" do
 
     it_should_behave_like "all static pages"
     it { should have_selector( 'title' , text: "Contact Search Word Creator") }
-    it { should have_button("Send Message") }
     it { should have_link("email", href:"mailto:support@searchwordcreator.com") }
     it { should_not have_selector("div.header div.grid.col5") }
-    it { should have_selector('form', action: sendemail_path)}
+    it "should have a contact form" do
+      pending("One day it should have a contact form..maybe?")
+      it { should have_button("Send Message") }
+      it { should have_selector('form', action: sendemail_path)}
+    end
   end
 
 	describe "FAQ page" do
