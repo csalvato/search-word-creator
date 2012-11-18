@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+	before_filter :signed_in_user_trying_to_sign_in, only: [:new, :create]
+
 	def new
 	end
 
@@ -17,5 +19,10 @@ class SessionsController < ApplicationController
 		sign_out 
 		redirect_to root_url
 	end
+
+	private
+		def signed_in_user_trying_to_sign_in
+			redirect_to dashboard_url unless !signed_in?
+		end
 
 end

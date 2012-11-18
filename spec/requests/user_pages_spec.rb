@@ -72,7 +72,17 @@ describe "UserPages" do
         end
       end
 		end
-
 	end
+
+  describe "dashboard" do
+    before { visit signup_path }  
+
+    "should have create word lists link"
+    "should have 'make your own puzzle' link"
+    "should have 'use one of our puzzles' link"
+
+    "when user has no recent puzzles"
+    "when user has recent puzzles"
+  end
 
 end

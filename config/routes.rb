@@ -1,5 +1,5 @@
 SearchWordCreator::Application.routes.draw do
-  resources :users
+  resources :users, except: [:index, :show, :destroy]
   resources :word_search_puzzles
   resources :sessions, only: [:new, :create, :destroy]
 
