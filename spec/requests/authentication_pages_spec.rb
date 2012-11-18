@@ -24,7 +24,7 @@ describe "Authentication" do
       it { should have_error_message('Invalid') }
 
 			describe "after visiting another page" do
-				before {click_link "Home"}
+				before {click_link "Contact"}
 				it {should_not have_error_message('Invalid')}
 			end
     end
@@ -33,7 +33,8 @@ describe "Authentication" do
 			let( :user ) { FactoryGirl.create(:user) }
 			before { valid_signin(user) }
 
-			it { should have_proper_heading_and_title("Create Puzzles") }
+    it { should have_selector('title', text: "Make Custom Word Search Puzzles with Search Word Creator") }
+      it { should have_selector('h1', text: "Recently Created Puzzles") }
       it { should have_link('Account', href: edit_user_path(user)) }
 			it { should have_link('Sign out', href: signout_path) }
 			it { should_not have_link('Sign in', href: signin_path) }

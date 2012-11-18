@@ -8,7 +8,12 @@
 						<ul id="menu-top-links" class="menu">
 							<li class="menu-item"><%= link_to "FAQ", faq_path %></li>
 							<li class="menu-item"><%= link_to "Contact", contact_path %></li>
-							<li class="menu-item"><%= link_to "Sign in", "#" %></li>
+							<% if signed_in? %>
+								<li class="menu-item"><%= link_to "Account", edit_user_path(current_user) %></li>
+								<li class="menu-item"><%= link_to "Sign out", signout_path, method: "delete" %></li>
+							<% else %>
+								<li class="menu-item"><%= link_to "Sign in", signin_path %></li>
+							<% end %>
 						</ul>
 					</div>
 					<div class="nav">

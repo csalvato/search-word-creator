@@ -10,4 +10,7 @@ class StaticPagesController < ApplicationController
 
   def plans
   end
+
+  def purchase
+  end
 end

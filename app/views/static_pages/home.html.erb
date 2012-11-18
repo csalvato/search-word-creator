@@ -1,3 +1,4 @@
+<% provide(:title, 'Create custom search word puzzles with Search Word Creator') %>
 <% provide(:page_type, 'home') %>
 	<!-- div start center -->
 	<div class="center">
@@ -7,7 +8,7 @@
 				<h2>Create Your Own<br/>Word Search Right Now!</h2>
 				<p>Teachers and parents use Word Search Creator to make custom, printable puzzles for learning and playing.</p>
 		
-				<%= link_to "Start Making Puzzles", "#", class: "radius button" %>
+				<%= link_to "Start Making Puzzles", signup_path, class: "radius button" %>
 				<p>Free Trial. 30 Day Money Back Guarantee</p>
 			</div>
 			<div class="right">
@@ -79,7 +80,7 @@
 		<!-- div start free trial -->
 		<div class="free-trial radius">
 			<h3>Free Trial</h3>
-			<%= link_to "Make Puzzles Now!", '#', class: "radius button" %>
+			<%= link_to "Make Puzzles Now!", signup_path, class: "radius button" %>
 			<p>Takes 15 seconds</p>
 		</div>
 		<!-- div end free trial -->

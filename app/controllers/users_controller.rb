@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   	if @user.save
       sign_in @user
 			flash[:success] = "Welcome to the Sample App!"
-  		redirect_to @user
+  		redirect_to dashboard_path
   	else
 			render 'new'
   	end
@@ -18,5 +18,8 @@ class UsersController < ApplicationController
   end
 
   def update
+  end
+
+  def dashboard
   end
 end
