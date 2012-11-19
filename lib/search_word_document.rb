@@ -250,7 +250,7 @@ class SearchWordDocument < Prawn::Document
 			pdf.highlight_solutions(puzzle)
 			pdf.start_new_page unless index + 1 == num_puzzles
 		end
-		pdf.render_file "#{Rails.root.to_s}/tmp/generated_pdfs/#{file_name}" unless Rails.env.test?
+		pdf.render_file "${RAILS_ROOT}/tmp/generated_pdfs/#{file_name}" unless Rails.env.test?
 		return file_name
 	end
 end
