@@ -6,7 +6,7 @@
 #lowrider-controls ul, #lowrider-controls li 
 { margin: 0; padding: 0; list-style: none; list-position: outside; text-indent: 0; }
 
-#lowrider-slider li: before, #lowrider-controls li: before { content: none; }
+#lowrider-slider li:before, #lowrider-controls li:before { content: none; }
 
 #lowrider-slider, #lowrider-slider .overlay { width: 960px;height: 400px;overflow: hidden;position: relative;margin: 0 auto; }
 #lowrider-slider .overlay { position: absolute;top: 0;left: 0; }
