@@ -5,3 +5,4 @@ to-do list
 3) Create word lists for easy selection (including capability to track every time they are used)
 4) Create WordSearchPuzzles Controller
 5) Create Users controller
+6) Fix SearchWordDocument to NOT put spaces into the puzzles

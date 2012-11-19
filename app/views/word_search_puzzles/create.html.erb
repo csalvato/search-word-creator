@@ -1,2 +1,32 @@
-<h1>WordSearchPuzzles#create</h1>
-<p>Find me in app/views/word_search_puzzles/create.html.erb</p>
+<% provide(:title, 'Create custom search word puzzles with Search Word Creator') %>
+<% provide(:page_type, 'page') %>
+	<div class="center">
+		<div id="sidebar" class="col-side left">
+			<div class="widget">
+				<h2>Step 1 of 3</h2>
+				<ul>
+					<li>
+						<p>
+							All printed puzzles will be different!
+						</p>
+						<br/>
+						<p>
+							Each puzzle will be printed with its solutions.
+						</p>
+						<br/>
+						<p>
+							Scroll down for a list of all of the words you added.  Remember, not all of the words you added will appear in the puzzle, since word search puzzles have limited space!
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-main">
+			<div class="post">
+				<div class="entry">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<%= debug(@word_search_puzzle) if Rails.env.development? %>

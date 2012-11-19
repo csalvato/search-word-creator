@@ -43,6 +43,7 @@ describe "Authentication" do
 
   describe "for non-signed-in users" do
     let(:user) { FactoryGirl.create(:user) }
+    let(:word_search_puzzle) { FactoryGirl.create(:word_search_puzzle) }
 
     describe "in the Users controller" do
       describe "visiting the edit (Account) page" do
@@ -90,7 +91,7 @@ describe "Authentication" do
             describe "visiting the new page" do
               before { visit new_user_path }
               it { should_not have_selector('title', text: 'Sign up') }
-              it { should have_selector('h1', text: "Recently Created Puzzles")}
+              it { should have_link('Create Your Own Puzzle', href: new_word_search_puzzle_path)}
               it { should_not have_link("Start Making Puzzles", href: signup_path) }
             end
 
@@ -100,6 +101,18 @@ describe "Authentication" do
             end
           end
         end
+      end
+    end
+
+    describe "in the WordSearchPuzzles controller" do
+      describe "visiting the new Word Search Puzzle page" do
+        before { visit new_word_search_puzzle_path }
+        it { should have_selector('title', text: 'Sign in') }
+      end
+      
+      describe "submitting to the update action" do
+        before { post word_search_puzzles_path(word_search_puzzle) }
+        specify { response.should redirect_to(signin_path) }
       end
     end
   end

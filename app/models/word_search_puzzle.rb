@@ -19,7 +19,7 @@ class WordSearchPuzzle < ActiveRecord::Base
   attr_accessible :name, :words, :grid_width, :grid_height
 
   before_validation :sanitize_words
-
+	
   validates :name, presence: true, length: { maximum: 50 }
   validates :grid_width, presence: true, numericality: { greater_than: 5, less_than: 19 }
   validates :grid_height, presence: true, numericality: { greater_than: 5, less_than: 19 }
