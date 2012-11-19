@@ -11,6 +11,7 @@ User model:
 	subscription_expires_on - datetime
 	paid_user - boolean
 	trial_user - boolean
+	word_lists - word_list
 
 	has_many - word_search_puzzles
 
@@ -26,6 +27,7 @@ Word List Model:
 	id - int
 	created_at - datetime
 	updated_at - datetime
+	created_by - user
 	times_used - int
 	words - text (and serialize for array)
 

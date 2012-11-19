@@ -34,7 +34,7 @@ describe "Authentication" do
 			before { valid_signin(user) }
 
     it { should have_selector('title', text: "Make Custom Word Search Puzzles with Search Word Creator") }
-      it { should have_selector('h1', text: "Recently Created Puzzles") }
+      it { should have_link("Create Your Own Puzzle") }
       it { should have_link('Account', href: edit_user_path(user)) }
 			it { should have_link('Sign out', href: signout_path) }
 			it { should_not have_link('Sign in', href: signin_path) }

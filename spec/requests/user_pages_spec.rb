@@ -77,12 +77,14 @@ describe "UserPages" do
   describe "dashboard" do
     before { visit signup_path }  
 
-    "should have create word lists link"
-    "should have 'make your own puzzle' link"
-    "should have 'use one of our puzzles' link"
+    it { should have_link('Create Your Own Puzzle', href: new_word_search_puzzle_path) }
+    
 
-    "when user has no recent puzzles"
-    "when user has recent puzzles"
+    # "should have 'use one of our puzzles' link" #later
+    # "should have create word lists link" #later
+
+    # "when user has no recent puzzles" #later
+    # "when user has recent puzzles" #later
   end
 
 end

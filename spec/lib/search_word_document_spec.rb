@@ -9,16 +9,16 @@ require 'spec_helper'
 #       helper.concat_strings("this","that").should == "this that"
 #     end
 #   end
-describe WordSearchPuzzlesHelper do
+describe SearchWordDocument do
     let(:word_list) { ["hello", "world", "foobar"] }
-    let(:grid) { initialize_grid( grid_size = 18 ) }
+    let(:grid) { SearchWordDocument.initialize_grid( grid_size = 18 ) }
     let(:solutions) { [{[0,0] => "A"}]}
     let(:puzzle) { {grid: grid, solutions: solutions} }
     
     it "should not raise an error when inserting a horizontal word into a puzzle" do
       100.times do 
         expect do
-          insert_into_puzzle_horiz("foobar".split(''), puzzle)
+          SearchWordDocument.insert_into_puzzle_horiz("foobar".split(''), puzzle)
         end.to_not raise_error      
       end
     end
@@ -26,7 +26,7 @@ describe WordSearchPuzzlesHelper do
     it "should not raise an error when inserting a vertical word into a puzzle" do
       100.times do 
         expect do
-          insert_into_puzzle_vert("foobar".split(''), puzzle)
+          SearchWordDocument.insert_into_puzzle_vert("foobar".split(''), puzzle)
         end.to_not raise_error      
       end
     end
@@ -34,7 +34,7 @@ describe WordSearchPuzzlesHelper do
     it "should not raise an error when inserting a diagonal-up word into a puzzle" do
       100.times do 
         expect do
-          insert_into_puzzle_diag_up("foobar".split(''), puzzle)
+          SearchWordDocument.insert_into_puzzle_diag_up("foobar".split(''), puzzle)
         end.to_not raise_error      
       end
     end
@@ -42,7 +42,7 @@ describe WordSearchPuzzlesHelper do
     it "should not raise an error when inserting a diagonal-down word into a puzzle" do
       100.times do 
         expect do
-          insert_into_puzzle_diag_down("foobar".split(''), puzzle)
+          SearchWordDocument.insert_into_puzzle_diag_down("foobar".split(''), puzzle)
         end.to_not raise_error      
       end
     end
@@ -50,37 +50,37 @@ describe WordSearchPuzzlesHelper do
     it "should not raise an error when generating puzzles" do
       100.times do
         expect do
-          generate_puzzle(word_list, puzzle[:grid].length)
+          SearchWordDocument.generate_puzzle(word_list, puzzle[:grid].length)
         end.to_not raise_error
       end
     end
 
     describe "when creating a PDF" do
-      let(:puzzle_for_pdf) { generate_puzzle(['hello', 'world', 'foo'], 18) }
+      let(:puzzle_for_pdf) { SearchWordDocument.generate_puzzle(['hello', 'world', 'foo'], 18) }
 
       it "should not generate an error" do
-        expect { generate_pdf(puzzle_for_pdf) }.to_not raise_error
+        expect { SearchWordDocument.generate_pdf(puzzle_for_pdf) }.to_not raise_error
       end
     end
 
     describe "should properly detect collisons" do
       
       specify "when there is a collision" do
-        collision?(solutions = [{[0,0] => "B"}],
+        SearchWordDocument.collision?(solutions = [{[0,0] => "B"}],
                          row = 0, 
                          col = 0, 
                          letter = "A").should be_true
       end
       
       specify "when there is not a collision" do
-        collision?(solutions = [{[1,1] => "A"}],
+        SearchWordDocument.collision?(solutions = [{[1,1] => "A"}],
                          row = 0, 
                          col = 0, 
                          letter = "A").should be_false
       end
 
       specify "when there is a collison BUT the letter is the same" do
-        collision?(solutions = [{[0,0] => "A"}],
+        SearchWordDocument.collision?(solutions = [{[0,0] => "A"}],
                          row = 0, 
                          col = 0, 
                          letter = "A").should be_false
@@ -99,19 +99,19 @@ describe WordSearchPuzzlesHelper do
         puzzle[:solutions] = [solutions]
       end
 			
-			specify{ insert_letter_into_puzzle(letter = "B", 
+			specify{ SearchWordDocument.insert_letter_into_puzzle(letter = "B", 
 																				 row = 0,
 																				 col = 0,
 																				 puzzle).should be_false }
-			specify{ insert_letter_into_puzzle(letter = "A", 
+			specify{ SearchWordDocument.insert_letter_into_puzzle(letter = "A", 
 																				 row = 0,
 																				 col = 0,
 																				 puzzle).should be_true }
       
-      specify{ insert_into_puzzle_horiz("ABAZABA".split(''), puzzle).should be_false }
-      specify{ insert_into_puzzle_vert("ABAZABA".split(''), puzzle).should be_false }
-      specify{ insert_into_puzzle_diag_up("ABAZABA".split(''), puzzle).should be_false }
-      specify{ insert_into_puzzle_diag_down("ABAZABA".split(''), puzzle).should be_false }
+      specify{ SearchWordDocument.insert_into_puzzle_horiz("ABAZABA".split(''), puzzle).should be_false }
+      specify{ SearchWordDocument.insert_into_puzzle_vert("ABAZABA".split(''), puzzle).should be_false }
+      specify{ SearchWordDocument.insert_into_puzzle_diag_up("ABAZABA".split(''), puzzle).should be_false }
+      specify{ SearchWordDocument.insert_into_puzzle_diag_down("ABAZABA".split(''), puzzle).should be_false }
     end
 
     describe "when inserting a word" do
@@ -121,7 +121,7 @@ describe WordSearchPuzzlesHelper do
         end
         puzzle[:solutions] = []
 
-        @word_status = insert_word("FOOBAR".split(''), 
+        @word_status = SearchWordDocument.insert_word("FOOBAR".split(''), 
                           row = { location: 0, increment: 1}, 
                           col = { location: 0, increment: 0},
                           puzzle ) 
@@ -135,7 +135,7 @@ describe WordSearchPuzzlesHelper do
       
       specify { puzzle[:solutions].should == expected_solution }
       specify { @word_status.should be_true}
-      specify { insert_word("FOOBAZ".split(''), 
+      specify { SearchWordDocument.insert_word("FOOBAZ".split(''), 
                           row = { location: 0, increment: 1}, 
                           col = { location: 0, increment: 0},
                           puzzle).should be_false }
