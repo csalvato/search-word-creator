@@ -25,9 +25,9 @@ class WordSearchPuzzlesController < ApplicationController
   def print
   	grid_size = 18
 		@word_search_puzzle = WordSearchPuzzle.find(params[:word_search_puzzle_id])
-		#@file_name = SearchWordDocument.generate_pdf(@word_search_puzzle.words,
-		#																grid_size,
-		#																Integer(params[:num_puzzles]),
-		#																current_user.name)
+		SearchWordDocument.generate_pdf(@word_search_puzzle.words,
+																		grid_size,
+																		Integer(params[:num_puzzles]),
+																		current_user.name)
   end
 end
