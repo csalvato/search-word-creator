@@ -49,8 +49,13 @@ describe WordSearchPuzzle do
 		end
 
 		describe "has blank entries" do
-			before { puzzle.words = ["TEST", ""] }
-			it { should_not be_valid }
+			before do
+			  puzzle.words = ["TEST", ""]
+			  puzzle.save!
+			end
+
+			it { should be_valid }
+			specify { puzzle.words.should == ["TEST"] }
 		end
 
 		describe "is too large for the grid" do

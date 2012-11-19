@@ -6,6 +6,7 @@
 			</p>
 			<%= debug(params) if Rails.env.development? %>
 			<%= debug([request.remote_ip.inspect, request.request_method.inspect]) if Rails.env.development? %>
+			<%= debug(session[:return_to]) if Rails.env.development? %>
 		</div>
 	</div>
 </div>

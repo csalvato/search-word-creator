@@ -59,7 +59,7 @@ describe SearchWordDocument do
       let(:puzzle_for_pdf) { SearchWordDocument.generate_puzzle(['hello', 'world', 'foo'], 18) }
 
       it "should not generate an error" do
-        expect { SearchWordDocument.generate_pdf(puzzle_for_pdf) }.to_not raise_error
+        expect { SearchWordDocument.generate_pdf(word_list, grid.length, 1, "Chris Salvato") }.to_not raise_error
       end
     end
 

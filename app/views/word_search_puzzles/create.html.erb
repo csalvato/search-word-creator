@@ -3,7 +3,7 @@
 	<div class="center">
 		<div id="sidebar" class="col-side left">
 			<div class="widget">
-				<h2>Step 1 of 3</h2>
+				<h2>Step 2 of 3</h2>
 				<ul>
 					<li>
 						<p>
@@ -24,7 +24,21 @@
 		<div class="col-main">
 			<div class="post">
 				<div class="entry">
-					
+					<h1>Total Number of Puzzles</h1>
+					<%= form_tag print_path do%>
+			      <%= label_tag "Total Number of Puzzles" %>
+			      <%= text_field_tag :num_puzzles, "1" %>
+
+			 			<%= hidden_field_tag :word_search_puzzle_id, @word_search_puzzle.id %>
+
+			      <%= submit_tag "Print Puzzles", class: "btn btn-large btn-primary" %>
+			    <% end %>
+			    <h1>Words You've Added</h1>
+			    <ul>
+				    <% @words.each do |word| %>
+							<li><%=  word %></li>
+						<% end %>
+					</ul>
 				</div>
 			</div>
 		</div>

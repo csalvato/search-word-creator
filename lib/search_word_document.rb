@@ -54,8 +54,6 @@ class SearchWordDocument < Prawn::Document
       columns[index % 3] += solution.values.join + "\n"
     end
 
-    puts columns
-
     grid([19,1], [23,5]).bounding_box do
       text columns[0]  
     end
@@ -237,14 +235,22 @@ class SearchWordDocument < Prawn::Document
 								  puzzle )
 	end	
 
-	def self.generate_pdf(puzzle)
+	def self.generate_pdf(words, grid_size, num_puzzles, name)
 		pdf = SearchWordDocument.new
-		pdf.draw_puzzle(puzzle)
-		pdf.draw_word_bank(puzzle)
-		pdf.start_new_page
-		pdf.draw_puzzle(puzzle)
-		pdf.draw_word_bank(puzzle)
-		pdf.highlight_solutions(puzzle)
-		pdf.render_file "app/assets/generated_pdfs/test.pdf"
+		random_characters = ('a'..'z').to_a.shuffle[0..7].join
+		file_name = "#{name}_#{random_characters}.pdf"
+		
+		num_puzzles.times.with_index do |index|
+			puzzle = self.generate_puzzle(words, grid_size)
+			pdf.draw_puzzle(puzzle)
+			pdf.draw_word_bank(puzzle)
+			pdf.start_new_page
+			pdf.draw_puzzle(puzzle)
+			pdf.draw_word_bank(puzzle)
+			pdf.highlight_solutions(puzzle)
+			pdf.start_new_page unless index + 1 == num_puzzles
+		end
+		pdf.render_file "app/assets/generated_pdfs/#{file_name}" unless Rails.env.test?
+		return "assets/#{file_name}"
 	end
 end

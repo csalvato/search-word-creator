@@ -3,14 +3,18 @@ SearchWordCreator::Application.routes.draw do
   resources :word_search_puzzles
   resources :sessions, only: [:new, :create, :destroy]
 
+  match "/purchase", to: "static_pages#purchase"
   match '/faq', to: 'static_pages#faq'
+  match "/contact", to: "static_pages#contact"
+  match "/plans-and-pricing" => "static_pages#plans", :as => "plans"
+ 
+  match '/print', to: 'word_search_puzzles#print'
+  
+  match "/dashboard", to: "users#dashboard"
   match '/signup', to: 'users#new'
+
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
-  match "/contact", to: "static_pages#contact"
-  match "/dashboard", to: "users#dashboard"
-  match "/plans-and-pricing" => "static_pages#plans", :as => "plans"
-  match "/purchase", to: "static_pages#purchase"
 
 
   # You can have the root of your site routed with "root"

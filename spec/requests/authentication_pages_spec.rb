@@ -33,8 +33,7 @@ describe "Authentication" do
 			let( :user ) { FactoryGirl.create(:user) }
 			before { valid_signin(user) }
 
-    it { should have_selector('title', text: "Make Custom Word Search Puzzles with Search Word Creator") }
-      it { should have_link("Create Your Own Puzzle") }
+      it { should have_selector('title', text: "Create custom search word puzzles with Search Word Creator") }
       it { should have_link('Account', href: edit_user_path(user)) }
 			it { should have_link('Sign out', href: signout_path) }
 			it { should_not have_link('Sign in', href: signin_path) }
@@ -56,7 +55,7 @@ describe "Authentication" do
         specify { response.should redirect_to(signin_path) }
       end
 
-      describe "when attempting to visit a protected page" do
+      describe "when attempting to visit a protected page that, when logged in, one SHOULD have access to" do
         before do
           visit edit_user_path(user)
           fill_in "Email",    with: user.email
@@ -73,7 +72,7 @@ describe "Authentication" do
           describe "signin path visits" do
             before { visit signin_path }
             it "should redirect to the dashboard" do
-              page.should have_selector('h1', text: "Recently Created Puzzles")
+              page.should have_field("Name")
             end
           end
 
@@ -91,7 +90,6 @@ describe "Authentication" do
             describe "visiting the new page" do
               before { visit new_user_path }
               it { should_not have_selector('title', text: 'Sign up') }
-              it { should have_link('Create Your Own Puzzle', href: new_word_search_puzzle_path)}
               it { should_not have_link("Start Making Puzzles", href: signup_path) }
             end
 
@@ -101,6 +99,24 @@ describe "Authentication" do
             end
           end
         end
+      end
+
+     describe "when attempting to visit a protected page that, when logged in, one should NEVER have access to" do
+        let(:other_user) { FactoryGirl.create(:user) }
+        before do
+          visit edit_user_path(other_user)
+          fill_in "Email",    with: user.email
+          fill_in "Password", with: user.password
+          click_button "Sign in"
+        end
+
+        describe "after signing in" do
+          it "should render the default entry screen (e.g new word search screen) (not the protected page)" do
+            page.should have_field("Name")
+          end
+        end
+
+
       end
     end
 

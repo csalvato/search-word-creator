@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   	if @user.save
       sign_in @user
 			flash[:success] = "Welcome to the Search Word Creator!"
-  		redirect_to dashboard_path
+  		redirect_to new_word_search_puzzle_path
   	else
 			render 'new'
   	end
@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    redirect_to new_word_search_puzzle_path
   end
 
   private
@@ -34,6 +35,6 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to root_path unless current_user?(@user)
+      redirect_to dashboard_url unless current_user?(@user)
     end
 end

@@ -30,9 +30,7 @@ class WordSearchPuzzle < ActiveRecord::Base
 			words.each do |word|
 				word = word.gsub(/\s+/, "") # strip out all whitespace
 				word = word.gsub(/-+/, "") # strip out all hyphens
-				if word.blank?
-					problems << "Blank words are not allowed.\n"
-				elsif word.scan(VALID_WORD_REGEX).empty?
+				if word.scan(VALID_WORD_REGEX).empty?
 					problems << "can only contain letters, spaces and hyphens."
 				elsif !record.grid_height.nil? && !record.grid_width.nil? &&
 					    (word.length > record.grid_height || word.length > record.grid_width)
@@ -41,8 +39,11 @@ class WordSearchPuzzle < ActiveRecord::Base
 			end
   	else
 			problems = 'At least one word is required.'
+			record.words = '' #Reset words for viewing purposes.
   	end
-  	record.errors.add(:words, problems) if problems != ''
+  	if problems != ''
+  		record.errors.add(:words, problems)
+  	end
   end	
 
 	private
@@ -51,6 +52,6 @@ class WordSearchPuzzle < ActiveRecord::Base
 				word.upcase!
 				word.strip!
 			end
+			self.words.delete_if{ |word| word.blank? }
 		end
-
 end
