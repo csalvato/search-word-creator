@@ -3,6 +3,8 @@ SearchWordCreator::Application.routes.draw do
   resources :word_search_puzzles
   resources :sessions, only: [:new, :create, :destroy]
 
+  match '/download/:file_name', to: 'word_search_puzzles#download', as: "download"
+
   match "/purchase", to: "static_pages#purchase"
   match '/faq', to: 'static_pages#faq'
   match "/contact", to: "static_pages#contact"

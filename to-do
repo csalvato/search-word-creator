@@ -6,3 +6,4 @@ to-do list
 4) Create WordSearchPuzzles Controller
 5) Create Users controller
 6) Fix SearchWordDocument to NOT put spaces into the puzzles
+7) Make sure printing works on Heroku

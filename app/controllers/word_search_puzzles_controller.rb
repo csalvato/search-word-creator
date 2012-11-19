@@ -30,4 +30,8 @@ class WordSearchPuzzlesController < ApplicationController
 																		Integer(params[:num_puzzles]),
 																		current_user.name)
   end
+
+  def download
+    send_file "#{Rails.root.to_s}/tmp/generated_pdfs/#{params[:file_name]}.pdf"
+  end
 end
