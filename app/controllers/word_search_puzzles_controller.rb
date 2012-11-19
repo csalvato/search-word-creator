@@ -32,6 +32,6 @@ class WordSearchPuzzlesController < ApplicationController
   end
 
   def download
-    send_file "${RAILS_ROOT}/tmp/generated_pdfs/#{params[:file_name]}.pdf"
+    send_file "#{Rails.root.to_s}/app/tmp/generated_pdfs/#{params[:file_name]}.pdf"
   end
 end
