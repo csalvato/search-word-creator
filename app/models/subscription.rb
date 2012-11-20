@@ -36,6 +36,7 @@ class Subscription < ActiveRecord::Base
 		self.pennies_paid = pennies_paid
 		self.last_paid_at = Time.now
 	  self.subscription_expires_on = subscription_expires_on
+	  self.save!
 	end
 
 end

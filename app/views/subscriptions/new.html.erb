@@ -1,2 +1,14 @@
-<h1>Subscription#new</h1>
-<p>Find me in app/views/subscription/new.html.erb</p>
+<% provide(:title, 'Purchase Search Word Creator') %>
+<h1>Get Instant Access To Search Word Creator</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+  	<%= form_for @user, :url => url_for(:controller => 'subscriptions', :action => 'create'), html: { id: "purchase-form" } do |f|%>
+      <%= render 'fields', f: f %>
+			<div id="stripe-error">
+				<noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+			</div>
+      <%= f.submit "Confirm Purchase", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
