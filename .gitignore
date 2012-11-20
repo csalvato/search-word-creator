@@ -13,6 +13,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/app/tmp
 
 # Ignore all generated pdfs
 /app/assets/generated_pdfs/*
