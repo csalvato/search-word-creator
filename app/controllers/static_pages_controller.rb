@@ -13,4 +13,7 @@ class StaticPagesController < ApplicationController
 
   def purchase
   end
+
+  def ask_us_pricing
+  end
 end

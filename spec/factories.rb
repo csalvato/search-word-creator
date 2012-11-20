@@ -17,4 +17,7 @@ FactoryGirl.define do
     sequence(:name) { |n| "puzzle #{n}" }
   end
 
+  factory :subscription do
+    user
+  end
 end

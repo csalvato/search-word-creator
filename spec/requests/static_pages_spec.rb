@@ -66,7 +66,7 @@ describe "StaticPages" do
     it { should have_selector( 'title' , text: "Plans and Pricing") }
     it { should have_link("Get Started", href: purchase_path) }
     it { should have_link("Free Trial", href: signup_path) }
-    it { should have_selector("div.header div.grid.col4") }
+    it { should have_selector("div.header div.grid.col3") }
 
   end
 

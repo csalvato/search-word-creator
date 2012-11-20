@@ -6,14 +6,21 @@ User model:
 	remember_token - string
 	created_at - datetime
 	updated_at - datetime
-	last_paid_at - datetime
+	word_lists - Word List (has_many)
+	word_search_puzzles - Word Search Puzzle (has_many)
+	subscription - subscription (has_one)
+
+	REMOVE: last_paid_at, pennies_paid, paid_user, trial_user
+
+Subscription Model:
+	subscriber - User (belongs_to)
 	pennies_paid - int
+	last_paid_at - datetime
 	subscription_expires_on - datetime
 	paid_user - boolean
 	trial_user - boolean
-	word_lists - word_list
-
-	has_many - word_search_puzzles
+	created_at - datetime
+	updated_at - datetime
 
 Word Search Puzzle Model:
 	id - int
@@ -22,12 +29,13 @@ Word Search Puzzle Model:
 	updated_at - datetime
 	times_used - int
 	words - text (and serialize for array)
+	created_by - User (belongs_to)
 
 Word List Model:
 	id - int
+	created_by - User (belongs_to)
 	created_at - datetime
 	updated_at - datetime
-	created_by - user
 	times_used - int
 	words - text (and serialize for array)
 

@@ -4,8 +4,11 @@
 	<meta content="text/html; charset=UTF-8" />
 	<title><%= yield(:title) %> | Search Word Creator</title>
 	<%= stylesheet_link_tag    "application", media: "all" %>
+	<% # Turn this javascript include conditional only to be shown on purchase page. %>
+	<%= javascript_include_tag "https://js.stripe.com/v1/" %>
 	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
+	<%= tag :meta, name: "stripe-key", content: STRIPE_PUBLIC_KEY %>
 	<!--[if IE]>
 	<script src="js/html5.js" type="text/javascript"></script>
 	<![endif]-->

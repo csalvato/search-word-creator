@@ -6,6 +6,7 @@ SearchWordCreator::Application.routes.draw do
   match '/download/:file_name', to: 'word_search_puzzles#download', as: "download"
 
   match "/purchase", to: "static_pages#purchase"
+  match "/ask-us-pricing", to: "static_pages#ask_us_pricing", :as => "ask_us_pricing"
   match '/faq', to: 'static_pages#faq'
   match "/contact", to: "static_pages#contact"
   match "/plans-and-pricing" => "static_pages#plans", :as => "plans"

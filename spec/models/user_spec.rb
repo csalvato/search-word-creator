@@ -7,11 +7,7 @@
 #  email                   :string(255)
 #  password_digest         :string(255)
 #  remember_token          :string(255)
-#  last_paid_at            :datetime
-#  pennies_paid            :integer          default(0)
 #  subscription_expires_on :datetime
-#  paid_user               :boolean          default(FALSE)
-#  trial_user              :boolean          default(TRUE)
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #  admin                   :boolean          default(FALSE)
@@ -29,11 +25,7 @@ describe User do
 	it { should respond_to(:password) }
 	it { should respond_to(:password_confirmation) }
 	it { should respond_to(:remember_token) }
-	it { should respond_to(:last_paid_at) }
-	it { should respond_to(:pennies_paid) }
 	it { should respond_to(:subscription_expires_on) }
-	it { should respond_to(:paid_user?) }
-	it { should respond_to(:trial_user?) }
 	it { should respond_to(:created_at) }
 	it { should respond_to(:updated_at) }
 	it { should respond_to(:admin) }
@@ -170,26 +162,6 @@ describe User do
 		end
 
 		it { should be_admin }
-	end
-
-	describe "with paid_user attribute set to 'true'" do
-		before do
-			user.save!
-			user.toggle!(:paid_user)
-			user.save!
-		end
-
-		it { should be_paid_user }
-		it { should_not be_trial_user}
-	end
-
-	describe "with trial_user attribute set to 'false'" do
-		before do
-			user.save!
-			user.toggle!(:trial_user)
-		end
-
-		it { should_not be_trial_user }
 	end
 
 end

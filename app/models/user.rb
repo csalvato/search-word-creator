@@ -7,11 +7,7 @@
 #  email                   :string(255)
 #  password_digest         :string(255)
 #  remember_token          :string(255)
-#  last_paid_at            :datetime
-#  pennies_paid            :integer          default(0)
 #  subscription_expires_on :datetime
-#  paid_user               :boolean          default(FALSE)
-#  trial_user              :boolean          default(TRUE)
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #  admin                   :boolean          default(FALSE)
@@ -22,10 +18,6 @@ class User < ActiveRecord::Base
   has_secure_password
 
 	has_many :word_search_puzzles, dependent: :destroy
-
-	# Not sure why, but this must hapeen after_validation, 
-	#   not before_save or before_validation...
-	after_validation { self.trial_user = false if self.paid_user? }
 
 	before_save { self.email.downcase! }
   before_save :create_remember_token

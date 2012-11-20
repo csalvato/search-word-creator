@@ -11,18 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121119140630) do
+ActiveRecord::Schema.define(:version => 20121120150313) do
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "pennies_paid",            :default => 0
+    t.datetime "last_paid_at"
+    t.datetime "subscription_expires_on"
+    t.boolean  "trial_user",              :default => true
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.datetime "last_paid_at"
-    t.integer  "pennies_paid",            :default => 0
     t.datetime "subscription_expires_on"
-    t.boolean  "paid_user",               :default => false
-    t.boolean  "trial_user",              :default => true
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
     t.boolean  "admin",                   :default => false

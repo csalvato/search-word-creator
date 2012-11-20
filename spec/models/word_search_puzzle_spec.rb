@@ -3,7 +3,7 @@
 # Table name: word_search_puzzles
 #
 #  id          :integer          not null, primary key
-#  name        :string(255)      default("New Puzzle"), not null
+#  name        :string(255)      default("New Puzzle 11-19-2012  2:08 pm"), not null
 #  times_used  :integer          default(0), not null
 #  words       :text             default(""), not null
 #  created_at  :datetime         not null
