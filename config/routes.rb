@@ -1,11 +1,12 @@
 SearchWordCreator::Application.routes.draw do
+  resources :subscriptions, only: [:create]
   resources :users, except: [:index, :show, :destroy]
   resources :word_search_puzzles
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/download/:file_name', to: 'word_search_puzzles#download', as: "download"
 
-  match "/purchase", to: "static_pages#purchase"
+  match "/purchase", to: "subscriptions#new", as: "purchase"
   match "/ask-us-pricing", to: "static_pages#ask_us_pricing", :as => "ask_us_pricing"
   match '/faq', to: 'static_pages#faq'
   match "/contact", to: "static_pages#contact"

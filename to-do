@@ -10,3 +10,4 @@ to-do list
 8) Send welcome email
 9) Make js for stripe appear only on payment pages
 10) Create migrations that provide indicies for any columns that are used as index
+11) Implement auto-billing subscriptions anually.

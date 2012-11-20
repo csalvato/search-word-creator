@@ -17,7 +17,10 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
 
+	has_one :subscription
 	has_many :word_search_puzzles, dependent: :destroy
+
+	before_validation { self.build_subscription if self.subscription.nil? }
 
 	before_save { self.email.downcase! }
   before_save :create_remember_token
@@ -32,6 +35,7 @@ class User < ActiveRecord::Base
 	validates :password, length: { minimum: 6 }  									
 	validates_confirmation_of :password
 	validates :password_confirmation, presence: true
+	validates :subscription, presence: true
 
 	private
     def create_remember_token

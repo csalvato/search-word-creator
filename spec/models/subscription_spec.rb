@@ -20,6 +20,7 @@ describe Subscription do
   
   shared_examples_for Subscription do
 			it { should respond_to(:user_id) }
+			it { should respond_to(:user) }
 			it { should respond_to(:pennies_paid) }
 			it { should respond_to(:last_paid_at) }
 			it { should respond_to(:subscription_expires_on) }
