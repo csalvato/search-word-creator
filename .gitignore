@@ -15,8 +15,8 @@
 /tmp
 /app/tmp
 
-# Ignore all generated pdfs
-/app/assets/generated_pdfs/*
+# Ignore files with sentitive/private information
+/config/initializers/stripe.rb
 
 # Ignore other unneeded files.
 doc/
