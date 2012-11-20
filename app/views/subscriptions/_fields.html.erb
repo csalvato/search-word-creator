@@ -14,12 +14,19 @@
 	<%= f.password_field :password_confirmation %>
 <% end %>
 
-<%= label_tag :card_number, "Credit Card Number " %>
-<%= text_field_tag :card_number, nil, name: nil %>
+<% if @stripe_card_token %>
+	You credit card has been provided, but we can't complete the purchase until you fill out the rest of the information!
+<% else %>
+	<%= label_tag :card_number, "Credit Card Number " %>
+	<%= text_field_tag :card_number, nil, name: nil %>
 
-<%= label_tag :card_code, "Security Code on Card (CVV)" %>
-<%= text_field_tag :card_code, nil, name: nil %>
+	<%= label_tag :card_code, "Security Code on Card (CVV)" %>
+	<%= text_field_tag :card_code, nil, name: nil %>
 
-<%= label_tag :card_month, "Card Expiration" %>
-<%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month"}%>
-<%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"}%>
+	<%= label_tag :card_month, "Card Expiration" %>
+	<%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month"}%>
+	<%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"}%>
+
+	<%= hidden_field_tag :stripe_card_token %>
+	<%= hidden_field_tag :plan_id, "swc_teacher"  %>
+<% end %>

@@ -4,13 +4,14 @@
 #
 #  id                      :integer          not null, primary key
 #  user_id                 :integer
-#  pennies_paid            :integer
+#  pennies_paid            :integer          default(0)
 #  last_paid_at            :datetime
 #  subscription_expires_on :datetime
-#  paid_user               :boolean
-#  trial_user              :boolean
+#  trial_user              :boolean          default(TRUE)
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
+#  plan_id                 :string(255)
+#  stripe_customer_token   :string(255)
 #
 
 require 'spec_helper'
@@ -29,8 +30,13 @@ describe Subscription do
 			it { should respond_to(:trial_user) }
 			it { should respond_to(:created_at) }
 			it { should respond_to(:updated_at) }
+			it { should respond_to(:stripe_card_token) }
 
-		it "should not have any accessible attribute" do
+		it "should have :stripe_card_token as an accessible attribute" do
+			subscription.class.accessible_attributes.include?(:stripe_card_token).should be_false
+		end
+
+		it "should not have any accessible attributes (aside from stripe_card_token)" do
 			subscription.class.accessible_attributes.include?(:user_id).should be_false
 			subscription.class.accessible_attributes.include?(:pennies_paid).should be_false
 			subscription.class.accessible_attributes.include?(:last_paid_at).should be_false

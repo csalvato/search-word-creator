@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121120150313) do
+ActiveRecord::Schema.define(:version => 20121120221403) do
 
   create_table "subscriptions", :force => true do |t|
     t.integer  "user_id"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(:version => 20121120150313) do
     t.boolean  "trial_user",              :default => true
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
+    t.string   "plan_id"
+    t.string   "stripe_customer_token"
   end
 
   create_table "users", :force => true do |t|
