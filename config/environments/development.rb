@@ -1,4 +1,8 @@
 SearchWordCreator::Application.configure do
+  # Set Stripe API Key
+  ENV['STRIPE_PUBLISHABLE_KEY'] = "sk_test_w2O6acm8foSoCjSgE1OZYdAZ"
+  ENV['STRIPE_SECRET_KEY'] = "pk_test_pGqVhXJiWqghYpIplHiTXh4F"
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
