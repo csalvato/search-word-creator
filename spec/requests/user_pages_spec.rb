@@ -6,7 +6,7 @@ describe "UserPages" do
 	describe "signup" do
 		before { visit signup_path }	
 
-		let(:submit) { "Create my account" }
+		let(:submit) { "Create My Account" }
 		let(:title_text){ 'Sign up' }
 
 		describe "with invalid information" do

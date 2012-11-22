@@ -44,15 +44,17 @@ class Subscription < ActiveRecord::Base
 	end
 
 	def save_with_payment
+		logger.debug "THE CARD TOKEN: #{self.stripe_card_token}"
 		if self.valid?
 			customer = Stripe::Customer.create(description: self.user.email, 
 																				 plan: self.plan_id,
 																				 card: self.stripe_card_token )
 			self.stripe_customer_token = customer.id
+			self.subscription_expires_on = 1.year.from_now
 			self.save!
 		end
 	rescue Stripe::InvalidRequestError => e
-  logger.error "Stripe error while creating customer: #{e.mesage}"
+  logger.error "Stripe error while creating customer: #{e.message}"
   errors.add :base, "There was a problem with your credit card."
 	end
 

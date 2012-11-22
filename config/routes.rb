@@ -7,6 +7,7 @@ SearchWordCreator::Application.routes.draw do
 
   match "/purchase", to: "subscriptions#new", as: "purchase", via: :get
   match "/purchase", to: "subscriptions#create", as: "purchase", via: :post
+  match "/purchase", to: "subscriptions#create", as: "purchase", via: :put
 
   match "/ask-us-pricing", to: "static_pages#ask_us_pricing", :as => "ask_us_pricing"
   match '/faq', to: 'static_pages#faq'

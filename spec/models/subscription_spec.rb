@@ -16,9 +16,9 @@
 
 require 'spec_helper'
 
-describe Subscription do
-  let(:user) { FactoryGirl.create(:user) }
-  
+describe Subscription do 
+  let!(:user) { FactoryGirl.create(:user) }
+
   shared_examples_for Subscription do
 			it { should respond_to(:user_id) }
 			it { should respond_to(:user) }
@@ -69,41 +69,42 @@ describe Subscription do
 	end
 
   describe "trial subscriptions" do
-	  let(:subscription) { FactoryGirl.create(:subscription, 
-	  																				user: user,
-	  																				pennies_paid: 0,
-	  																				last_paid_at: nil,
-	  																				subscription_expires_on: nil,
-	  																				trial_user: true,
-	  																				created_at: 1.day.ago,
-	  																				updated_at: 1.day.ago) }
+	  let(:subscription) { user.subscription }
 	  subject { subscription }
 
 		it_behaves_like Subscription
 
 		describe "when converted to paid user" do
 			before do
-				subscription.process_payment
-				subscription.save!
+				user.subscription.plan_id = "swc_teacher"
+				user.subscription.stripe_card_token = 
+					Stripe::Token.create( card: { number: "4242424242424242",
+																exp_month: Date.today.month,
+																exp_year: Date.today.year+1,
+																cvc: 314  } ).id
+				user.subscription.save_with_payment
 			end
 			
 			it { should be_valid }
 			it { should be_paid_user }
 			it { should_not be_trial_user }
-			specify { subscription.pennies_paid = 2995 }
 			specify { subscription.subscription_expires_on.to_s.should == 1.year.from_now.to_s}
 		end
   end 
 
   describe "paid subscriptions" do
-	  let(:subscription) { FactoryGirl.create(:subscription, 
-	  																				user: user,
-	  																				pennies_paid: 2995,
-	  																				last_paid_at: Time.now,
-	  																				subscription_expires_on: 1.year.from_now,
-	  																				trial_user: false,
-	  																				created_at: 1.day.ago,
-	  																				updated_at: Time.now) }
+  	let!(:subscription) { user.subscription }
+
+  	before do
+  		subscription.pennies_paid =  2995
+  		subscription.last_paid_at =  Time.now
+	  	subscription.subscription_expires_on = 1.year.from_now
+	  	subscription.trial_user = false
+	  	subscription.created_at = 1.day.ago
+	  	subscription.updated_at = Time.now
+	  	subscription.save!
+	  end
+
 	  subject { subscription }
 
 	  it_behaves_like Subscription

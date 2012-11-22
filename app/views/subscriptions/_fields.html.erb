@@ -16,6 +16,7 @@
 
 <% if @stripe_card_token %>
 	You credit card has been provided, but we can't complete the purchase until you fill out the rest of the information!
+	<%= hidden_field_tag :stripe_card_token, @stripe_card_token %>
 <% else %>
 	<%= label_tag :card_number, "Credit Card Number " %>
 	<%= text_field_tag :card_number, nil, name: nil %>
