@@ -2,7 +2,11 @@ class WordSearchPuzzlesController < ApplicationController
   before_filter :signed_in_user
   
   def new
-  	@word_search_puzzle = WordSearchPuzzle.new
+    @word_search_puzzle = WordSearchPuzzle.new
+    logger.debug "CURRENT USER PUZZLES: #{current_user.word_search_puzzles.each{ |puzzle| logger.debug puzzle.times_printed}}"
+    logger.debug "CURRENT USER TRIAL? #{current_user.subscription.trial_user?}"
+    logger.debug "CURRENT USER PAID? #{current_user.subscription.paid_user?}"
+    render 'blocked' if !current_user.subscription.paid_user? && !current_user.subscription.trial_user?
   end
 
   def edit
@@ -11,10 +15,11 @@ class WordSearchPuzzlesController < ApplicationController
   def create
   	grid_size = 18
     @words = params[:word_search_puzzle][:words].split("\r\n")
-  	@word_search_puzzle = WordSearchPuzzle.new(name: params[:word_search_puzzle][:name],
-  																						 words: @words,
-  																						 grid_width: grid_size,
-  																						 grid_height: grid_size)
+    @word_search_puzzle = current_user.word_search_puzzles.build(
+  	                         name: params[:word_search_puzzle][:name],
+														 words: @words,
+														 grid_width: grid_size,
+														 grid_height: grid_size)
     
  		render 'new' unless @word_search_puzzle.save
   end
@@ -24,11 +29,17 @@ class WordSearchPuzzlesController < ApplicationController
 
   def print
   	grid_size = 18
+    num_puzzles_printed = Integer(params[:num_puzzles])
+
 		@word_search_puzzle = WordSearchPuzzle.find(params[:word_search_puzzle_id])
-		@file_name = SearchWordDocument.generate_pdf(@word_search_puzzle.words,
-																		grid_size,
-																		Integer(params[:num_puzzles]),
-																		current_user.name)
+    @word_search_puzzle.times_printed = num_puzzles_printed
+    logger.debug "WORD SEARCH PUZZLE: #{@word_search_puzzle.times_printed}"
+    if @word_search_puzzle.save && current_user.subscription.save 
+  		@file_name = SearchWordDocument.generate_pdf(@word_search_puzzle.words,
+  																		grid_size,
+  																		num_puzzles_printed,
+  																		current_user.name)
+    end
   end
 
   def download

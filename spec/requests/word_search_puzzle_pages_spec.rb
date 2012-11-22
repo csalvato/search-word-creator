@@ -50,6 +50,7 @@ describe "WordSearchPuzzlePagesSpecs" do
 		before { visit new_word_search_puzzle_path }
 		let(:page_type) { 'page' }
 
+		it_should_behave_like "all pages"
 		it_should_behave_like "Step 1 Page"
 
 		describe "after clicking on Next Step with no words text area" do
@@ -70,6 +71,7 @@ describe "WordSearchPuzzlePagesSpecs" do
 				click_button "Next Step"
 			end
 			
+			it_should_behave_like "all pages"
 			it_should_behave_like "Step 2 Page"
 			specify { current_path.should == word_search_puzzles_path }
 			it { should have_content('FOOBAR') }
@@ -81,6 +83,8 @@ describe "WordSearchPuzzlePagesSpecs" do
 				fill_in "Words", with: "foobar\r\n\r\nfoobaz"
 				click_button "Next Step"
 			end
+
+			it_should_behave_like "all pages"
 			it_should_behave_like "Step 2 Page"
 			specify { current_path.should == word_search_puzzles_path }
 			it{ should have_content("FOOBAR") }
@@ -90,9 +94,24 @@ describe "WordSearchPuzzlePagesSpecs" do
 				before do
 					click_button "Print Puzzles"
 				end
+				it_should_behave_like "all pages"
 				it_should_behave_like "Step 3 Page"
+			end
+
+			describe "and then clicking print puzzles with 15 puzzles" do
+				before do
+					fill_in "num_puzzles", with: "15"
+					click_button "Print Puzzles"
+				end
+				
+				describe "and then going back to create more puzzles" do
+					before { visit new_word_search_puzzle_path }
+
+					it { should have_content('Your trial usage has expired!') }
+					it { should_not have_field('Words') }
+					#it_should_behave_like "all pages"
+				end
 			end
 		end
 	end
-
 end

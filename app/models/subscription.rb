@@ -26,6 +26,17 @@ class Subscription < ActiveRecord::Base
 	# Not sure why, but this must hapeen after_validation, 
 	#   not before_save or before_validation...
 	after_validation { self.trial_user = false if self.paid_user? }
+	after_validation do
+		if self.user
+			total_puzzles_printed = 0
+			# Reloads the record to properly pull out any word_search_puzzle 
+			# associations that were not there when this subscription object was created.
+			self.user.reload 
+			self.user.word_search_puzzles.each {|puzzle| total_puzzles_printed += puzzle.times_printed }
+			self.trial_user = false if total_puzzles_printed >= 15
+		end
+	end
+
 
 	def paid_user?
 		if subscription_expires_on.nil?

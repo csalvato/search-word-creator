@@ -15,6 +15,8 @@
 class WordSearchPuzzle < ActiveRecord::Base
 	VALID_WORD_REGEX = /\A[A-Z a-z-]+\z/
 
+	belongs_to :user
+
   serialize :words, Array
   attr_accessible :name, :words, :grid_width, :grid_height
 
@@ -48,6 +50,7 @@ class WordSearchPuzzle < ActiveRecord::Base
 
 	private
 		def sanitize_words
+			self.words = [] if self.words.empty?
 			self.words.each do |word|
 				word.upcase!
 				word.strip!

@@ -84,4 +84,32 @@ describe "UserPages" do
     # "when user has recent puzzles" #later
   end
 
+  describe "accounts page" do
+    let(:user) { FactoryGirl.create(:user) }
+    before do
+      sign_in user
+      visit edit_user_path(user)
+    end
+
+    it { should have_selector('title', content: 'Account') }
+    it { should have_selector('h1', content: 'Account Details') }
+    it { should have_field("Full Name") } 
+    it { should have_field("Password") } 
+    it { should have_field("Confirmation") }
+
+    describe "for trial user" do
+      it { should have_content "Trial Account"}
+    end
+
+    describe "for paid user" do
+      before do
+        user.subscription.subscription_expires_on = 1.year.from_now
+        user.subscription.save!
+        visit edit_user_path(user)
+      end
+      it { should have_content "Paid Account"}
+      it { should have_link('support.') }
+    end
+  end
+
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121120221403) do
+ActiveRecord::Schema.define(:version => 20121122192049) do
 
   create_table "subscriptions", :force => true do |t|
     t.integer  "user_id"
@@ -37,13 +37,14 @@ ActiveRecord::Schema.define(:version => 20121120221403) do
   end
 
   create_table "word_search_puzzles", :force => true do |t|
-    t.string   "name",        :default => "New Puzzle 11-19-2012  2:08 pm", :null => false
-    t.integer  "times_used",  :default => 0,                                :null => false
-    t.text     "words",       :default => "",                               :null => false
-    t.datetime "created_at",                                                :null => false
-    t.datetime "updated_at",                                                :null => false
-    t.integer  "grid_width",  :default => 18
-    t.integer  "grid_height", :default => 18
+    t.string   "name",          :default => "New Puzzle 11-19-2012  2:08 pm", :null => false
+    t.integer  "times_printed", :default => 0,                                :null => false
+    t.text     "words",         :default => "",                               :null => false
+    t.datetime "created_at",                                                  :null => false
+    t.datetime "updated_at",                                                  :null => false
+    t.integer  "grid_width",    :default => 18
+    t.integer  "grid_height",   :default => 18
+    t.integer  "user_id"
   end
 
 end

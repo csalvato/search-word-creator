@@ -1,3 +1,18 @@
 <% provide(:title, "Account") %>
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>Your Account Details</h1>
+
+<div class="row">
+	<% if current_user.subscription.paid_user? %>
+		Paid Account.  If you have questions about your account you can send an email for <%= link_to "support.", "mailto:support@" + request.host.to_s %>
+	<% else %>
+		You are on a Trial Account.  <%= link_to "Click here", purchase_path %> if you want to buy Search Word Creator!
+	<% end %>	
+  <div class="span6 offset3">
+  	Fill out the form to change your account details.
+    <%= form_for(@user) do |f| %>
+      <%= render 'fields', f: f %>
+			
+      <%= f.submit "Create My Account", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -16,16 +16,25 @@ require 'spec_helper'
 
 describe WordSearchPuzzle do
   let(:puzzle) { FactoryGirl.create(:word_search_puzzle) }
+  let!(:user){  FactoryGirl.create(:user) }
   subject { puzzle }
 	
 	it { should respond_to(:name) }
-	it { should respond_to(:times_used) }
+	it { should respond_to(:times_printed) }
 	it { should respond_to(:words) }
 	it { should respond_to(:grid_width) }
 	it { should respond_to(:grid_height) }
+	it { should respond_to(:user_id) }
+	it { should respond_to(:user) }
+
+	describe "should have the right user" do
+		let(:built_puzzle) { user.word_search_puzzles.build( words: ["foobar", "foobaz"]) }
+		
+		specify { built_puzzle.user.should == user }
+	end
 
 	it "should not have time_used as an accessible attribute" do
-		puzzle.class.accessible_attributes.include?(:time_used).should be_false
+		puzzle.class.accessible_attributes.include?(:times_used).should be_false
 	end
 
 	it "words should be an array" do
