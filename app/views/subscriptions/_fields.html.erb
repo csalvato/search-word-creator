@@ -1,33 +1,50 @@
 <%= render 'shared/error_messages', object: f.object %>
 
 <% if !signed_in? %>
-	<%= f.label :name %>
-	<%= f.text_field :name %>
-
-	<%= f.label :email %>
-	<%= f.text_field :email %>
-
-	<%= f.label :password %>
-	<%= f.password_field :password %>
-
-	<%= f.label :password_confirmation, "Confirmation" %>
-	<%= f.password_field :password_confirmation %>
+	<h5>Account Details</h5>
+	<ul>
+		<li>
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+		</li>
+		<li>
+			<%= f.label :email %>
+			<%= f.text_field :email %>
+		</li>
+		<li>
+			<%= f.label :password %>
+			<%= f.password_field :password %>
+		</li>
+		<li>
+			<%= f.label :password_confirmation, "Confirmation" %>
+			<%= f.password_field :password_confirmation %>
+		</li>
+</ul>
 <% end %>
 
+<h5>Billing Details</h5>
 <% if @stripe_card_token %>
-	You credit card has been provided, but we can't complete the purchase until you fill out the rest of the information!
+	<div class="alert alert-notify">
+		<h4>Credit Card Successfully Entered</h4>
+		<p>Your credit card has been provided, but we can't complete the purchase until you fill out the rest of the information!</p>
+	</div>
 	<%= hidden_field_tag :stripe_card_token, @stripe_card_token %>
 <% else %>
-	<%= label_tag :card_number, "Credit Card Number " %>
-	<%= text_field_tag :card_number, nil, name: nil %>
-
-	<%= label_tag :card_code, "Security Code on Card (CVV)" %>
-	<%= text_field_tag :card_code, nil, name: nil %>
-
-	<%= label_tag :card_month, "Card Expiration" %>
-	<%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month"}%>
-	<%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"}%>
-
+	<ul>
+		<li>
+			<%= label_tag :card_number, "Credit Card Number " %>
+			<%= text_field_tag :card_number, nil, name: nil %>
+		</li>
+		<li>
+			<%= label_tag :card_code, "Code on Card (CVV)" %>
+			<%= text_field_tag :card_code, nil, name: nil %>
+		</li>
+		<li>
+			<%= label_tag :card_month, "Card Expiration" %>
+			<%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month"}%>
+			<%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"}%>
+		</li>
+	</ul>
 	<%= hidden_field_tag :stripe_card_token %>
 	<%= hidden_field_tag :plan_id, "swc_teacher"  %>
 <% end %>

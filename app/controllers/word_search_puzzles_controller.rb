@@ -3,9 +3,6 @@ class WordSearchPuzzlesController < ApplicationController
   
   def new
     @word_search_puzzle = WordSearchPuzzle.new
-    logger.debug "CURRENT USER PUZZLES: #{current_user.word_search_puzzles.each{ |puzzle| logger.debug puzzle.times_printed}}"
-    logger.debug "CURRENT USER TRIAL? #{current_user.subscription.trial_user?}"
-    logger.debug "CURRENT USER PAID? #{current_user.subscription.paid_user?}"
     render 'blocked' if !current_user.subscription.paid_user? && !current_user.subscription.trial_user?
   end
 
@@ -20,8 +17,10 @@ class WordSearchPuzzlesController < ApplicationController
 														 words: @words,
 														 grid_width: grid_size,
 														 grid_height: grid_size)
-    
- 		render 'new' unless @word_search_puzzle.save
+ 		unless @word_search_puzzle.save
+      @words = @words.join("\r\n")
+      render 'new'
+    end
   end
 
   def destroy
@@ -30,10 +29,8 @@ class WordSearchPuzzlesController < ApplicationController
   def print
   	grid_size = 18
     num_puzzles_printed = Integer(params[:num_puzzles])
-
 		@word_search_puzzle = WordSearchPuzzle.find(params[:word_search_puzzle_id])
     @word_search_puzzle.times_printed = num_puzzles_printed
-    logger.debug "WORD SEARCH PUZZLE: #{@word_search_puzzle.times_printed}"
     if @word_search_puzzle.save && current_user.subscription.save 
   		@file_name = SearchWordDocument.generate_pdf(@word_search_puzzle.words,
   																		grid_size,

@@ -77,6 +77,18 @@ describe "WordSearchPuzzlePagesSpecs" do
 			it { should have_content('FOOBAR') }
 		end
 
+		describe "after clicking on Next Step with a word that is too long" do
+			before do
+				fill_in "Name", with: "Puzzle Test"
+				fill_in "Words", with: "foobar\r\nthiswordistoolongthiswordistoolong"
+				click_button "Next Step"
+			end
+			
+			specify { current_path.should == word_search_puzzles_path }
+			it { should have_content('FOOBAR') }
+			it { should_not have_content('["FOOBAR", "THISWORDISTOOLONGTHISWORDISTOOLONG"]') }
+		end
+
 		describe "after clicking on Next Step with a two valid words and a blank word in the text area" do
 			before do
 				fill_in "Name", with: "Puzzle Test"

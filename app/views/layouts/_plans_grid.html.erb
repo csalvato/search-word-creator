@@ -12,9 +12,6 @@
 			<footer>
 				<ul>
 					<li>
-						<strong>1 </strong>User	
-					</li>
-					<li>
 						<strong>8 </strong>Printed Puzzles		
 						<div class="tooltip">
 							<div>
@@ -25,37 +22,22 @@
 							</div>
 						</div>
 					</li>
-					<li>
-						<strong>No </strong>Custom Lists
-						<div class="tooltip">
-							<div>
-								<h3>Custom Lists</h3>
-								<p>
-									Users can store a custom set of words that they can use later on.
-								</p>
-							</div>
-						</div>
-					</li>
 					<li class="last"><%= link_to "Free Trial", signup_path, class: "btn" %></li>
 				</ul>
 			</footer>
 		</section>
-
 		<section class="on">
 			<header>
 				<hgroup class="top">
 					<h1>Teacher</h1>
 				</hgroup>
 				<hgroup class="price">
-					<label>BEST FOR TEACHERS</label>
+					<label>BEST VALUE</label>
 					<h2><span class="style1">$</span><span class="style2">29.95</span><span class="style3">Yearly</span></h2>
 				</hgroup>
 			</header>
 			<footer>
 				<ul>
-					<li>
-						<strong>1 </strong>User
-					</li>
 					<li>
 						<strong>1000 </strong> Printed Puzzles
 						<div class="tooltip">
@@ -63,17 +45,6 @@
 								<h3>Printed Puzzles</h3>
 								<p>
 									Every user gets an allowance of puzzles that they can print out.
-								</p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<strong>20 </strong>Custom Lists
-						<div class="tooltip">
-							<div>
-								<h3>Custom Lists</h3>
-								<p>
-									Users can store a custom set of words that they can use later on.
 								</p>
 							</div>
 						</div>
@@ -94,9 +65,6 @@
 			<footer>
 				<ul>		
 					<li>
-						<strong>&infin; </strong>Users	
-					</li>
-					<li>
 						<strong>&infin; </strong>Printed Puzzles		
 						<div class="tooltip">
 							<div>
@@ -107,18 +75,7 @@
 							</div>
 						</div>
 					</li>
-					<li>
-						<strong>&infin; </strong>Custom Lists
-						<div class="tooltip">
-							<div>
-								<h3>Custom Lists</h3>
-								<p>
-									Users can store a custom set of words that they can use later on.
-								</p>
-							</div>
-						</div>
-					</li>
-					<li class="last"><%= link_to "Get Started", ask_us_pricing_path, class: "btn" %></li>
+					<li class="last"><%= link_to "Contact Us", "mailto:support@" + request.host.to_s, class: "btn" %></li>
 				</ul>
 			</footer>
 		</section>

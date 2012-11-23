@@ -1638,6 +1638,10 @@ section,header,hgroup,footer,.btn {
           border-radius: 4px;
 }
 
+.alert h4 {
+	padding-bottom: 1em;
+}
+
 form .alert {
 	margin: 0px 24px 24px 24px;	
 }

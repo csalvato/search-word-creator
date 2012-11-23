@@ -52,6 +52,7 @@ describe "Subscription Pages" do
 					end
 	        it { should have_selector('div.alert.alert-success', text: 'Thank you for purchasing!') }
 					it { should have_field "Words" } # because its the new puzzle page.
+			    it { should_not have_link "Buy Now!", href: plans_path }
 
 					describe "and then tries to revisit the purchase page", js: true do
 						before do
@@ -64,6 +65,7 @@ describe "Subscription Pages" do
 						it { should have_selector( 'title', text: "Account") }
 						it { should_not have_field "card_number" }
 			      it { should have_selector('div.alert.alert-notify') }
+			      it { should_not have_link "Buy Now!", href: plans_path }
 					end
 
 				end
