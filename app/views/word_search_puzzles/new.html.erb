@@ -1,41 +1,38 @@
 <% provide(:title, 'Create custom search word puzzles with Search Word Creator') %>
 <% provide(:page_type, 'page') %>
-	<div class="center">
-		<div id="sidebar" class="col-side left">
-			<div class="widget">
-				<h2>Step 1 of 3</h2>
-				<ul>
-					<li>
-						<p>
-							Type in the words you want to use into the box, one per line.  Then click on "Next Step" to move on.
-						</p>
-						<br/>
-						<p>
-							Every puzzle will be different.  Words can only be 18 letters long and can only have letters.  If the word has a space, the space will be removed on the puzzle.
-						</p>
-						<br/>
-						<p>
-							A word list can have as many words as you want, but not all of them may make it onto every puzzle, since each puzzle has limited space.
-						</p>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="col-main">
-			<div class="post">
-				<div class="entry">
-					<%= form_for(@word_search_puzzle) do |f| %>
-						<%= render 'shared/error_messages', object: f.object %>
-
-			      <%= f.label :name %>
-						<%= f.text_field :name %>
-
-						<%= f.label :words %>
-						<%= f.text_area :words %>
-
-			      <%= f.submit "Next Step", class: "btn btn-large btn-primary" %>
-			    <% end %>
-				</div>
-			</div>
+<% content_for :sidebar do %>
+	<div id="sidebar" class="col-side left">
+		<div class="widget">
+			<h2>Step 1 of 3</h2>
+			<ul>
+				<li>
+					<p>
+						Type in the words you want to use into the box, one per line.  Then click on "Next Step" to move on.
+					</p>
+					<br/>
+					<p>
+						Every puzzle will be different.  Words can only be 18 letters long and can only have letters.  If the word has a space, the space will be removed on the puzzle.
+					</p>
+					<br/>
+					<p>
+						A word list can have as many words as you want, but not all of them may make it onto every puzzle, since each puzzle has limited space.
+					</p>
+				</li>
+			</ul>
 		</div>
 	</div>
+<% end %>
+<%= form_for(@word_search_puzzle) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<ul>
+		<li>
+      <%= f.label :name %>
+			<%= f.text_field :name %>
+		</li>
+		<li>
+			<%= f.label :words %>
+			<%= f.text_area :words %>
+		<li>
+	</ul>
+  <%= f.submit "Next Step", class: "btn btn-large btn-primary" %>
+<% end %>
