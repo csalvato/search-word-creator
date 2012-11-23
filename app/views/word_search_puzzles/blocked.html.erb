@@ -1,1 +1,27 @@
-Your trial usage has expired!
+<% provide(:title, 'Create custom search word puzzles with Search Word Creator') %>
+<% provide(:page_type, 'page') %>
+
+<div class="alert alert-error">
+	<h3>Your trial has expired...</h3>
+	<br/>
+	<br/>
+	<p>You printed out all of the puzzles that the trial period allows.  You can <%= link_to "upgrade right now", purchase_path %> to continue making puzzles.</p>
+	<br/>
+</div>
+
+<div class="alert alert-success">
+	<h1>You can upgrade!</h1>
+	<br/>
+	<br/>
+	<p>You can <%= link_to "upgrade right now", purchase_path %> to continue making puzzles.</p>
+	<br/>
+</div>
+
+<div class="alert alert-info">
+	<h3>Don't want to upgrade?</h3>
+	<br/>
+	<br/>
+	<p>Can you take 30 seconds to <%= link_to "send us an email", "mailto:support@" + request.host.to_s %> and let us know why you will not be upgrading?</p>
+	<br/>
+</div>
+
