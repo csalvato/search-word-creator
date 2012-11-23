@@ -5,7 +5,11 @@
 <%= form_for @user, url: url_for(:controller => 'subscriptions', :action => 'create'), html: { id: "#{id}" } do |f|%>
   <%= render 'fields', f: f %>
 	<div id="stripe-error">
-		<noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+		<noscript>
+			<div class="alert alert-error">
+				JavaScript is not enabled and is required for this form. First enable it in your web browser settings.
+			</div>
+		</noscript>
 	</div>
   <%= f.submit "Confirm Purchase", class: "btn btn-large btn-primary" %>
 <% end %>
