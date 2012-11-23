@@ -1104,39 +1104,39 @@ blockquote {
 }
 
 /** ---------- Sign-Up Form ---------- **/
-.signupform {
+form {
 	width: 100%;
 	float: left;
 	padding-bottom: 50px;
 }
 
-.signupform ul {
+form ul {
 	margin: 0px 0px 24px 0px;
 }
 
-.signupform ul li {
+form ul li {
 	margin: 12px 24px;
 	overflow: hidden;
 	width: 671px;
 }
 
-.signupform ul li em {
+form ul li em {
 	color: #ff0000;
 	display: inline;
 	float: left;
 	font-style: normal;
 	height: 28px;
 	line-height: 28px;
-	padding: 0px 0px 0px 6px;
+	padding: 0px 6px 0px 0px;
 }
 
-.signupform ul li.error {
+form ul li.error {
 	color: #ff0000;
 	padding: 0px 0px 0px 140px;
 	width: 531px;
 }
 
-.signupform li label {
+form li label {
 	display: inline;
 	float: left;
 	height: 28px;
@@ -1146,36 +1146,36 @@ blockquote {
 	width: 130px;
 }
 
-.signupform li label.mi {
+form li label.mi {
 	width: 65px;
 }
 
-.signupform li label.state {
+form li label.state {
 	width: 68px;
 }
 
-.signupform li label.phone {
+form li label.phone {
 	width: 68px;
 }
 
-.signupform li label.expires {
+form li label.expires {
 	width: 65px;
 }
 
-.signupform h5 {
+form h5 {
 	border-bottom: #e5e5e5 solid 1px;
 	font-size: 13px;
 	margin: 0px 24px 24px 24px;
 	padding: 0px 0px 12px 0px;
 }
 
-.signupform h5 em {
+form h5 em {
 	color: #ff0000;
 	font-style: normal;
 	font-weight: normal;
 }
 
-.signupform li input {
+form li input {
 	width: 260px;
 	background-color: #fff;
 	border: solid 1px #bbb;
@@ -1192,43 +1192,43 @@ blockquote {
 	-webkit-border-radius: 3px;
 }
 
-.signupform li input.mi {
+form li input.mi {
 	width: 65px;
 }
 
-.signupform li input.street {
+form li input.street {
 	width: 415px;
 }
 
-.signupform li input.city {
+form li input.city {
 	width: 415px;
 }
 
-.signupform li input.zip {
+form li input.zip {
 	width: 180px;
 }
 
-.signupform li input.phone {
+form li input.phone {
 	width: 143px;
 }
 
-.signupform li input.company {
+form li input.company {
 	width: 415px;
 }
 
-.signupform li input.ccnumber {
+form li input.ccnumber {
 	width: 242px;
 }
 
-.signupform li input.expires {
+form li input.expires {
 	width: 30px;
 }
 
-.signupform li input.cvv {
+form li input.cvv {
 	width: 30px;
 }
 
-.signupform li select {
+form li select {
 	display: inline;
 	float: left;
 	border: #b7b7aa solid 1px;
@@ -1238,25 +1238,25 @@ blockquote {
 	margin: 0px;
 }
 
-.signupform li select.state {
+form li select.state {
 	width: 120px;
 }
 
-.signupform li select.country {
+form li select.country {
 	width: 192px;
 }
 
-.signupform li select.cctype {
+form li select.cctype {
 	width: 120px;
 }
 
-.signupform li img {
+form li img {
 	display: inline;
 	float: left;
 	margin: 0px 0px 0px 12px;
 }
 
-.signupform li span {
+form li span {
 	display: inline;
 	float: left;
 	height: 28px;
@@ -1265,7 +1265,7 @@ blockquote {
 	width: 12px;
 }
 
-.signupform br {
+form br {
 	display: none;
 }
 
