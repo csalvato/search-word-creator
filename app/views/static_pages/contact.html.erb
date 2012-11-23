@@ -1,49 +1,48 @@
 <% provide(:title, 'Contact Search Word Creator') %>
 <% provide(:page_type, 'page') %>
-	<div class="center">
-		<div class="contacts right">
-			<div>
-				<div>					
-					<div>
-						<h3>Have a Question?</h3>
-						<p>
-							It's probably already answered!
-						</p>
-						<br/>
-						<p>
-							Check out the <%= link_to "FAQ", faq_path %>.
-						</p>
-					</div>				
-				</div>
-			</div>
-		</div>
-		<div class="col-main">
-			<div class="contactForm radius">
-				<h3>Send Us an Email</h3>
-				<p> 
-					We're always happy to hear from our customers at Search Word Creator if you have a question, a problem, or if you just want to talk about using word search to teach in your classroom. You can send us an <%= link_to "email", "mailto:support@searchwordcreator.com" %> at any time. We'll do our best to get back to you within 24 hours. If you're not a customer yet but are having problems with our free trial, please don't hesitate to send an email.
-				</p>
-				<!-- Maybe put this back in one day .. 
-				<div class="wpcf7" id="wpcf7-f1-p18-o1">
-				<form action="#" method="post" class="wpcf7-form">
-					<div class="half left">
-          				<label>Your Name</label><span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" class="wpcf7-validates-as-required" size="40" /></span>
-        			</div>
-					<div class="half right">
-         				<label>Your E-mail Address</label><span class="wpcf7-form-control-wrap your-email"><input type="text" name="your-email" value="" class="wpcf7-validates-as-email wpcf7-validates-as-required" size="40" /></span>
-        			</div>
-					<div class="item">
-          				<label>Your Message</label><span class="wpcf7-form-control-wrap your-message"><textarea name="your-message" cols="40" rows="10"></textarea></span>
-        			</div>
-					<div class="item a-right">
-         				<input type="submit" value="Send Message" />
-        			</div>
-					<div class="wpcf7-response-output wpcf7-display-none"></div>
-				</form>
-				</div>
-
-				... end comment -->
-				
+<% content_for :sidebar do %>
+  <div class="contacts right">
+		<div>
+			<div>					
+				<div>
+					<h3>Have a Question?</h3>
+					<p>
+						It's probably already answered!
+					</p>
+					<br/>
+					<p>
+						Check out the <%= link_to "FAQ", faq_path %>.
+					</p>
+				</div>				
 			</div>
 		</div>
 	</div>
+<% end %>
+
+<div class="contactForm radius">
+	<h3>Send Us an Email</h3>
+	<p> 
+		We're always happy to hear from our customers at Search Word Creator if you have a question, a problem, or if you just want to talk about using word search to teach in your classroom. You can send us an <%= link_to "email", "mailto:support@searchwordcreator.com" %> at any time. We'll do our best to get back to you within 24 hours. If you're not a customer yet but are having problems with our free trial, please don't hesitate to send an email.
+	</p>
+	<!-- Maybe put this back in one day .. 
+	<div class="wpcf7" id="wpcf7-f1-p18-o1">
+	<form action="#" method="post" class="wpcf7-form">
+		<div class="half left">
+    				<label>Your Name</label><span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" class="wpcf7-validates-as-required" size="40" /></span>
+  			</div>
+		<div class="half right">
+   				<label>Your E-mail Address</label><span class="wpcf7-form-control-wrap your-email"><input type="text" name="your-email" value="" class="wpcf7-validates-as-email wpcf7-validates-as-required" size="40" /></span>
+  			</div>
+		<div class="item">
+    				<label>Your Message</label><span class="wpcf7-form-control-wrap your-message"><textarea name="your-message" cols="40" rows="10"></textarea></span>
+  			</div>
+		<div class="item a-right">
+   				<input type="submit" value="Send Message" />
+  			</div>
+		<div class="wpcf7-response-output wpcf7-display-none"></div>
+	</form>
+	</div>
+
+	... end comment -->
+	
+</div>

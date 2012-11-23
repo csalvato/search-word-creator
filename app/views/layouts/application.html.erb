@@ -25,10 +25,15 @@
 	
 	<!-- div start container -->
 	<div class="container">
-		<% flash.each do |key, value| %>
-		  <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-		<% end %>
-		<%= yield %>
+		<div class="center">
+			<%= yield :sidebar %>
+			<div class="col-main">
+				<% flash.each do |key, value| %>
+				  <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+				<% end %>
+				<%= yield %>
+			</div>
+		</div>
 	</div>
 	<!--div.container end -->
 	<%= render 'layouts/footer' %>

@@ -1,15 +1,8 @@
 <% provide(:title, 'Sign up') %>
-<div class="center">
-	<div class="col-main">
-		<div class="row">
-		  <div class="span6 offset3">
-		    <%= form_for(@user) do |f| %>
-		    	<h5>Sign up</h5>
-		      <%= render 'fields', f: f %>
-					
-		      <%= f.submit "Create My Account", class: "btn" %>
-		    <% end %>
-		  </div>
-		</div>
-	</div>
-</div>
+
+<%= form_for(@user) do |f| %>
+	<h5>Sign up</h5>
+  <%= render 'fields', f: f %>
+	
+  <%= f.submit "Create My Account", class: "btn" %>
+<% end %>
