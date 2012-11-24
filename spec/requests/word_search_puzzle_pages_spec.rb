@@ -119,7 +119,7 @@ describe "WordSearchPuzzlePagesSpecs" do
 				describe "and then going back to create more puzzles" do
 					before { visit new_word_search_puzzle_path }
 
-					it { should have_content('Your trial usage has expired!') }
+					it { should have_content('Your trial has expired') }
 					it { should_not have_field('Words') }
 					#it_should_behave_like "all pages"
 				end

@@ -20,7 +20,7 @@ describe "UserPages" do
         it { should have_selector 'title', text: title_text }
         it { should have_content 'error' }
 
-        let(:error_messages) { page.find 'div#error_explanation ul' }
+        let(:error_messages) { page.find 'div#error_explanation' }
         specify { error_messages.should_not have_content "Password digest can't be blank" }
      
         specify { error_messages.should have_content "Name can't be blank" }

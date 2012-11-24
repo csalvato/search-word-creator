@@ -3,7 +3,7 @@
   <h5>Your Account Details</h5>
   <% if current_user.subscription.paid_user? %>
     <div class="alert alert-success">
-      Paid Account.  If you have questions about your account you can send an email for <%= link_to "support.", "mailto:support@" + request.host.to_s %>
+      Paid Account.  If you have questions about your account you can send an email for <%= link_to "support.", "mailto:support@searchwordcreator.com" %>
     </div>
   <% else %>
     <div class="alert alert-error">
