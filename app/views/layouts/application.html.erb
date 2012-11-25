@@ -19,6 +19,7 @@
 	<![endif]-->
 	<%= render 'layouts/google_analytics' %>
 	<%= render 'layouts/mixpanel' %>
+	<%= yield(:mixpanel_tracking) %>
 </head>
 <body class="<%= yield(:page_type) %>">
 	<%= render partial: 'layouts/header', 

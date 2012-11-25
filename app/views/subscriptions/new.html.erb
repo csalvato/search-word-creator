@@ -1,4 +1,11 @@
 <% provide(:title, 'Purchase Search Word Creator') %>
+<% content_for :mixpanel_tracking do %>
+	<script type="text/javascript">
+  	  $(document).ready( function(){
+        mixpanel.track("Seeing Purchasing Page");
+      }
+   </script>
+<% end %>
 <h1>Get Instant Access To Search Word Creator</h1>
 <br/>
 <% id = "purchase-form" if @stripe_card_token.nil? %>
