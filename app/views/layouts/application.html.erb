@@ -19,12 +19,12 @@
 	<![endif]-->
 	<%= render 'layouts/google_analytics' %>
 	<%= render 'layouts/mixpanel' %>
+	<%= yield(:mixpanel_tracking) %>
 </head>
 <body class="<%= yield(:page_type) %>">
 	<%= render partial: 'layouts/header', 
 						 locals: { is_plans_page: yield(:page_type) == "page plans",
 											 title: yield(:page_title) } %>
-	
 	<!-- div start container -->
 	<div class="container">
 		<div class="center">

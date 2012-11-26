@@ -1,4 +1,11 @@
 <% provide( :title, "Sign in") %>
+<% content_for :mixpanel_tracking do %>
+  <script type="text/javascript">
+      $(document).ready( function(){
+        mixpanel.track("Seeing Sign In Page");
+      });
+   </script>
+<% end %>
 
 <%= form_tag sessions_path do%>
   <h5>Sign in</h5>

@@ -1,4 +1,12 @@
 <% provide(:title, 'Sign up') %>
+<% content_for :mixpanel_tracking do %>
+	<script type="text/javascript">
+	  $(document).ready( function(){
+        mixpanel.track("Seeing Sign Up Page");
+        mixpanel.track_forms("#new_user", "Sign Up Form Submission")
+    });
+  </script>
+<% end %>
 
 <%= form_for(@user) do |f| %>
 	<h5>Sign up</h5>

@@ -1,5 +1,14 @@
 <% provide(:title, 'Create custom search word puzzles with Search Word Creator') %>
 <% provide(:page_type, 'home') %>
+<% content_for :mixpanel_tracking do %>
+	<script type="text/javascript">
+  	  $(document).ready( function(){
+        mixpanel.track("Seeing Home Page");
+      });
+   </script>
+<% end %>
+
+
 	<!-- div start center -->
 	<div class="center">
 		<!-- div start proms -->

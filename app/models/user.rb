@@ -37,6 +37,14 @@ class User < ActiveRecord::Base
 	validates :password_confirmation, presence: true
 	validates :subscription, presence: true
 
+	def first_name
+		return name.split(' ', 2)[0]
+	end
+
+	def last_name
+		return name.split(' ', 2)[1]
+	end
+
 	private
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64

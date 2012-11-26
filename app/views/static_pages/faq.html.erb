@@ -1,5 +1,12 @@
 <% provide(:title, 'FAQ') %>
 <% provide(:page_type, 'page') %>
+<% content_for :mixpanel_tracking do %>
+	<script type="text/javascript">
+  	  $(document).ready( function(){
+        mixpanel.track("Seeing FAQ Page");
+      });
+   </script>
+<% end %>
 <% content_for :sidebar do %>
 	<div class="contacts right">
 		<div>

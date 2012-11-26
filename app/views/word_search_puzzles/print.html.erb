@@ -1,5 +1,18 @@
 <% provide(:title, 'Create custom search word puzzles with Search Word Creator') %>
 <% provide(:page_type, 'page') %>
+<% content_for :mixpanel_tracking do %>
+	<script type="text/javascript">
+			$(document).ready( function(){
+        mixpanel.track("Seeing Print Puzzles Page");
+        mixpanel.track_links(".download-puzzles-link", "Clicked Link to Download Puzzles", 
+        	function(ele) { 
+        		mixpanel.people.increment("Downloaded Puzzle PDFs")
+        		return { }
+        	}
+        );
+      });
+   </script>
+<% end %>
 <% content_for :sidebar do %>
 <div id="sidebar" class="col-side left">
 	<div class="widget">
@@ -27,6 +40,6 @@
 	<div class="entry">
 		<h1>Ready to download!</h1>
 		<br/>
-		<%= link_to "Click here", download_path(@file_name) %> to download your puzzles!
+		<%= link_to "Click here", download_path(@file_name), class: "download-puzzles-link" %> to download your puzzles!
 	</div>
 </div>
