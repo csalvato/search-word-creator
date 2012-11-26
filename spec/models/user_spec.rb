@@ -34,6 +34,18 @@ describe User do
 	it { should respond_to(:subscription) }
 	it { should respond_to(:first_name) }
 	it { should respond_to(:last_name) }
+	it { should respond_to(:first_login?) }
+
+	describe "first login function" do
+		describe "when user is first created" do
+			specify { user.first_login?.should be_true }
+		end
+		
+		describe "when user is updated after first creation" do
+			before { user.updated_at = Time.now() }
+			specify { user.first_login?.should be_false} 
+		end
+	end	
 
 	describe "name functions" do
 		before { user.name = "Example User Name" }

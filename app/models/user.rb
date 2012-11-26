@@ -45,6 +45,15 @@ class User < ActiveRecord::Base
 		return name.split(' ', 2)[1]
 	end
 
+	def first_login?
+		same_date = (created_at == updated_at )
+		if same_date 
+			updated_at = Time.now()
+			save
+		end
+		return same_date
+	end
+
 	private
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
