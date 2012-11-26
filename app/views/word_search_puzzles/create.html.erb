@@ -1,5 +1,15 @@
 <% provide(:title, 'Create custom search word puzzles with Search Word Creator') %>
 <% provide(:page_type, 'page') %>
+<% content_for :mixpanel_tracking do %>
+	<script type="text/javascript">
+  	  $(document).ready( function(){
+        mixpanel.track("Seeing Configure Puzzle Page");
+        mixpanel.track_forms("#configure-puzzle", "Configure Puzzle Form Submission", 
+        	function(form) { return { "Puzzles printed": $("#configure-puzzle #num_puzzles").val() };
+        });
+      });
+   </script>
+<% end %>
 <% content_for :sidebar do %>
 <div id="sidebar" class="col-side left">
 	<div class="widget">
@@ -22,7 +32,7 @@
 	</div>
 </div>
 <% end %>
-<%= form_tag print_path do%>
+<%= form_tag print_path, id: "configure-puzzle" do%>
 <ul>
 	<li>
   <%= label_tag "Total Number of Puzzles" %>

@@ -1,5 +1,13 @@
 <% provide(:title, 'Contact Search Word Creator') %>
 <% provide(:page_type, 'page') %>
+<% content_for :mixpanel_tracking do %>
+	<script type="text/javascript">
+  	  $(document).ready( function(){
+        mixpanel.track("Seeing Contact Page");
+        mixpanel.track_links(".contact-email-link", "Clicked on 'email us' link" );
+      });
+   </script>
+<% end %>
 <% content_for :sidebar do %>
   <div class="contacts right">
 		<div>
@@ -22,7 +30,7 @@
 <div class="contactForm radius">
 	<h3>Send Us an Email</h3>
 	<p> 
-		We're always happy to hear from our customers at Search Word Creator if you have a question, a problem, or if you just want to talk about using word search to teach in your classroom. You can send us an <%= link_to "email", "mailto:support@" + request.host.to_s %> at any time. We'll do our best to get back to you within 24 hours. If you're not a customer yet but are having problems with our free trial, please don't hesitate to send an email.
+		We're always happy to hear from our customers at Search Word Creator if you have a question, a problem, or if you just want to talk about using word search to teach in your classroom. You can send us an <%= link_to "email", "mailto:support@" + request.host.to_s, class: "contact-email-link" %> at any time. We'll do our best to get back to you within 24 hours. If you're not a customer yet but are having problems with our free trial, please don't hesitate to send an email.
 	</p>
 	<!-- Maybe put this back in one day .. 
 	<div class="wpcf7" id="wpcf7-f1-p18-o1">

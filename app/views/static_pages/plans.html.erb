@@ -1,4 +1,14 @@
 <% provide(:title, 'Plans and Pricing') %>
+<% content_for :mixpanel_tracking do %>
+	<script type="text/javascript">
+      $(document).ready( function(){
+        mixpanel.track("Seeing Plans and Pricing Page");
+        mixpanel.track_links(".free-trial-btn.btn", "Clicked on link to start free trial" );
+        mixpanel.track_links(".ask-us-btn.btn", "Clicked on link to ask about premier pricing" );
+        mixpanel.track_links(".purchase-btn.btn", "Clicked on link to purchase now" );
+      });
+   </script>
+<% end %>
 <% provide(:page_type, 'page plans') %>
 	<div class="center">				
 		<div class="features">

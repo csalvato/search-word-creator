@@ -32,6 +32,14 @@ describe User do
 	it { should respond_to(:authenticate) }
 	it { should respond_to(:word_search_puzzles) }
 	it { should respond_to(:subscription) }
+	it { should respond_to(:first_name) }
+	it { should respond_to(:last_name) }
+
+	describe "name functions" do
+		before { user.name = "Example User Name" }
+		specify{ user.first_name.should  == "Example" }
+		specify{ user.last_name.should  == "User Name" }
+	end
 
 	describe "accessible attributes" do 
 		it "should not have paid_user" do
@@ -168,6 +176,5 @@ describe User do
 
 		it { should be_admin }
 	end
-
 
 end

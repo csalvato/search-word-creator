@@ -1,4 +1,13 @@
 <% provide(:title, "Account") %>
+<% content_for :mixpanel_tracking do %>
+  <script type="text/javascript">
+      $(document).ready( function(){
+        mixpanel.track("Seeing Edit Account Info Page");
+        mixpanel.track_forms("#new_word_search_puzzle", "Edit Account Info Form Submission");
+      });
+   </script>
+<% end %>
+
 <%= form_for(@user) do |f| %>
   <h5>Your Account Details</h5>
   <% if current_user.subscription.paid_user? %>

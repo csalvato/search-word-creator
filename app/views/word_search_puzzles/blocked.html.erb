@@ -4,7 +4,8 @@
 	<script type="text/javascript">
   	  $(document).ready( function(){
         mixpanel.track("Blocked due to Trial Expiration");
-      }
+        mixpanel.people.increment("Blocked Because of Trial Limit");
+      });
    </script>
 <% end %>
 
