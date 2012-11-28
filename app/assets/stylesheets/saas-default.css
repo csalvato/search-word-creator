@@ -12,3 +12,9 @@ body {
 .grid .top,.grid .price {
 	background-image: url(../assets/saas-images/bg-grid.gif)!important;
 }
+
+/* Custom CSS */
+.proms h1 {
+	font-size: 24px;
+	margin-bottom: 15px;
+}
