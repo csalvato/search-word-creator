@@ -130,12 +130,12 @@ class SearchWordDocument < Prawn::Document
 		return @puzzle_grid
 	end
 
-	def self.collision?(solutions, row, col, letter)
+	def collision?(row, col, letter)
 		# Merge together existing solutions
 		# This gives a hash with all grid positions that are "taken"
 		all_taken_positions = {}
 
-		solutions.each do |solution|
+		@solutions.each do |solution|
 			all_taken_positions.merge!(solution)
 		end
 		
@@ -164,11 +164,11 @@ class SearchWordDocument < Prawn::Document
 		end
 	end
 
-	def self.insert_letter_into_puzzle(letter, row, col, puzzle)
+	def insert_letter_into_puzzle(letter, row, col)
 		if collision?(puzzle[:solutions], row, col, letter) 
 			return false
 		else
-			puzzle[:grid][row][col] = letter
+			@puzzle_grid[row][col] = letter
 		  return true
 		end
 	end

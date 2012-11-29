@@ -65,24 +65,24 @@ describe SearchWordDocument do
     end
 
     describe "should properly detect collisons" do
+      before do
+        swdoc.solutions = [{[0,0] => "A"}]
+      end
       
       specify "when there is a collision" do
-        SearchWordDocument.collision?(solutions = [{[0,0] => "B"}],
-                         row = 0, 
+        swdoc.collision?(row = 0, 
                          col = 0, 
-                         letter = "A").should be_true
+                         letter = "B").should be_true
       end
       
       specify "when there is not a collision" do
-        SearchWordDocument.collision?(solutions = [{[1,1] => "A"}],
-                         row = 0, 
-                         col = 0, 
-                         letter = "A").should be_false
+       swdoc.collision?(row = 1, 
+                        col = 1, 
+                        letter = "A").should be_false
       end
 
       specify "when there is a collison BUT the letter is the same" do
-        SearchWordDocument.collision?(solutions = [{[0,0] => "A"}],
-                         row = 0, 
+        swdoc.collision?(row = 0, 
                          col = 0, 
                          letter = "A").should be_false
       end
@@ -100,7 +100,7 @@ describe SearchWordDocument do
         puzzle[:solutions] = [solutions]
       end
 			
-			specify{ SearchWordDocument.insert_letter_into_puzzle(letter = "B", 
+			specify{ swdoc.insert_letter_into_puzzle(letter = "B", 
 																				 row = 0,
 																				 col = 0,
 																				 puzzle).should be_false }
