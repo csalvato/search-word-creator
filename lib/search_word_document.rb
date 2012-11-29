@@ -69,19 +69,19 @@ class SearchWordDocument < Prawn::Document
   # Class methods to generate the word search puzzles
 	#
 	# @param words Array of words for the puzzle
-	def self.generate_puzzle(words, grid_size)
+	def generate_puzzle(words, grid_size)
 		# Create the grid and solutions containers
-		puzzle = { grid: self.initialize_grid(grid_size), solutions: [] }
+		puzzle = { grid: SearchWordDocument.initialize_grid(grid_size), solutions: [] }
 		
 		words = words.each_with_index do |word, index| 
 			# Turn words into letters
 			word = word.upcase.split('')
 
 			# Inject words into the puzzle
-			insert_into_puzzle(word, puzzle)
+			SearchWordDocument.insert_into_puzzle(word, puzzle)
 		end
 
-		fill_grid_with_random_letters(puzzle[:grid])
+		SearchWordDocument.fill_grid_with_random_letters(puzzle[:grid])
 
 		return puzzle
 	end
@@ -243,7 +243,7 @@ class SearchWordDocument < Prawn::Document
 		file_name = "#{name}_#{random_characters}.pdf"
 		
 		num_puzzles.times.with_index do |index|
-			puzzle = self.generate_puzzle(words, grid_size)
+			puzzle = pdf.generate_puzzle(words, grid_size)
 			pdf.draw_puzzle(puzzle)
 			pdf.draw_word_bank(puzzle)
 			pdf.start_new_page

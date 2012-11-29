@@ -10,6 +10,7 @@ require 'spec_helper'
 #     end
 #   end
 describe SearchWordDocument do
+    let(:swdoc) { SearchWordDocument.new }
     let(:word_list) { ["hello", "world", "foobar"] }
     let(:grid) { SearchWordDocument.initialize_grid( grid_size = 18 ) }
     let(:solutions) { [{[0,0] => "A"}]}
@@ -50,7 +51,7 @@ describe SearchWordDocument do
     it "should not raise an error when generating puzzles" do
       100.times do
         expect do
-          SearchWordDocument.generate_puzzle(word_list, puzzle[:grid].length)
+          swdoc.generate_puzzle(word_list, puzzle[:grid].length)
         end.to_not raise_error
       end
     end
