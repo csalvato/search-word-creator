@@ -84,7 +84,7 @@ class SearchWordDocument < Prawn::Document
 			SearchWordDocument.insert_into_puzzle(word, puzzle)
 		end
 
-		SearchWordDocument.fill_grid_with_random_letters(puzzle[:grid])
+		fill_grid_with_random_letters
 
 		return puzzle
 	end
@@ -118,16 +118,16 @@ class SearchWordDocument < Prawn::Document
 		return @puzzle_grid
 	end
 
-	def self.fill_grid_with_random_letters(grid)
+	def fill_grid_with_random_letters
 		# Create the alphabet
 		alphabet = ('A'..'Z').to_a
 
-		grid.length.times.with_index do |row|
-			grid[0].length.times.with_index do |column|
-				grid[row][column] = alphabet.shuffle[0] if grid[row][column].nil?
+		@puzzle_grid.length.times.with_index do |row|
+			@puzzle_grid[0].length.times.with_index do |column|
+				@puzzle_grid[row][column] = alphabet.shuffle[0] if @puzzle_grid[row][column].nil?
 			end
 		end
-		return grid
+		return @puzzle_grid
 	end
 
 	def self.collision?(solutions, row, col, letter)
