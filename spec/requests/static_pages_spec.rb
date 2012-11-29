@@ -26,7 +26,7 @@ describe "StaticPages" do
     let(:page_type)    { 'home' }
 
     it_should_behave_like "all static pages"
-    it { should have_selector( 'title' , text: "Create custom search word puzzles with Search Word Creator") }
+    it { should have_selector( 'title' , text: "Create custom printable search word puzzles") }
     it { should have_link("Start Making Puzzles", href: signup_path) }
     it { should have_link("Make Puzzles Now!", href: signup_path) }
     it { should_not have_selector("div.header div.grid.col5") }

@@ -54,7 +54,7 @@ describe "Subscription Pages" do
 					it { should have_field "Words" } # because its the new puzzle page.
 			    it { should_not have_link "Buy Now!", href: plans_path }
 
-					describe "and then tries to revisit the purchase page", js: true do
+					describe "and then tries to revisit the purchase page" do
 						before do
 							visit purchase_path
 						end
