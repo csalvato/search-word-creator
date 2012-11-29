@@ -2,11 +2,12 @@ require "prawn/measurement_extensions"
 
 # Subclass of Prawn::Document to create word search puzzles.
 class SearchWordDocument < Prawn::Document
-  attr_accessor :grid_size, :row_offset, :col_offset, :swgrid
+  attr_accessor :grid_size, :row_offset, :col_offset, :swgrid, :solutions
 
   def initialize(opts={ margin: @margin=0.5.in })
     super
     @swgrid = []
+    @solutions = {}
     @grid_size = 18
     @row_offset = 0
     @col_offset = 1
@@ -96,9 +97,9 @@ class SearchWordDocument < Prawn::Document
 		end
 	end
 
-	def self.print_solutions_to_console(solutions)
+	def print_solutions_to_console
 		puts
-		solutions.each do |solution|
+		@solutions.each do |solution|
 				print solution.to_s
 				puts
 		end
