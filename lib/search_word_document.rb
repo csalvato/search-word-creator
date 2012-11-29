@@ -2,22 +2,23 @@ require "prawn/measurement_extensions"
 
 # Subclass of Prawn::Document to create word search puzzles.
 class SearchWordDocument < Prawn::Document
-  attr_accessor :grid_size, :row_offset, :col_offset, :swgrid, :solutions
+  attr_accessor :grid_size, :row_offset, :col_offset, :puzzle_grid, :solutions, :puzzle_grid_size
 
   def initialize(opts={ margin: @margin=0.5.in })
     super
-    @swgrid = []
+    @puzzle_grid_size = 18
+    initialize_puzzle_grid
+    
     @solutions = {}
-    @grid_size = 18
     @row_offset = 0
     @col_offset = 1
   end
 
   def draw_puzzle(puzzle)
-		define_grid(columns: @grid_size + 2,
-                rows: @grid_size + 7)
+		define_grid(columns: @puzzle_grid_size + 2,
+                rows: @puzzle_grid_size + 7)
     grid([@row_offset,@col_offset], 
-         [@row_offset + @grid_size - 1, @col_offset + @grid_size - 1]).bounding_box do
+         [@row_offset + @puzzle_grid_size - 1, @col_offset + @puzzle_grid_size - 1]).bounding_box do
       stroke do 
         rounded_rectangle bounds.top_left, bounds.width, bounds.height, 10
       end
@@ -73,7 +74,7 @@ class SearchWordDocument < Prawn::Document
 	# @param words Array of words for the puzzle
 	def generate_puzzle(words, grid_size)
 		# Create the grid and solutions containers
-		puzzle = { grid: SearchWordDocument.initialize_grid(grid_size), solutions: [] }
+		puzzle = { grid: self.initialize_puzzle_grid, solutions: [] }
 		
 		words = words.each_with_index do |word, index| 
 			# Turn words into letters
@@ -90,7 +91,7 @@ class SearchWordDocument < Prawn::Document
 
 	def print_puzzle_to_console
 		puts
-		@swgrid.each_with_index do |row, row_num|
+		@puzzle_grid.each_with_index do |row, row_num|
 				print " " if row_num < 10
 				print row_num.inspect + " - " + row.to_s
 				puts
@@ -105,16 +106,16 @@ class SearchWordDocument < Prawn::Document
 		end
 	end
 
-	def self.initialize_grid(grid_size)
+	def initialize_puzzle_grid
 		# Create grid of letters
-		grid = []
-		grid_size.times.with_index do |row|
-			grid[row] = []
-			grid_size.times.with_index do |column|
-				grid[row][column] = nil
+		@puzzle_grid = []
+		@puzzle_grid_size.times.with_index do |row|
+			@puzzle_grid[row] = []
+			@puzzle_grid_size.times.with_index do |column|
+				@puzzle_grid[row][column] = nil
 			end
 		end
-		return grid
+		return @puzzle_grid
 	end
 
 	def self.fill_grid_with_random_letters(grid)

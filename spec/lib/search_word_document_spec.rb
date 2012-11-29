@@ -12,7 +12,7 @@ require 'spec_helper'
 describe SearchWordDocument do
     let(:swdoc) { SearchWordDocument.new }
     let(:word_list) { ["hello", "world", "foobar"] }
-    let(:grid) { SearchWordDocument.initialize_grid( grid_size = 18 ) }
+    let(:grid) { swdoc.initialize_puzzle_grid }
     let(:solutions) { [{[0,0] => "A"}]}
     let(:puzzle) { {grid: grid, solutions: solutions} }
     
