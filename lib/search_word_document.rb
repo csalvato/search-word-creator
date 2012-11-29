@@ -171,6 +171,8 @@ class SearchWordDocument < Prawn::Document
 	end
 
 	def self.insert_word(word, row, col, puzzle)
+		word.delete_if {|letter| letter == " " || letter == "-" }
+
 		solution = {}
 		word.each_with_index do |letter, index|
 			break unless 

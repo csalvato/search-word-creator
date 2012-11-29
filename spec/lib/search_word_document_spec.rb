@@ -120,26 +120,49 @@ describe SearchWordDocument do
           puzzle[:grid][row][0] = "A"
         end
         puzzle[:solutions] = []
-
-        @word_status = SearchWordDocument.insert_word("FOOBAR".split(''), 
-                          row = { location: 0, increment: 1}, 
-                          col = { location: 0, increment: 0},
-                          puzzle ) 
       end
-      let(:expected_solution){ [{[0, 0]=>"F", 
-                                [1, 0]=>"O", 
-                                [2, 0]=>"O", 
-                                [3, 0]=>"B",
-                                [4, 0]=>"A",
-                                [5, 0]=>"R" }] }
       
-      specify { puzzle[:solutions].should == expected_solution }
-      specify { @word_status.should be_true}
-      specify { SearchWordDocument.insert_word("FOOBAZ".split(''), 
-                          row = { location: 0, increment: 1}, 
-                          col = { location: 0, increment: 0},
-                          puzzle).should be_false }
-      specify { puzzle[:solutions].should == expected_solution }
+      describe "that has no spaces" do
+        before do
+          @word_status = SearchWordDocument.insert_word("FOOBAR".split(''), 
+                            row = { location: 0, increment: 1}, 
+                            col = { location: 0, increment: 0},
+                            puzzle ) 
+        end
+        let(:expected_solution){ [{[0, 0]=>"F", 
+                                  [1, 0]=>"O", 
+                                  [2, 0]=>"O", 
+                                  [3, 0]=>"B",
+                                  [4, 0]=>"A",
+                                  [5, 0]=>"R" }] }
+        
+        specify { puzzle[:solutions].should == expected_solution }
+        specify { @word_status.should be_true}
+        describe "it should not place an overlapping word" do
+          specify { SearchWordDocument.insert_word("FOOBAZ".split(''), 
+                              row = { location: 0, increment: 1}, 
+                              col = { location: 0, increment: 0},
+                              puzzle).should be_false }
+        end
+      end
+
+      describe "that has spaces" do
+        before do
+          @word_status = SearchWordDocument.insert_word("FOO BAR".split(''), 
+                            row = { location: 0, increment: 1}, 
+                            col = { location: 0, increment: 0},
+                            puzzle ) 
+        end
+        let(:expected_solution){ [{[0, 0]=>"F", 
+                                   [1, 0]=>"O", 
+                                   [2, 0]=>"O", 
+                                   [3, 0]=>"B",
+                                   [4, 0]=>"A",
+                                   [5, 0]=>"R" }] }
+        
+        specify { puzzle[:solutions].should == expected_solution }
+        specify { @word_status.should be_true}
+      end
     end
 
   end
