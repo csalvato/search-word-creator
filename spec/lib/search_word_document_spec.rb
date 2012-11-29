@@ -91,23 +91,21 @@ describe SearchWordDocument do
     describe "when handling collisons" do
       before do 
         solutions = {}
-        puzzle[:grid].length.times do |row|
-          puzzle[:grid][0].length.times do |col|
-            puzzle[:grid][row][col] = "A"
-            solutions.merge!({[row,col] => grid[row][col]})
+        swdoc.puzzle_grid.length.times do |row|
+          swdoc.puzzle_grid[0].length.times do |col|
+            swdoc.puzzle_grid[row][col] = "A"
+            solutions.merge!({[row,col] => swdoc.puzzle_grid[row][col]})
           end
         end
-        puzzle[:solutions] = [solutions]
+        swdoc.solutions = [solutions]
       end
 			
 			specify{ swdoc.insert_letter_into_puzzle(letter = "B", 
 																				 row = 0,
-																				 col = 0,
-																				 puzzle).should be_false }
-			specify{ SearchWordDocument.insert_letter_into_puzzle(letter = "A", 
+																				 col = 0).should be_false }
+			specify{ swdoc.insert_letter_into_puzzle(letter = "A", 
 																				 row = 0,
-																				 col = 0,
-																				 puzzle).should be_true }
+																				 col = 0).should be_true }
       
       specify{ SearchWordDocument.insert_into_puzzle_horiz("ABAZABA".split(''), puzzle).should be_false }
       specify{ SearchWordDocument.insert_into_puzzle_vert("ABAZABA".split(''), puzzle).should be_false }

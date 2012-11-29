@@ -165,7 +165,7 @@ class SearchWordDocument < Prawn::Document
 	end
 
 	def insert_letter_into_puzzle(letter, row, col)
-		if collision?(puzzle[:solutions], row, col, letter) 
+		if collision?(row, col, letter) 
 			return false
 		else
 			@puzzle_grid[row][col] = letter
