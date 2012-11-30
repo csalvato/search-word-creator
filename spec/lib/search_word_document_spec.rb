@@ -19,7 +19,7 @@ describe SearchWordDocument do
     it "should not raise an error when inserting a horizontal word into a puzzle" do
       100.times do 
         expect do
-          SearchWordDocument.insert_into_puzzle_horiz("foobar".split(''), puzzle)
+          swdoc.insert_into_puzzle_horiz("foobar".split(''))
         end.to_not raise_error      
       end
     end
@@ -27,7 +27,7 @@ describe SearchWordDocument do
     it "should not raise an error when inserting a vertical word into a puzzle" do
       100.times do 
         expect do
-          SearchWordDocument.insert_into_puzzle_vert("foobar".split(''), puzzle)
+          swdoc.insert_into_puzzle_vert("foobar".split(''))
         end.to_not raise_error      
       end
     end
@@ -35,7 +35,7 @@ describe SearchWordDocument do
     it "should not raise an error when inserting a diagonal-up word into a puzzle" do
       100.times do 
         expect do
-          SearchWordDocument.insert_into_puzzle_diag_up("foobar".split(''), puzzle)
+          swdoc.insert_into_puzzle_diag_up("foobar".split(''))
         end.to_not raise_error      
       end
     end
@@ -43,7 +43,7 @@ describe SearchWordDocument do
     it "should not raise an error when inserting a diagonal-down word into a puzzle" do
       100.times do 
         expect do
-          SearchWordDocument.insert_into_puzzle_diag_down("foobar".split(''), puzzle)
+          swdoc.insert_into_puzzle_diag_down("foobar".split(''))
         end.to_not raise_error      
       end
     end
@@ -51,13 +51,13 @@ describe SearchWordDocument do
     it "should not raise an error when generating puzzles" do
       100.times do
         expect do
-          swdoc.generate_puzzle(word_list, puzzle[:grid].length)
+          swdoc.generate_puzzle(word_list)
         end.to_not raise_error
       end
     end
 
     describe "when creating a PDF" do
-      let(:puzzle_for_pdf) { SearchWordDocument.generate_puzzle(['hello', 'world', 'foo'], 18) }
+      let(:puzzle_for_pdf) { swdoc.generate_puzzle(['hello', 'world', 'foo']) }
 
       it "should not generate an error" do
         expect { SearchWordDocument.generate_pdf(word_list, grid.length, 1, "Chris Salvato") }.to_not raise_error
@@ -107,10 +107,10 @@ describe SearchWordDocument do
 																				 row = 0,
 																				 col = 0).should be_true }
       
-      specify{ SearchWordDocument.insert_into_puzzle_horiz("ABAZABA".split(''), puzzle).should be_false }
-      specify{ SearchWordDocument.insert_into_puzzle_vert("ABAZABA".split(''), puzzle).should be_false }
-      specify{ SearchWordDocument.insert_into_puzzle_diag_up("ABAZABA".split(''), puzzle).should be_false }
-      specify{ SearchWordDocument.insert_into_puzzle_diag_down("ABAZABA".split(''), puzzle).should be_false }
+      specify{ swdoc.insert_into_puzzle_horiz("ABAZABA".split('')).should be_false }
+      specify{ swdoc.insert_into_puzzle_vert("ABAZABA".split('')).should be_false }
+      specify{ swdoc.insert_into_puzzle_diag_up("ABAZABA".split('')).should be_false }
+      specify{ swdoc.insert_into_puzzle_diag_down("ABAZABA".split('')).should be_false }
     end
 
     describe "when inserting a word" do

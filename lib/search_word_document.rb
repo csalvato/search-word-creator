@@ -9,7 +9,7 @@ class SearchWordDocument < Prawn::Document
     @puzzle_grid_size = 18
     initialize_puzzle_grid
     
-    @solutions = {}
+    @solutions = []
     @row_offset = 0
     @col_offset = 1
   end
@@ -72,7 +72,7 @@ class SearchWordDocument < Prawn::Document
   # Class methods to generate the word search puzzles
 	#
 	# @param words Array of words for the puzzle
-	def generate_puzzle(words, grid_size)
+	def generate_puzzle(words)
 		# Create the grid and solutions containers
 		puzzle = { grid: self.initialize_puzzle_grid, solutions: [] }
 		
@@ -81,7 +81,7 @@ class SearchWordDocument < Prawn::Document
 			word = word.upcase.split('')
 
 			# Inject words into the puzzle
-			SearchWordDocument.insert_into_puzzle(word, puzzle)
+			insert_into_puzzle(word)
 		end
 
 		fill_grid_with_random_letters
@@ -145,20 +145,20 @@ class SearchWordDocument < Prawn::Document
 		return false
 	end
 
-	def self.insert_into_puzzle(word, puzzle)
+	def insert_into_puzzle(word)
 		count = 0
 		inserted = false
 
 		while !inserted && count < 10
 			roll = rand(0..3)
 			if roll == 0
-				inserted = insert_into_puzzle_horiz(word, puzzle)
+				inserted = insert_into_puzzle_horiz(word)
 			elsif roll == 1
-				inserted = insert_into_puzzle_vert(word, puzzle)
+				inserted = insert_into_puzzle_vert(word)
 			elsif roll == 2
-				inserted = insert_into_puzzle_diag_up(word, puzzle)
+				inserted = insert_into_puzzle_diag_up(word)
 			else
-				inserted = insert_into_puzzle_diag_down(word, puzzle)
+				inserted = insert_into_puzzle_diag_down(word)
 			end
 			count += 1
 		end
@@ -193,50 +193,46 @@ class SearchWordDocument < Prawn::Document
 		return false
 	end
 
-	def self.insert_into_puzzle_horiz(word, puzzle)
-		max_start_column = puzzle[:grid][0].length - word.length
-		row = rand(0..puzzle[:grid].length-1)
+	def insert_into_puzzle_horiz(word)
+		max_start_column = @puzzle_grid[0].length - word.length
+		row = rand(0..@puzzle_grid.length-1)
 		col = rand(0..max_start_column)
 		
 		return insert_word(word, 
 											  row = { location: row, increment: 0}, 
-											  col = { location: col, increment: 1},
-											  puzzle )
+											  col = { location: col, increment: 1})
 	end
 
-	def self.insert_into_puzzle_vert(word, puzzle)
-		max_start_row = puzzle[:grid].length - word.length
+	def insert_into_puzzle_vert(word)
+		max_start_row = @puzzle_grid.length - word.length
 		row = rand(0..max_start_row)
-		col = rand(0..puzzle[:grid][0].length-1)
+		col = rand(0..@puzzle_grid[0].length-1)
 		
 		return insert_word(word, 
 											  row = { location: row, increment: 1}, 
-											  col = { location: col, increment: 0},
-											  puzzle )
+											  col = { location: col, increment: 0})
 	end
 		
-	def self.insert_into_puzzle_diag_down(word, puzzle)
-		max_start_row = puzzle[:grid].length - word.length
-		max_start_column = puzzle[:grid][0].length - word.length
+	def insert_into_puzzle_diag_down(word)
+		max_start_row = @puzzle_grid.length - word.length
+		max_start_column = @puzzle_grid[0].length - word.length
 		row = rand(0..max_start_row)
 		col = rand(0..max_start_column)
 		
 		return insert_word(word, 
 								  row = { location: row, increment: 1}, 
-								  col = { location: col, increment: 1},
-								  puzzle )
+								  col = { location: col, increment: 1})
 	end
 
-	def self.insert_into_puzzle_diag_up(word, puzzle)
+	def insert_into_puzzle_diag_up(word)
 		min_start_row = word.length
-		max_start_column = puzzle[:grid][0].length - word.length
-		row = rand(min_start_row..puzzle[:grid].length-1)
+		max_start_column = @puzzle_grid[0].length - word.length
+		row = rand(min_start_row..@puzzle_grid.length-1)
 		col = rand(0..max_start_column)
 		
 		return insert_word(word, 
 								  row = { location: row, increment: -1}, 
-								  col = { location: col, increment: 1},
-								  puzzle )
+								  col = { location: col, increment: 1})
 	end	
 
 	def self.generate_pdf(words, grid_size, num_puzzles, name)
@@ -245,7 +241,7 @@ class SearchWordDocument < Prawn::Document
 		file_name = "#{name}_#{random_characters}.pdf"
 		
 		num_puzzles.times.with_index do |index|
-			puzzle = pdf.generate_puzzle(words, grid_size)
+			puzzle = pdf.generate_puzzle(words)
 			pdf.draw_puzzle(puzzle)
 			pdf.draw_word_bank(puzzle)
 			pdf.start_new_page
