@@ -193,7 +193,7 @@ class SearchWordDocument < Prawn::Document
 	end
 
 	def insert_into_puzzle_horiz(word)
-		max_start_column = @puzzle_grid[0].length - word.length
+		max_start_column = @puzzle_grid[0].length - length_without_spaces_and_hyphens(word)
 		row = rand(0..@puzzle_grid.length-1)
 		col = rand(0..max_start_column)
 		
@@ -203,7 +203,7 @@ class SearchWordDocument < Prawn::Document
 	end
 
 	def insert_into_puzzle_vert(word)
-		max_start_row = @puzzle_grid.length - word.length
+		max_start_row = @puzzle_grid.length - length_without_spaces_and_hyphens(word)
 		row = rand(0..max_start_row)
 		col = rand(0..@puzzle_grid[0].length-1)
 		
@@ -213,8 +213,8 @@ class SearchWordDocument < Prawn::Document
 	end
 		
 	def insert_into_puzzle_diag_down(word)
-		max_start_row = @puzzle_grid.length - word.length
-		max_start_column = @puzzle_grid[0].length - word.length
+		max_start_row = @puzzle_grid.length - length_without_spaces_and_hyphens(word)
+		max_start_column = @puzzle_grid[0].length - length_without_spaces_and_hyphens(word)
 		row = rand(0..max_start_row)
 		col = rand(0..max_start_column)
 		
@@ -224,8 +224,8 @@ class SearchWordDocument < Prawn::Document
 	end
 
 	def insert_into_puzzle_diag_up(word)
-		min_start_row = word.length
-		max_start_column = @puzzle_grid[0].length - word.length
+		min_start_row = length_without_spaces_and_hyphens(word)
+		max_start_column = @puzzle_grid[0].length - length_without_spaces_and_hyphens(word)
 		row = rand(min_start_row..@puzzle_grid.length-1)
 		col = rand(0..max_start_column)
 		
@@ -233,6 +233,12 @@ class SearchWordDocument < Prawn::Document
 								  row = { location: row, increment: -1}, 
 								  col = { location: col, increment: 1})
 	end	
+
+	def length_without_spaces_and_hyphens(word)
+		stripped_word = word.gsub(/\s+/, "") # strip out all whitespace
+		stripped_word = stripped_word.gsub(/-+/, "") # strip out all hyphens
+		return stripped_word.length
+	end
 
 	def generate_pdf(num_puzzles, name)
 		random_characters = ('a'..'z').to_a.shuffle[0..7].join
