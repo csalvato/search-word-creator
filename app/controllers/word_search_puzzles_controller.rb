@@ -30,12 +30,12 @@ class WordSearchPuzzlesController < ApplicationController
   	grid_size = 18
     num_puzzles_printed = Integer(params[:num_puzzles])
 		@word_search_puzzle = WordSearchPuzzle.find(params[:word_search_puzzle_id])
-    @word_search_puzzle.times_printed = num_puzzles_printed
-    if @word_search_puzzle.save && current_user.subscription.save 
-  		@file_name = SearchWordDocument.generate_pdf(@word_search_puzzle.words,
-  																		grid_size,
-  																		num_puzzles_printed,
-  																		current_user.name)
+    @word_search_puzzle.times_printed += num_puzzles_printed
+    if @word_search_puzzle.save && current_user.subscription.save
+  		pdf = SearchWordDocument.new(words: @word_search_puzzle.words,
+                                   puzzle_grid_size: grid_size)
+      @file_name = pdf.generate_pdf(num_puzzles_printed,
+  																	current_user.name)
     end
   end
 

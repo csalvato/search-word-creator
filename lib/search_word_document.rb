@@ -2,19 +2,20 @@ require "prawn/measurement_extensions"
 
 # Subclass of Prawn::Document to create word search puzzles.
 class SearchWordDocument < Prawn::Document
-  attr_accessor :grid_size, :row_offset, :col_offset, :puzzle_grid, :solutions, :puzzle_grid_size
+  attr_accessor :grid_size, :row_offset, :col_offset, :puzzle_grid, :solutions, :puzzle_grid_size, :words
 
-  def initialize(opts={ margin: @margin=0.5.in })
-    super
-    @puzzle_grid_size = 18
-    initialize_puzzle_grid
-    
-    @solutions = []
+  def initialize(opts={ puzzle_grid_size: 18, words: [], margin: @margin=0.5.in })
+    super(opts)
+    @puzzle_grid_size = opts[:puzzle_grid_size]
+		@words = opts[:words]
+		@solutions = []
     @row_offset = 0
     @col_offset = 1
+
+    initialize_puzzle_grid
   end
 
-  def draw_puzzle(puzzle)
+  def draw_puzzle
 		define_grid(columns: @puzzle_grid_size + 2,
                 rows: @puzzle_grid_size + 7)
     grid([@row_offset,@col_offset], 
@@ -24,13 +25,13 @@ class SearchWordDocument < Prawn::Document
       end
     end
 
-    rows_count = puzzle[:grid].length
-    cols_count = puzzle[:grid][0].length
+    rows_count = @puzzle_grid.length
+    cols_count = @puzzle_grid[0].length
 
     rows_count.times.with_index do |row|
       cols_count.times.with_index do |col|
        grid(row + @row_offset, col + @col_offset).bounding_box do
-        text puzzle[:grid][row][col], 
+        text @puzzle_grid[row][col], 
              size: 0.75.cm, 
              align: :center, 
              valign: :center
@@ -39,8 +40,8 @@ class SearchWordDocument < Prawn::Document
     end
   end
 
-  def highlight_solutions(puzzle)
-    puzzle[:solutions].each do |solution|
+  def highlight_solutions
+    @solutions.each do |solution|
       solution.each do |coordinates, letter|
         grid( coordinates[0] + @row_offset, coordinates[1]+ @col_offset ).bounding_box do
           rectangle bounds.top_left, bounds.width, bounds.height
@@ -50,10 +51,10 @@ class SearchWordDocument < Prawn::Document
     end
   end
 
-  def draw_word_bank(puzzle)
+  def draw_word_bank
     columns = ['', '', '']
 
-    puzzle[:solutions].each_with_index do |solution, index|
+    @solutions.each_with_index do |solution, index|
       columns[index % 3] += solution.values.join + "\n"
     end
 
@@ -72,11 +73,9 @@ class SearchWordDocument < Prawn::Document
   # Class methods to generate the word search puzzles
 	#
 	# @param words Array of words for the puzzle
-	def generate_puzzle(words)
-		# Create the grid and solutions containers
-		puzzle = { grid: self.initialize_puzzle_grid, solutions: [] }
-		
-		words = words.each_with_index do |word, index| 
+	def generate_puzzle
+		@solutions = []
+		@words.each_with_index do |word, index| 
 			# Turn words into letters
 			word = word.upcase.split('')
 
@@ -85,8 +84,6 @@ class SearchWordDocument < Prawn::Document
 		end
 
 		fill_grid_with_random_letters
-
-		return puzzle
 	end
 
 	def print_puzzle_to_console
@@ -235,22 +232,25 @@ class SearchWordDocument < Prawn::Document
 								  col = { location: col, increment: 1})
 	end	
 
-	def self.generate_pdf(words, grid_size, num_puzzles, name)
-		pdf = SearchWordDocument.new
+	def generate_pdf(num_puzzles, name)
 		random_characters = ('a'..'z').to_a.shuffle[0..7].join
 		file_name = "#{name}_#{random_characters}.pdf"
 		
 		num_puzzles.times.with_index do |index|
-			puzzle = pdf.generate_puzzle(words)
-			pdf.draw_puzzle(puzzle)
-			pdf.draw_word_bank(puzzle)
-			pdf.start_new_page
-			pdf.draw_puzzle(puzzle)
-			pdf.draw_word_bank(puzzle)
-			pdf.highlight_solutions(puzzle)
-			pdf.start_new_page unless index + 1 == num_puzzles
+			generate_puzzle
+			# Draw the puzzle page
+			draw_puzzle
+			draw_word_bank
+			
+			# Draw the solution page
+			start_new_page
+			draw_puzzle
+			highlight_solutions
+			draw_word_bank
+
+			start_new_page unless index + 1 == num_puzzles
 		end
-		pdf.render_file "#{Rails.root.to_s}/tmp/#{file_name}" unless Rails.env.test?
+		render_file "#{Rails.root.to_s}/tmp/#{file_name}" unless Rails.env.test?
 		return file_name
 	end
 end
