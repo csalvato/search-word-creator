@@ -224,11 +224,11 @@ class SearchWordDocument < Prawn::Document
 	end
 
 	def insert_into_puzzle_diag_up(word)
-		min_start_row = length_without_spaces_and_hyphens(word)
+		min_start_row = length_without_spaces_and_hyphens(word)-1
 		max_start_column = @puzzle_grid[0].length - length_without_spaces_and_hyphens(word)
 		row = rand(min_start_row..@puzzle_grid.length-1)
-		col = rand(0..max_start_column)
-		
+		col = rand(0..max_start_column)	
+
 		return insert_word(word, 
 								  row = { location: row, increment: -1}, 
 								  col = { location: col, increment: 1})
