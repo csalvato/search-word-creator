@@ -173,7 +173,7 @@ class SearchWordDocument < Prawn::Document
 		end
 	end
 
-	def self.insert_word(word, row, col, puzzle)
+	def insert_word(word, row, col)
 		word.delete_if {|letter| letter == " " || letter == "-" }
 
 		solution = {}
@@ -181,13 +181,12 @@ class SearchWordDocument < Prawn::Document
 			break unless 
 				insert_letter_into_puzzle(letter, 
 																	row[:location], 
-																	col[:location], 
-																	puzzle)
+																	col[:location])
 			solution.merge!([row[:location], col[:location]] => letter)
 			row[:location] += row[:increment]
 			col[:location] += col[:increment]
 			if index == word.length-1 
-				puzzle[:solutions].push(solution)
+				@solutions.push(solution)
 				return true
 			end
 		end

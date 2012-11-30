@@ -115,18 +115,17 @@ describe SearchWordDocument do
 
     describe "when inserting a word" do
       before do
-        puzzle[:grid].length.times do |row|
-          puzzle[:grid][row][0] = "A"
+        swdoc.puzzle_grid.length.times do |row|
+          swdoc.puzzle_grid[row][0] = "A"
         end
-        puzzle[:solutions] = []
+        swdoc.solutions = []
       end
       
       describe "that has no spaces" do
         before do
-          @word_status = SearchWordDocument.insert_word("FOOBAR".split(''), 
+          @word_status = swdoc.insert_word("FOOBAR".split(''), 
                             row = { location: 0, increment: 1}, 
-                            col = { location: 0, increment: 0},
-                            puzzle ) 
+                            col = { location: 0, increment: 0}) 
         end
         let(:expected_solution){ [{[0, 0]=>"F", 
                                   [1, 0]=>"O", 
@@ -135,22 +134,20 @@ describe SearchWordDocument do
                                   [4, 0]=>"A",
                                   [5, 0]=>"R" }] }
         
-        specify { puzzle[:solutions].should == expected_solution }
+        specify { swdoc.solutions.should == expected_solution }
         specify { @word_status.should be_true}
         describe "it should not place an overlapping word" do
-          specify { SearchWordDocument.insert_word("FOOBAZ".split(''), 
+          specify { swdoc.insert_word("FOOBAZ".split(''), 
                               row = { location: 0, increment: 1}, 
-                              col = { location: 0, increment: 0},
-                              puzzle).should be_false }
+                              col = { location: 0, increment: 0}).should be_false }
         end
       end
 
       describe "that has spaces" do
         before do
-          @word_status = SearchWordDocument.insert_word("FOO BAR".split(''), 
+          @word_status = swdoc.insert_word("FOO BAR".split(''), 
                             row = { location: 0, increment: 1}, 
-                            col = { location: 0, increment: 0},
-                            puzzle ) 
+                            col = { location: 0, increment: 0}) 
         end
         let(:expected_solution){ [{[0, 0]=>"F", 
                                    [1, 0]=>"O", 
@@ -159,7 +156,7 @@ describe SearchWordDocument do
                                    [4, 0]=>"A",
                                    [5, 0]=>"R" }] }
         
-        specify { puzzle[:solutions].should == expected_solution }
+        specify { swdoc.solutions.should == expected_solution }
         specify { @word_status.should be_true}
       end
     end
