@@ -2,7 +2,8 @@ require "prawn/measurement_extensions"
 
 # Subclass of Prawn::Document to create word search puzzles.
 class SearchWordDocument < Prawn::Document
-  attr_accessor :grid_size, :row_offset, :col_offset, :puzzle_grid, :solutions, :puzzle_grid_size, :words
+  attr_accessor :grid_size, :row_offset, :col_offset, :puzzle_grid, 
+  							:solutions, :puzzle_grid_size, :words, :word_bank
 
   def initialize(opts={ puzzle_grid_size: 18, words: [], margin: @margin=0.5.in })
     super(opts)
@@ -11,7 +12,7 @@ class SearchWordDocument < Prawn::Document
 		@solutions = []
     @row_offset = 0
     @col_offset = 1
-
+		@word_bank = []
     initialize_puzzle_grid
   end
 
@@ -54,8 +55,8 @@ class SearchWordDocument < Prawn::Document
   def draw_word_bank
     columns = ['', '', '']
 
-    @solutions.each_with_index do |solution, index|
-      columns[index % 3] += solution.values.join + "\n"
+    @word_bank.each_with_index do |word, index|
+      columns[index % 3] += word + "\n"
     end
 
     grid([19,1], [23,5]).bounding_box do
@@ -74,12 +75,9 @@ class SearchWordDocument < Prawn::Document
 	#
 	# @param words Array of words for the puzzle
 	def generate_puzzle
-		@solutions = []
+		@solutions = [] # Reset solutions for each puzzle
+		@word_bank = [] # Reset word_bank for each puzzle
 		@words.each_with_index do |word, index| 
-			# Turn words into letters
-			word = word.upcase.split('')
-
-			# Inject words into the puzzle
 			insert_into_puzzle(word)
 		end
 
@@ -171,10 +169,13 @@ class SearchWordDocument < Prawn::Document
 	end
 
 	def insert_word(word, row, col)
-		word.delete_if {|letter| letter == " " || letter == "-" }
+		# Turn words into letters
+		word_array = word.upcase.split('')
+
+		word_array.delete_if {|letter| letter == " " || letter == "-" }
 
 		solution = {}
-		word.each_with_index do |letter, index|
+		word_array.each_with_index do |letter, index|
 			break unless 
 				insert_letter_into_puzzle(letter, 
 																	row[:location], 
@@ -182,8 +183,9 @@ class SearchWordDocument < Prawn::Document
 			solution.merge!([row[:location], col[:location]] => letter)
 			row[:location] += row[:increment]
 			col[:location] += col[:increment]
-			if index == word.length-1 
+			if index == word_array.length-1 
 				@solutions.push(solution)
+				@word_bank.push(word)
 				return true
 			end
 		end

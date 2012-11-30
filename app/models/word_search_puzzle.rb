@@ -30,8 +30,6 @@ class WordSearchPuzzle < ActiveRecord::Base
   	problems = ''
   	if !words.empty?
 			words.each do |word|
-				word = word.gsub(/\s+/, "") # strip out all whitespace
-				word = word.gsub(/-+/, "") # strip out all hyphens
 				if word.scan(VALID_WORD_REGEX).empty?
 					problems << "can only contain letters, spaces and hyphens."
 				elsif !record.grid_height.nil? && !record.grid_width.nil? &&

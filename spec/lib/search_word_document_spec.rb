@@ -19,7 +19,7 @@ describe SearchWordDocument do
     it "should not raise an error when inserting a horizontal word into a puzzle" do
       100.times do 
         expect do
-          swdoc.insert_into_puzzle_horiz("foobar".split(''))
+          swdoc.insert_into_puzzle_horiz("foobar")
         end.to_not raise_error      
       end
     end
@@ -27,7 +27,7 @@ describe SearchWordDocument do
     it "should not raise an error when inserting a vertical word into a puzzle" do
       100.times do 
         expect do
-          swdoc.insert_into_puzzle_vert("foobar".split(''))
+          swdoc.insert_into_puzzle_vert("foobar")
         end.to_not raise_error      
       end
     end
@@ -35,7 +35,7 @@ describe SearchWordDocument do
     it "should not raise an error when inserting a diagonal-up word into a puzzle" do
       100.times do 
         expect do
-          swdoc.insert_into_puzzle_diag_up("foobar".split(''))
+          swdoc.insert_into_puzzle_diag_up("foobar")
         end.to_not raise_error      
       end
     end
@@ -43,7 +43,7 @@ describe SearchWordDocument do
     it "should not raise an error when inserting a diagonal-down word into a puzzle" do
       100.times do 
         expect do
-          swdoc.insert_into_puzzle_diag_down("foobar".split(''))
+          swdoc.insert_into_puzzle_diag_down("foobar")
         end.to_not raise_error      
       end
     end
@@ -107,10 +107,10 @@ describe SearchWordDocument do
 																				 row = 0,
 																				 col = 0).should be_true }
       
-      specify{ swdoc.insert_into_puzzle_horiz("ABAZABA".split('')).should be_false }
-      specify{ swdoc.insert_into_puzzle_vert("ABAZABA".split('')).should be_false }
-      specify{ swdoc.insert_into_puzzle_diag_up("ABAZABA".split('')).should be_false }
-      specify{ swdoc.insert_into_puzzle_diag_down("ABAZABA".split('')).should be_false }
+      specify{ swdoc.insert_into_puzzle_horiz("ABAZABA").should be_false }
+      specify{ swdoc.insert_into_puzzle_vert("ABAZABA").should be_false }
+      specify{ swdoc.insert_into_puzzle_diag_up("ABAZABA").should be_false }
+      specify{ swdoc.insert_into_puzzle_diag_down("ABAZABA").should be_false }
     end
 
     describe "when inserting a word" do
@@ -123,7 +123,7 @@ describe SearchWordDocument do
       
       describe "that has no spaces" do
         before do
-          @word_status = swdoc.insert_word("FOOBAR".split(''), 
+          @word_status = swdoc.insert_word("FOOBAR", 
                             row = { location: 0, increment: 1}, 
                             col = { location: 0, increment: 0}) 
         end
@@ -137,7 +137,7 @@ describe SearchWordDocument do
         specify { swdoc.solutions.should == expected_solution }
         specify { @word_status.should be_true}
         describe "it should not place an overlapping word" do
-          specify { swdoc.insert_word("FOOBAZ".split(''), 
+          specify { swdoc.insert_word("FOOBAZ", 
                               row = { location: 0, increment: 1}, 
                               col = { location: 0, increment: 0}).should be_false }
         end
@@ -145,7 +145,7 @@ describe SearchWordDocument do
 
       describe "that has spaces" do
         before do
-          @word_status = swdoc.insert_word("FOO BAR".split(''), 
+          @word_status = swdoc.insert_word("FOO BAR", 
                             row = { location: 0, increment: 1}, 
                             col = { location: 0, increment: 0}) 
         end
