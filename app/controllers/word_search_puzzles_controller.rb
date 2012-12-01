@@ -1,9 +1,9 @@
 class WordSearchPuzzlesController < ApplicationController 
   before_filter :signed_in_user
+  before_filter :blocked_trial_user
   
   def new
     @word_search_puzzle = WordSearchPuzzle.new
-    render 'blocked' if !current_user.subscription.paid_user? && !current_user.subscription.trial_user?
   end
 
   def edit
@@ -42,4 +42,9 @@ class WordSearchPuzzlesController < ApplicationController
   def download
     send_file "#{Rails.root.to_s}/tmp/#{params[:file_name]}.pdf"
   end
+
+  private
+    def blocked_trial_user
+      render 'blocked' if !current_user.subscription.paid_user? && !current_user.subscription.trial_user?
+    end
 end
