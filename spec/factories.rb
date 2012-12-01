@@ -14,7 +14,7 @@ FactoryGirl.define do
              "HERMITCRAB", "SANDLIZARD", "GILAMONSTER", "SALAMADER","TADPOLE",
              "TOAD","CHAMELEON","IGUANA","SHARK","TORTOISE","COBRA",
              "KOMODODRAGON","SPIDER","TURTLE"]
-    sequence(:name) { |n| "puzzle #{n}" }
+    sequence(:name) { |n| "puzzle #{n}" } 
   end
 
   factory :subscription do

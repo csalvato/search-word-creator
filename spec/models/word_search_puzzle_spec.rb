@@ -28,6 +28,7 @@ describe WordSearchPuzzle do
 	it { should respond_to(:grid_height) }
 	it { should respond_to(:user_id) }
 	it { should respond_to(:user) }
+	it { should respond_to(:category) }
 
 	describe "should have the right user" do
 		let(:built_puzzle) { user.word_search_puzzles.build( words: ["foobar", "foobaz"]) }
@@ -51,6 +52,18 @@ describe WordSearchPuzzle do
 	describe "when name is too long" do
 		before { puzzle.name = "a" * 51 }
 		it { should_not be_valid }
+	end
+
+	describe "when category" do
+		describe "is too long" do
+			before { puzzle.category = "a" * 256}
+			it { should_not be_valid }
+		end
+
+		describe "is not set" do
+			before { puzzle.category = nil }
+			specify { puzzle.category should == "" }
+		end
 	end
 
 	describe "when words array" do
