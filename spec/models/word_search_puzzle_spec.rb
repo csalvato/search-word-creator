@@ -61,8 +61,12 @@ describe WordSearchPuzzle do
 		end
 
 		describe "is not set" do
-			before { puzzle.category = nil }
-			specify { puzzle.category should == "" }
+			before do
+				puzzle.category = nil
+				puzzle.save!
+			end
+			it { should be_valid }
+			specify { puzzle.category.should == "" }
 		end
 	end
 
