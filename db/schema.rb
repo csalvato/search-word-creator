@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121122192049) do
+ActiveRecord::Schema.define(:version => 20121201190608) do
 
   create_table "subscriptions", :force => true do |t|
     t.integer  "user_id"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20121122192049) do
     t.integer  "grid_width",    :default => 18
     t.integer  "grid_height",   :default => 18
     t.integer  "user_id"
+    t.string   "category",      :default => ""
   end
 
 end
