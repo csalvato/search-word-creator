@@ -15,7 +15,10 @@ SearchWordCreator::Application.routes.draw do
   match "/plans-and-pricing" => "static_pages#plans", :as => "plans"
  
   match '/print', to: 'word_search_puzzles#print'
-  
+  match '/word-search-puzzles/:category/:name', to: 'word_search_puzzles#promo_puzzle', as: "promo_puzzle"
+  match '/word-search-puzzles/:category', to: 'word_search_puzzles#category', as: "category"
+  match '/word-search-puzzles', to: 'word_search_puzzles#promo_puzzle_index', as: "promo_puzzle_index"
+
   match "/dashboard", to: "users#dashboard"
   match '/signup', to: 'users#new'
 

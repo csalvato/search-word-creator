@@ -1,6 +1,6 @@
 class WordSearchPuzzlesController < ApplicationController 
-  before_filter :signed_in_user
-  before_filter :blocked_trial_user
+  before_filter :signed_in_user, only: [:new, :edit, :create, :destroy, :print, :download]
+  before_filter :blocked_trial_user, only: [:new, :edit, :create, :destroy, :print, :download]
   
   def new
     @word_search_puzzle = WordSearchPuzzle.new
@@ -41,6 +41,20 @@ class WordSearchPuzzlesController < ApplicationController
 
   def download
     send_file "#{Rails.root.to_s}/tmp/#{params[:file_name]}.pdf"
+  end
+
+  def promo_puzzle
+    @category = params[:category]
+    @puzzle_name = params[:name]
+  end
+
+  def promo_puzzle_index
+    @puzzles_with_category = WordSearchPuzzle.select("DISTINCT(CATEGORY)")
+  end
+
+  def category
+    @category = params[:category]
+    @puzzles = WordSearchPuzzle.find_all_by_category(@category)
   end
 
   private

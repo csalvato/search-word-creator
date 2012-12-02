@@ -64,5 +64,8 @@ module SearchWordCreator
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Add core_ext to the library to load up any core Ruby extensions (like extending String class)
+    Dir[File.join(Rails.root, "lib", "core_ext", "*.rb")].each {|l| require l }
   end
 end
