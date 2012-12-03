@@ -4,6 +4,15 @@ class WordSearchPuzzlesController < ApplicationController
   
   def new
     @word_search_puzzle = WordSearchPuzzle.new
+    @word_search_puzzle = WordSearchPuzzle.find(params[:id]).dup unless params[:id].nil?
+    unless @word_search_puzzle.words.blank?
+      words_string = ""
+      @word_search_puzzle.words.each do |word|
+        words_string += "#{word}\n"
+      end
+      @word_search_puzzle.words = words_string
+    end
+    render 'new'
   end
 
   def edit

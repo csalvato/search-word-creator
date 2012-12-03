@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe "WordSearchPuzzlePagesSpecs" do
   let(:user) { FactoryGirl.create(:user) }
-  before { sign_in(user) }
   subject { page }
 
   shared_examples_for "all pages" do
@@ -47,6 +46,9 @@ describe "WordSearchPuzzlePagesSpecs" do
 	end
 
 	describe "Step 1 Page" do
+		before do
+		 sign_in(user)
+		end
 		before { visit new_word_search_puzzle_path }
 		let(:page_type) { 'page' }
 
@@ -128,7 +130,9 @@ describe "WordSearchPuzzlePagesSpecs" do
 	end
 
 	describe "Landing Pages" do
-		before { visit word_search_puzzles_path }
+		before do
+		 visit word_search_puzzles_path 
+		end
 		let(:page_type) { 'page' }
 		
 		it_should_behave_like "all pages"
@@ -147,7 +151,30 @@ describe "WordSearchPuzzlePagesSpecs" do
 				it { should have_selector("h1", content: "Christmas Search Word Puzzle")}
 				it { should have_link("Print Puzzles") }
 			end
+			
+			describe "after clicking on Print Puzzle link" do
+				describe "when not signed in" do
+					before do 
+						click_link "Print Puzzles"
+					end
 
+					it { should have_selector("h5", "Sign In") }
+				end
+
+				describe "when signed in" do
+					before do 
+						sign_in user
+						click_link "Print Puzzles"
+					end
+
+					specify { find.field('Words').text.should have_content("Chimney") }
+
+					describe "and moving to the next step" do
+						before { click_link "Next Step" }
+						end
+					end
+				end
+			end
 		end
 
 	end

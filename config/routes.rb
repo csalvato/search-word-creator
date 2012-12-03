@@ -1,6 +1,10 @@
 SearchWordCreator::Application.routes.draw do
   resources :users, except: [:index, :show, :destroy]
-  resources :word_search_puzzles
+  resources :word_search_puzzles do
+    member do
+      get 'new/', :action => 'new'
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/download/:file_name', to: 'word_search_puzzles#download', as: "download"
