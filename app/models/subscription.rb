@@ -64,9 +64,9 @@ class Subscription < ActiveRecord::Base
 			self.subscription_expires_on = 1.year.from_now
 			self.save!
 		end
-	rescue Stripe::InvalidRequestError => e
-  logger.error "Stripe error while creating customer: #{e.message}"
-  errors.add :base, "There was a problem with your credit card."
+		rescue Stripe::InvalidRequestError => e
+	  logger.error "Stripe error while creating customer: #{e.message}"
+	  errors.add :base, "There was a problem with your credit card."
 	end
 
 end

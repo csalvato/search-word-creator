@@ -2,7 +2,7 @@ SearchWordCreator::Application.routes.draw do
   resources :users, except: [:index, :show, :destroy]
   resources :word_search_puzzles do
     member do
-      get 'new/', :action => 'new'
+      get 'new/', :action => 'new', as: 'new_promo'
     end
   end
   resources :sessions, only: [:new, :create, :destroy]

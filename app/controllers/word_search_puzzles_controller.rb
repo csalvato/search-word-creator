@@ -8,7 +8,7 @@ class WordSearchPuzzlesController < ApplicationController
     unless @word_search_puzzle.words.blank?
       words_string = ""
       @word_search_puzzle.words.each do |word|
-        words_string += "#{word}\n"
+        words_string += "#{word}\r\n"
       end
       @word_search_puzzle.words = words_string
     end
@@ -55,7 +55,7 @@ class WordSearchPuzzlesController < ApplicationController
   def promo_puzzle
     @category = params[:category]
     @puzzle_name = params[:name].link_to_category
-    @words = WordSearchPuzzle.find_by_category_and_name(@category.link_to_category, @puzzle_name).words
+    @word_search_puzzle = WordSearchPuzzle.find_by_category_and_name(@category.link_to_category, @puzzle_name)
   end
 
   def index

@@ -47,7 +47,7 @@ describe "WordSearchPuzzlePagesSpecs" do
 
 	describe "Step 1 Page" do
 		before do
-		 sign_in(user)
+		 sign_in user
 		end
 		before { visit new_word_search_puzzle_path }
 		let(:page_type) { 'page' }
@@ -123,54 +123,76 @@ describe "WordSearchPuzzlePagesSpecs" do
 
 					it { should have_content('Your trial has expired') }
 					it { should_not have_field('Words') }
-					#it_should_behave_like "all pages"
 				end
 			end
 		end
 	end
 
 	describe "Landing Pages" do
-		before do
-		 visit word_search_puzzles_path 
-		end
 		let(:page_type) { 'page' }
-		
-		it_should_behave_like "all pages"
-		
-		it { should have_link "Holiday" }
-
-		describe "after clicking on category link" do
-			before { click_link "Holiday" }
-
-			it { should have_link "Christmas" }
-			it { should have_selector("h1", content: "Holiday Search Word Puzzles")}
-
-			describe "after clicking on individual puzzle link" do
-				before { click_link "Christmas" }
-
-				it { should have_selector("h1", content: "Christmas Search Word Puzzle")}
-				it { should have_link("Print Puzzles") }
+		describe "when not signed in" do
+			before do
+				visit word_search_puzzles_path 
 			end
-			
-			describe "after clicking on Print Puzzle link" do
-				describe "when not signed in" do
-					before do 
-						click_link "Print Puzzles"
-					end
+			let(:page_type) { 'page' }
+						
+			it { should have_link "Holiday" }
 
-					it { should have_selector("h5", "Sign In") }
+			describe "after clicking on category link" do
+				before { click_link "Holiday" }
+
+				it { should have_link "Christmas" }
+				it { should have_selector("h1", content: "Holiday Search Word Puzzles")}
+
+				describe "after clicking on individual puzzle link" do
+					before { click_link "Christmas" }
+
+					it { should have_selector("h1", content: "Christmas Search Word Puzzle")}
+					it { should have_link("Print Puzzles") }
+				
+					describe "after clicking on Print Puzzles link" do
+						before do 
+							click_link "Print Puzzles"
+						end
+
+						it { should have_selector("h5", content:"Sign in") }
+					end
 				end
+			end
+		end
+		describe "when signed in" do
+			before do
+				sign_in user
+				visit word_search_puzzles_path 
+			end
+			it_should_behave_like "all pages"
+			
+			it { should have_link "Holiday" }
 
-				describe "when signed in" do
-					before do 
-						sign_in user
-						click_link "Print Puzzles"
-					end
+			describe "after clicking on category link" do
+				before { click_link "Holiday" }
 
-					specify { find.field('Words').text.should have_content("Chimney") }
+				it { should have_link "Christmas" }
+				it { should have_selector("h1", content: "Holiday Search Word Puzzles")}
 
-					describe "and moving to the next step" do
-						before { click_link "Next Step" }
+				describe "after clicking on individual puzzle link" do
+					before { click_link "Christmas" }
+
+					it { should have_selector("h1", content: "Christmas Search Word Puzzle")}
+					it { should have_link("Print Puzzles") }
+				
+					describe "after clicking on Print Puzzles link" do
+						before do 
+							click_link "Print Puzzles"
+						end
+						
+						it_should_behave_like "Step 1 Page"
+						it { should have_content("CHIMNEY") }
+
+						describe "and moving to the next step" do
+							before { click_button "Next Step" }
+
+							it_should_behave_like "Step 2 Page"
 						end
 					end
 				end
