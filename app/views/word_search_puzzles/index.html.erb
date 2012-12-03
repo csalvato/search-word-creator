@@ -1,0 +1,28 @@
+<% provide(:title, "Free printable search word puzzles with Search Word Creator") %>
+<% provide(:page_type, 'page') %>
+<% content_for :mixpanel_tracking do %>
+	<script type="text/javascript">
+  	  $(document).ready( function(){
+        mixpanel.track("Seeing Word Search Puzzle List"});
+      });
+  </script>
+<% end %>
+<% content_for :sidebar do %>
+	<div id="sidebar" class="col-side left">
+		<div class="widget">
+			<h2>Get Started!</h2>
+			<ul>
+				<li>
+					<p>
+						Start using Search Word Creator to Create your own <strong>printable search word puzzles.</strong>
+					</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+<% end %>
+
+<h1>Free Printable Search Word Puzzles</h1>
+<% @puzzles_with_category.each do |puzzle| %>
+	<%= link_to puzzle.category, category_path(puzzle.category.category_to_link) %>
+<% end %>

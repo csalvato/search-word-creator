@@ -6,7 +6,7 @@ namespace :db do
 
   def make_puzzles_for_holidays_category
     puzzles = []
-    category = "holiday"
+    category = "Holiday"
     puzzles.push({ name: "Christmas",
                    category: category,
                    words: ["Boxing Day", "Chimney", "Cranberries", "Drummer boy", "Egg nog", "Fruitcake", "Gifts", "Holly", "Jesus", "Jingle bells", "Kris Kringle", "Manger", "Orange", "Ornament", "Red", "Santa Claus", "Shopping", "Silent night", "Stocking", "Tree", "Turkey", "White", "Wisemen", "Wreath", "Yuletide"]

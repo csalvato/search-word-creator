@@ -126,4 +126,29 @@ describe "WordSearchPuzzlePagesSpecs" do
 			end
 		end
 	end
+
+	describe "Landing Pages" do
+		before { visit word_search_puzzles_path }
+		let(:page_type) { 'page' }
+		
+		it_should_behave_like "all pages"
+		
+		it { should have_link "Holiday" }
+
+		describe "after clicking on category link" do
+			before { click_link "Holiday" }
+
+			it { should have_link "Christmas" }
+			it { should have_selector("h1", content: "Holiday Search Word Puzzles")}
+
+			describe "after clicking on individual puzzle link" do
+				before { click_link "Christmas" }
+
+				it { should have_selector("h1", content: "Christmas Search Word Puzzle")}
+				it { should have_link("Print Puzzles") }
+			end
+
+		end
+
+	end
 end

@@ -45,16 +45,17 @@ class WordSearchPuzzlesController < ApplicationController
 
   def promo_puzzle
     @category = params[:category]
-    @puzzle_name = params[:name]
+    @puzzle_name = params[:name].link_to_category
+    @words = WordSearchPuzzle.find_by_category_and_name(@category.link_to_category, @puzzle_name).words
   end
 
-  def promo_puzzle_index
+  def index
     @puzzles_with_category = WordSearchPuzzle.select("DISTINCT(CATEGORY)")
   end
 
   def category
     @category = params[:category]
-    @puzzles = WordSearchPuzzle.find_all_by_category(@category)
+    @puzzles = WordSearchPuzzle.find_all_by_category(@category.link_to_category)
   end
 
   private

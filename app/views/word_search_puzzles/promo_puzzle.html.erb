@@ -1,0 +1,35 @@
+<% provide(:title, "#{@category.capitalize} search word puzzles with Search Word Creator") %>
+<% provide(:page_type, 'page') %>
+<% content_for :mixpanel_tracking do %>
+	<script type="text/javascript">
+  	  $(document).ready( function(){
+        mixpanel.track("Seeing Category Page", { 'category': "<%= @category.capitalize %>"});
+      });
+  </script>
+<% end %>
+<% content_for :sidebar do %>
+	<div id="sidebar" class="col-side left">
+		<div class="widget">
+			<h2>Get Started!</h2>
+			<ul>
+				<li>
+					<p>
+						Start using Search Word Creator to Create your own <strong>printable search word puzzles.</strong>
+					</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+<% end %>
+
+<h1><%= @puzzle_name %> Search Word Puzzle</h1>
+These puzzles are about <%= @puzzle_name %>. These are some common words or names associated with <%= @puzzle_name %>. These include words like 
+<% @words.each_with_index do |word, index| 
+	break if index == 4	%>
+	<% if index == 3 || index == @words.length-2 %>
+		<%= "and #{word.titlecase}." %>
+	<% else %>
+		<%= "#{word.titlecase}," %>
+	<% end %>
+<% end %>
+You can create puzzles like these using Search Word Creator. You can try it, totally free, for up to 15 puzzles.
