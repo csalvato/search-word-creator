@@ -4,7 +4,7 @@ SearchWordCreator::Application.routes.draw do
     member do
       get 'new/', :action => 'new', as: 'new_promo'
     end
-  end
+  end 
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/download/:file_name', to: 'word_search_puzzles#download', as: "download"
@@ -21,6 +21,7 @@ SearchWordCreator::Application.routes.draw do
   match '/print', to: 'word_search_puzzles#print'
   match '/word-search-puzzles/:category/:name', to: 'word_search_puzzles#promo_puzzle', as: "promo_puzzle"
   match '/word-search-puzzles/:category', to: 'word_search_puzzles#category', as: "category"
+  match '/word-search-puzzles', to: 'word_search_puzzles#index', as: 'index'
 
   match "/dashboard", to: "users#dashboard"
   match '/signup', to: 'users#new'

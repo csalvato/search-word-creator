@@ -23,37 +23,20 @@
 <% end %>
 
 <h1>Free Printable Search Word Puzzles</h1>
-<p>Search Word Creator lets you create and customize printable word search puzzles.  Below are the categories of puzzles that we created for you.</p>
-
+<p><strong>Search Word Creator</strong> lets you create and customize <strong>printable word search puzzles</strong>.  Below are the categories of puzzles that we created for you.</p>
+<br/>
 <p>Click on the category below to see the available pre-made puzzles, ready for printing and using within seconds!</p>
+<br/>
 
-<% @puzzle_categories.each do |category| %>
-	<div class="promo-row">
+<% @puzzle_categories.each_with_index do |category, index| %>
+	<% if index % 3 == 0 %>
+		<div class="promo-row">
+	<% end %>
 		<div class="category-entry">
-			<%= link_to category[:name], category_path(category[:name].category_to_link), class: "btn" %>
-			<%= "#{category[:count]} Puzzles" %>
+			<%= link_to category[:name], category_path(category[:name].category_to_link) %>
+			<%= "#{pluralize(category[:count], 'puzzle')}" %>
 		</div>
-		<div class="category-entry">
-			<%= link_to category[:name], category_path(category[:name].category_to_link), class: "btn" %>
-			<%= "#{category[:count]} Puzzles" %>
-		</div>
-		<div class="category-entry">
-			<%= link_to category[:name], category_path(category[:name].category_to_link), class: "btn" %>
-			<%= "#{category[:count]} Puzzles" %>
-		</div>
+	<% if index % 3 == 0 %>
 	</div>
-	<div class="promo-row">
-		<div class="category-entry">
-			<%= link_to category[:name], category_path(category[:name].category_to_link), class: "btn" %>
-			<%= "#{category[:count]} Puzzles" %>
-		</div>
-		<div class="category-entry">
-			<%= link_to category[:name], category_path(category[:name].category_to_link), class: "btn" %>
-			<%= "#{category[:count]} Puzzles" %>
-		</div>
-		<div class="category-entry">
-			<%= link_to category[:name], category_path(category[:name].category_to_link), class: "btn" %>
-			<%= "#{category[:count]} Puzzles" %>
-		</div>
-	</div>
+	<% end %>
 <% end %>
