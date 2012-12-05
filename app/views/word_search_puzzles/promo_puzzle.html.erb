@@ -3,7 +3,7 @@
 <% content_for :mixpanel_tracking do %>
 	<script type="text/javascript">
   	  $(document).ready( function(){
-        mixpanel.track("Seeing Category Page", { 'category': "<%= @category.capitalize %>"});
+        mixpanel.track("Seeing Promo Page", { 'category': "<%= @puzzle_name %>"});
       });
   </script>
 <% end %>

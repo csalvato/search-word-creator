@@ -59,7 +59,17 @@ class WordSearchPuzzlesController < ApplicationController
   end
 
   def index
-    @puzzles_with_category = WordSearchPuzzle.select("DISTINCT(CATEGORY)")
+    puzzles_with_category = WordSearchPuzzle.select("DISTINCT(CATEGORY)")
+    # Delete the category of puzzles that have no category (that is, user created)
+    puzzles_with_category.delete_if { |puzzle| puzzle.category == "" }
+
+    @puzzle_categories = []
+    puzzles_with_category.each do |puzzle|
+      puzzle_category = { name: puzzle.category, 
+                           count: WordSearchPuzzle.where(:category => puzzle.category).count
+                         }
+      @puzzle_categories.push(puzzle_category)
+    end
   end
 
   def category

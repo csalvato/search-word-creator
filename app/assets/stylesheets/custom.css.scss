@@ -19,3 +19,48 @@
 	color: black;
   @include box_sizing;
 }
+
+/* Category entries for promo pages */
+.category-entry {
+
+}
+
+.category-entry:last-child{
+	margin-right: 0px;
+}
+
+.category-entry {
+	width: 217px;
+	margin: 10px 20px 10px 0px;
+	padding: 5px 0px;
+	float: left;
+	background: #7cc319 url(../assets/saas-images/bg-button.gif) repeat-x left bottom;
+	color: #fff;
+	text-align: center;
+	border: solid 1px #6aad0f;
+	box-shadow: 1px 2px 3px #548e06;
+	-moz-box-shadow: 1px 2px 2px #548e06;
+	-webkit-box-shadow: 1px 2px 2px #548e06;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.category-entry:hover {
+	box-shadow: 0 0 5px rgba(0, 0, 255, 1);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 1); 
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 255, 1); 
+  border:1px solid rgba(0,0,255, 0.8);
+}
+
+.category-entry a{
+	color: #fff;
+	font-size: 18px;
+	font-weight: bold;
+	text-shadow: 0 1px 0 #395c09;
+	line-height: 22px;
+}
+
+.category-entry a:hover{
+	color: #fff;
+}
