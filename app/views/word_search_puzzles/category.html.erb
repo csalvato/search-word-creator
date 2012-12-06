@@ -22,8 +22,17 @@
 	</div>
 <% end %>
 
-<h1><%= @category.capitalize %> Search Word Puzzles</h1>
-<% @puzzles.each do |puzzle| %>
-	<%= link_to puzzle.name, promo_puzzle_path(@category, puzzle.name.category_to_link ) %>
-	<br/>
+<h1><%= @category.link_to_category.titlecase %> Search Word Puzzles</h1>
+<p>Below are the <strong>word search puzzles</strong> that are available for <%= @category.link_to_category.titlecase %>.  Click on any puzzle to get started <strong>creating a custom, printable search word puzzle</strong> from this word list within 15 seconds! </p>
+<br/>
+<div class="promo-row">
+<% @puzzles.each_with_index do |puzzle, index| %>
+	<% if index % 3 == 0 && index != 0 %>
+	</div>
+	<div class="promo-row">
+	<% end %>
+		<div class="promo-entry promo-btn">
+			<%= link_to puzzle.name, promo_puzzle_path(@category, puzzle.name.category_to_link ) %>
+		</div>
 <% end %>
+</div>

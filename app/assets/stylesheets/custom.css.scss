@@ -25,15 +25,18 @@
 
 }
 
-.category-entry:last-child{
+.promo-entry:last-child{
 	margin-right: 0px;
 }
 
-.category-entry {
+.promo-entry {
 	width: 217px;
 	margin: 10px 20px 10px 0px;
 	padding: 5px 0px;
 	float: left;
+}
+
+.promo-btn {
 	background: #7cc319 url(../assets/saas-images/bg-button.gif) repeat-x left bottom;
 	color: #fff;
 	text-align: center;
@@ -46,22 +49,58 @@
 	-webkit-border-radius: 5px;
 }
 
-.category-entry:hover {
+.promo-entry.category {
+	height: 44px;
+}
+
+.promo-btn:hover {
 	box-shadow: 0 0 5px rgba(0, 0, 255, 1);
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 1); 
   -moz-box-shadow: 0 0 5px rgba(0, 0, 255, 1); 
   border:1px solid rgba(0,0,255, 0.8);
 }
 
-.category-entry a{
+.promo-entry a, .promo-btn a {
 	color: #fff;
 	display: block;
-	font-size: 18px;
 	font-weight: bold;
+	font-size: 18px;
 	text-shadow: 0 1px 0 #395c09;
 	line-height: 22px;
 }
 
-.category-entry a:hover{
+.promo-img {
+	float: left;
+	height: 247px;
+	width: 231px;
+	margin: 0 20px 0 0;
+	padding: 5px;
+	-moz-box-shadow: 1px 3px 4px #000;
+	-webkit-box-shadow: 1px 3px 4px #000;
+	box-shadow: 1px 3px 4px #000;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+	background: white;
+	border: solid 1px #6aad0f;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.promo-entry a:hover, .promo-btn a:hover {
 	color: #fff;
+}
+
+.promo-text {
+	float:left;
+	display: inline;
+	width: 435px;
+}
+
+.promo-text .promo-btn {
+	width: 40%;
+	padding: 10px;
+	margin: 30px auto;
 }

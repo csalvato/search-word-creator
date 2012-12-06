@@ -22,16 +22,25 @@
 	</div>
 <% end %>
 
-<h1><%= @puzzle_name %> Search Word Puzzle</h1>
-These puzzles are about <%= @puzzle_name %>. These are some common words or names associated with <%= @puzzle_name %>. These include words like 
-<% @word_search_puzzle.words.each_with_index do |word, index| 
-	break if index == 4	%>
-	<% if index == 3 || index == @word_search_puzzle.words.length-2 %>
-		<%= "and #{word.titlecase}." %>
-	<% else %>
-		<%= "#{word.titlecase}," %>
-	<% end %>
-<% end %>
-You can create puzzles like these using Search Word Creator. You can try it, totally free, for up to 15 puzzles.
+<h1><%= @puzzle_name %> Search Word Puzzles</h1>
+<br/>
+<img class="promo-img" src="/assets/puzzle.png" alt="Sample Puzzle"/>
+<div class="promo-text">
+	<p>These puzzles are about <%= @puzzle_name %>.</p>
+	<br/>
+	<p>These are some common words or names associated with <%= @puzzle_name %>. These include words like 
+	<% @word_search_puzzle.words.each_with_index do |word, index| 
+		break if index == 4	%>
+		<% if index == 3 || index == @word_search_puzzle.words.length-2 %>
+			<%= "and #{word.titlecase}." %>
+		<% else %>
+			<%= "#{word.titlecase}," %>
+		<% end %>
+	<% end %></p>
+	<br/>
+	<p>You can create puzzles like these using Search Word Creator. You can try it, totally free, for up to 15 puzzles.</p>
 
-<%= link_to "Print Puzzles", new_promo_word_search_puzzle_path(@word_search_puzzle)%>
+	<div class="promo-btn">
+		<%= link_to "Print Puzzles", new_promo_word_search_puzzle_path(@word_search_puzzle)%>
+	</div>
+</div>
