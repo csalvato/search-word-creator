@@ -18,6 +18,7 @@
 					</div>
 					<div class="nav">
 						<ul id="menu-main-nav" class="menu">
+							<li class="menu-item"><%= link_to "Sample Puzzles", word_search_puzzles_path %></li>
 							<% if !signed_in? || !current_user.subscription.paid_user? %>
 								<li class="menu-item"><%= link_to "Buy Now!", plans_path %></li>
 							<% end %>
