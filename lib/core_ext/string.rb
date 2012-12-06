@@ -6,6 +6,6 @@ class String
 
 	# Turn a SEO ready link string to a category string
 	def link_to_category
-		self.titlecase.strip.gsub('-', ' ')
+		self.strip.gsub('-', ' ').titlecase
 	end
 end
