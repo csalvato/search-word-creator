@@ -4,5 +4,6 @@
 # User-Agent: *
 # Disallow: /
 
+Sitemap: http://searchwordcreator.com/sitemap.xml
 User-Agent: *
 Disallow: /assets/*
