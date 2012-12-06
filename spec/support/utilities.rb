@@ -15,6 +15,14 @@ def valid_signin(user)
   click_button "Sign in"
 end
 
+def valid_signup
+  fill_in "Email",    with: "user123@example.com"
+  fill_in "Full Name", with: "Example User"
+  fill_in "Password", with: "foobar"
+  fill_in "Confirmation", with: "foobar"
+  click_button "Create My Account"
+end
+
 RSpec::Matchers.define :have_heading_and_title_with_text do |title_text|
   match do |page|
     page.should have_selector('h1', text: title_text)

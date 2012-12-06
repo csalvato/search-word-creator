@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   	if @user.save
       sign_in @user
 			flash[:success] = "Welcome to the Search Word Creator!"
-  		redirect_to new_word_search_puzzle_path
+  		redirect_back_or(new_word_search_puzzle_path)
   	else
 			render 'new'
   	end

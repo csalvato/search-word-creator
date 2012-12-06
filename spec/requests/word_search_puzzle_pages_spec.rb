@@ -134,7 +134,6 @@ describe "WordSearchPuzzlePagesSpecs" do
 			before do
 				visit word_search_puzzles_path 
 			end
-			let(:page_type) { 'page' }
 						
 			it { should have_link "Holiday" }
 
@@ -156,6 +155,31 @@ describe "WordSearchPuzzlePagesSpecs" do
 						end
 
 						it { should have_selector("h5", content:"Sign in") }
+
+						describe "and then signing in" do
+							before do
+								valid_signin(user)							
+							end
+
+							it_should_behave_like "Step 1 Page"
+							it { should have_content("CHIMNEY") }
+
+							describe "and moving to the next step" do
+								before { click_button "Next Step" }
+
+								it_should_behave_like "Step 2 Page"
+							end
+						end
+
+						describe "and then signing up" do
+							before do
+								click_link "Sign up now!"
+								valid_signup
+							end
+
+							it_should_behave_like "Step 1 Page"
+							it { should have_content("CHIMNEY") }
+						end
 					end
 				end
 			end
@@ -198,6 +222,5 @@ describe "WordSearchPuzzlePagesSpecs" do
 				end
 			end
 		end
-
 	end
 end
