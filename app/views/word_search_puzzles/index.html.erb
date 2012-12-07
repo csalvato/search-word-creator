@@ -35,9 +35,9 @@
 	</div>
 	<div class="promo-row">
 	<% end %>
-		<div class="promo-entry category promo-btn">
-			<%= link_to category[:name], category_path(category[:name].category_to_link) %>
-			<%= "#{pluralize(category[:count], 'puzzle')}" %>
-		</div>
+	<%= link_to category_path(category[:name].category_to_link), class: "category" do %>
+		<%= category[:name] %> 
+		<span class="puzzle-count"><%= pluralize(category[:count], 'puzzle') %> </span>
+	<% end %>
 <% end %>
 </div>

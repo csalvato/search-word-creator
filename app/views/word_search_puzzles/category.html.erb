@@ -31,8 +31,6 @@
 	</div>
 	<div class="promo-row">
 	<% end %>
-		<div class="promo-entry promo-btn">
-			<%= link_to puzzle.name, promo_puzzle_path(@category, puzzle.name.category_to_link ) %>
-		</div>
+	<%= link_to puzzle.name, promo_puzzle_path(@category, puzzle.name.category_to_link ) %>
 <% end %>
 </div>

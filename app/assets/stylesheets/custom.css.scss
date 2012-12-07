@@ -21,22 +21,16 @@
 }
 
 /* Category entries for promo pages */
-.category-entry {
-
-}
-
-.promo-entry:last-child{
-	margin-right: 0px;
-}
-
-.promo-entry {
+.promo-row a, .promo-print-btn {
 	width: 217px;
 	margin: 10px 20px 10px 0px;
 	padding: 5px 0px;
 	float: left;
-}
-
-.promo-btn {
+	display: block;
+	font-weight: bold;
+	font-size: 18px;
+	text-shadow: 0 1px 0 #395c09;
+	line-height: 22px;
 	background: #7cc319 url(../assets/saas-images/bg-button.gif) repeat-x left bottom;
 	color: #fff;
 	text-align: center;
@@ -49,24 +43,40 @@
 	-webkit-border-radius: 5px;
 }
 
-.promo-entry.category {
+.promo-row a:last-child{
+	margin-right: 0px;
+}
+
+.promo-row.category {
 	height: 44px;
 }
 
-.promo-btn:hover {
+.promo-row .puzzle-count {
+	display: block;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 17px;
+}
+
+.promo-row a:hover, .promo-print-btn:hover {
+	color: #fff;
 	box-shadow: 0 0 5px rgba(0, 0, 255, 1);
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, 1); 
   -moz-box-shadow: 0 0 5px rgba(0, 0, 255, 1); 
   border:1px solid rgba(0,0,255, 0.8);
 }
 
-.promo-entry a, .promo-btn a {
-	color: #fff;
-	display: block;
-	font-weight: bold;
-	font-size: 18px;
-	text-shadow: 0 1px 0 #395c09;
-	line-height: 22px;
+.promo-text {
+	float:left;
+	display: inline;
+	width: 435px;
+}
+
+.promo-text .promo-print-btn {
+	float:none;
+	width: 40%;
+	padding: 10px;
+	margin: 30px auto;
 }
 
 .promo-img {
@@ -87,20 +97,4 @@
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
-}
-
-.promo-entry a:hover, .promo-btn a:hover {
-	color: #fff;
-}
-
-.promo-text {
-	float:left;
-	display: inline;
-	width: 435px;
-}
-
-.promo-text .promo-btn {
-	width: 40%;
-	padding: 10px;
-	margin: 30px auto;
 }

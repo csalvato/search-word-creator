@@ -39,8 +39,5 @@
 	<% end %></p>
 	<br/>
 	<p>You can create puzzles like these using Search Word Creator. You can try it, totally free, for up to 15 puzzles.</p>
-
-	<div class="promo-btn">
-		<%= link_to "Print Puzzles", new_promo_word_search_puzzle_path(@word_search_puzzle)%>
-	</div>
+	<%= link_to "Print Puzzles", new_promo_word_search_puzzle_path(@word_search_puzzle), class: "promo-print-btn"%>
 </div>
