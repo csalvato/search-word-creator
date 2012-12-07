@@ -21,7 +21,7 @@ class WordSearchPuzzlesController < ApplicationController
   def create
   	grid_size = 18
     @words = params[:word_search_puzzle][:words].split("\r\n")
-    @word_search_puzzle = current_user.word_search_puzzles.build(
+    @word_search_puzzle = WordSearchPuzzle.new(
   	                         name: params[:word_search_puzzle][:name],
 														 words: @words,
 														 grid_width: grid_size,
@@ -36,14 +36,13 @@ class WordSearchPuzzlesController < ApplicationController
   end
 
   def print
-    if session[:params]
-      params = session[:params]
-    end
-    logger.debug "SESSION: #{session}"
+    loaded_params = session[:params] || params
   	grid_size = 18
-    num_puzzles_printed = Integer(params[:num_puzzles])
-		@word_search_puzzle = WordSearchPuzzle.find(params[:word_search_puzzle_id])
+    num_puzzles_printed = Integer(loaded_params[:num_puzzles])
+		@word_search_puzzle = WordSearchPuzzle.find(loaded_params[:word_search_puzzle_id])
+    @word_search_puzzle.user = current_user
     @word_search_puzzle.times_printed += num_puzzles_printed
+    # Note: saving subscription updates the puzzle count for the user
     if @word_search_puzzle.save && current_user.subscription.save
   		pdf = SearchWordDocument.new(words: @word_search_puzzle.words,
                                    puzzle_grid_size: grid_size)
