@@ -34,6 +34,7 @@ module SessionsHelper
 
 	def store_location
 		session[:return_to] = request.url
+		session[:params] = params
  	end
 
 	def redirect_back_or(default)

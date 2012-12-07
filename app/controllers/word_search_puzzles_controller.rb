@@ -36,6 +36,10 @@ class WordSearchPuzzlesController < ApplicationController
   end
 
   def print
+    if session[:params]
+      params = session[:params]
+    end
+    logger.debug "SESSION: #{session}"
   	grid_size = 18
     num_puzzles_printed = Integer(params[:num_puzzles])
 		@word_search_puzzle = WordSearchPuzzle.find(params[:word_search_puzzle_id])
