@@ -8,188 +8,398 @@
 
 <url>
   <loc>http://www.searchwordcreator.com/</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/faq</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/contact</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/signin</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/word_search_puzzles</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/plans-and-pricing</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/signup</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/word-search-puzzles/american-history</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/word-search-puzzles/holiday</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/word-search-puzzles/agriculture</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/architecture</loc>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/art</loc>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/purchase</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.searchwordcreator.com/word-search-puzzles/american-history/american-presidents</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.51</priority>
-</url>
-<url>
   <loc>http://www.searchwordcreator.com/word-search-puzzles/american-history/american-revolution</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/word-search-puzzles/american-history/the-1900s</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/word-search-puzzles/american-history/the-1910s</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/word-search-puzzles/american-history/the-1920s</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/word-search-puzzles/american-history/the-1930s</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/word-search-puzzles/american-history/the-1940s</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/word-search-puzzles/american-history/the-1950s</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/word-search-puzzles/american-history/the-1960s</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/word-search-puzzles/american-history/the-1970s</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/word-search-puzzles/american-history/the-1980s</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/american-history/american-presidents</loc>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/word-search-puzzles/holiday/christmas</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>http://www.searchwordcreator.com/word-search-puzzles/holiday/christmas-(seasonal)</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>http://www.searchwordcreator.com/word-search-puzzles/holiday/christmas-(traditional)</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/word-search-puzzles/holiday/hanukkah</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/word-search-puzzles/holiday/kwanza</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/word-search-puzzles/holiday/frank-sinatra-christmas</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.searchwordcreator.com/word-search-puzzles/agriculture/farm-machinery</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/holiday/christmas-(traditional)</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/holiday/christmas-(seasonal)</loc>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/word-search-puzzles/agriculture/crops-from-mexico</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>http://www.searchwordcreator.com/word-search-puzzles/agriculture/horse-saddle</loc>
-  <lastmod>2012-12-06T15:03:05+00:00</lastmod>
-  <changefreq>weekly</changefreq>
   <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/agriculture/farm-machinery</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/architecture/building-materials</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/architecture/bridges</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/architecture/famous-bridges</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/architecture/tallest-structures</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/architecture/types-of-bridges</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/art/american-artists</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/art/art-forms-and-mediums</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/art/abstract-art-artists</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/art/baroque-artists</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/art/expressionism-artists</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/art/impressionism-artists</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/art/renaissance-artists</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/art/romanticism-artists</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/art/surrealism-artists</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/art/crayola-crayon-colors</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/art/embroidery-stitches</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/art/embroidery-terms</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/art/fashion-designers</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/art/knitting-terms</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/art/painting-idioms</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/art/painting-styles</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/art/types-of-dances</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word-search-puzzles/art/world-famous-paintings</loc>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/50/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/51/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/52/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/53/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/54/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/55/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/56/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/57/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/58/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/59/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/49/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/37/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/41/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/43/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/44/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/39/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/38/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/47/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/48/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/46/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/62/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/61/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/65/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/66/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/67/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/86/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/87/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/88/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/89/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/90/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/91/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/92/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/93/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/94/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/95/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/96/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/97/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/98/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/99/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/100/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/101/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/102/new</loc>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://www.searchwordcreator.com/word_search_puzzles/103/new</loc>
+  <priority>0.41</priority>
 </url>
 </urlset>
