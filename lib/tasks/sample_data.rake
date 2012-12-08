@@ -311,7 +311,7 @@ namespace :db do
                    category: category,
                    words: ["Be Prepared", "Chow Down", "Circle Of Life", "Endless Night", "Hakuna Matata", "He Lives in You", "King Of Pride Rock", "Mufasa", "Nala", "One By One", "Pumbaa", "Rafiki", "Sarabi", "Scar", "Shadowland", "Shenzi", "Simba", "The Morning Report", "They Live in You", "Timon", "Zazu"] 
                   })
-    puzzles.push({ name: "The Phantom of the Opera",
+    puzzles.push({ name: "Phantom of the Opera",
                    category: category,
                    words: ["All I Ask of You", "Angel Of Music", "Carlotta Giudicelli", "Christine Daae", "Firmin", "Joseph Buquet", "Madame Giry", "Magical Lasso", "Masquerade", "Meg Griy", "Prima Donna", "Raoul", "The Music of the Night", "The Point of No Return", "Think of Me", "Ubaldo Piangi"]
                   })
