@@ -3,7 +3,7 @@
 <% content_for :mixpanel_tracking do %>
 	<script type="text/javascript">
   	  $(document).ready( function(){
-        mixpanel.track("Seeing Promo Page", { 'category': "<%= @puzzle_name %>"});
+        mixpanel.track("Seeing Promo Page", { 'promo puzzle': "<%= @puzzle_name %>"});
       });
   </script>
 <% end %>

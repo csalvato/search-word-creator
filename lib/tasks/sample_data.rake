@@ -183,31 +183,31 @@ namespace :db do
                    category: category,
                    words: ["acting", "architecture", "cartooning", "ceramics", "choreography", "cinema", "dance", "digital art", "drawing", "game design", "graphic design", "mixed media", "model making", "mosaic", "music", "origami", "painting", "performance art", "photography", "poetry", "printmaking", "sculpture", "tattoo", "theatre", "wood carving"] 
                   })
-    puzzles.push({ name: "Artists: Abstract Art",
+    puzzles.push({ name: "Abstract Art Artists",
                    category: category,
                    words: ["Anish Kapoor", "Arthur Dove", "Ben Nicholson", "Burgoyne Diller", "Cy Twombly", "Elie Nadelman", "Henry Moore", "John Hewitt", "Julio Gonzalez", "Lucio Fontana", "Mike Wong Joon Fong", "Norma Nava", "Otto Freundich", "Pam Sanders", "Patrick Heron", "Paula Rego", "Robin Sperling", "Roger Hilton", "Rumyana Koleva", "Sir Anthony Caro", "Stuart Davis", "Wassily Kandinsky", "Willi Baumeister", "William Tucker"] 
                   })
-    puzzles.push({ name: "Artists: Baroque",
+    puzzles.push({ name: "Baroque Artists",
                    category: category,
                    words: ["Alessandro Algardi", "Alonso Cano", "Andrea Sacci", "Carlo Dolci", "Caspar Gras", "Charles Le Brun", "Daniele Crespi", "Domenico Feti", "Francis Bird", "Giovanni Baglione", "Gregorio Fernandez", "Jacob Duck", "Jan Both", "Jan Mytens", "Jan Steen", "Jan Victors", "John Bushnell", "Lambert Doomer", "Luca Giordana", "Philips Koninck", "Pierre Patel", "Pieter Lastman", "Salvator Rosa", "Stefano Maderno", "Vicente Carducho"] 
                   })
-    puzzles.push({ name: "Artists: Expressionism",
+    puzzles.push({ name: "Expressionism Artists",
                    category: category,
                    words: ["Albert Pinkham Ryder", "Alfred Kubin", "August Macke", "Christian Rohlfs", "Constant Permeke", "Egon Schiele", "Emil Nolde", "Erich Heckel", "Ernst Barlach", "Franz Marc", "George Grosz", "Georges Rouault", "Ivan Mestrovic", "Jack Butler Yeats", "Jules Pascin", "Karel Appel", "Marguerite Zorach", "Marsden Hartley", "Max Beckmann", "Oskar Kokoschka", "Otto Dix", "Paul Klee", "Renato Guttuso", "Sir Jacob Epstein", "William Dobell"] 
                   })
-    puzzles.push({ name: "Artists: Impressionism",
+    puzzles.push({ name: "Impressionism Artists",
                    category: category,
                    words: ["Alfred Sisley", "Armand Guillaumin", "Berthe Morisot", "Camille Pissarro", "Childe Hassam", "Claude Monet", "Dame Ethel Walker", "Edgar Degas", "Edouard Manet", "Ernest Lawson", "Eugene Boudin", "Frederic Bazille", "Giacomo Manzu", "Gustave Caillebotte", "John Ottis Adams", "Mary Cassatt", "Maurice Utrillo", "Max Liebermann", "Max Slevogt", "Medardo Rosso", "Rowena Meeks Abdy", "Tom Roberts"] 
                   })
-    puzzles.push({ name: "Artists: Renaissance",
+    puzzles.push({ name: "Renaissance Artists",
                    category: category,
                    words: ["Adam Kraft", "Bellini", "Carlo Crivelli", "Cosimo Tura", "Donatello", "Dosso Dossi", "El Greco", "Filarete", "Fra Angelico", "Gerard David", "Hans Eworth", "Jean Duvet", "Konrad Witz", "Leonardo da Vinci", "Mabuse", "Michelangelo", "Neroccio", "Pedro Machuca", "Raphael", "Sassetta", "Sodoma", "Titian", "Tommaso Masaccio", "Vecchietta", "Veit Stoss"] 
                   })
-    puzzles.push({ name: "Artists: Romanticism",
+    puzzles.push({ name: "Romanticism Artists",
                    category: category,
                    words: ["Alexander Runciman", "Eugene Delacroix", "Eugene Fromentin", "Frances Hodgkins", "Francesco Hayez", "Francois Rude", "Franz Pforr", "Gustave Dore", "Henry Fuseli", "Johan Christian Dahl", "John Constable", "John Crome", "John Linnell", "John Martin", "Orest Kiprensky", "Paul Delaroche", "Philipp Otto Runge", "Richard Bonington", "Samuel Palmer", "Theodore Gericault", "Washington Allston", "William Blake", "William Mulready", "William Ward"] 
                   })
-    puzzles.push({ name: "Artists: Surrealism",
+    puzzles.push({ name: "Surrealism Artists",
                    category: category,
                    words: ["Alberto Giacometti", "Andre Breton", "Antonio Saura", "Ceri Richards", "Dorothea Tanning", "Edward Burra", "Eileen Agar", "Frida Kahlo", "Hans Arp", "Hans Bellmer", "Jean Lurcat", "Joan Miro", "Jock Macdonald", "Kay Sage", "Kurt Seligmann", "Leonora Carrington", "Marc Chagall", "Meret Oppenheim", "Paul Delvaux", "Paul Nash", "Rene Magritte", "Salvador Dali", "Wifredo Lam", "William Turnbull", "Yves Tanguy"] 
                   })
