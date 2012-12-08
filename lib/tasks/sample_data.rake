@@ -6,6 +6,7 @@ namespace :db do
     make_puzzles_for_american_history_category
     make_puzzles_for_architecture
     make_puzzles_for_art
+    make_puzzles_for_art_and_music
   end
 
   def make_puzzles_for_holidays_category
@@ -248,6 +249,117 @@ namespace :db do
                    words: ["American Gothic", "Clothed Maja", "False Start", "Impression Sunrise", "Las Meninas", "Madame Recamier", "Nightwatch", "Portrait of Louis XIV", "The Birth of Venus", "The Hay Wain", "The Kiss", "The Last Judgement", "The Last Supper", "The Scream", "The Sistine Madonna", "The Starry Night", "The Wandering Jew", "Woman III"] 
                   })
     puzzles.each do |puzzle|
+      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
+      new_puzzle.words = puzzle[:words]
+      #puts new_puzzle.inspect #debugging
+      new_puzzle.save!
+    end
+  end
+
+    def make_puzzles_for_art_and_music
+    puzzles = []
+    category = "Art & Music"
+    puzzles.push({ name: "Annie Characters",
+                   category: category,
+                   words: ["Annette", "Annie", "Bert Healy", "Bundles McCloskey", "Cecille", "Drake", "Duffy", "Fred McCracken", "Grace Ferrell", "Ickes", "Jimmy Johnson", "July", "Kate", "Lily", "Miss Hannigan", "Molly", "Oliver Warbucks", "Pepper", "Roosevelt", "Rooster", "Sandy", "Sophie", "Tessie", "Ward"] 
+                  })
+    puzzles.push({ name: "Bye Bye Birdie",
+                   category: category,
+                   words: ["Alberto Peterson", "An English Teacher", "Baby Talk to Me", "Conrad Birdie", "Honestly Sincere", "Hugo Peabody", "Kids", "Kim MacAfee", "Lot of Livin To Do", "Mae Peterson", "Normal American Boy", "One Boy", "One Last Kiss", "Penelope Ann", "Put On A Happy Face", "Randolph MacAfee", "Rosie", "Rosie Alvarez", "Spanish Rose", "The Telephone Hour", "Ursula Merkle"] 
+                  })
+    puzzles.push({ name: "Camelot",
+                   category: category,
+                   words: ["Before I Gaze At You", "C'est Moi", "Camelot", "Fie On Goodness!", "Follow Me", "Guenevere", "Guenevere", "How To Handle A Woman", "King Arthur", "Lady Catherine", "Merlyn", "Mordred", "Morgan Le Fey", "Nimue", "Parade", "Pellinore", "Sir Lancelot", "The Lusty Month of May"] 
+                  })
+    puzzles.push({ name: "Chicago",
+                   category: category,
+                   words: "All I Care About", "All That Jazz", "Amos Hart", "Bandleader", "Billy Flynn", "Cell Block Tango", "Class", "Fred Casely", "Funny Honey", "I Know A Girl", "Little Bit of Good", "Mary Sunshine", "Matron Mama Morton", "Me and My Baby", "My Own Best Friend", "Nowadays", "Razzle Dazzle", "Roxie", "Roxie Hart", "Sergeant Fogarty", "Velma Kelly"] 
+                  })
+    puzzles.push({ name: "Evita Songs",
+                   category: category,
+                   words: ["Buenos Aires", "Hello and Goodbye", "Lament", "Latin Chant", "Oh What A Circus", "Partido Feminista", "Rainbow High", "Rainbow Tour", "Requiem for Evita", "Santa Evita", "She Is A Diamond", "Waltz for Eva and Che", "You Must Love Me"]
+                  })
+    puzzles.push({ name: "Grease Songs",
+                   category: category,
+                   words: ["Blue Moon", "Born To Hand Jive", "Grease", "Grease Megamix", "Greased Lightning", "Hound Dog", "Mooning", "Rydell Fight Song", "Sandy", "Summer Nights", "Tears on My Pillow", "Those Magic Changes", "We Go Together"]
+                  })
+    puzzles.push({ name: "Hairspray Characters",
+                   category: category,
+                   words: ["Amber Von Tussle", "Brad", "Brenda", "Corny Collins", "Doreen", "Edna Turnblad", "Fender", "IQ", "Link Larkin", "Little Inez", "Lou Ann", "Mikey", "Miss Wimsey", "Motormouth Maybelle", "Noreen", "Penny Pingleton", "Prudy Pingleton", "Seaweed", "Shelley", "Sketch", "Tracy Turnblad", "Velma Von Tussle", "Wilbur Turnblad"]
+                  })
+    puzzles.push({ name: "Hello, Dolly!",
+                   category: category,
+                   words: ["Ambrose Kemper", "Barnaby Tucker", "Call on Dolly", "Cornelius Hackl", "Dancing", "Dolly Levi", "Elegance", "Finale Ultimo", "Gussie Granger", "Horace Vandergelder", "I Put My Hand In", "Irene Molloy", "It Only Takes a Moment", "It Takes a Woman", "Minnie Fay", "Motherhood March", "Ribbons Down My Back", "Rudolph Reisenweber", "The Polka Contest", "The Waiters Gallop"] 
+                  })
+    puzzles.push({ name: "Les Miserables",
+                   category: category,
+                   words: ["Babet", "Bamatabois", "Bishop of Digne", "Brujon", "Claquesous", "Combeferre", "Cosette", "Courfeyrac", "Enjolras", "Eponine", "Fantine", "Fauchelevant", "Feuilly", "Foreman", "Gavroche", "Grantaire", "Javert", "Jean Valjean", "Joly", "Lesgles", "Madame Thenardier", "Marius", "Montparnasse", "Prouvaire", "Thenardier"] 
+                  })
+    puzzles.push({ name: "Les Miserables Songs",
+                   category: category,
+                   words: ["A Heart Full of Love", "A Little Fall of Rain", "At the End of the Day", "Beggars at the Feast", "Bring Him Home", "Castle on a Cloud", "Come to Me", "Dog Eats Dog", "I Dreamed a Dream", "In My Life", "Look Down", "Lovely Ladies", "Master of the House", "On My Own", "One Day More", "Red and Black", "Stars", "Thenardier Waltz", "Turning", "Wedding Chorale", "Who Am I"] 
+                  })
+    puzzles.push({ name: "Mamma Mia!",
+                   category: category,
+                   words: ["Bill Austin", "Chiquitita", "Dancing Queen", "Does Your Mother Know", "Donna Sheridan", "Gimme! Gimme!", "Harry Bright", "Lay All Your Love on Me", "Mamma Mia", "Our Last Summer", "Rosie", "Sam Carmichael", "Sophie Sheridan", "Super Trouper", "Take a Chance on Me", "Tanya", "The Name of the Game", "Under Attack", "Voulez-Vous"] 
+                  })
+    puzzles.push({ name: "Rent Songs",
+                   category: category,
+                   words: ["Another Day", "Christmas Bells", "Contact", "Goodbye Love", "I Should Tell You", "Life Support", "Light My Candle", "On the Street", "One Song Glory", "Out Tonight", "Over the Moon", "Rent", "Santa Fe", "Seasons of Love", "Take Me or Leave Me", "Tango Maureen", "What You Own", "Without You", "Your Eyes"] 
+                  })
+    puzzles.push({ name: "The Lion King",
+                   category: category,
+                   words: ["Be Prepared", "Chow Down", "Circle Of Life", "Endless Night", "Hakuna Matata", "He Lives in You", "King Of Pride Rock", "Mufasa", "Nala", "One By One", "Pumbaa", "Rafiki", "Sarabi", "Scar", "Shadowland", "Shenzi", "Simba", "The Morning Report", "They Live in You", "Timon", "Zazu"] 
+                  })
+    puzzles.push({ name: "The Phantom of the Opera",
+                   category: category,
+                   words: ["All I Ask of You", "Angel Of Music", "Carlotta Giudicelli", "Christine Daae", "Firmin", "Joseph Buquet", "Madame Giry", "Magical Lasso", "Masquerade", "Meg Griy", "Notes/Prima Donna", "Raoul", "The Music of the Night", "The Point of No Return", "Think of Me", "Ubaldo Piangi"]
+                  })
+    puzzles.push({ name: "80s Hitmakers",
+                   category: category,
+                   words: ["Belinda Carlisle", "Billy Idol", "Bon Jovi", "Culture Club", "Cyndi Lauper", "Debbie Gibson", "Duran Duran", "Heart", "Journey", "Kiss", "Madonna", "Metallica", "Motley Crue", "Oingo Boingo", "Pat Benatar", "Pet Shop Boys", "Prince", "Sheena Easton", "Taylor Dayne", "The Bangles", "The Clash", "The Cult", "The Police", "Tiffany"] 
+                  })
+    puzzles.push({ name: "90s Hitmakers",
+                   category: category,
+                   words: ["Ace of Base", "Barenaked Ladies", "Boyz II Men", "Brandy", "Bryan Adams", "C&C Music Factory", "Celine Dion", "Color Me Badd", "EMF", "Hanson", "Janet Jackson", "Kris Kross", "Lauryn Hill", "Mariah Carey", "Michael Bolton", "Nelson", "New Kids on The Block", "PM Dawn", "Ricky Martin", "Roxette", "Seal", "Spice Girls"]
+                  })
+    puzzles.push({ name: "Ballet",
+                   category: category,
+                   words: ["adage", "arabesque", "ballerina", "ballon", "barre", "battement tendu", "cabriole", "cavalier", "cinq", "coda", "corps de ballet", "dessus", "devant", "en avant", "fish dive", "fondu", "grand", "grand battement", "mime", "pas", "pirouette", "plie", "pointe shoes", "rise", "tutu"] 
+                  })
+    puzzles.push({ name: "Big Band Leaders",
+                   category: category,
+                   words: ["Benny Carter", "Bill Elliott", "Billy May", "Cab Calloway", "Claude Bolling", "Dean Mora", "Duke Ellington", "Eddie Reed", "Eliot Lawrence", "Erskine Hawkins", "Fletcher Henderson", "George Gee", "Glenn Miller", "Henry Mancini", "Henry Red Allen", "Horace Henderson", "Jay McShann", "Les Brown", "Lionel Hampton", "Ray Anthony", "Ray McKinley", "Shorty Rogers", "Sy Oliver", "Terry Gibbs", "Tommy Dorsey"] 
+                  })
+    puzzles.push({ name: "Blues Musicians",
+                   category: category,
+                   words: ["Bessie Smith", "Billie Holiday", "Bo Diddley", "Dinah Washington", "Elmore James", "Etta James", "Fats Domino", "Freddie King", "Jimmy Reed", "Johnny Otis", "Koko Taylor", "Leroy Carr", "Little Walter", "Ma Rainey", "Magic Sam", "Memphis Minnie", "Memphis Slim", "Muddy Waters", "Ray Charles", "Rufus Thomas", "Sippie Wallace", "Slim Harpo", "Stevie Ray Vaughan", "Walter Davis"] 
+                  })
+    puzzles.push({ name: "Broadway Musicals",
+                   category: category,
+                   words: ["A Chorus Line", "Annie", "Annie Get Your Gun", "Bye Bye Birdie", "Camelot", "Cats", "Chicago", "Evita", "Fiddler on The Roof", "Funny Girl", "Grease", "Hairspray", "Les Miserables", "Lion King", "Miss Saigon", "Oklahoma", "Rent", "South Pacific", "The King and I"]
+                  })
+    puzzles.push({ name: "Wicked",
+                   category: category,
+                   words: ["Ama Clutch", "Boq", "Chistery", "Cowardly Lion", "Dorothy", "Elphaba", "Fiyero", "Frex", "Glinda", "Grommetik", "Irji", "Liir", "Madame Morrible", "Manek", "Melina", "Nessarose", "Nor", "Pfannee", "Professor Nikidik", "Sarima", "Shen Shen", "The Wizard of Oz", "Turtle Heart", "Yackle"]
+                  })
+    puzzles.push({ name: "Christian Hymns",
+                   category: category,
+                   words: ["Abide With Me", "Amazing Grace", "At the Cross", "Ave Maria", "Be Still My Soul", "Be Thou My Vision", "Blessed Assurance", "Fairest Lord Jesus", "God Of Our Fathers", "Holy Holy Holy", "How Great Thou Art", "In The Garden", "It is Well With My Soul", "Jesus Loves Me", "Jesus Paid It All", "Joyful Joyful", "Rock of Ages", "The Holy City", "The Old Rugged Cross", "To God Be the Glory"] 
+                  })
+    puzzles.push({ name: "Christian Songs",
+                   category: category,
+                   words: ["All About You", "All Around Me", "Arms of Jesus", "Back In His Arms", "Cry Out to Jesus", "East to West", "God of This City", "Grace Like Rain", "He", "I Will Rise", "In Me", "Jesus Messiah", "Justified", "Life", "Maker of the Stars", "Mountain of God", "My Deliverer", "Rise Up", "Run To You", "Saved", "Shifting Sand", "Show Me Your Glory", "This Man", "Undone", "Walk By Faith"] 
+                  })
+    puzzles.push({ name: "Classical Ballet",
+                   category: category,
+                   words: ["Ballet Gala", "Black Swan", "Blue Bird", "Cinderella", "Coppelia", "Don Quixote", "Fancy Free", "Firebird", "Giselle", "La Bayadere", "La Peri", "La Sylphide", "La Ventana", "Markitenka", "Napoli", "Peter Pan", "Romeo and Juliet", "Seven Beauties", "Sleeping Beauty", "Spectre de la Rose", "Swan Lake", "The Fairy Doll", "The Nutcracker", "Two By Drigo"] 
+                  })
+    puzzles.push({ name: "Classical Composers",
+                   category: category,
+                   words: ["Bach", "Beethoven", "Berlioz", "Brahms", "Chopin", "Elgar", "Faure", "Gershwin", "Handel", "Haydn", "Hoffman", "Holst", "Kuhlau", "Mahler", "Mendelssohn", "Mozart", "Pachelbel", "Scarlatti", "Schubert", "Schumann", "Shostakovich", "Sibelius", "Tchaikovsky", "Vivaldi", "von Weber"] 
+                  })
+     puzzles.each do |puzzle|
       new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
       new_puzzle.words = puzzle[:words]
       #puts new_puzzle.inspect #debugging
