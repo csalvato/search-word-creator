@@ -269,11 +269,11 @@ namespace :db do
                   })
     puzzles.push({ name: "Camelot",
                    category: category,
-                   words: ["Before I Gaze At You", "C'est Moi", "Camelot", "Fie On Goodness!", "Follow Me", "Guenevere", "Guenevere", "How To Handle A Woman", "King Arthur", "Lady Catherine", "Merlyn", "Mordred", "Morgan Le Fey", "Nimue", "Parade", "Pellinore", "Sir Lancelot", "The Lusty Month of May"] 
+                   words: ["Before I Gaze At You", "Camelot", "Fie On Goodness", "Follow Me", "Guenevere", "Guenevere", "How To Handle A Woman", "King Arthur", "Lady Catherine", "Merlyn", "Mordred", "Morgan Le Fey", "Nimue", "Parade", "Pellinore", "Sir Lancelot", "The Lusty Month of May"] 
                   })
     puzzles.push({ name: "Chicago",
                    category: category,
-                   words: "All I Care About", "All That Jazz", "Amos Hart", "Bandleader", "Billy Flynn", "Cell Block Tango", "Class", "Fred Casely", "Funny Honey", "I Know A Girl", "Little Bit of Good", "Mary Sunshine", "Matron Mama Morton", "Me and My Baby", "My Own Best Friend", "Nowadays", "Razzle Dazzle", "Roxie", "Roxie Hart", "Sergeant Fogarty", "Velma Kelly"] 
+                   words: ["All I Care About", "All That Jazz", "Amos Hart", "Bandleader", "Billy Flynn", "Cell Block Tango", "Class", "Fred Casely", "Funny Honey", "I Know A Girl", "Little Bit of Good", "Mary Sunshine", "Matron Mama Morton", "Me and My Baby", "My Own Best Friend", "Nowadays", "Razzle Dazzle", "Roxie", "Roxie Hart", "Sergeant Fogarty", "Velma Kelly"] 
                   })
     puzzles.push({ name: "Evita Songs",
                    category: category,
@@ -301,7 +301,7 @@ namespace :db do
                   })
     puzzles.push({ name: "Mamma Mia!",
                    category: category,
-                   words: ["Bill Austin", "Chiquitita", "Dancing Queen", "Does Your Mother Know", "Donna Sheridan", "Gimme! Gimme!", "Harry Bright", "Lay All Your Love on Me", "Mamma Mia", "Our Last Summer", "Rosie", "Sam Carmichael", "Sophie Sheridan", "Super Trouper", "Take a Chance on Me", "Tanya", "The Name of the Game", "Under Attack", "Voulez-Vous"] 
+                   words: ["Bill Austin", "Chiquitita", "Dancing Queen", "Does Your Mother Know", "Donna Sheridan", "Gimme Gimme", "Harry Bright", "Lay All Your Love on Me", "Mamma Mia", "Our Last Summer", "Rosie", "Sam Carmichael", "Sophie Sheridan", "Super Trouper", "Take a Chance on Me", "Tanya", "The Name of the Game", "Under Attack", "Voulez-Vous"] 
                   })
     puzzles.push({ name: "Rent Songs",
                    category: category,
@@ -313,7 +313,7 @@ namespace :db do
                   })
     puzzles.push({ name: "The Phantom of the Opera",
                    category: category,
-                   words: ["All I Ask of You", "Angel Of Music", "Carlotta Giudicelli", "Christine Daae", "Firmin", "Joseph Buquet", "Madame Giry", "Magical Lasso", "Masquerade", "Meg Griy", "Notes/Prima Donna", "Raoul", "The Music of the Night", "The Point of No Return", "Think of Me", "Ubaldo Piangi"]
+                   words: ["All I Ask of You", "Angel Of Music", "Carlotta Giudicelli", "Christine Daae", "Firmin", "Joseph Buquet", "Madame Giry", "Magical Lasso", "Masquerade", "Meg Griy", "Prima Donna", "Raoul", "The Music of the Night", "The Point of No Return", "Think of Me", "Ubaldo Piangi"]
                   })
     puzzles.push({ name: "80s Hitmakers",
                    category: category,
@@ -321,7 +321,7 @@ namespace :db do
                   })
     puzzles.push({ name: "90s Hitmakers",
                    category: category,
-                   words: ["Ace of Base", "Barenaked Ladies", "Boyz II Men", "Brandy", "Bryan Adams", "C&C Music Factory", "Celine Dion", "Color Me Badd", "EMF", "Hanson", "Janet Jackson", "Kris Kross", "Lauryn Hill", "Mariah Carey", "Michael Bolton", "Nelson", "New Kids on The Block", "PM Dawn", "Ricky Martin", "Roxette", "Seal", "Spice Girls"]
+                   words: ["Ace of Base", "Barenaked Ladies", "Boyz II Men", "Brandy", "Bryan Adams", "Celine Dion", "Color Me Badd", "EMF", "Hanson", "Janet Jackson", "Kris Kross", "Lauryn Hill", "Mariah Carey", "Michael Bolton", "Nelson", "New Kids on The Block", "PM Dawn", "Ricky Martin", "Roxette", "Seal", "Spice Girls"]
                   })
     puzzles.push({ name: "Ballet",
                    category: category,
@@ -362,7 +362,6 @@ namespace :db do
      puzzles.each do |puzzle|
       new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
       new_puzzle.words = puzzle[:words]
-      #puts new_puzzle.inspect #debugging
       new_puzzle.save!
     end
   end
