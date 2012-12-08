@@ -359,9 +359,106 @@ namespace :db do
                    category: category,
                    words: ["Bach", "Beethoven", "Berlioz", "Brahms", "Chopin", "Elgar", "Faure", "Gershwin", "Handel", "Haydn", "Hoffman", "Holst", "Kuhlau", "Mahler", "Mendelssohn", "Mozart", "Pachelbel", "Scarlatti", "Schubert", "Schumann", "Shostakovich", "Sibelius", "Tchaikovsky", "Vivaldi", "von Weber"] 
                   })
+    puzzles.push({ name: "Country Music Artists",
+                   category: category,
+                   words: ["Alabama", "Brooks And Dunn", "Clint Black", "Conway Twitty", "Crystal Gayle", "Dolly Parton", "Dwight Yoakam", "Garth Brooks", "Gene Autry", "George Strait", "Hank Williams", "John Denver", "Johnny Cash", "Kenny Rogers", "Loretta Lynn", "Patsy Cline", "Patty Loveless", "Randy Travis", "Reba McEntire", "Shania Twain", "The Judds", "Tim McGraw", "Toby Keith", "Waylon Jennings", "Willie Nelson"] 
+                  })
+    puzzles.push({ name: "Country Music Songs",
+                   category: category,
+                   words: ["A Boy Named Sue", "Always On My Mind", "Amazed", "Blue", "Crazy", "Delta Dawn", "Desperado", "El Paso", "Fancy", "Flowers On", "Folsom Prison Blues", "Friends In Low Places", "Galveston", "I Fall To Pieces", "I Will Always Love You", "Independence Day", "Lovesick Blues", "Ring of Fire", "Rose Garden", "Stand By Your Man", "The Gambler"] 
+                  })
+    puzzles.push({ name: "Elton John Songs",
+                   category: category,
+                   words: ["Believe", "Bennie and The Jets", "Blessed", "Blue Eyes", "Candle in The Wind", "Circle of Life", "Crocodile Rock", "Daniel", "Honky Cat", "Levon", "Madness", "Part-Time Love", "Rocket Man", "Sad Songs", "This Town", "Tiny Dancer", "Tonight", "True Love", "Your Song"]
+                  })
+    puzzles.push({ name: "Opera Composers",
+                   category: category,
+                   words: ["Amilcare Ponchielli", "Arrigo Boito", "Benjamin Britten", "Carlo Soliva", "Charles Gounod", "Francesco Cilea", "Fromental Halevy", "Gaetano Donizetti", "Georges Bizet", "Giacomo Puccini", "Gioachino Rossini", "Giussepe Verde", "Gustave Charpentier", "Heinrich Marschner", "Henry Purcell", "Jules Massenet", "Leos Janacek", "Luigi Mancinelli", "Pietro Mascagni", "Richard Strauss", "Ruggero Leoncavallo", "Saverio Mercadante", "Umberto Giordano", "Vincenzo Bellini"] 
+                  })
+    puzzles.push({ name: "Female Pop Artists",
+                   category: category,
+                   words: ["Amy Winehouse", "Bette Midler", "Beyonce Knowles", "Bjork", "Carly Simon", "Celine Dion", "Cher", "Christina Aguilera", "Cyndi Lauper", "Diana Ross", "Fergie", "Janet Jackson", "Jewel", "Katy Perry", "Kelly Clarkson", "Leona Lewis", "Madonna", "Mariah Carey", "Natalie Merchant", "Pink", "Sade", "Shakira", "Sheryl Crow", "Tori Amos", "Whitney Houston"]
+                  })
+    puzzles.push({ name: "Frank Sinatra",
+                   category: category,
+                   words: ["All the Way", "Anything Goes", "As Time Goes By", "Born Free", "Cheek to Cheek", "Come Fly With Me", "Dream", "Evergreen", "Faithful", "Get Happy", "High Hopes", "I See it Now", "It Had To Be You", "Jeepers Creepers", "Lady Day", "Mad About You", "My Girl", "Nancy", "Night and Day", "One Love", "Pass Me By", "The Good Life"] 
+                  })
+    puzzles.push({ name: "Jazz and Blues",
+                   category: category,
+                   words: ["Anna Jones", "Bessie Smith", "Billie Holiday", "Billy Massey", "Cab Calloway", "Clarence Williams", "Cleo Brown", "Dave Wilborn", "Don Redman", "Duke Ellington", "Ella Fitzgerald", "Ethel Waters", "Frankie Jaxon", "George Thomas", "Ivie Anderson", "Louis Armstrong", "Louis Jordan", "Noble Sissle", "Pha Terrell", "Thomas Waller", "Tom Stacks", "Victoria Spivey", "Viola McCoy", "Wesley Wilson"] 
+                  })
+    puzzles.push({ name: "Madonna Songs",
+                   category: category,
+                   words: ["Angel", "Borderline", "Celebration", "Cherish", "Crazy For You", "Dress You Up", "Express Yourself", "Holiday", "Into the Groove", "Justify My Love", "Like a Prayer", "Live to Tell", "Lucky Star", "Material Girl", "Open Your Heart", "Ray of Light", "Rescue Me", "Revolver", "Take a Bow", "Time Stood Still", "True Blue", "Vogue"] 
+                  })
+    puzzles.push({ name: "Male Pop Artists",
+                   category: category,
+                   words: ["Barry Manilow", "Ben Harper", "Billy Joel", "Bobby Brown", "Brian McKnight", "Bryan Adams", "Clay Aiken", "Don Henley", "George Michael", "Jack Johnson", "John Mayer", "Julio Iglesias", "Justin Timberlake", "Kenny Loggins", "Lionel Ritchie", "Lou Rawls", "Luther Vandross", "Michael Jackson", "Nick Carter", "Paul Simon", "Peter Cetera", "Rob Thomas", "Seal", "Sting", "Usher"] 
+                  })
+    puzzles.push({ name: "Michael Jackson",
+                   category: category,
+                   words: ["Another Part of Me", "Bad", "Beat It", "Ben", "Billie Jean", "Black or White", "Butterflies", "Dirty Diana", "Got to Be There", "Human Nature", "Man in The Mirror", "Remember the Time", "Rock With You", "Smooth Criminal", "The Girl Is Mine", "Thriller", "Who Is It", "You Are Not Alone", "You Rock My World"] 
+                  })
+    puzzles.push({ name: "Music Styles",
+                   category: category,
+                   words: ["Blues", "Broadway", "New Age", "aleatoric", "bluegrass", "classical", "country", "disco", "folk", "funk", "gospel", "heavy metal", "hip hop", "house", "jazz", "pop", "progressive rock", "punk rock", "reggae", "rhythm and blues", "rock and roll", "salsa", "soul", "techno"] 
+                  })
+    puzzles.push({ name: "Orchestral Instruments",
+                   category: category,
+                   words: ["English horn", "French horn", "bass clarinet", "bass drum", "bass trombone", "bassoon", "cello", "clarinet", "contrabassoon", "cymbals", "double bass", "flute", "harp", "marimba", "oboe", "piccolo", "snare drum", "timpani", "triangle", "trombone", "trumpet", "tuba", "viola", "violin", "xylophone"] 
+                  })
+    puzzles.push({ name: "Rock Musicians",
+                   category: category,
+                   words: ["Beatles", "Chuck Barry", "Creed", "David Bowie", "Deftones", "Elvis Presley", "Eric Clapton", "Etta James", "Fats Domino", "Grateful Dead", "Janis Joplin", "Jerry Lee Lewis", "Jimi Hendrix", "Led Zeppelin", "Little Richard", "Mick Jagger", "Pearl Jam", "Rush", "Soundgarden", "Talking Heads", "The Doors", "The Police", "Tool", "Van Halen"] 
+                  })
+    puzzles.push({ name: "Sammy Davis Jr.",
+                   category: category,
+                   words: ["Begin the Beguine", "Birth of the Blues", "Blame It On My Youth", "Bye Bye Blackbird", "For Once in My Life", "Guys and Dolls", "John Shaft", "Let There Be Love", "Life is A Woman", "My Romance", "Soon", "Talk to the Animals", "The Candy Man", "Thou Swell", "Time To Ride", "Too Close for Comfort"] 
+                  })
+    puzzles.push({ name: "Tap Dance",
+                   category: category,
+                   words: ["accent", "back flap", "ball change", "brush", "buffalo", "cake walk", "carryover", "click toes", "cluster", "dig", "double hop", "drag", "draw back", "esence", "flap", "glide", "grind", "heel change", "heel toe", "inside slide", "jingle", "patter", "riffle", "scoot", "slam"] 
+                  })
+    puzzles.push({ name: "Tap Dance 2",
+                   category: category,
+                   words: ["Back-Front", "Ball Beat", "Ball Tap", "Buck and Wing", "Catch Step", "Cincinnati", "Cork Screw", "Cross Bar", "Cross Leg Walk", "Cubanola", "Flea Hop", "Heel Twist", "ad lib", "ball beat", "bells", "bumps", "carryback", "catch", "chop", "chug", "click", "contrast", "counterpoint", "cramp", "cramproll"] 
+                  })
+    puzzles.push({ name: "Tap Dance 3",
+                   category: category,
+                   words: ["Bandy Twist", "Brush Flat", "Brush Step", "Double Irish", "Double Wings", "Falling Off the Log", "French Twist", "cut", "dig ball", "dig heel", "dig tap", "double hop", "double hop step", "draw", "draw back", "drum slap", "eccentric", "fall", "fan kick", "flip", "flop", "grab roll", "graboff", "hamp"] 
+                  })
+    puzzles.push({ name: "Tap Dance 4",
+                   category: category,
+                   words: ["Heel Brush Back", "Heel Close", "Heel Dig", "Heel Drop", "Heel Roll", "Heel Scuff", "Heel Stand", "Heel Thump", "Heel beat", "Jim Crow", "Military Dance", "Musical Comedy", "hamp", "hitch", "kick", "lamp", "leap", "lunge", "moderato", "nerve roll", "nerve tap", "off beat", "over the top", "paddle step", "parallel travel"]
+                  })
+    puzzles.push({ name: "Tap Dance 5",
+                   category: category,
+                   words: ["Rhythm Buck", "Russian Wings", "Shim Sham", "offbeat", "pickup", "pickup change", "pigeon toes", "pivot", "pull", "push beat", "railroad", "rattle", "riff", "riff walks", "roll", "rubber legs", "scuff", "scuffle", "seven", "shading", "skid", "slap", "slide", "slow drag", "snake hips"] 
+                  })
+    puzzles.push({ name: "Tap Dance 6",
+                   category: category,
+                   words: ["Spread Eagle", "soft shoe", "spot step", "spring", "stag leap", "stamp", "step", "step chug", "step pull", "stomp", "stomp roll", "strike", "strut", "stub", "stub toe walk", "swap wings", "swirl", "swivel", "tacet", "tanglefoot", "tap heel", "tap spring", "three", "tiller", "time step"] 
+                  })
+    puzzles.push({ name: "The Beatles",
+                   category: category,
+                   words: [ "John Lennon", "Ringo Star", "George Harrison", "Paul McCartney", "Across the Universe", "Act Naturally", "Dig a Pony", "Dizzy Miss Lizzy", "Eight Days a Week", "Fixing a Hole", "Helter Skelter", "We Can Work It Out"]
+                  })
+    puzzles.push({ name: "Percussion Instruments",
+                   category: category,
+                   words: ["Ashiko", "Bata drum", "Bendir", "Darbuka", "Deff drum", "Dhol drum", "Doumbek", "agogo", "bells", "bongos", "cajons", "castanets", "caxixi", "chimes", "conga drum", "cuica", "cymbals", "damroo", "egg shakers", "gong", "maracas", "rain stick", "shakere", "tambourine", "zills"] 
+                  })
+    puzzles.push({ name: "String Instruments",
+                   category: category,
+                   words: ["Balalaika", "Chickara", "Cumbus", "Ektara", "Erhu", "Esraj", "Gu Zheng", "Pipa", "Sarod", "Saz", "Sitar", "Tambura", "Veena", "banjo", "bass", "berimbau", "dulcimer", "guitar", "harp", "laouta", "lute", "rebab", "spike fiddle", "ukelele", "violin"] 
+                  })
+    puzzles.push({ name: "Wind Instruments",
+                   category: category,
+                   words: ["Bin", "French horn", "Ocarina", "Shvi", "accordion", "alphorn", "bagpipe", "bugle", "bulb horn", "clarinet", "cornet", "duduk", "fanfare trumpet", "fife", "flugelhorn", "flute", "harmonica", "harmonium", "mijwiz", "oboe", "piccolo", "shofar", "trombone", "trumpet", "whistle"] 
+                  })
      puzzles.each do |puzzle|
       new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
       new_puzzle.words = puzzle[:words]
+      #puts puzzle #debugging
       new_puzzle.save!
     end
   end

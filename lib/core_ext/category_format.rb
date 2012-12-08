@@ -10,6 +10,8 @@ def s2cat(str)
 															new_word.include?(".") || 
 															new_word.include?(",") ||
 															new_word.include?("!") ||
+															new_word.include?(":") ||
+															new_word.include?("&") ||
 															new_word.include?("?")
 	end
 	return words_new
