@@ -4,7 +4,8 @@ namespace :db do
     make_puzzles_for_holidays_category
     make_puzzles_for_agriculture_category
     make_puzzles_for_american_history_category
-
+    make_puzzles_for_architecture
+    make_puzzles_for_art
   end
 
   def make_puzzles_for_holidays_category
@@ -124,6 +125,128 @@ namespace :db do
                    words: ["AIDS", "Apple Computer", "Betamax", "Break dancing", "Challenger", "Danielle Steele", "Exxon Valdez", "Generation X", "George Bush", "Grenada", "Iran Contra", "Jesse Jackson", "John Lennon", "Just Say No", "MTV", "Oliver North", "Ronald Reagan", "Stephen King", "Tom Clancy", "VHS"]  
                   })
     
+    puzzles.each do |puzzle|
+      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
+      new_puzzle.words = puzzle[:words]
+      #puts new_puzzle.inspect #debugging
+      new_puzzle.save!
+    end
+  end
+
+  def make_puzzles_for_architecture
+    puzzles = []
+    category = "Architecture"
+    puzzles.push({ name: "Bridges",
+                   category: category,
+                   words: ["angled flange", "continuous", "counter braces", "cross-braced", "curved flange", "deck", "drift", "haunches", "hinges", "inclined leg", "intersection", "iron", "masonry", "orthotropic beam", "parallel flanges", "pony", "simple", "span", "splice plates", "steel", "stone", "through", "v-leg", "wood"] 
+                  })
+    puzzles.push({ name: "Building Materials",
+                   category: category,
+                   words: ["asphalt", "brick", "carpet", "cement", "cinder block", "glass", "granite", "grout", "insulation", "linoleum", "lumber", "marble", "mortar", "paint", "plaster", "rebar", "siding", "slate", "spackle", "steel", "stone", "stucco", "tile", "veneer", "wallpaper"] 
+                  })
+    puzzles.push({ name: "Castles in England",
+                   category: category,
+                   words: ["Appleby ", "Aydon", "Bedford", "Belsay", "Camber", "Dalton ", "Deal", "Elsdon", "Etal", "Farnham", "Goodrich", "Hurst", "Kendal", "Leeds", "Lincoln", "Morpeth", "Newark", "Norwich", "Odell", "Pickering", "Rufus", "Sandal", "Tutbury", "Upnor", "Wark"] 
+                  })
+    puzzles.push({ name: "Castles in Scotland",
+                   category: category,
+                   words: ["Airth", "Balfour", "Balloch", "Blackness", "Cawdor", "Crathes", "Delgatie", "Doune", "Drum", "Dumbarton", "Edzell", "Eilean Donan", "Fraser", "Fyvie", "Glamis", "Hailes", "Hume", "Inverness", "Kellie", "Loch Leven", "Mains", "Mugdock", "Newark", "Stirling"] 
+                  })
+    puzzles.push({ name: "Famous Bridges",
+                   category: category,
+                   words: ["Akashi-Kaikyo", "Arthur Kill", "Astoria", "Brooklyn", "Cape Cod Canal", "Chesapeake Bay", "Clifton Suspension", "Commodore Barry", "Francis Scott Key", "Fremont", "Golden Gate", "Humber", "Ikuchi", "Le Pont De Normandie", "Mississippi River", "San Francisco", "San Mateo-Hayward", "Sando", "Storbaelt", "Sydney Harbor", "Sydney Harbour", "Thatcher", "Ting Kau", "Tsing Ma", "Yangpu"] 
+                  })
+    puzzles.push({ name: "Tallest Structures",
+                   category: category,
+                   words: ["Aon Center", "BREN Tower", "Bank of China Tower", "Burj Dubai", "CITIC Plaza", "CN Tower", "Central Plaza", "Chrysler Building", "Emirates Tower One", "Gerbrandy Tower", "Jin Mao Tower", "John Hancock Center", "Nurek Dam", "Petronas Towers", "Sears Tower", "Shun Hing Square", "Sky Tower", "Tokyo Tower"] 
+                  })
+    puzzles.push({ name: "Types Of Bridges",
+                   category: category,
+                   words: ["Howe Truss", "Lenticular Truss", "Wichert Truss", "arch", "beam", "cable stayed", "cantilever", "closed spandrel arch", "fixed arch", "girder", "king post", "one-hinged arch", "open spandrel arch", "queen post", "rigid frame", "soul ribbed arch", "spandrel braced arch", "suspension", "three-hinged arch", "truss", "trussed deck arch", "trussed through arch", "two-hinged arch"] 
+                  })
+    puzzles.each do |puzzle|
+      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
+      new_puzzle.words = puzzle[:words]
+      #puts new_puzzle.inspect #debugging
+      new_puzzle.save!
+    end
+  end
+
+  def make_puzzles_for_art
+    puzzles = []
+    category = "Art"
+    puzzles.push({ name: "American Artists",
+                   category: category,
+                   words: ["Andy Warhol", "Ansel Adams", "Ashley Bowen", "Chester Harding", "Edward Hicks", "Jackson Pollock", "Jasper Johns", "John James Audubon", "John Trumbull", "Joshua Shaw", "Maria Dixon", "Mary Wicks", "Mather Brown", "Norman Rockwell", "Rembrandt Peale", "Robert Rauschenberg", "Robert Salmon", "Sally Miller", "Samuel King", "Susan Rothenberg", "Thomas Birch", "Thomas Smith", "Thomas Sully", "William Dunlap", "William Rush"] 
+                  })
+    puzzles.push({ name: "Art Forms And Mediums",
+                   category: category,
+                   words: ["acting", "architecture", "cartooning", "ceramics", "choreography", "cinema", "dance", "digital art", "drawing", "game design", "graphic design", "mixed media", "model making", "mosaic", "music", "origami", "painting", "performance art", "photography", "poetry", "printmaking", "sculpture", "tattoo", "theatre", "wood carving"] 
+                  })
+    puzzles.push({ name: "Artists: Abstract Art",
+                   category: category,
+                   words: ["Anish Kapoor", "Arthur Dove", "Ben Nicholson", "Burgoyne Diller", "Cy Twombly", "Elie Nadelman", "Henry Moore", "John Hewitt", "Julio Gonzalez", "Lucio Fontana", "Mike Wong Joon Fong", "Norma Nava", "Otto Freundich", "Pam Sanders", "Patrick Heron", "Paula Rego", "Robin Sperling", "Roger Hilton", "Rumyana Koleva", "Sir Anthony Caro", "Stuart Davis", "Wassily Kandinsky", "Willi Baumeister", "William Tucker"] 
+                  })
+    puzzles.push({ name: "Artists: Baroque",
+                   category: category,
+                   words: ["Alessandro Algardi", "Alonso Cano", "Andrea Sacci", "Carlo Dolci", "Caspar Gras", "Charles Le Brun", "Daniele Crespi", "Domenico Feti", "Francis Bird", "Giovanni Baglione", "Gregorio Fernandez", "Jacob Duck", "Jan Both", "Jan Mytens", "Jan Steen", "Jan Victors", "John Bushnell", "Lambert Doomer", "Luca Giordana", "Philips Koninck", "Pierre Patel", "Pieter Lastman", "Salvator Rosa", "Stefano Maderno", "Vicente Carducho"] 
+                  })
+    puzzles.push({ name: "Artists: Expressionism",
+                   category: category,
+                   words: ["Albert Pinkham Ryder", "Alfred Kubin", "August Macke", "Christian Rohlfs", "Constant Permeke", "Egon Schiele", "Emil Nolde", "Erich Heckel", "Ernst Barlach", "Franz Marc", "George Grosz", "Georges Rouault", "Ivan Mestrovic", "Jack Butler Yeats", "Jules Pascin", "Karel Appel", "Marguerite Zorach", "Marsden Hartley", "Max Beckmann", "Oskar Kokoschka", "Otto Dix", "Paul Klee", "Renato Guttuso", "Sir Jacob Epstein", "William Dobell"] 
+                  })
+    puzzles.push({ name: "Artists: Impressionism",
+                   category: category,
+                   words: ["Alfred Sisley", "Armand Guillaumin", "Berthe Morisot", "Camille Pissarro", "Childe Hassam", "Claude Monet", "Dame Ethel Walker", "Edgar Degas", "Edouard Manet", "Ernest Lawson", "Eugene Boudin", "Frederic Bazille", "Giacomo Manzu", "Gustave Caillebotte", "John Ottis Adams", "Mary Cassatt", "Maurice Utrillo", "Max Liebermann", "Max Slevogt", "Medardo Rosso", "Rowena Meeks Abdy", "Tom Roberts"] 
+                  })
+    puzzles.push({ name: "Artists: Renaissance",
+                   category: category,
+                   words: ["Adam Kraft", "Bellini", "Carlo Crivelli", "Cosimo Tura", "Donatello", "Dosso Dossi", "El Greco", "Filarete", "Fra Angelico", "Gerard David", "Hans Eworth", "Jean Duvet", "Konrad Witz", "Leonardo da Vinci", "Mabuse", "Michelangelo", "Neroccio", "Pedro Machuca", "Raphael", "Sassetta", "Sodoma", "Titian", "Tommaso Masaccio", "Vecchietta", "Veit Stoss"] 
+                  })
+    puzzles.push({ name: "Artists: Romanticism",
+                   category: category,
+                   words: ["Alexander Runciman", "Eugene Delacroix", "Eugene Fromentin", "Frances Hodgkins", "Francesco Hayez", "Francois Rude", "Franz Pforr", "Gustave Dore", "Henry Fuseli", "Johan Christian Dahl", "John Constable", "John Crome", "John Linnell", "John Martin", "Orest Kiprensky", "Paul Delaroche", "Philipp Otto Runge", "Richard Bonington", "Samuel Palmer", "Theodore Gericault", "Washington Allston", "William Blake", "William Mulready", "William Ward"] 
+                  })
+    puzzles.push({ name: "Artists: Surrealism",
+                   category: category,
+                   words: ["Alberto Giacometti", "Andre Breton", "Antonio Saura", "Ceri Richards", "Dorothea Tanning", "Edward Burra", "Eileen Agar", "Frida Kahlo", "Hans Arp", "Hans Bellmer", "Jean Lurcat", "Joan Miro", "Jock Macdonald", "Kay Sage", "Kurt Seligmann", "Leonora Carrington", "Marc Chagall", "Meret Oppenheim", "Paul Delvaux", "Paul Nash", "Rene Magritte", "Salvador Dali", "Wifredo Lam", "William Turnbull", "Yves Tanguy"] 
+                  })
+    puzzles.push({ name: "Crayola Crayon Colors",
+                   category: category,
+                   words: ["apricot", "brick red", "burnt sienna", "carnation pink", "copper", "cornflower", "gold", "goldenrod", "lemon yellow", "magenta", "maize", "maroon", "melon", "olive green", "orange red", "orange yellow", "orchid", "periwinkle", "plum", "red violet", "salmon", "sea green", "sky blue", "thistle", "yellow green"] 
+                  })
+    puzzles.push({ name: "Embroidery Stitches",
+                   category: category,
+                   words: ["basic cross", "bullion", "buttonhole", "cable", "chain", "cobbler", "diagonal raised band", "double running", "four sided", "fractional cross ", "french knots", "hemstitch", "honeycomb", "lazy daisy", "long armed cross", "pattern darning", "pulled double back", "pulled satin", "ringed back", "square filet", "stem", "tent", "three sided", "whipped chain"] 
+                  })
+    puzzles.push({ name: "Embroidery Terms",
+                   category: category,
+                   words: ["SPM", "applique", "backing", "birdnesting", "bobbin", "buckram", "column", "complex fill", "emblem", "fill", "finishing", "hook", "monogram", "needle", "pencil transfer", "puckering", "registration", "scaling", "stock design", "tackle twill", "tape", "thread", "topping", "underlay", "zigzag"]
+                  })
+    puzzles.push({ name: "Fashion Designers",
+                   category: category,
+                   words: ["Alexander McQueen", "Anna Sui", "Badgley Mischka", "Balenciaga", "Calvin Klein", "Carolina Herrera", "Chanel", "Christian Dior", "Donatella Versace", "Donna Karan", "Gucci", "Hermes", "Jean Paul Gaultier", "Kate Spade", "Louis Vuitton", "Marc Jacobs", "Marni", "Michael Kors", "Moschino", "Nanette Lepore", "Norma Kamali", "Prada", "Ralph Lauren", "Vera Wang"] 
+                  })
+    puzzles.push({ name: "Knitting Terms",
+                   category: category,
+                   words: ["A row counter", "Basket Weave Stitch", "Bind Off", "Cable Knitting", "Cast On", "Darning needle", "Decrease", "Dye Lot", "English Knitting", "Entrelac", "Fair Isle Knitting", "Garter Stitch", "Increase", "Intarsia", "Knitting needles", "Pattern", "Ribbing", "Scissors", "Skein", "Slip-Stitch", "Steek", "Stockinette Stitch", "Tension Gauge", "Yarn"] 
+                  })
+    puzzles.push({ name: "Painting Idioms",
+                   category: category,
+                   words: ["allegory", "body painting", "botanical", "broken color", "composition", "drybrush", "easel picture", "figure painting", "genre", "halo", "highlights", "illustration", "industrial", "landscape", "mural painting", "palette", "perspective", "portrait", "still life", "stippling", "technique", "underpainting", "varnish", "veduta"] 
+                  })
+    puzzles.push({ name: "Painting Styles",
+                   category: category,
+                   words: ["Baroque", "Color Field", "Neo-classicism", "abstract", "art deco", "contemporary", "cubism", "expressionism", "finger paint", "folk", "impressionism", "lyrical abstraction", "minimalism", "modernism", "op art", "orientalism", "photorealism", "pop art", "post modernism", "primitive", "romanticism", "socialist realism", "surrealism", "tachism"] 
+                  })
+    puzzles.push({ name: "Types Of Dances",
+                   category: category,
+                   words: ["ballet", "belly", "breakdance", "cancan", "cha-cha", "charleston", "conga", "fandango", "flamenco", "hula", "jitterbug", "limbo", "line", "mambo", "merengue", "polka", "rumba", "salsa", "samba", "square", "step", "swing", "tango", "tap", "waltz"] 
+                  })
+    puzzles.push({ name: "World Famous Paintings",
+                   category: category,
+                   words: ["American Gothic", "Clothed Maja", "False Start", "Impression Sunrise", "Las Meninas", "Madame Recamier", "Nightwatch", "Portrait of Louis XIV", "The Birth of Venus", "The Hay Wain", "The Kiss", "The Last Judgement", "The Last Supper", "The Scream", "The Sistine Madonna", "The Starry Night", "The Wandering Jew", "Woman III"] 
+                  })
     puzzles.each do |puzzle|
       new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
       new_puzzle.words = puzzle[:words]

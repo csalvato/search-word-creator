@@ -1,5 +1,5 @@
 class WordSearchPuzzlesController < ApplicationController 
-  before_filter :signed_in_user, only: [:new, :edit, :create, :destroy, :print, :download]
+  before_filter :signed_in_user, only: [:destroy, :print, :download]
   before_filter :blocked_trial_user, only: [:new, :edit, :create, :destroy, :print, :download]
   
   def new
@@ -36,7 +36,9 @@ class WordSearchPuzzlesController < ApplicationController
   end
 
   def print
-    loaded_params = session[:params] || params
+    loaded_params = params
+    loaded_params = YAML::load(session[:params]) unless session[:params].nil?
+    logger.debug "SESSPARAMS: #{session[:params]}"
   	grid_size = 18
     num_puzzles_printed = Integer(loaded_params[:num_puzzles])
 		@word_search_puzzle = WordSearchPuzzle.find(loaded_params[:word_search_puzzle_id])
@@ -82,6 +84,6 @@ class WordSearchPuzzlesController < ApplicationController
 
   private
     def blocked_trial_user
-      render 'blocked' if !current_user.subscription.paid_user? && !current_user.subscription.trial_user?
+      render 'blocked' if signed_in? && !current_user.subscription.paid_user? && !current_user.subscription.trial_user?
     end
 end

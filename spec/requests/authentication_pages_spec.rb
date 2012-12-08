@@ -123,13 +123,19 @@ describe "Authentication" do
     end
 
     describe "in the WordSearchPuzzles controller" do
-      describe "visiting the new Word Search Puzzle page" do
-        before { visit new_word_search_puzzle_path }
+      describe "visiting the new Word Search Puzzle page and trying to print puzzles" do
+        before do
+          visit new_word_search_puzzle_path
+          fill_in "Words", with: "test"
+          click_button "Next Step"
+          click_button "Print Puzzles"
+        end 
+
         it { should have_selector('title', text: 'Sign in') }
       end
       
       describe "submitting to the update action" do
-        before { post word_search_puzzles_path(word_search_puzzle) }
+        before { post print_path }
         specify { response.should redirect_to(signin_path) }
       end
     end

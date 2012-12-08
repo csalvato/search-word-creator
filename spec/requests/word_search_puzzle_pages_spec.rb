@@ -13,8 +13,6 @@ describe "WordSearchPuzzlePagesSpecs" do
     describe "should have core links" do
       it { should have_link("FAQ", href: faq_path) }
 			it { should have_link("Contact", href: contact_path) }
-			it { should have_link("Sign out", href: signout_path) }
-			it { should_not have_link("Sign in", href: signin_path) }
     end
 
 		describe "should have title link" do
@@ -134,7 +132,10 @@ describe "WordSearchPuzzlePagesSpecs" do
 			before do
 				visit word_search_puzzles_path 
 			end
-						
+				
+
+			it { should_not have_link("Sign out", href: signout_path) }
+			it { should have_link("Sign in", href: signin_path) }		
 			it { should have_link "Holiday" }
 
 			describe "after clicking on category link" do
@@ -149,36 +150,46 @@ describe "WordSearchPuzzlePagesSpecs" do
 					it { should have_selector("h1", content: "Christmas Search Word Puzzle")}
 					it { should have_link("Print Puzzles") }
 				
-					describe "after clicking on Print Puzzles link" do
+					describe "after clicking on the links to print the puzzles" do
 						before do 
 							click_link "Print Puzzles"
 						end
+						
+						it_should_behave_like "Step 1 Page"
+						it { should have_content("CHIMNEY") }
 
-						it { should have_selector("h5", content:"Sign in") }
-
-						describe "and then signing in" do
+						describe "and then clicking through to step 2" do
 							before do
-								valid_signin(user)							
+								click_button "Next Step"							
 							end
-
-							it_should_behave_like "Step 1 Page"
+							
+							it_should_behave_like "Step 2 Page"
 							it { should have_content("CHIMNEY") }
 
-							describe "and moving to the next step" do
-								before { click_button "Next Step" }
+							describe "and moving to Print the puzzles" do
+								before { click_button "Print Puzzles" }
 
-								it_should_behave_like "Step 2 Page"
+								it { should have_selector("h5", content:"Sign in") }
+
+								describe "and then signing in" do
+									before { valid_signin(user) }
+
+									it_should_behave_like "Step 3 Page"
+									it { should have_link("Sign out", href: signout_path) }
+									it { should_not have_link("Sign in", href: signin_path) }	
+								end
+
+								describe "and then signing up" do
+									before do
+										click_link "Sign up now!"
+										valid_signup
+									end
+
+									it_should_behave_like "Step 3 Page"
+									it { should have_link("Sign out", href: signout_path) }
+									it { should_not have_link("Sign in", href: signin_path) }	
+								end
 							end
-						end
-
-						describe "and then signing up" do
-							before do
-								click_link "Sign up now!"
-								valid_signup
-							end
-
-							it_should_behave_like "Step 1 Page"
-							it { should have_content("CHIMNEY") }
 						end
 					end
 				end
@@ -191,6 +202,8 @@ describe "WordSearchPuzzlePagesSpecs" do
 			end
 			it_should_behave_like "all pages"
 			
+			it { should have_link("Sign out", href: signout_path) }
+			it { should_not have_link("Sign in", href: signin_path) }	
 			it { should have_link "Holiday" }
 
 			describe "after clicking on category link" do
