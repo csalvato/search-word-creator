@@ -616,7 +616,7 @@ namespace :db do
 
   def make_puzzles_for_environmental
     puzzles = []
-    category = "Economics"
+    category = "Environmental"
     puzzles.push({ name: "Global Warming",
                    category: category,
                    words: ["Greenhouse Effect", "aerosols", "albedo", "atmosphere", "carbon dioxide", "carbon sinks", "deforestation", "emissions", "fossil fuels", "greenhouse gas", "methane", "nitrous oxide", "oceans", "ozone depletion", "ozone layer", "recycling", "renewable energy", "temperature", "temperature rise", "thermal expansion", "water vapor"]
@@ -639,7 +639,7 @@ namespace :db do
 
   def make_puzzles_for_geology
     puzzles = []
-    category = "Economics"
+    category = "Geology"
     puzzles.push({ name: "Earth",
                    category: category,
                    words: ["asthenosphere", "atmosphere", "continental crust", "convection current", "crust", "exosphere", "inner core", "ionosphere", "lithosphere", "lower mantle", "mesopause", "mesosphere", "nickel", "oceanic crust", "outer core", "ozone layer", "plate tectonics", "stratopause", "stratosphere", "thermosphere", "tropopause", "troposphere", "upper mantle", "uranium"]
@@ -674,7 +674,7 @@ namespace :db do
 
   def make_puzzles_for_government
     puzzles = []
-    category = "Economics"
+    category = "Government"
     puzzles.push({ name: "Elected Officials",
                    category: category,
                    words: ["Assemblyman", "Assessor", "Attorney General", "Auditor", "Constable", "Coroner", "Councilman", "County Executive", "Delegate", "District Attorney", "Governor", "Judge", "Lieutenant", "Mayor", "President", "Prosecutor", "Recorder", "School Board Member", "Secretary of State", "Senator", "Sheriff", "Supervisor", "Surveyor", "Tax Collector", "Treasurer"] 
