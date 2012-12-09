@@ -9,6 +9,11 @@ namespace :db do
     make_puzzles_for_art_and_music
     make_puzzles_for_astronomy
     make_puzzles_for_basics
+    make_puzzles_for_chemistry
+    make_puzzles_for_cultures
+    make_puzzles_for_economics
+    make_puzzles_for_environmental
+    make_puzzles_for_geology
   end
 
   def make_puzzles_for_holidays_category
@@ -522,6 +527,141 @@ namespace :db do
     puzzles.push({ name: "Utensils",
                    category: category,
                    words: ["Baba mold", "Bain-marie", "Banneton", "Basting brush", "Basting syringe", "Bench scraper", "Blender", "Boil over preventer", "Bone scissors", "Bowl", "Bread knife", "Browning tray", "Butcher block", "Cake-server", "Can opener", "Candy thermometer", "Casserole", "Cauldron", "Cheese cloth", "Cheese grater", "Cheese slicer", "Chimta", "Chinoise", "Chop sticks", "Coconut grater", "Colander", "Cookie cutter", "Crab cracker", "Crab fork", "Crockery", "Cutting board", "Double boiler", "Dough blender", "Drum sieve", "Egg piercer", "Egg slicer", "Egg timer", "Faucet", "Fillet knife"] 
+                  })
+    puzzles.each do |puzzle|
+      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
+      new_puzzle.words = puzzle[:words]
+      #puts puzzle #debugging
+      new_puzzle.save!
+    end
+  end
+
+  def make_puzzles_for_chemistry
+    puzzles = []
+    category = "Chemistry"
+    puzzles.push({ name: "Chemistry Basics",
+                   category: category,
+                   words: ["Alchemy", "Atom", "Biochemistry", "Bond", "Compound", "Crystal", "Element", "Endothermic", "Energy", "Exothermic", "Gas", "Inorganic", "Ion", "Isotope", "Liquid", "Matter", "Mole", "Molecule", "Organic", "Phase", "Reaction", "Salt", "Science", "Solid", "Substance"] 
+                  })
+    puzzles.push({ name: "Periodic Table",
+                   category: category,
+                   words: ["Actinium", "Aluminum", "Americium", "Antimony", "Argon", "Arsenic", "Astatine", "Barium", "Berkelium", "Beryllium", "Bismuth", "Bohrium", "Boron", "Bromine", "Cadmium", "Calcium", "Californium", "Carbon", "Cerium", "Cesium", "Chlorine", "Chromium", "Cobalt", "Copper", "Curium", "Darmstadtium", "Dubnium", "Dysprosium", "Einsteinium", "Erbium", "Europium", "Fermium", "Fluorine", "Francium", "Gadolinium", "Gallium", "Germanium", "Gold", "Hafnium", "Hassium", "Helium", "Holmium", "Hydrogen", "Indium", "Iodine", "Iridium", "Iron", "Krypton", "Lanthanum", "Lawrencium", "Lead", "Lithium", "Lutetium", "Magnesium", "Manganese", "Meitnerium", "Mendelevium", "Mercury", "Molybdenum", "Neodymium", "Neon", "Neptunium", "Nickel", "Niobium", "Nitrogen", "Nobelium", "Osmium", "Oxygen", "Palladium", "Phosphorus", "Platinum", "Plutonium", "Polonium", "Potassium", "Praseodymium", "Promethium", "Protactinium", "Radium", "Radon", "Rhenium", "Rhodium", "Rubidium", "Ruthenium", "Rutherfordium", "Samarium", "Scandium", "Seaborgium", "Selenium", "Silicon", "Silver", "Sodium", "Strontium", "Sulfur", "Tantalum", "Technetium", "Tellurium", "Terbium", "Thallium", "Thorium", "Thulium", "Tin", "Titanium", "Tungsten", "Ununbium", "Ununnilium", "Ununumium", "Uranium", "Vanadium", "Xenon", "Ytterbium", "Yttrium", "Zinc", "Zirconium"] 
+                  })
+    puzzles.push({ name: "Radioactive Substances",
+                   category: category,
+                   words: ["Actinium", "Americium", "Astatine", "Berkelium", "Californium", "Curium", "Einsteinium", "Fermium", "Francium", "Hahnium", "Lawrencium", "Mendelevium", "Neptunium", "Nobelium", "Plutonium", "Polonium", "Promethium", "Protactinium", "Radium", "Radon", "Rutherfordium", "Technetium", "Thorium", "Unnilhexium", "Uranium"] 
+                  })
+    puzzles.each do |puzzle|
+      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
+      new_puzzle.words = puzzle[:words]
+      #puts puzzle #debugging
+      new_puzzle.save!
+    end
+  end
+
+  def make_puzzles_for_cultures
+    puzzles = []
+    category = "Cultures"
+    puzzles.push({ name: "Chinese Culture",
+                   category: category,
+                   words: ["Buddha", "Cantonese", "Chinese New Year", "Confucianism", "Lantern Festival", "Mandarin", "bamboo", "characters", "dim sum", "dog", "dragon", "duck", "fish", "fortune cookies", "jade", "luck", "moon", "red", "symbols", "talisman", "tiger", "wealth", "wok", "zodiac"] 
+                  })
+    puzzles.push({ name: "Japanese Culture",
+                   category: category,
+                   words: ["Bon-odori Festival", "Hanami", "Ikebana", "Irezumi", "bonsai trees", "cherry blossoms", "chopsticks", "fans", "geisha", "geta", "kimono", "koto", "obi", "ofuro", "paper lanterns", "parasols", "rice paper", "sake", "samurai", "silk", "sushi", "tatami", "tea", "wasabi", "zori"] 
+                  })
+    puzzles.push({ name: "Jewish Culture",
+                   category: category,
+                   words: ["Baklava", "Bar Mitzvah", "Bat Mitzvah", "Chanukah", "Hebrew", "Israel", "Judaism", "Kabbalah", "Kosher", "Ladino", "Passover", "Purim", "Rosh Hashanah", "Shabbat", "Shavuot", "Tanakh", "Torah", "Yiddish", "Yom Kippur", "cholent", "hamin", "kouclas", "kugel", "latkes", "synagogue"] 
+                  })
+    puzzles.push({ name: "Mexican Culture",
+                   category: category,
+                   words: ["Candlemas", "Cinco de Mayo", "Dia de los Muertos", "Las Posadas", "Mariachis", "Mexican Hat Dance", "Navidad", "Noche Buena", "Roman Catholicism", "Virgin Mary", "bullfighting", "chiles", "corn", "fiesta", "folk art", "green", "horchata", "marimba", "menudo", "red", "tacos", "tamales", "tortilla", "white"] 
+                  })
+    puzzles.each do |puzzle|
+      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
+      new_puzzle.words = puzzle[:words]
+      #puts puzzle #debugging
+      new_puzzle.save!
+    end
+  end
+
+  def make_puzzles_for_economics
+    puzzles = []
+    category = "Economics"
+    puzzles.push({ name: "Accounting",
+                   category: category,
+                   words: ["accounts payable", "accounts receivable", "accrual accounting", "assets", "balance sheet", "bookkeeping", "cash", "chart of accounts", "cost accounting", "credits", "debits", "depreciation", "equity", "expenses", "financial statement", "general ledger", "interest", "journal", "liabilities", "loan", "note", "payroll", "profit", "revenue", "sales income"] 
+                  })
+    puzzles.push({ name: "American Corporations",
+                   category: category,
+                   words: ["American Express", "Bank of America", "Best Buy", "Chevron", "Coca-Cola", "Costco", "Deere", "Dell", "FedEx", "Ford", "General Motors", "Hewlett-Packard", "Intel", "Metlife", "Microsoft", "Motorola", "Prudential", "Safeway", "Sears", "State Farm", "Sysco", "Target", "Verizon", "Wal-Mart", "Walt Disney"] 
+                  })
+    puzzles.push({ name: "Foreign Cars",
+                   category: category,
+                   words: ["Acura", "Alfa Romeo", "Audi", "BMW", "Ferrari", "Honda", "Hyundai", "Lamborghini", "Lexus", "Maserati", "Mazda", "Mercedes Benz", "Mitsubishi", "Nissan", "Peugeot", "Porsche", "Renault", "Saab", "Subaru", "Suzuki", "Toyota", "Vauxhall", "Volkswagen", "Volvo", "Yugo"] 
+                  })
+    puzzles.push({ name: "World Currencies",
+                   category: category,
+                   words: ["birr", "cedi", "colon", "dirham", "dobra", "dollar", "dong", "dram", "euro", "franc", "kina", "kip", "lira", "mark", "peso", "pound", "quetzal", "rand", "ruble", "rupee", "shekel", "shilling", "sol", "won", "yen"] 
+                  })
+    puzzles.each do |puzzle|
+      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
+      new_puzzle.words = puzzle[:words]
+      #puts puzzle #debugging
+      new_puzzle.save!
+    end
+  end
+
+  def make_puzzles_for_environmental
+    puzzles = []
+    category = "Economics"
+    puzzles.push({ name: "Global Warming",
+                   category: category,
+                   words: ["Greenhouse Effect", "aerosols", "albedo", "atmosphere", "carbon dioxide", "carbon sinks", "deforestation", "emissions", "fossil fuels", "greenhouse gas", "methane", "nitrous oxide", "oceans", "ozone depletion", "ozone layer", "recycling", "renewable energy", "temperature", "temperature rise", "thermal expansion", "water vapor"]
+                  })
+    puzzles.push({ name: "Non Recyclables",
+                   category: category,
+                   words: ["Styrofoam", "candy wrappers", "carbon paper", "carpet", "cement", "cigarette butts", "dirt", "dishes", "flooring", "foil coated paper", "hangers", "laminated paper", "lead acid batteries", "mirrors", "paper clips", "photographs", "plastic coated paper", "plastic toys", "rock", "rubber bands", "sponges", "tissues", "toothpaste tubes", "waxed paper", "window glass"] 
+                  })
+    puzzles.push({ name: "Recyclables",
+                   category: category,
+                   words: ["aluminum", "aseptics", "books", "cardboard", "cell phones", "compact discs", "compost", "computer printers", "corks", "envelopes", "glass", "grocery bags", "magazines", "newspaper", "phone books", "posterboard", "produce bags", "steel", "sticky notes", "tin", "tires", "video tape", "wrapping paper"] 
+                  })
+    puzzles.each do |puzzle|
+      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
+      new_puzzle.words = puzzle[:words]
+      #puts puzzle #debugging
+      new_puzzle.save!
+    end
+  end
+
+  def make_puzzles_for_geology
+    puzzles = []
+    category = "Economics"
+    puzzles.push({ name: "Earth",
+                   category: category,
+                   words: ["asthenosphere", "atmosphere", "continental crust", "convection current", "crust", "exosphere", "inner core", "ionosphere", "lithosphere", "lower mantle", "mesopause", "mesosphere", "nickel", "oceanic crust", "outer core", "ozone layer", "plate tectonics", "stratopause", "stratosphere", "thermosphere", "tropopause", "troposphere", "upper mantle", "uranium"]
+                  })
+    puzzles.push({ name: "Earthquakes",
+                   category: category,
+                   words: ["Rayleigh wave", "Richter scale", "S wave", "accelogram", "aftershocks", "asperity", "epicenter", "fault", "fault plane", "foreshocks", "harmonic tremor", "hypocenter", "isoseismal", "mainshock", "moment tensor", "paleoseismicity", "rupture front", "rupture velocity", "seismic waves", "seismic zone", "seismograph", "seismometer", "tensional stress", "wave front"] 
+                  })
+    puzzles.push({ name: "Famous Volcanoes",
+                   category: category,
+                   words: ["Acongua", "Cotopaxi", "El Chichon", "Kilauea", "Krakatau", "Lassen Peak", "Lassen Peak", "Llullaillaco", "Mauna Kea", "Mauna Loa", "Mount Etna", "Mount Fuji", "Mount Mazama", "Mount Pelee", "Mount Pinatubo", "Mount Rainer", "Mount Saint Helens", "Mount Shasta", "Mount Tambora", "Nevado de Ruiz", "Paricutin", "Stromboli", "Surtsey", "Vesuvius"] 
+                  })
+    puzzles.push({ name: "Gems",
+                   category: category,
+                   words: ["Agate", "Amber", "Amethyst", "Aquamarine", "Bloodstone", "Carnelian", "Citrine", "Coral", "Emerald", "Garnet", "Jasper", "Malachite", "Moissanite", "Obsidian", "Onyx", "Pearl", "Peridot", "Quartz", "Rose Quartz", "Sapphire", "Spinel", "Tiger Eye", "Topaz", "Turquoise", "Zircon"] 
+                  })
+    puzzles.push({ name: "Gems 2",
+                   category: category,
+                   words: ["Alexandrite", "Ammolite", "Aventurine", "Beryl", "Chrysoberyl", "Corundum", "Diamond", "Feldspar", "Ivory", "Jade", "Jadeite", "Jet", "Kunzite", "Lapis Lazuli", "Moonstone", "Mother Of Pearl", "Nephrite", "Opal ", "Quartz Rock Crystal", "Red Emerald", "Ruby", "Tanzanite", "Tourmaline", "Yellow Emerald"] 
+                  })
+    puzzles.push({ name: "Volcanoes",
+                   category: category,
+                   words: ["ash", "ash cloud", "base", "bedrock", "branch pipe", "caldera", "cinder cones", "conduit", "crater", "cyrovolcano", "felsic", "flank", "hot spots", "lahars", "lava", "lava domes", "magma chamber", "mantle plumes", "molten rock", "parasitic cone", "silica", "sill", "steam", "sulfur", "vent"] 
                   })
     puzzles.each do |puzzle|
       new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
