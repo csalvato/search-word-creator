@@ -7,6 +7,8 @@ namespace :db do
     make_puzzles_for_architecture
     make_puzzles_for_art
     make_puzzles_for_art_and_music
+    make_puzzles_for_astronomy
+    make_puzzles_for_basics
   end
 
   def make_puzzles_for_holidays_category
@@ -256,7 +258,7 @@ namespace :db do
     end
   end
 
-    def make_puzzles_for_art_and_music
+  def make_puzzles_for_art_and_music
     puzzles = []
     category = "Art & Music"
     puzzles.push({ name: "Annie Characters",
@@ -456,6 +458,72 @@ namespace :db do
                    words: ["Bin", "French horn", "Ocarina", "Shvi", "accordion", "alphorn", "bagpipe", "bugle", "bulb horn", "clarinet", "cornet", "duduk", "fanfare trumpet", "fife", "flugelhorn", "flute", "harmonica", "harmonium", "mijwiz", "oboe", "piccolo", "shofar", "trombone", "trumpet", "whistle"] 
                   })
      puzzles.each do |puzzle|
+      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
+      new_puzzle.words = puzzle[:words]
+      #puts puzzle #debugging
+      new_puzzle.save!
+    end
+  end
+
+  def make_puzzles_for_astronomy
+    puzzles = []
+    category = "Astronomy"
+    puzzles.push({ name: "Asteroids",
+                   category: category,
+                   words: ["Adeona", "Aurora", "Bertha", "Camilla", "Ceres", "Chicago", "Davida", "Dido", "Doris", "Elektra", "Elpis", "Hebe", "Herculina", "Hilda", "Ino", "Io", "Iris", "Juewa", "Julia", "Juno", "Nuwa", "Pales", "Palma", "Slyvia", "Vesta"] 
+                  })
+    puzzles.push({ name: "Astronomy",
+                   category: category,
+                   words: ["Earth", "Jupiter", "Mars", "Mercury", "Milky Way", "Neptune", "Pluto", "Saturn", "Sun", "Uranus", "Venus", "asteroid", "astronomy", "black hole", "comet", "constellation", "galaxy", "gravity", "light year", "meteor", "moon", "nebula", "satellite", "solar system", "universe"] 
+                  })
+    puzzles.push({ name: "Constellations",
+                   category: category,
+                   words: ["Andromeda", "Aquarius", "Cancer", "Capricornus", "Centaurus", "Chamaeleon", "Cygnus", "Dorado", "Draco", "Hercules", "Hydra", "Indus", "Leo", "Libra", "Lynx", "Mensa", "Orion", "Pegasus", "Phoenix", "Pisces", "Sagittarius", "Scorpius", "Taurus", "Ursa Major", "Virgo"] 
+                  })
+    puzzles.push({ name: "Galaxies",
+                   category: category,
+                   words: ["Andromeda I", "Andromeda II", "Canis Major Dwarf", "Carina Dwarf", "Cetus Dwarf", "Cigar", "Draco Dwarf", "Leo A", "Leo II Dwarf", "Milky Way", "Phoenix Drawf", "Pinwheel", "Sagittarius Dwarf ", "Sculptor Dwarf", "Sextans Dwarf", "Sombrero", "Sunflower", "Ursa Minor Dwarf", "Whirlpool"] 
+                  })
+    puzzles.push({ name: "Space Exploration",
+                   category: category,
+                   words: ["Alan Shepard", "Apollo", "Atlas", "Buzz Aldrin", "Columbia", "Gemini", "Hubble Telescope", "ISS", "John Glenn", "Lunar Rover", "Mars Pathfinder", "Mars Spirit Rover", "Mercury", "Mir", "Neil Armstrong", "Saturn V", "Skylab", "Soyuz", "Space Shuttle", "Space Walk", "Sputnik", "Viking", "Voyager", "Yuri Gagarin"] 
+                  })
+    puzzles.push({ name: "The Moon",
+                   category: category,
+                   words: ["Apollo", "Selenology", "apogee", "basin", "crater", "ejecta", "far side", "full moon", "gibbous moon", "highlands", "limb", "lunan", "lunar", "lunation", "new moon", "normal rilles", "patera", "perigee", "phase angle", "regolith", "sinuous rilles", "synodic month", "terra", "waning moon", "waxing moon"] 
+                  })
+    puzzles.push({ name: "The Sun",
+                   category: category,
+                   words: ["Helios", "Sol", "chromosphere", "convection zone", "corona", "energy", "faculae", "flares", "heliosphere", "helium", "magnetosphere", "photosphere", "plasma", "radiative zone", "rotation", "solar wind", "streamer", "sun loops", "sun spots", "ultraviolet", "yellow dwarf star"]
+                  })
+    puzzles.each do |puzzle|
+      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
+      new_puzzle.words = puzzle[:words]
+      #puts puzzle #debugging
+      new_puzzle.save!
+    end
+  end
+
+  def make_puzzles_for_basics
+    puzzles = []
+    category = "Basics"
+    puzzles.push({ name: "Colors",
+                   category: category,
+                   words: ["amber", "aquamarine", "beige", "black", "blue", "brown", "burgundy", "coral", "cyan", "gold", "gray", "green", "magenta", "maroon", "mauve", "navy", "orange", "periwinkle", "pink", "purple", "red", "silver", "teal", "white", "yellow"]
+                  })
+    puzzles.push({ name: "Shapes",
+                   category: category,
+                   words: ["arc", "circle", "cone", "crescent", "cube", "cylinder", "decagon", "dodecagon", "heptagon", "hexagon", "line", "line", "nonagon", "octagon", "oval", "pentagon", "poly", "polygon", "pyramid", "rectangle", "rhombus", "sector", "sphere", "square", "trapezoid", "triangle"]
+                  })
+    puzzles.push({ name: "Units of Measure",
+                   category: category,
+                   words: ["Celsius", "Fahrenheit", "centimeter", "dram", "fathom", "foot", "gallon", "gram", "inch", "kelvin", "kilogram", "kilometer", "meter", "microgram", "micrometer", "mile", "milligram", "millimeter", "nautical mile", "ounce", "pint", "pound", "quart", "ton", "yard"] 
+                  })
+    puzzles.push({ name: "Utensils",
+                   category: category,
+                   words: ["Baba mold", "Bain-marie", "Banneton", "Basting brush", "Basting syringe", "Bench scraper", "Blender", "Boil over preventer", "Bone scissors", "Bowl", "Bread knife", "Browning tray", "Butcher block", "Cake-server", "Can opener", "Candy thermometer", "Casserole", "Cauldron", "Cheese cloth", "Cheese grater", "Cheese slicer", "Chimta", "Chinoise", "Chop sticks", "Coconut grater", "Colander", "Cookie cutter", "Crab cracker", "Crab fork", "Crockery", "Cutting board", "Double boiler", "Dough blender", "Drum sieve", "Egg piercer", "Egg slicer", "Egg timer", "Faucet", "Fillet knife"] 
+                  })
+    puzzles.each do |puzzle|
       new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
       new_puzzle.words = puzzle[:words]
       #puts puzzle #debugging
