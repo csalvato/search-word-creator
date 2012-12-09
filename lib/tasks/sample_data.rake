@@ -15,6 +15,7 @@ namespace :db do
     make_puzzles_for_environmental
     make_puzzles_for_geology
     make_puzzles_for_government
+    make_puzzles_for_health
   end
 
   def make_puzzles_for_holidays_category
@@ -710,6 +711,69 @@ namespace :db do
     puzzles.push({ name: "Vice Presidents",
                    category: category,
                    words: ["Aaron Burr", "Andrew Johnson", "Calvin Coolidge", "Charles Curtis", "Elbridge Gerry", "George Clinton", "Hannibal Hamlin", "Henry Wilson", "John Adams", "John Nance Garner", "John Tyler", "Martin Van Buren", "Millard Fillmore", "Schuyler Colfax", "Theodore Roosevelt", "Thomas Jefferson", "William Rufus King"] 
+                  })
+    puzzles.each do |puzzle|
+      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
+      new_puzzle.words = puzzle[:words]
+      #puts puzzle #debugging
+      new_puzzle.save!
+    end
+  end
+
+  def make_puzzles_for_health
+    puzzles = []
+    category = "Health"
+    puzzles.push({ name: "Childhood Illnesses",
+                   category: category,
+                   words: ["bladder infection", "chicken pox", "colic", "common cold", "croup", "diaper rash", "diarrhea", "ear infection", "excema", "febrile seizures", "fever", "fifth disease", "jaundice", "measles", "mumps", "nausea", "pink eye", "rash", "roseola", "rubella", "thrush", "tonsillitis", "vomiting", "whooping cough", "yeast infection"] 
+                  })
+    puzzles.push({ name: "Common Allergens",
+                   category: category,
+                   words: ["aspirin", "bee sting venom", "cashews", "cigarette smoke", "dairy", "detergents", "dust mites", "eggs", "fish", "grasses", "household cleaners", "peanuts", "peas", "penicillin", "pesticides", "pet dander", "poison ivy", "poison oak", "pollen", "shellfish", "soy", "sulfa", "walnuts", "weeds", "wheat"] 
+                  })
+    puzzles.push({ name: "Diabetes",
+                   category: category,
+                   words: ["acetone", "acidosis", "basal rate", "beta cell", "blood sugar", "brittle diabetes", "fructose", "glucagon", "glucose", "glucose monitoring", "hyperglycemia", "hypoglycemia", "insulin", "insulin dependent", "insulin pump", "insulin receptors", "insulin resistance", "juvenile diabetes", "ketones", "pancreas", "polydipsia", "polyphagia"] 
+                  })
+    puzzles.push({ name: "Eateries",
+                   category: category,
+                   words: ["bakery", "bistro", "cafe", "cafeteria", "cantina", "coffee shop", "deli", "diner", "donut shop", "food court", "hot dog stand", "ice cream parlor", "luncheonette", "mess hall", "patisserie", "pizzeria", "pub", "restaurant", "saloon", "snack bar", "sushi bar", "taco stand", "tapas bar", "tearoom", "trattoria"] 
+                  })
+    puzzles.push({ name: "Migraine Triggers",
+                   category: category,
+                   words: ["anxiety", "contraceptives", "dehydration", "diet", "fasting", "fluorescent light", "genetic factors", "heat", "high blood pressure", "hormone changes", "medication", "muscle tension", "nicotine", "physical exertion", "posture", "pregnancy", "sinus infections", "sleep apnea", "sleep changes", "stress", "strong scents", "sun", "weather changes"]
+                  })
+    puzzles.push({ name: "Natural Remedies",
+                   category: category,
+                   words: ["aloe", "bee pollen", "calcium", "cayenne", "chamomile", "chromium", "cinnamon", "copper", "cranberry", "dandelion", "elderberry", "feverfew", "fish oil", "flaxseed", "garlic", "ginger", "ginseng", "iron", "kelp", "lemon balm", "magnesium", "melatonin", "peppermint", "valerian"] 
+                  })
+    puzzles.push({ name: "Nutrition",
+                   category: category,
+                   words: ["beans", "breads", "calories", "carbohydrates", "cereals", "cheese", "dairy", "eggs", "fats", "fiber", "fish", "fruit", "grains", "meat", "milk", "monounsaturated fat", "nuts", "oils", "polyunsaturated fat", "poultry", "protein", "saturated fat", "sodium", "unsaturated fat", "vegetables"] 
+                  })
+    puzzles.push({ name: "Signs of Stress",
+                   category: category,
+                   words: ["anxiety", "constipation", "depression", "diarrhea", "fear", "frequent colds", "headache", "indecisiveness", "insomnia", "irritability", "isolating oneself", "loss of objectivity", "memory problems", "moodiness", "nausea", "negative thoughts", "over sleeping", "overeating", "poor judgment", "rapid heartbeat", "skin breakouts", "teeth grinding", "under eating", "weight gain", "weight loss"] 
+                  })
+    puzzles.push({ name: "Vice Presidents",
+                   category: category,
+                   words: ["Aaron Burr", "Andrew Johnson", "Calvin Coolidge", "Charles Curtis", "Elbridge Gerry", "George Clinton", "Hannibal Hamlin", "Henry Wilson", "John Adams", "John Nance Garner", "John Tyler", "Martin Van Buren", "Millard Fillmore", "Schuyler Colfax", "Theodore Roosevelt", "Thomas Jefferson", "William Rufus King"] 
+                  })
+    puzzles.push({ name: "Thyroid Terms",
+                   category: category,
+                   words: ["TSH", "adrenal", "endocrine", "energy ", "goiter", "growth", "hyperthyroid", "hypothyroid", "iodine", "metabolism", "myxedema", "overactive", "pituitary gland", "radioactive iodine", "thyroid cartilage", "thyroid gland", "thyroid hormone", "thyroid nodules", "thyroiditis", "thyroxine", "underactive"] 
+                  })
+    puzzles.push({ name: "Nutrients",
+                   category: category,
+                   words: ["vitamin ", "biotin", "calcium", "chromium", "copper", "folic acid", "iodine", "iron", "lutein", "lycopene", "magnesium", "manganese", "niacin", "phosphorus", "potassium", "riboflavin", "selenium", "thiamin", "zinc", "protein", "fat", "carbohydrate"]
+                  })
+    puzzles.push({ name: "Weight Training",
+                   category: category,
+                   words: ["back extension", "bench press", "bent over row", "biceps curl", "chest fly", "crunch", "dead press", "deadlift", "hip abductor", "hip adductor", "leg curl", "leg extension", "leg press", "leg raise", "lunge", "pull up", "pulldown", "pushdown", "seated calf raise", "shoulder fly", "shoulder press", "squat", "standing calf raise", "triceps extension", "upright row"] 
+                  })
+    puzzles.push({ name: "Yoga",
+                   category: category,
+                   words: ["bridge", "camel", "chair", "cobra", "crane", "crow", "downward-facing dog", "eagle", "fish", "full boat", "half moon", "hero", "lion", "locust", "lotus", "monkey", "mountain", "open angle", "peacock", "plank", "reclining", "side plank", "thunderbolt", "tortoise", "wheel"] 
                   })
     puzzles.each do |puzzle|
       new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
