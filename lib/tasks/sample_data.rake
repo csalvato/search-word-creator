@@ -18,6 +18,14 @@ namespace :db do
     make_puzzles_for_health
   end
 
+  def commit_puzzles(puzzles)
+    puzzles.each do |puzzle|
+      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
+      new_puzzle.words = puzzle[:words]
+      new_puzzle.save!
+    end
+  end
+
   def make_puzzles_for_holidays_category
     puzzles = []
     category = "Holiday"
@@ -57,12 +65,71 @@ namespace :db do
                    category: category,
                    words: ["Arrow", "Candle", "Candy", "Card", "Chocolate", "Couple", "Cupid", "Dedication", "February", "Fourteenth", "Gift", "Hallmark", "Heart", "Jewelry", "Love", "Notes", "Ode", "Perfume", "Poem", "Red", "Romance", "Roses", "Saint", "Secret", "Valentine"] 
                   })
-  
-    puzzles.each do |puzzle|
-      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
-      new_puzzle.words = puzzle[:words]
-      new_puzzle.save!
-    end
+    puzzles.push({ name: "Valentine's Day",
+                   category: category,
+                   words: ["Be Mine", "Cupid", "February", "arrows", "boyfriend", "cards", "chocolate", "date", "doily", "dove", "flowers", "forever", "frills", "girlfriend", "hearts", "hugs", "jewelry", "kisses", "lace", "love", "marry", "poems", "romance", "sweetheart"] 
+                  })
+    puzzles.push({ name: "4th of July",
+                   category: category,
+                   words: ["Adams", "Barbecue", "Baseball", "Blue", "Congress", "Constitution", "Declaration", "Fireworks", "Fourth", "Hancock", "Holiday", "Hot Dog", "Independence", "Jefferson", "July", "Parade", "Patriotism", "Philadelphia", "Picnic", "Red", "Stars", "Stripes", "White", "Yankee Doodle"]
+                  })
+    puzzles.push({ name: "Chinese New Year",
+                   category: category,
+                   words: ["China", "Dog", "Dragon", "Dumplings", "Family", "Fireworks", "Horse", "Lanterns", "Lion dance", "Lunar", "Mandarins", "Monkey", "Ox", "Packets", "Pig", "Plum tree", "Rabbit", "Rat", "Red", "Rooster", "Sheep", "Snake", "Spring", "Tiger", "Tikoy"] 
+                  })
+    puzzles.push({ name: "Cinco de Mayo",
+                   category: category,
+                   words: ["Battle of Puebla", "French", "Mexican", "Zaragoza", "chili", "conquest", "dances", "fiesta", "five", "flowers", "freedom", "green", "independence", "maracas", "mariachis", "music", "parades", "piatas", "red", "salsa", "sombrero", "tortilla", "triumph", "white", "may"] 
+                  })
+    puzzles.push({ name: "Earth Day",
+                   category: category,
+                   words: ["Earth", "San Francisco", "Vernal Equinox", "air pollution", "conserve", "ecology", "endangered species", "energy", "environment", "forest", "global warming", "oceans", "ozone layer", "planet", "protect", "recycle", "reduce", "reuse", "smog", "soil pollution", "trees", "water pollution", "wildlife"] 
+                  })
+    puzzles.push({ name: "Easter",
+                   category: category,
+                   words: ["Bunny", "Chocolate", "Christian", "Church", "Crucifixion", "Disciples", "Egg hunt", "Eggs", "Ham", "Holiday", "Hot cross buns", "Jesus", "Judas", "Last supper", "Lily", "Marshmallow", "Mass", "Monday", "Painting", "Pascha", "Purple", "Resurrection", "Sunday", "Vigil", "Yellow"] 
+                  })
+    puzzles.push({ name: "Father's Day",
+                   category: category,
+                   words: ["Appreciation", "Card", "Celebration", "Coffee mug", "Dad", "Daughter", "Family", "Father", "Gift", "Mow the lawn", "Old man", "Padre", "Papa", "Parent", "Party", "Pere", "Poem", "Pops", "Socks", "Son", "Sonora Dodd", "Sunday", "Tie", "Vatertag"] 
+                  })
+    puzzles.push({ name: "Groundhog Day",
+                   category: category,
+                   words: ["Canada", "Candlemas Day", "February", "Phil", "Punxsutawney", "United States", "burrow", "cloudy", "early", "forecast", "ground squirrel", "hibernate", "hide", "hole", "marmot", "peeks", "predict", "shadow", "six", "spring", "sunshine", "weather", "weeks", "winter", "woodchuck"] 
+                  })
+    puzzles.push({ name: "Halloween",
+                   category: category,
+                   words: ["bat", "black cat", "bones", "candy", "cauldron", "cobwebs", "costumes", "full moon", "ghost", "ghoul", "goblin", "graveyard", "haunted house", "jack-o-lantern", "masks", "monster", "mummy", "pumpkin patch", "skeleton", "spiders", "vampire", "werewolf", "witch", "zombie"] 
+                  })
+    puzzles.push({ name: "Halloween Costumes",
+                   category: category,
+                   words: ["angel", "astronaut", "ballerina", "bunny", "cat", "clown", "cowboy", "dragon", "fairy", "firefighter", "ghost", "hippie", "hula dancer", "knight", "ninja", "nurse", "pirate", "policeman", "princess", "pumpkin", "robot", "skeleton", "vampire", "witch", "zombie"]
+                  })
+    puzzles.push({ name: "Labor Day",
+                   category: category,
+                   words: ["Back to School", "End of Summer", "Canada", "Central Labor Union", "Colorado", "Knights of Labor", "Massachusetts", "Matthew Maguire", "Monday", "New Jersey", "New York", "Oregon", "Peter McGuire", "September", "Union Square", "United States", "parade", "unions", "working class"] 
+                  })
+    puzzles.push({ name: "Mother's Day",
+                   category: category,
+                   words: ["Ann Jarvis", "Anna Jarvis", "Appreciation", "Breakfast", "Card", "Chocolate", "Daughter", "Family", "Flowers", "Gift", "Hug", "Julia Ward Howe", "Kiss", "Love", "Madre", "Mama", "Maman", "Mamma Mia", "Mom", "Mother", "Parent", "Restaurant", "Son", "Spa", "Sunday"] 
+                  })
+    puzzles.push({ name: "St. Patrick's Day",
+                   category: category,
+                   words: ["Christian", "Clover", "Dublin", "Emerald", "Expatriate", "Feast", "Gold", "Green", "Guinness", "Holiday", "Holy trinity", "Ireland", "Irish", "Leprechaun", "Limerick", "Luck", "Mass", "Paddy", "Parade", "Patron saint", "Rainbow", "Roman Catholic", "Shamrock"] 
+                  })
+    puzzles.push({ name: "Thanksgiving",
+                   category: category,
+                   words: ["Carve", "Celebration", "Cranberry Sauce", "Fall", "Gratitude", "Gravy", "Horn of Plenty", "Indian Corn", "Maize", "Mashed Potatoes", "Mayflower", "Native Americans", "November", "Pilgrims", "Plymouth", "Pumpkin Pie", "Squanto", "Stuffing", "Sweet Potatoes", "Thursday", "Turkey", "Yams", "cornucopia", "harvest"] 
+                  })
+    puzzles.push({ name: "Valentine's Hearts",
+                   category: category,
+                   words: ["All Mine", "All Star", "Angel", "Awesome", "Be Good", "Be Mine", "Be True", "Cool", "For You", "How Nice", "I Hope", "Kiss Me", "Lets Kiss", "Love", "Love Her", "Love Life", "Love Me", "Love You", "My Baby", "My Way", "Sweet Talk", "True Love"] 
+                  })
+    puzzles.push({ name: "Veterans Day",
+                   category: category,
+                   words: ["Air Force", "Army", "Marines", "Navy", "November", "artillery", "battle", "courage", "defend", "freedom", "guard", "heroes", "history", "honor", "infantry", "memorial", "military", "militia", "national", "peace", "protect", "soldier", "valor", "veterans", "war"] 
+                  })
+    commit_puzzles(puzzles)
   end
 
   def make_puzzles_for_agriculture_category
@@ -80,11 +147,7 @@ namespace :db do
                    category: category,
                    words: ["bit", "bosal", "breast collar", "bridle", "bronc rein", "bucking roll", "cantle", "chaps", "cinch", "concho", "dally", "fender", "hackamore", "halter", "headstall", "oxbow stirrups", "reins", "rosette", "skirts", "spur", "spur strap", "stirrup", "stirrup leathers", "tapadero", "tree"] 
                   })
-    puzzles.each do |puzzle|
-      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
-      new_puzzle.words = puzzle[:words]
-      new_puzzle.save!
-    end
+    commit_puzzles(puzzles)
   end
 
   def make_puzzles_for_american_history_category
@@ -134,13 +197,7 @@ namespace :db do
                    category: category,
                    words: ["AIDS", "Apple Computer", "Betamax", "Break dancing", "Challenger", "Danielle Steele", "Exxon Valdez", "Generation X", "George Bush", "Grenada", "Iran Contra", "Jesse Jackson", "John Lennon", "Just Say No", "MTV", "Oliver North", "Ronald Reagan", "Stephen King", "Tom Clancy", "VHS"]  
                   })
-    
-    puzzles.each do |puzzle|
-      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
-      new_puzzle.words = puzzle[:words]
-      #puts new_puzzle.inspect #debugging
-      new_puzzle.save!
-    end
+    commit_puzzles(puzzles)
   end
 
   def make_puzzles_for_architecture
@@ -174,12 +231,7 @@ namespace :db do
                    category: category,
                    words: ["Howe Truss", "Lenticular Truss", "Wichert Truss", "arch", "beam", "cable stayed", "cantilever", "closed spandrel arch", "fixed arch", "girder", "king post", "one-hinged arch", "open spandrel arch", "queen post", "rigid frame", "soul ribbed arch", "spandrel braced arch", "suspension", "three-hinged arch", "truss", "trussed deck arch", "trussed through arch", "two-hinged arch"] 
                   })
-    puzzles.each do |puzzle|
-      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
-      new_puzzle.words = puzzle[:words]
-      #puts new_puzzle.inspect #debugging
-      new_puzzle.save!
-    end
+    commit_puzzles(puzzles)
   end
 
   def make_puzzles_for_art
@@ -257,12 +309,7 @@ namespace :db do
                    category: category,
                    words: ["American Gothic", "Clothed Maja", "False Start", "Impression Sunrise", "Las Meninas", "Madame Recamier", "Nightwatch", "Portrait of Louis XIV", "The Birth of Venus", "The Hay Wain", "The Kiss", "The Last Judgement", "The Last Supper", "The Scream", "The Sistine Madonna", "The Starry Night", "The Wandering Jew", "Woman III"] 
                   })
-    puzzles.each do |puzzle|
-      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
-      new_puzzle.words = puzzle[:words]
-      #puts new_puzzle.inspect #debugging
-      new_puzzle.save!
-    end
+    commit_puzzles(puzzles)
   end
 
   def make_puzzles_for_art_and_music
@@ -464,12 +511,7 @@ namespace :db do
                    category: category,
                    words: ["Bin", "French horn", "Ocarina", "Shvi", "accordion", "alphorn", "bagpipe", "bugle", "bulb horn", "clarinet", "cornet", "duduk", "fanfare trumpet", "fife", "flugelhorn", "flute", "harmonica", "harmonium", "mijwiz", "oboe", "piccolo", "shofar", "trombone", "trumpet", "whistle"] 
                   })
-     puzzles.each do |puzzle|
-      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
-      new_puzzle.words = puzzle[:words]
-      #puts puzzle #debugging
-      new_puzzle.save!
-    end
+    commit_puzzles(puzzles)
   end
 
   def make_puzzles_for_astronomy
@@ -503,12 +545,7 @@ namespace :db do
                    category: category,
                    words: ["Helios", "Sol", "chromosphere", "convection zone", "corona", "energy", "faculae", "flares", "heliosphere", "helium", "magnetosphere", "photosphere", "plasma", "radiative zone", "rotation", "solar wind", "streamer", "sun loops", "sun spots", "ultraviolet", "yellow dwarf star"]
                   })
-    puzzles.each do |puzzle|
-      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
-      new_puzzle.words = puzzle[:words]
-      #puts puzzle #debugging
-      new_puzzle.save!
-    end
+    commit_puzzles(puzzles)
   end
 
   def make_puzzles_for_basics
@@ -530,12 +567,7 @@ namespace :db do
                    category: category,
                    words: ["Baba mold", "Bain-marie", "Banneton", "Basting brush", "Basting syringe", "Bench scraper", "Blender", "Boil over preventer", "Bone scissors", "Bowl", "Bread knife", "Browning tray", "Butcher block", "Cake-server", "Can opener", "Candy thermometer", "Casserole", "Cauldron", "Cheese cloth", "Cheese grater", "Cheese slicer", "Chimta", "Chinoise", "Chop sticks", "Coconut grater", "Colander", "Cookie cutter", "Crab cracker", "Crab fork", "Crockery", "Cutting board", "Double boiler", "Dough blender", "Drum sieve", "Egg piercer", "Egg slicer", "Egg timer", "Faucet", "Fillet knife"] 
                   })
-    puzzles.each do |puzzle|
-      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
-      new_puzzle.words = puzzle[:words]
-      #puts puzzle #debugging
-      new_puzzle.save!
-    end
+    commit_puzzles(puzzles)
   end
 
   def make_puzzles_for_chemistry
@@ -553,12 +585,7 @@ namespace :db do
                    category: category,
                    words: ["Actinium", "Americium", "Astatine", "Berkelium", "Californium", "Curium", "Einsteinium", "Fermium", "Francium", "Hahnium", "Lawrencium", "Mendelevium", "Neptunium", "Nobelium", "Plutonium", "Polonium", "Promethium", "Protactinium", "Radium", "Radon", "Rutherfordium", "Technetium", "Thorium", "Unnilhexium", "Uranium"] 
                   })
-    puzzles.each do |puzzle|
-      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
-      new_puzzle.words = puzzle[:words]
-      #puts puzzle #debugging
-      new_puzzle.save!
-    end
+    commit_puzzles(puzzles)
   end
 
   def make_puzzles_for_cultures
@@ -580,12 +607,7 @@ namespace :db do
                    category: category,
                    words: ["Candlemas", "Cinco de Mayo", "Dia de los Muertos", "Las Posadas", "Mariachis", "Mexican Hat Dance", "Navidad", "Noche Buena", "Roman Catholicism", "Virgin Mary", "bullfighting", "chiles", "corn", "fiesta", "folk art", "green", "horchata", "marimba", "menudo", "red", "tacos", "tamales", "tortilla", "white"] 
                   })
-    puzzles.each do |puzzle|
-      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
-      new_puzzle.words = puzzle[:words]
-      #puts puzzle #debugging
-      new_puzzle.save!
-    end
+    commit_puzzles(puzzles)
   end
 
   def make_puzzles_for_economics
@@ -607,12 +629,7 @@ namespace :db do
                    category: category,
                    words: ["birr", "cedi", "colon", "dirham", "dobra", "dollar", "dong", "dram", "euro", "franc", "kina", "kip", "lira", "mark", "peso", "pound", "quetzal", "rand", "ruble", "rupee", "shekel", "shilling", "sol", "won", "yen"] 
                   })
-    puzzles.each do |puzzle|
-      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
-      new_puzzle.words = puzzle[:words]
-      #puts puzzle #debugging
-      new_puzzle.save!
-    end
+    commit_puzzles(puzzles)
   end
 
   def make_puzzles_for_environmental
@@ -630,12 +647,7 @@ namespace :db do
                    category: category,
                    words: ["aluminum", "aseptics", "books", "cardboard", "cell phones", "compact discs", "compost", "computer printers", "corks", "envelopes", "glass", "grocery bags", "magazines", "newspaper", "phone books", "posterboard", "produce bags", "steel", "sticky notes", "tin", "tires", "video tape", "wrapping paper"] 
                   })
-    puzzles.each do |puzzle|
-      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
-      new_puzzle.words = puzzle[:words]
-      #puts puzzle #debugging
-      new_puzzle.save!
-    end
+    commit_puzzles(puzzles)
   end
 
   def make_puzzles_for_geology
@@ -665,12 +677,7 @@ namespace :db do
                    category: category,
                    words: ["ash", "ash cloud", "base", "bedrock", "branch pipe", "caldera", "cinder cones", "conduit", "crater", "cyrovolcano", "felsic", "flank", "hot spots", "lahars", "lava", "lava domes", "magma chamber", "mantle plumes", "molten rock", "parasitic cone", "silica", "sill", "steam", "sulfur", "vent"] 
                   })
-    puzzles.each do |puzzle|
-      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
-      new_puzzle.words = puzzle[:words]
-      #puts puzzle #debugging
-      new_puzzle.save!
-    end
+    commit_puzzles(puzzles)
   end
 
   def make_puzzles_for_government
@@ -712,12 +719,7 @@ namespace :db do
                    category: category,
                    words: ["Aaron Burr", "Andrew Johnson", "Calvin Coolidge", "Charles Curtis", "Elbridge Gerry", "George Clinton", "Hannibal Hamlin", "Henry Wilson", "John Adams", "John Nance Garner", "John Tyler", "Martin Van Buren", "Millard Fillmore", "Schuyler Colfax", "Theodore Roosevelt", "Thomas Jefferson", "William Rufus King"] 
                   })
-    puzzles.each do |puzzle|
-      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
-      new_puzzle.words = puzzle[:words]
-      #puts puzzle #debugging
-      new_puzzle.save!
-    end
+    commit_puzzles(puzzles)
   end
 
   def make_puzzles_for_health
@@ -775,11 +777,6 @@ namespace :db do
                    category: category,
                    words: ["bridge", "camel", "chair", "cobra", "crane", "crow", "downward-facing dog", "eagle", "fish", "full boat", "half moon", "hero", "lion", "locust", "lotus", "monkey", "mountain", "open angle", "peacock", "plank", "reclining", "side plank", "thunderbolt", "tortoise", "wheel"] 
                   })
-    puzzles.each do |puzzle|
-      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
-      new_puzzle.words = puzzle[:words]
-      #puts puzzle #debugging
-      new_puzzle.save!
-    end
+    commit_puzzles(puzzles)
   end
 end
