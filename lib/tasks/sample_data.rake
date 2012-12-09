@@ -14,6 +14,7 @@ namespace :db do
     make_puzzles_for_economics
     make_puzzles_for_environmental
     make_puzzles_for_geology
+    make_puzzles_for_government
   end
 
   def make_puzzles_for_holidays_category
@@ -662,6 +663,53 @@ namespace :db do
     puzzles.push({ name: "Volcanoes",
                    category: category,
                    words: ["ash", "ash cloud", "base", "bedrock", "branch pipe", "caldera", "cinder cones", "conduit", "crater", "cyrovolcano", "felsic", "flank", "hot spots", "lahars", "lava", "lava domes", "magma chamber", "mantle plumes", "molten rock", "parasitic cone", "silica", "sill", "steam", "sulfur", "vent"] 
+                  })
+    puzzles.each do |puzzle|
+      new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
+      new_puzzle.words = puzzle[:words]
+      #puts puzzle #debugging
+      new_puzzle.save!
+    end
+  end
+
+  def make_puzzles_for_government
+    puzzles = []
+    category = "Economics"
+    puzzles.push({ name: "Elected Officials",
+                   category: category,
+                   words: ["Assemblyman", "Assessor", "Attorney General", "Auditor", "Constable", "Coroner", "Councilman", "County Executive", "Delegate", "District Attorney", "Governor", "Judge", "Lieutenant", "Mayor", "President", "Prosecutor", "Recorder", "School Board Member", "Secretary of State", "Senator", "Sheriff", "Supervisor", "Surveyor", "Tax Collector", "Treasurer"] 
+                  })
+    puzzles.push({ name: "Government Terms",
+                   category: category,
+                   words: ["Bill of Rights", "Republic", "Senate", "Speaker of the House", "Supreme Court", "amendment", "appointed", "bill", "cabinet", "candidate", "checks and balances", "congress", "constitutional", "delegate", "democracy", "electoral college", "federal", "governor", "jury", "law", "majority", "minority", "veto"] 
+                  })
+    puzzles.push({ name: "New Deal",
+                   category: category,
+                   words: ["alphabet soup", "Glass-Steagall Act", "Social Security Act", "The Great Depression", "Wagner Act", "World War II", "economy", "employment", "recovery", "reform", "relief", "stock market crash"] 
+                  })
+    puzzles.push({ name: "Declaration of Independence",
+                   category: category,
+                   words: ["Abraham Clark", "Arthur Middleton", "Benjamin Franklin", "Benjamin Harrison", "Benjamin Rush", "Button Gwinnett", "Caesar Rodney", "Carter Braxton", "Charles Carroll", "Edward Rutledge", "Elbridge Gerry", "Francis Hopkinson", "Francis Lewis", "George Clymer", "George Read", "George Ross", "George Taylor", "George Walton", "George Wythe", "James Smith", "James Wilson", "John Adams", "John Hancock", "John Hart", "John Morton", "John Penn", "John Witherspoon", "Joseph Hewes", "Josiah Bartlett", "Lewis Morris", "Lyman Hall", "Matthew Thornton", "Oliver Wolcott", "Phillip Livingston", "Richard Henry Lee", "Richard Stockton", "Robert Morris", "Robert Treat Paine", "Roger Sherman", "Samuel Adams", "Samuel Chase", "Samuel Huntington", "Stephen Hopkins", "Thomas Jefferson", "Thomas McKean", "Thomas Stone", "William Ellery", "William Floyd", "William Hooper", "William Paca", "William Whipple", "William Williams"] 
+                  })
+    puzzles.push({ name: "US Constitution",
+                   category: category,
+                   words: ["Checks and Balances", "Congress", "Elections", "President", "Senate", "Supreme Court", "amendments", "due process of law", "executive power", "federal power", "freedom of assembly", "freedom of press", "freedom of religion", "freedom of speech", "freedom to petition", "judicial power", "legislative power", "right to bear arms", "search and seizure", "separation of powers", "speedy trial", "trial by jury"] 
+                  })
+    puzzles.push({ name: "US Governors",
+                   category: category,
+                   words: ["Bill Richardson", "Bill Ritter", "Bob Riley", "Bobby Jindal", "Charlie Crist", "Chet Culver", "Deval Patrick", "Eliot Spitzer", "Haley Barbour", "Jim Doyle", "Jim Gibbons", "John Baldacci", "John Lynch", "Jon Corzine", "Linda Lingle", "Matt Blunt", "Mike Beebe", "Mitch Daniels", "Patrick Quinn", "Rick Perry", "Ruth Ann Minner", "Sarah Palin", "Sonny Perdue", "Steve Beshear"] 
+                  })
+    puzzles.push({ name: "US Democrats",
+                   category: category,
+                   words: ["Al Franken", "Arlen Specter", "Barbara Boxer", "Bill Nelson", "Carl Levin", "Christopher Dodd", "Daniel Inouye", "Dianne Feinstein", "Harry Reid", "Herb Kohl", "Jack Reed", "Jim Webb", "Jon Tester", "Kent Conrad", "Maria Cantwell", "Mary Landrieu", "Max Baucus", "Patty Murray", "Robert Menendez", "Ron Wyden", "Sherrod Brown", "Thomas Carper", "Tim Johnson", "Tom Harkin", "Tom Udall"] 
+                  })
+    puzzles.push({ name: "US Republicans",
+                   category: category,
+                   words: ["Bill Frist", "Chuck Grassley", "Chuck Hagel", "Conrad Burns", "George Allen", "Gordon Smith", "Jeff Sessions", "Jim Bunning", "Jim Talent", "John Ensign", "John McCain", "John Warner", "Judd Gregg", "Larry Craig", "Lincoln Chafee", "Michael Crapo", "Olympia Snowe", "Orrin Hatch", "Pat Roberts", "Richard Lugar", "Richard Shelby", "Susan Collins", "Ted Stevens", "Trent Lott", "Wayne Allard"] 
+                  })
+    puzzles.push({ name: "Vice Presidents",
+                   category: category,
+                   words: ["Aaron Burr", "Andrew Johnson", "Calvin Coolidge", "Charles Curtis", "Elbridge Gerry", "George Clinton", "Hannibal Hamlin", "Henry Wilson", "John Adams", "John Nance Garner", "John Tyler", "Martin Van Buren", "Millard Fillmore", "Schuyler Colfax", "Theodore Roosevelt", "Thomas Jefferson", "William Rufus King"] 
                   })
     puzzles.each do |puzzle|
       new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
