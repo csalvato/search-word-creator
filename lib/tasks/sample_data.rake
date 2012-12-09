@@ -16,6 +16,7 @@ namespace :db do
     make_puzzles_for_geology
     make_puzzles_for_government
     make_puzzles_for_health
+    make_puzzles_for_tools
   end
 
   def commit_puzzles(puzzles)
@@ -776,6 +777,42 @@ namespace :db do
     puzzles.push({ name: "Yoga",
                    category: category,
                    words: ["bridge", "camel", "chair", "cobra", "crane", "crow", "downward-facing dog", "eagle", "fish", "full boat", "half moon", "hero", "lion", "locust", "lotus", "monkey", "mountain", "open angle", "peacock", "plank", "reclining", "side plank", "thunderbolt", "tortoise", "wheel"] 
+                  })
+    commit_puzzles(puzzles)
+  end
+
+  def make_puzzles_for_tools
+    puzzles = []
+    category = "Tools"
+    puzzles.push({ name: "Linux",
+                   category: category,
+                   words: ["Arch", "ArtistX", "Astruix", "BackTrack", "Baltix", "BlankOn", "Buildix", "CentOS", "Easypeasy", "Eeebuntu", "ElementOS", "Fedora", "Fluxbuntu", "Gentoo", "GeoBox", "GnackTrack", "Goobuntu", "Guadalinex", "Hiweed", "Redhat Linux", "Slackware", "Spri", "Ubuntu", "eBow", "gNewSense", "gOS"] 
+                  })
+    puzzles.push({ name: "Types of Knots",
+                   category: category,
+                   words: ["Bachmann", "Bowline", "Bowline on a Bite", "Heden", "Klemheist", "Prusik", "clove hitch", "diamond knot", "double sheet bend", "figure eight", "flemish bend", "half hitch", "halyard knot", "overhand knot", "reef knot", "ring bend", "rolling hitch", "sheep shank", "sheet bend", "square knot", "studding sail", "timber hitch", "two half hitches"]
+                  })
+    commit_puzzles(puzzles)
+  end
+
+  def make_puzzles_for_seasons
+    puzzles = []
+    category = "Tools"
+    puzzles.push({ name: "Autumn",
+                   category: category,
+                   words: ["Halloween", "Thanksgiving", "World Series", "acorns", "apples", "blustery", "brown", "cornstalks", "equinox", "fall", "gourds", "harvest moon", "leaves", "orange", "pumpkin patch", "pumpkin pie", "pumpkins", "raking", "red", "scarecrow", "school", "squash", "turkey", "wind", "yellow"] 
+                  })
+    puzzles.push({ name: "Spring",
+                   category: category,
+                   words: ["April showers", "Easter", "May flowers", "baskets", "blooms", "blossoms", "bonnet", "buds", "bunny", "cleaning", "daffodil", "eggs", "grass", "green", "kites", "lambs", "migration", "planting", "plowing", "raincoat", "robins", "seeds", "spring break", "tulip", "umbrella"] 
+                  })
+    puzzles.push({ name: "Summer",
+                   category: category,
+                   words: ["air conditioner", "barbeque", "bathing suit", "beach", "boardwalk", "boating", "camping", "fan", "fireflies", "fireworks", "hamburgers", "hot dogs", "ice cream", "lemonade", "mosquitoes", "ocean", "picnic", "pool", "sand", "sunglasses", "sunscreen", "sunshine", "tan", "vacation", "water ski"] 
+                  })
+    puzzles.push({ name: "Winter",
+                   category: category,
+                   words: ["blizzard", "boots", "cold", "dark", "earmuffs", "flurries", "frost", "frostbite", "gloves", "hats", "hibernation", "holidays", "icicles", "jacket", "mittens", "scarf", "shovel", "sled", "sleet", "sleigh", "snow", "snowflakes", "snowman", "snowsuit", "winter solstice"] 
                   })
     commit_puzzles(puzzles)
   end
