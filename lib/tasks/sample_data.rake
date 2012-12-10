@@ -23,6 +23,7 @@ namespace :db do
   def commit_puzzles(puzzles)
     puzzles.each do |puzzle|
       new_puzzle = WordSearchPuzzle.find_or_create_by_name_and_category( puzzle[:name], puzzle[:category] )
+      puts puzzle[:words]
       new_puzzle.words = puzzle[:words]
       new_puzzle.save!
     end
@@ -35,11 +36,11 @@ namespace :db do
                    category: category,
                    words: ["Boxing Day", "Chimney", "Cranberries", "Drummer boy", "Egg nog", "Fruitcake", "Gifts", "Holly", "Jesus", "Jingle bells", "Kris Kringle", "Manger", "Orange", "Ornament", "Red", "Santa Claus", "Shopping", "Silent night", "Stocking", "Tree", "Turkey", "White", "Wisemen", "Wreath", "Yuletide"]
                   })
-    puzzles.push({ name: "Christmas (Seasonal)",
+    puzzles.push({ name: "Christmas",
                    category: category,
                    words: ["Blitzen", "Caroling", "Chestnuts", "Christmas Tree", "Comet", "Cupid", "Dancer", "Dasher", "Donner", "Elfs", "Frosty the Snowman", "Fruitcake", "Lumps of coal", "Mistletoe", "North Pole", "Poinsettias", "Prancer", "Presents", "Reindeer", "Rudolph", "Santa Claus", "Scrooge", "Sleigh", "Stockings", "Vixen"] 
                   })
-    puzzles.push({ name: "Christmas (Traditional)",
+    puzzles.push({ name: "Christmas",
                    category: category,
                    words: ["Advent", "Angels", "Balthazar", "Bethlehem", "Caspar", "Herod", "Immanuel", "Jesus", "Joseph", "Love", "Manger", "Mary", "Melchior", "Nativity", "Nazareth", "Noel", "Peace", "Savior", "Shepherds", "Star", "Wise Men", "frankincense", "gold", "myrrh"] 
                   })
@@ -798,7 +799,7 @@ namespace :db do
 
   def make_puzzles_for_seasons
     puzzles = []
-    category = "Tools"
+    category = "Seasons"
     puzzles.push({ name: "Autumn",
                    category: category,
                    words: ["Halloween", "Thanksgiving", "World Series", "acorns", "apples", "blustery", "brown", "cornstalks", "equinox", "fall", "gourds", "harvest moon", "leaves", "orange", "pumpkin patch", "pumpkin pie", "pumpkins", "raking", "red", "scarecrow", "school", "squash", "turkey", "wind", "yellow"] 
@@ -819,6 +820,7 @@ namespace :db do
   end
 
   def make_puzzles_for_all_others
+    puzzles = []
     puzzles.push({ name: "Animal Dwellings",
                      category: "Biology",
                      words: ["aviary", "barn", "birdhouse", "burrow", "cage", "cave", "coop", "den", "doghouse", "hill", "hive", "hole", "kennel", "lair", "mound", "nest", "pen", "perch", "pigpen", "roost", "stable", "stall", "tunnel", "web", "yard"]
@@ -993,59 +995,7 @@ namespace :db do
                     })
     puzzles.push({ name: "Wild Cats",
                      category: "Biology",
-                     words: ["African Wildcat", "Andean Mountain", "Bay Cat", "Black-Foot", "Bobcat", "Caracal", "Cheetah", "Cougar", "Fishing Cat", "Jaguar", "Kodkod", "Leopard", "Lion", "Margay", "Northern Lynx", "Ocelot", "Oncilla", "Pampas Cat", "Rusty-Spotted", "Serval", "Snow Leopard", "Tiger", "﻿African Golden"]
-                    })
-    puzzles.push({ name: "Chemistry 101",
-                     category: "Chemistry",
-                     words: ["Alchemy", "Atom", "Biochemistry", "Bond", "Compound", "Crystal", "Element", "Endothermic", "Energy", "Exothermic", "Gas", "Inorganic", "Ion", "Isotope", "Liquid", "Matter", "Mole", "Molecule", "Organic", "Phase", "Reaction", "Salt", "Science", "Solid", "Substance"]
-                    })
-    puzzles.push({ name: "Common Compounds",
-                     category: "Chemistry",
-                     words: ["CO", "HCl", "KOH", "NO", "NaCl", "NaOH"]
-                    })
-    puzzles.push({ name: "Periodic Table Of Elements",
-                     category: "Chemistry",
-                     words: ["Actinium", "Aluminum", "Americium", "Antimony", "Argon", "Arsenic", "Astatine", "Barium", "Berkelium", "Beryllium", "Bismuth", "Bohrium", "Boron", "Bromine", "Cadmium", "Calcium", "Californium", "Carbon", "Cerium", "Cesium", "Chlorine", "Chromium", "Cobalt", "Copper", "Curium", "Darmstadtium", "Dubnium", "Dysprosium", "Einsteinium", "Erbium", "Europium", "Fermium", "Fluorine", "Francium", "Gadolinium", "Gallium", "Germanium", "Gold", "Hafnium", "Hassium", "Helium", "Holmium", "Hydrogen", "Indium", "Iodine", "Iridium", "Iron", "Krypton", "Lanthanum", "Lawrencium", "Lead", "Lithium", "Lutetium", "Magnesium", "Manganese", "Meitnerium", "Mendelevium", "Mercury", "Molybdenum", "Neodymium", "Neon", "Neptunium", "Nickel", "Niobium", "Nitrogen", "Nobelium", "Osmium", "Oxygen", "Palladium", "Phosphorus", "Platinum", "Plutonium", "Polonium", "Potassium", "Praseodymium", "Promethium", "Protactinium", "Radium", "Radon", "Rhenium", "Rhodium", "Rubidium", "Ruthenium", "Rutherfordium", "Samarium", "Scandium", "Seaborgium", "Selenium", "Silicon", "Silver", "Sodium", "Strontium", "Sulfur", "Tantalum", "Technetium", "Tellurium", "Terbium", "Thallium", "Thorium", "Thulium", "Tin", "Titanium", "Tungsten", "Ununbium", "Ununnilium", "Ununumium", "Uranium", "Vanadium", "Xenon", "Ytterbium", "Yttrium", "Zinc", "Zirconium"]
-                    })
-    puzzles.push({ name: "Radioactive Substances",
-                     category: "Chemistry",
-                     words: ["Actinium", "Americium", "Astatine", "Berkelium", "Californium", "Curium", "Einsteinium", "Fermium", "Francium", "Hahnium", "Lawrencium", "Mendelevium", "Neptunium", "Nobelium", "Plutonium", "Polonium", "Promethium", "Protactinium", "Radium", "Radon", "Rutherfordium", "Technetium", "Thorium", "Unnilhexium", "Uranium"]
-                    })
-    puzzles.push({ name: "Chinese Culture",
-                     category: "Cultures",
-                     words: ["Buddha", "Cantonese", "Chinese New Year", "Confucianism", "Lantern Festival", "Mandarin", "bamboo", "characters", "dim sum", "dog", "dragon", "duck", "fish", "fortune cookies", "jade", "luck", "moon", "red", "symbols", "talisman", "tiger", "wealth", "wok", "zodiac"]
-                    })
-    puzzles.push({ name: "Japanese Culture",
-                     category: "Cultures",
-                     words: ["Bon-odori Festival", "Hanami", "Ikebana", "Irezumi", "bonsai trees", "cherry blossoms", "chopsticks", "fans", "geisha", "geta", "kimono", "koto", "obi", "ofuro", "paper lanterns", "parasols", "rice paper", "sake", "samurai", "silk", "sushi", "tatami", "tea", "wasabi", "zori"]
-                    })
-    puzzles.push({ name: "Japanese Legendary Creatures",
-                     category: "Cultures",
-                     words: ["Fūjin - the wind god", "Ryū - Japanese dragons", "Samebito - a shark-man ", "Tsukiyomi - a moon god"]
-                    })
-    puzzles.push({ name: "Jewish Culture",
-                     category: "Cultures",
-                     words: ["Baklava", "Bar Mitzvah", "Bat Mitzvah", "Chanukah", "Hebrew", "Israel", "Judaism", "Kabbalah", "Kosher", "Ladino", "Passover", "Purim", "Rosh Hashanah", "Shabbat", "Shavuot", "Tanakh", "Torah", "Yiddish", "Yom Kippur", "cholent", "hamin", "kouclas", "kugel", "latkes", "synagogue"]
-                    })
-    puzzles.push({ name: "Mexican Culture",
-                     category: "Cultures",
-                     words: ["Candlemas", "Cinco de Mayo", "Dia de los Muertos", "Las Posadas", "Mariachis", "Mexican Hat Dance", "Navidad", "Noche Buena", "Roman Catholicism", "Virgin Mary", "bullfighting", "chiles", "corn", "fiesta", "folk art", "green", "horchata", "marimba", "menudo", "red", "tacos", "tamales", "tortilla", "white"]
-                    })
-    puzzles.push({ name: "Accounting",
-                     category: "Economics",
-                     words: ["accounts payable", "accounts receivable", "accrual accounting", "assets", "balance sheet", "bookkeeping", "cash", "chart of accounts", "cost accounting", "credits", "debits", "depreciation", "equity", "expenses", "financial statement", "general ledger", "interest", "journal", "liabilities", "loan", "note", "payroll", "profit", "revenue", "sales income"]
-                    })
-    puzzles.push({ name: "American Corporations",
-                     category: "Economics",
-                     words: ["American Express", "Bank of America", "Best Buy", "Chevron", "Coca-Cola", "Costco", "Deere", "Dell", "FedEx", "Ford", "General Motors", "Hewlett-Packard", "Intel", "Metlife", "Microsoft", "Motorola", "Prudential", "Safeway", "Sears", "State Farm", "Sysco", "Target", "Verizon", "Wal-Mart", "Walt Disney"]
-                    })
-    puzzles.push({ name: "Foreign Cars",
-                     category: "Economics",
-                     words: ["Acura", "Alfa Romeo", "Audi", "BMW", "Ferrari", "Honda", "Hyundai", "Lamborghini", "Lexus", "Maserati", "Mazda", "Mercedes Benz", "Mitsubishi", "Nissan", "Peugeot", "Porsche", "Renault", "Saab", "Subaru", "Suzuki", "Toyota", "Vauxhall", "Volkswagen", "Volvo", "Yugo"]
-                    })
-    puzzles.push({ name: "World Currencies",
-                     category: "Economics",
-                     words: ["birr", "cedi", "colon", "dirham", "dobra", "dollar", "dong", "dram", "euro", "franc", "kina", "kip", "lira", "mark", "peso", "pound", "quetzal", "rand", "ruble", "rupee", "shekel", "shilling", "sol", "won", "yen"]
+                     words: ["African Wildcat", "Andean Mountain", "Bay Cat", "Black-Foot", "Bobcat", "Caracal", "Cheetah", "Cougar", "Fishing Cat", "Jaguar", "Kodkod", "Leopard", "Lion", "Margay", "Northern Lynx", "Ocelot", "Oncilla", "Pampas Cat", "Rusty-Spotted", "Serval", "Snow Leopard", "Tiger", "African Golden"]
                     })
     puzzles.push({ name: "Acclaimed Plays",
                      category: "English",
@@ -1142,10 +1092,6 @@ namespace :db do
     puzzles.push({ name: "Compound Words",
                      category: "English Language",
                      words: ["airport", "baseball", "bathroom", "clockwise", "downtown", "earring", "eyebrow", "fingernail", "goldfish", "haystack", "inside", "jigsaw", "lifetime", "moonlight", "newspaper", "overboard", "popcorn", "rowboat", "sailboat", "surfboard", "tablecloth", "underline", "viewpoint", "waterfall", "yearbook"]
-                    })
-    puzzles.push({ name: "Contractions",
-                     category: "English Language",
-                     words: []
                     })
     puzzles.push({ name: "English Words From Arabic",
                      category: "English Language",
@@ -1323,18 +1269,6 @@ namespace :db do
                      category: "Entertainment",
                      words: ["Angel", "Beast", "Changeling", "Colossus", "Cyclops", "Dazzler", "Flea", "Iceman", "Lockheed", "Magneto", "Marrow", "Mimic", "Mystique", "Nightcrawler", "Phoenix", "Polaris", "Professor Xavier", "Rogue", "Shadowcat", "Storm", "Sunfire", "Sway", "Thunderbird", "Vulcan", "Wolverine"]
                     })
-    puzzles.push({ name: "Global Warming",
-                     category: "Environmental",
-                     words: ["Greenhouse Effect", "aerosols", "albedo", "atmosphere", "carbon dioxide", "carbon sinks", "deforestation", "emissions", "fossil fuels", "greenhouse gas", "methane", "nitrous oxide", "oceans", "ozone depletion", "ozone layer", "recycling", "renewable energy", "temperature", "temperature rise", "thermal expansion", "water vapor"]
-                    })
-    puzzles.push({ name: "Non Recyclables",
-                     category: "Environmental",
-                     words: ["Styrofoam", "candy wrappers", "carbon paper", "carpet", "cement", "cigarette butts", "dirt", "dishes", "flooring", "foil coated paper", "hangers", "laminated paper", "lead acid batteries", "mirrors", "paper clips", "photographs", "plastic coated paper", "plastic toys", "rock", "rubber bands", "sponges", "tissues", "toothpaste tubes", "waxed paper", "window glass"]
-                    })
-    puzzles.push({ name: "Recyclables",
-                     category: "Environmental",
-                     words: ["aluminum", "aseptics", "books", "cardboard", "cell phones", "compact discs", "compost", "computer printers", "corks", "envelopes", "glass", "grocery bags", "magazines", "newspaper", "phone books", "posterboard", "produce bags", "steel", "sticky notes", "tin", "tires", "video tape", "wrapping paper"]
-                    })
     puzzles.push({ name: "African Cities",
                      category: "Geography",
                      words: ["Alexandria", "Algiers", "Asmara", "Bamako", "Banjul", "Bissau", "Cairo", "Cape Town", "Casablanca", "Dakar", "Douala", "Durban", "Harare", "Johannesburg", "Kaduna", "Kano", "Kumasi", "Lagos", "Lome", "Mogadishu", "Mombasa", "Nairobi", "Oran", "Tripoli", "Tunis"]
@@ -1394,10 +1328,6 @@ namespace :db do
     puzzles.push({ name: "Canadian Provinces Territories And Their Capitals",
                      category: "Geography",
                      words: ["Alberta", "British Columbia", "Charlottetown", "Edmonton", "Fredericton", "Halifax", "Iqaluit", "Manitoba", "New Brunswick", "Newfoundland", "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Quebec City", "Regina", "Saskatchewan", "Toronto", "Victoria", "Whitehorse", "Winnipeg", "Yellowknife", "Yukon"]
-                    })
-    puzzles.push({ name: "Cities Along The Ohio River",
-                     category: "Geography",
-                     words: ["Empire (OH)", "Evansville (IN)", "Fort Knox (KY)"]
                     })
     puzzles.push({ name: "Cities Of New Mexico",
                      category: "Geography",
@@ -1505,7 +1435,7 @@ namespace :db do
                     })
     puzzles.push({ name: "Rivers of Australia",
                      category: "Geography",
-                     words: ["Crookwell", "Cudgegong", "Culgoa", "Daintree", "Dale", "Daly", "Dandalup", "Darling", "Dawson (Queensland)", "De Grey", "Dee", "Deep", "Delatite", "Delegate", "Denmark", "Derwent", "Deua", "Diamantina", "Don", "Douglas", "Dry", "Dumaresq", "Palmer (Queensland)", "Paroo", "Parramatta", "Peel", "Pennefather", "Pieman", "Pimpana", "Pine", "Pioneer", "Pipers", "Plenty", "Port", "Queanbeyan", "Queen", "Quidong", "Richmond", "Roper", "Ross", "Rubicon", "Russell", "Wakefield", "Walpole", "Walsh", "Ward", "Warrego", "Waukivory", "Waychinicup", "Werribee", "Wildman", "Wilson", "Wimmera", "Wingecarribee", "Wolgan", "Wollomombi", "Wollondilly", "Woronora"]
+                     words: ["Crookwell", "Cudgegong", "Culgoa", "Daintree", "Dale", "Daly", "Dandalup", "Darling", "Dawson", "De Grey", "Dee", "Deep", "Delatite", "Delegate", "Denmark", "Derwent", "Deua", "Diamantina", "Don", "Douglas", "Dry", "Dumaresq", "Palmer", "Paroo", "Parramatta", "Peel", "Pennefather", "Pieman", "Pimpana", "Pine", "Pioneer", "Pipers", "Plenty", "Port", "Queanbeyan", "Queen", "Quidong", "Richmond", "Roper", "Ross", "Rubicon", "Russell", "Wakefield", "Walpole", "Walsh", "Ward", "Warrego", "Waukivory", "Waychinicup", "Werribee", "Wildman", "Wilson", "Wimmera", "Wingecarribee", "Wolgan", "Wollomombi", "Wollondilly", "Woronora"]
                     })
     puzzles.push({ name: "Rivers of Bulgaria",
                      category: "Geography",
@@ -1613,294 +1543,174 @@ namespace :db do
                     })
     puzzles.push({ name: "Worlds Most Populous Cities",
                      category: "Geography",
-                     words: ["Bangkok (Thailand)", "Beijing (China)", "Bogota (Columbia)", "Cairo (Egypt)", "Delhi (India)", "Dhaka (Bangladesh)", "Hong Kong (Hong Kong)", "Istanbul (Turkey)", "Jakarta (Indonesia)", "Karachi (Pakistan)", "Lagos (Nigeria)", "Lahore (Pakistan)", "Lima (Peru)", "Mexico City (Mexico)", "Moscow (Russia)", "Mumbai (India)", "Sao Paulo (Brazil)", "Seoul (Korea)", "Shanghai (China)", "Tehran (Iran)", "Tokyo (Japan)"]
-                    })
-    puzzles.push({ name: "Earth",
-                     category: "Geology",
-                     words: ["asthenosphere", "atmosphere", "continental crust", "convection current", "crust", "exosphere", "inner core", "ionosphere", "lithosphere", "lower mantle", "mesopause", "mesosphere", "nickel", "oceanic crust", "outer core", "ozone layer", "plate tectonics", "stratopause", "stratosphere", "thermosphere", "tropopause", "troposphere", "upper mantle", "uranium"]
-                    })
-    puzzles.push({ name: "Earthquakes",
-                     category: "Geology",
-                     words: ["Rayleigh wave", "Richter scale", "S wave", "accelogram", "aftershocks", "asperity", "epicenter", "fault", "fault plane", "foreshocks", "harmonic tremor", "hypocenter", "isoseismal", "mainshock", "moment tensor", "paleoseismicity", "rupture front", "rupture velocity", "seismic waves", "seismic zone", "seismograph", "seismometer", "tensional stress", "wave front"]
-                    })
-    puzzles.push({ name: "Famous Volcanoes",
-                     category: "Geology",
-                     words: ["Acongua", "Cotopaxi", "El Chichon", "Kilauea", "Krakatau", "Lassen Peak", "Lassen Peak", "Llullaillaco", "Mauna Kea", "Mauna Loa", "Mount Etna", "Mount Fuji", "Mount Mazama", "Mount Pelee", "Mount Pinatubo", "Mount Rainer", "Mount Saint Helens", "Mount Shasta", "Mount Tambora", "Nevado de Ruiz", "Paricutin", "Stromboli", "Surtsey", "Vesuvius"]
-                    })
-    puzzles.push({ name: "Gems",
-                     category: "Geology",
-                     words: ["Agate", "Amber", "Amethyst", "Aquamarine", "Bloodstone", "Carnelian", "Citrine", "Coral", "Emerald", "Garnet", "Jasper", "Malachite", "Moissanite", "Obsidian", "Onyx", "Pearl", "Peridot", "Quartz", "Rose Quartz", "Sapphire", "Spinel", "Tiger Eye", "Topaz", "Turquoise", "Zircon"]
-                    })
-    puzzles.push({ name: "Gems 2",
-                     category: "Geology",
-                     words: ["Alexandrite", "Ammolite", "Aventurine", "Beryl", "Chrysoberyl", "Corundum", "Diamond", "Feldspar", "Ivory", "Jade", "Jadeite", "Jet", "Kunzite", "Lapis Lazuli", "Moonstone", "Mother Of Pearl", "Nephrite", "Opal ", "Quartz Rock Crystal", "Red Emerald", "Ruby", "Tanzanite", "Tourmaline", "Yellow Emerald"]
-                    })
-    puzzles.push({ name: "Volcanoes",
-                     category: "Geology",
-                     words: ["ash", "ash cloud", "base", "bedrock", "branch pipe", "caldera", "cinder cones", "conduit", "crater", "cyrovolcano", "felsic", "flank", "hot spots", "lahars", "lava", "lava domes", "magma chamber", "mantle plumes", "molten rock", "parasitic cone", "silica", "sill", "steam", "sulfur", "vent"]
-                    })
-    puzzles.push({ name: "Elected Officials",
-                     category: "Government",
-                     words: ["Assemblyman", "Assessor", "Attorney General", "Auditor", "Constable", "Coroner", "Councilman", "County Executive", "Delegate", "District Attorney", "Governor", "Judge", "Lieutenant", "Mayor", "President", "Prosecutor", "Recorder", "School Board Member", "Secretary of State", "Senator", "Sheriff", "Supervisor", "Surveyor", "Tax Collector", "Treasurer"]
-                    })
-    puzzles.push({ name: "Government Terms",
-                     category: "Government",
-                     words: ["Bill of Rights", "Republic", "Senate", "Speaker of the House", "Supreme Court", "amendment", "appointed", "bill", "cabinet", "candidate", "checks and balances", "congress", "constitutional", "delegate", "democracy", "electoral college", "federal", "governor", "jury", "law", "majority", "minority", "veto"]
-                    })
-    puzzles.push({ name: "New Deal",
-                     category: "Government",
-                     words: ["\"alphabet soup\"", "Glass-Steagall Act", "Social Security Act", "The Great Depression", "Wagner Act", "World War II", "economy", "employment", "recovery", "reform", "relief", "stock market crash"]
-                    })
-    puzzles.push({ name: "Signers Of The Declaration Of Independence",
-                     category: "Government",
-                     words: ["Abraham Clark", "Arthur Middleton", "Benjamin Franklin", "Benjamin Harrison", "Benjamin Rush", "Button Gwinnett", "Caesar Rodney", "Carter Braxton", "Charles Carroll", "Edward Rutledge", "Elbridge Gerry", "Francis Hopkinson", "Francis Lewis", "George Clymer", "George Read", "George Ross", "George Taylor", "George Walton", "George Wythe", "James Smith", "James Wilson", "John Adams", "John Hancock", "John Hart", "John Morton", "John Penn", "John Witherspoon", "Joseph Hewes", "Josiah Bartlett", "Lewis Morris", "Lyman Hall", "Matthew Thornton", "Oliver Wolcott", "Phillip Livingston", "Richard Henry Lee", "Richard Stockton", "Robert Morris", "Robert Treat Paine", "Roger Sherman", "Samuel Adams", "Samuel Chase", "Samuel Huntington", "Stephen Hopkins", "Thomas Jefferson", "Thomas McKean", "Thomas Stone", "William Ellery", "William Floyd", "William Hooper", "William Paca", "William Whipple", "William Williams"]
-                    })
-    puzzles.push({ name: "Supreme Court Cases",
-                     category: "Government",
-                     words: ["In Re Gault"]
-                    })
-    puzzles.push({ name: "U.S. Constitution",
-                     category: "Government",
-                     words: ["Checks and Balances", "Congress", "Elections", "President", "Senate", "Supreme Court", "amendments", "due process of law", "executive power", "federal power", "freedom of assembly", "freedom of press", "freedom of religion", "freedom of speech", "freedom to petition", "judicial power", "legislative power", "right to bear arms", "search and seizure", "separation of powers", "speedy trial", "trial by jury"]
-                    })
-    puzzles.push({ name: "U.S. Governors",
-                     category: "Government",
-                     words: ["Bill Richardson", "Bill Ritter", "Bob Riley", "Bobby Jindal", "Charlie Crist", "Chet Culver", "Deval Patrick", "Eliot Spitzer", "Haley Barbour", "Jim Doyle", "Jim Gibbons", "John Baldacci", "John Lynch", "Jon Corzine", "Linda Lingle", "Matt Blunt", "Mike Beebe", "Mitch Daniels", "Patrick Quinn", "Rick Perry", "Ruth Ann Minner", "Sarah Palin", "Sonny Perdue", "Steve Beshear"]
-                    })
-    puzzles.push({ name: "U.S. Senators (Democrats)",
-                     category: "Government",
-                     words: ["Al Franken", "Arlen Specter", "Barbara Boxer", "Bill Nelson", "Carl Levin", "Christopher Dodd", "Daniel Inouye", "Dianne Feinstein", "Harry Reid", "Herb Kohl", "Jack Reed", "Jim Webb", "Jon Tester", "Kent Conrad", "Maria Cantwell", "Mary Landrieu", "Max Baucus", "Patty Murray", "Robert Menendez", "Ron Wyden", "Sherrod Brown", "Thomas Carper", "Tim Johnson", "Tom Harkin", "Tom Udall"]
-                    })
-    puzzles.push({ name: "U.S. Senators (Republicans)",
-                     category: "Government",
-                     words: ["Bill Frist", "Chuck Grassley", "Chuck Hagel", "Conrad Burns", "George Allen", "Gordon Smith", "Jeff Sessions", "Jim Bunning", "Jim Talent", "John Ensign", "John McCain", "John Warner", "Judd Gregg", "Larry Craig", "Lincoln Chafee", "Michael Crapo", "Olympia Snowe", "Orrin Hatch", "Pat Roberts", "Richard Lugar", "Richard Shelby", "Susan Collins", "Ted Stevens", "Trent Lott", "Wayne Allard"]
-                    })
-    puzzles.push({ name: "Vice Presidents",
-                     category: "Government",
-                     words: ["Aaron Burr", "Andrew Johnson", "Calvin Coolidge", "Charles Curtis", "Elbridge Gerry", "George Clinton", "Hannibal Hamlin", "Henry Wilson", "John Adams", "John Nance Garner", "John Tyler", "Martin Van Buren", "Millard Fillmore", "Schuyler Colfax", "Theodore Roosevelt", "Thomas Jefferson", "William Rufus King"]
-                    })
-    puzzles.push({ name: "Childhood Illnesses ",
-                     category: "Health",
-                     words: ["bladder infection", "chicken pox", "colic", "common cold", "croup", "diaper rash", "diarrhea", "ear infection", "excema", "febrile seizures", "fever", "fifth disease", "jaundice", "measles", "mumps", "nausea", "pink eye", "rash", "roseola", "rubella", "thrush", "tonsillitis", "vomiting", "whooping cough", "yeast infection"]
-                    })
-    puzzles.push({ name: "Common Allergens",
-                     category: "Health",
-                     words: ["aspirin", "bee sting venom", "cashews", "cigarette smoke", "dairy", "detergents", "dust mites", "eggs", "fish", "grasses", "household cleaners", "peanuts", "peas", "penicillin", "pesticides", "pet dander", "poison ivy", "poison oak", "pollen", "shellfish", "soy", "sulfa", "walnuts", "weeds", "wheat"]
-                    })
-    puzzles.push({ name: "Diabetes Terms",
-                     category: "Health",
-                     words: ["acetone", "acidosis", "basal rate", "beta cell", "blood sugar", "brittle diabetes", "fructose", "glucagon", "glucose", "glucose monitoring", "hyperglycemia", "hypoglycemia", "insulin", "insulin dependent", "insulin pump", "insulin receptors", "insulin resistance", "juvenile diabetes", "ketones", "pancreas", "polydipsia", "polyphagia"]
-                    })
-    puzzles.push({ name: "Eateries",
-                     category: "Health",
-                     words: ["bakery", "bistro", "cafe", "cafeteria", "cantina", "coffee shop", "deli", "diner", "donut shop", "food court", "hot dog stand", "ice cream parlor", "luncheonette", "mess hall", "patisserie", "pizzeria", "pub", "restaurant", "saloon", "snack bar", "sushi bar", "taco stand", "tapas bar", "tearoom", "trattoria"]
-                    })
-    puzzles.push({ name: "Human Viruses",
-                     category: "Health",
-                     words: ["Arenavirus", "Astroviridae", "Bunyavirus", "Coronavirus", "Deltavirus", "HIV", "Hepatitis A", "Hepatitis B", "Hepatitis C", "Human Enterovirus", "Human Rhinovirus", "Influenza", "Lassa virus", "Mayaro", "Mumps virus", "Norwalk", "Phlebovirus", "Rabies virus", "Ross River", "Rubella", "Sapporo", "Torovirus", "West Nile", "Yellow fever", "cocal virus"]
-                    })
-    puzzles.push({ name: "Migraines: Common Triggers",
-                     category: "Health",
-                     words: ["anxiety", "contraceptives", "dehydration", "diet", "fasting", "fluorescent light", "genetic factors", "heat", "high blood pressure", "hormone changes", "medication", "muscle tension", "nicotine", "physical exertion", "posture", "pregnancy", "sinus infections", "sleep apnea", "sleep changes", "stress", "strong scents", "sun", "weather changes"]
-                    })
-    puzzles.push({ name: "Migraines: Food Triggers",
-                     category: "Health",
-                     words: ["MSG", "almonds", "anchovies", "aspartame", "avocados", "bananas", "caffeine", "canned soups", "cheese", "chocolate", "citrus fruit", "dried meats", "lentils", "lima beans", "peanut butter", "peanuts", "peas", "preservatives", "red wine", "sauerkraut", "sodium nitrate", "sourdough bread", "soybeans", "yeast", "yogurt"]
-                    })
-    puzzles.push({ name: "Nature's Remedies",
-                     category: "Health",
-                     words: ["aloe", "bee pollen", "calcium", "cayenne", "chamomile", "chromium", "cinnamon", "copper", "cranberry", "dandelion", "elderberry", "feverfew", "fish oil", "flaxseed", "garlic", "ginger", "ginseng", "iron", "kelp", "lemon balm", "magnesium", "melatonin", "peppermint", "valerian"]
-                    })
-    puzzles.push({ name: "Nutrition",
-                     category: "Health",
-                     words: ["beans", "breads", "calories", "carbohydrates", "cereals", "cheese", "dairy", "eggs", "fats", "fiber", "fish", "fruit", "grains", "meat", "milk", "monounsaturated fat", "nuts", "oils", "polyunsaturated fat", "poultry", "protein", "saturated fat", "sodium", "unsaturated fat", "vegetables"]
-                    })
-    puzzles.push({ name: "Signs Of Stress",
-                     category: "Health",
-                     words: ["anxiety", "constipation", "depression", "diarrhea", "fear", "frequent colds", "headache", "indecisiveness", "insomnia", "irritability", "isolating oneself", "loss of objectivity", "memory problems", "moodiness", "nausea", "negative thoughts", "over sleeping", "overeating", "poor judgment", "rapid heartbeat", "skin breakouts", "teeth grinding", "under eating", "weight gain", "weight loss"]
-                    })
-    puzzles.push({ name: "Thyroid Terms",
-                     category: "Health",
-                     words: ["TSH", "adrenal", "endocrine", "energy ", "goiter", "growth", "hyperthyroid", "hypothyroid", "iodine", "metabolism", "myxedema", "overactive", "pituitary gland", "radioactive iodine", "thyroid cartilage", "thyroid gland", "thyroid hormone", "thyroid nodules", "thyroiditis", "thyroxine", "underactive"]
-                    })
-    puzzles.push({ name: "Vitamins And Nutrients",
-                     category: "Health",
-                     words: ["Vitamin A", "Vitamin C", "Vitamin D", "Vitamin E", "Vitamin K", "biotin", "calcium", "chromium", "copper", "folic acid", "iodine", "iron", "lutein", "lycopene", "magnesium", "manganese", "niacin", "phosphorus", "potassium", "riboflavin", "selenium", "thiamin", "zinc"]
-                    })
-    puzzles.push({ name: "Weight Training",
-                     category: "Health",
-                     words: ["back extension", "bench press", "bent over row", "biceps curl", "chest fly", "crunch", "dead press", "deadlift", "hip abductor", "hip adductor", "leg curl", "leg extension", "leg press", "leg raise", "lunge", "pull up", "pulldown", "pushdown", "seated calf raise", "shoulder fly", "shoulder press", "squat", "standing calf raise", "triceps extension", "upright row"]
-                    })
-    puzzles.push({ name: "Yoga",
-                     category: "Health",
-                     words: ["bridge", "camel", "chair", "cobra", "crane", "crow", "downward-facing dog", "eagle", "fish", "full boat", "half moon", "hero", "lion", "locust", "lotus", "monkey", "mountain", "open angle", "peacock", "plank", "reclining", "side plank", "thunderbolt", "tortoise", "wheel"]
+                     words: ["Bangkok", "Beijing", "Bogota", "Cairo", "Delhi", "Dhaka", "Hong Kong", "Istanbul", "Jakarta", "Karachi", "Lagos", "Lahore", "Lima", "Mexico City", "Moscow", "Mumbai", "Sao Paulo", "Seoul", "Shanghai", "Tehran", "Tokyo"]
                     })
     puzzles.push({ name: "Almonds",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["Bitter", "Bitter Kernel", "Butte", "California", "Carmel", "Fritz", "Golden State", "Golden State Kernel", "Hard-shelled", "IXL Kernel", "Jordan ", "Jordan Kernel", "La Prima", "La Prima Kernel", "Languedoc", "Languedoc Kernel", "Mission", "Monterey", "Nonpareil", "Padre", "Paper-shelled", "Peerless", "Price", "Soft", "Sonora"]
                     })
     puzzles.push({ name: "Bakeware",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["baking cups", "bundt pan", "cake molds", "cake pan", "cake stand", "cookie cutter", "cookie press", "cookie scoop", "cookie sheet", "cooling rack", "flour sifter", "food coloring", "jelly-roll pan", "loaf pan", "measuring cups", "measuring spoons", "mixing bowl", "mixing spoon", "muffin tin", "pastry bag", "pastry cutter", "pie pan", "sheet cake pan", "springform", "tart pan"]
                     })
     puzzles.push({ name: "Beef Entrees",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["braised", "brisket", "broiled", "chili", "corned beef", "curry", "fajitas", "fried", "grilled", "kabobs", "meatballs", "meatloaf", "pepper steak", "pot pie", "ribs", "roast", "seared", "sloppy joes", "stew", "stir fry", "stroganoff", "tacos", "taquitos", "teriyaki"]
                     })
     puzzles.push({ name: "Breakfast Cereals",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["Apple Jacks", "Banana Nut Crunch", "Bran Flakes", "Cheerios", "Chex", "Cocoa Puffs", "Corn Flakes", "Corn Pops", "Cream of Wheat", "Crispix", "Fiber One", "Frosted Flakes", "Golden Grahams", "Life", "Malt-O-Meal", "Mueslix", "Puffins", "Quaker Oats", "Raisin Bran", "Rice Krispies", "Shredded Wheat", "Trix", "Weetabix", "Wheaties"]
                     })
     puzzles.push({ name: "Breakfast Foods",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["bacon", "bagel", "biscuit", "cereal", "coffee", "croissant", "danish", "eggs", "english muffin", "french toast", "granola", "grits", "hash browns", "milk", "muesli", "muffin", "oatmeal", "orange juice", "pancake", "sausage", "scone", "tea", "toast", "waffle", "yogurt"]
                     })
     puzzles.push({ name: "Cheeses",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["acorn", "american", "asadero", "asiago", "blue", "brie", "cheddar", "colby", "cottage", "cream", "edam", "feta", "gorgonzola", "gouda", "jack", "mascarpone", "molbo", "mozzarella", "muenster", "panela", "parmesan", "provolone", "ricotta", "romano", "swiss"]
                     })
     puzzles.push({ name: "Chicken Entrees",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["baked", "barbecued", "cacciatore", "chow mein", "coq au vin", "cordon bleu", "croquette", "curry", "dijon", "divan", "dumpling", "enchiladas", "fajitas", "florentine", "fried", "fritter", "grilled", "gumbo", "kung pao", "lemon", "marsala", "parmigiana", "roast", "teriyaki", "wings"]
                     })
     puzzles.push({ name: "Chocolate",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["antioxidant", "bain-marie", "bitter", "bittersweet", "bloom", "bonbon", "bouchon", "brownies", "cacao", "cocoa", "cocoa butter", "dark ", "dutch", "flavanol", "ganache", "milk ", "nib", "pastille", "pugging", "semisweet", "swiss", "truffle", "unsweetened", "white"]
                     })
     puzzles.push({ name: "Condiments",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["black olives", "black pepper", "brown mustard", "chile pepper", "chilies", "chutney", "cooking sherry", "curry", "gravy", "green olives", "horseradish", "kalamata olives", "ketchup", "mayonnaise", "mushrooms", "pepperoncinis", "pickles", "pimentos", "relish", "roasted peppers", "salt", "shredded cheese", "sour cream", "vinegar", "wasabi"]
                     })
     puzzles.push({ name: "Cooking Oils",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["almond", "avocado", "butter", "canola", "coconut", "corn", "cottonseed", "extra virgin olive", "flaxseed", "grapeseed", "hazelnut", "lard", "palm", "peanut", "pine nut", "pumpkin seed", "pure olive", "rice bran", "safflower", "sesame", "shortening", "soybean", "sunflower", "vegetable", "walnut"]
                     })
     puzzles.push({ name: "Cookware and Utensils",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["basting brush", "braiser", "butcher block", "chafing dish", "cheese grater", "colander", "crock pot", "cutting board", "deep fryer", "double boiler", "dutch oven", "egg slicer", "frying pan", "garlic press", "griddle", "potato masher", "quiche dish", "roasting rack", "sieve", "slotted spoon", "spatula", "steamer insert", "turkey baster", "vegetable peeler", "wok"]
                     })
     puzzles.push({ name: "Culinary Spices",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["Mexican pepperleaf", "allspice", "anise", "cayenne pepper", "celery seed", "chipotle", "cinnamon", "cloves", "cumin", "dorrigo pepper", "elderflower", "fenugreek", "ginger", "jasmine", "juniper berry", "lemon verbena", "nutmeg", "paprika", "pepper", "peppercorn", "poppy seed", "saffron", "sassafras", "turmeric", "vanilla"]
                     })
     puzzles.push({ name: "Deli Meats",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["Canadian bacon", "Italian sausage", "Virginia baked ham", "barbecue beef", "black forest ham", "bologna", "bratwurst", "capicola", "corned beef", "honey ham", "kielbasa", "liver pate", "liverwurst", "mortadella", "olive loaf", "pastrami", "pepperoni", "prosciutto", "roast beef", "salami", "smoked sausage", "smoked turkey", "summer sausage", "turkey", "turkey ham"]
                     })
     puzzles.push({ name: "Diet Food Delivery Services",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["Bistro MD", "Diet Across America", "Diet Designs", "Diet Gourmet", "Diet at Your Doorstep", "Diet-to-Go", "DineWise", "Eat Like The Pros", "Fresh Diet", "Freshology", "Frozen Fitness", "Healthy Connections", "In the Zone Delivery", "Kosher Diet Delivery", "LeViv", "Magic Kitchen", "Nutrition in Motion", "Our Life Fresh", "Sunfare", "eDiets Meal Delivery"]
                     })
     puzzles.push({ name: "Frozen Food Companies",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["Bagel Bites", "Birdseye", "Boca", "Butterball", "Digiorno", "Don Miguel", "Eggo", "Freschetta", "Gardenburger", "Healthy Choice", "Hot Pockets", "Hungry-Man", "Kid Cuisine", "Lean Cuisine", "Lean Pockets", "Morningstar Farms", "Ore-Ida", "Pillsbury", "Sara Lee", "Swanson", "Tombstone", "Tyson"]
                     })
     puzzles.push({ name: "Grains",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["amaranth", "arborio rice", "barley", "basmati rice", "bran", "brown rice", "buckwheat", "bulgur", "couscous", "flaxseed", "hominy", "kasha", "millet", "milo", "oats", "pearl rice", "quinoa", "risotto", "rye", "saffron", "sorghum", "spelt", "tef", "wheat berries", "wild rice"]
                     })
     puzzles.push({ name: "Herbs",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["anise", "basil", "bay laurel", "calendula", "caraway", "chamomile", "chives", "coriander", "dill", "fennel", "garlic", "hyssop", "lavender", "marjoram", "mustard", "oregano", "parsley", "peppermint", "rosemary", "rue", "sage", "sorrel", "tarragon", "thyme", "verbena"]
                     })
     puzzles.push({ name: "Italian Food",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["bruschetta", "calamari", "calzone", "chianti", "ciabatta", "crostolo", "focaccia", "fonduta", "fontina", "frisella", "fusilli", "gnocchi", "marinara", "minestrone", "mozzarella", "orecchiette", "osso bucco", "pancetta", "pizza", "polenta", "prosciutto", "prosecco", "ravioli", "risotto", "salami"]
                     })
     puzzles.push({ name: "Kitchen Items",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["blender", "butter dish", "can opener", "coffee maker", "corkscrew", "dishwasher", "foil", "freezer", "garbage disposal", "ice cream scoop", "ladle", "microwave", "mixer", "oven", "pots", "refrigerator", "rice cooker", "rolling pin", "salt shaker", "saran wrap", "sink", "skewers", "stove", "tea kettle", "toaster"]
                     })
     puzzles.push({ name: "Medicinal Spices",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["ajwain", "astragalus", "bergamot orange", "catnip", "comfrey", "dill oil", "eaglewood", "echinacea", "foxglove", "goldenseal", "hawthorn", "horehound", "konjac", "licorice", "lime blossom", "mullein", "opium poppy", "passion-flower", "plantain", "pokeweed", "poppy seeds", "sweet sagewort", "valerian", "wormwood", "yarrow"]
                     })
     puzzles.push({ name: "Mexican Desserts and Sweets",
-                     category: "Health Foods",
-                     words: ["Alegrías", "Arroz con leche", "Buñuelos", "Cajeta", "Capirotada", "Carlota de limón", "Champurrado", "Chongos zamoranos", "Churros", "Coyotas", "Dulce de leche", "Empanadas", "Flan", "Glorias", "Guanajuato", "Ice cream", "Jamoncillos", "Jarritos", "Obleas", "Pan de Acambaro", "Pan de muerto", "Pan dulce", "Pepitorias", "Platano", "Polvorón", "Rosca de reyes"]
+                     category: "Foods",
+                     words: ["Arroz con leche", "Cajeta", "Capirotada", "Champurrado", "Chongos zamoranos", "Churros", "Coyotas", "Dulce de leche", "Empanadas", "Flan", "Glorias", "Guanajuato", "Ice cream", "Jamoncillos", "Jarritos", "Obleas", "Pan de Acambaro", "Pan de muerto", "Pan dulce", "Pepitorias", "Platano", "Rosca de reyes"]
                     })
     puzzles.push({ name: "Mexican Food",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["adobo", "albondiga", "asadero", "beans", "burritos", "chalupas", "chiles", "chimichangas", "chipotle", "cilantro", "corn", "enchiladas", "fajitas", "guacamole", "manchego", "oaxaca", "quesadillas", "rice", "salsa", "tacos", "tamales", "tequila", "tomatillo", "tortillas", "tostadas"]
                     })
     puzzles.push({ name: "Olives",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["Aleppo", "Alphonso", "Black", "Black Greek", "Cracked Provencal", "Gaeta", "Greek Green", "Gyeta", "Hondroelia", "Kalamata", "Kura", "Ligurian", "Lucque", "Lugano", "Manzanilla", "Marche", "Mission", "Moroccan", "Nafplion", "Nicoise", "Nyons", "Picholine", "Ponentine", "Royal", "Victoria"]
                     })
     puzzles.push({ name: "Pasta",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["cannelloni", "capellini", "conchigliette", "couscous", "farfalle", "fettucini", "fusilli", "gnocchi", "lasagne", "linguine", "macaroni", "manicotti", "orecchiette", "orzo", "pansotti", "penne", "ravioli", "rigatoni", "rotelle", "rotini", "spaghetti", "tortellini", "tubetti", "vermicelli", "ziti"]
                     })
     puzzles.push({ name: "Pizza Toppings",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["anchovies", "basil", "capers", "chicken", "dill", "eggplant", "garlic", "ham", "leeks", "mushrooms", "olives", "onions", "oregano", "parsley", "pepperoni", "peppers", "pine nuts", "pineapple", "prosciutto", "rosemary", "salami", "salmon", "sausage", "sprouts", "tomatoes"]
                     })
     puzzles.push({ name: "Salad Fixings",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["artichoke hearts", "bacon ", "beets", "bell peppers", "carrots", "celery", "cheese", "chick peas", "corn", "croutons", "cucumbers", "eggs", "endive", "kidney beans", "mushrooms", "olives", "onions", "pepperoncinis", "pickles", "pumpkin seeds", "radishes", "radishes", "red cabbage", "sprouts", "sunflower seeds"]
                     })
     puzzles.push({ name: "Sauces",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["alfredo", "barbecue", "bernaise", "buffalo wing", "carbonara", "cheese", "chinese plum", "chipotle", "cocktail", "fondue", "hoisin", "hollandaise", "horseradish", "oyster", "peppercorn", "pizza", "soy", "spaghetti", "steak", "sweet and sour", "szechaun", "tabasco", "taco", "tartar", "teriyaki"]
                     })
     puzzles.push({ name: "Seeds and Nuts",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["almonds", "brazil nuts", "buckeye nut", "cashews", "chestnut", "coriander seed", "cotton seed", "cumin seed", "dill seed", "fennel seed", "flaxseed", "hazelnuts", "macadamia nuts", "mustard seed", "peanuts", "pecans", "pine nuts", "pistachios", "poppy seed", "pumpkin seeds", "sesame seeds", "soy nuts", "squash seeds", "sunflower seeds", "walnuts"]
                     })
     puzzles.push({ name: "Summer BBQ Foods",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["baked beans", "bbq chicken", "bbq wings", "chips", "chocolate cake", "cole slaw", "corn on the cob", "deviled eggs", "dip", "hamburgers", "hot dogs", "iced tea", "kabobs", "lemonade", "macaroni salad", "onion rings", "potato salad", "sangria", "shrimp cocktail", "sliders", "strawberries", "succotash", "summer squash", "tomatoes", "zucchini"]
                     })
     puzzles.push({ name: "Summer Vegetables",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["Candy Stripe beets", "Porcini mushrooms", "arugula", "avocados", "basil ", "bell peppers", "collards", "cucumber", "eggplant", "green beans", "green okra", "kohlrabi", "onions", "oregano", "potatoes", "red beets", "red okra", "shallots", "sugar snap peas", "tomatoes", "white beets", "white corn", "yellow beets", "yellow squash", "zucchini"]
                     })
     puzzles.push({ name: "Sushi",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["Age", "Ameaebi", "Boston Rolls", "California Roll", "Ebi", "Egg Salad Rolls", "Hamachi", "Hirame", "Hotate", "Ika", "Ikura", "Kani", "Kappa Maki", "Maguro", "Masago", "Mirugai", "New York Rolls", "Pesto Rolls", "Saba", "Sake", "Tai", "Tako", "Tekka Maki", "Unagi", "Uni"]
                     })
     puzzles.push({ name: "Types Of Apples",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["Arkansas Black", "Braeburn", "Cameo", "Cortland", "Crispin", "Empire", "Fuji", "Gala", "Ginger Gold", "Golden Delicious", "Granny Smith", "Gravenstein", "Honeycrisp", "Ida Red", "Jonagold", "Jonathan", "McIntosh", "Northern Spy", "Paula Red", "Pink Lady", "Red Delicious", "Rome", "Spartan", "Winesap", "York"]
                     })
     puzzles.push({ name: "Types Of Bread",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["bagel", "baguette", "barley", "chapati", "egg", "flat", "focaccia", "french", "hearth", "kamut", "manna", "matzo", "millet", "naan", "oat", "pita", "potato", "rice", "rye", "sourdough", "spelt", "sprouted grain", "triticale", "wheat", "white"]
                     })
     puzzles.push({ name: "Types Of Coffee",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["Alajuela", "Altura", "Americano", "Arabica", "Arusha", "Bani", "Barahona", "Bugishu", "Caracas", "Chiapas", "Cibao", "Columbia", "Cucata", "Dijmah", "Ghimbi", "Harrar", "Heredia", "Jinotegoa", "Kalossi", "Limu", "Matari", "Merida", "Ocoa", "Santos", "Zambia"]
                     })
     puzzles.push({ name: "Types Of Grapes",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["Alden", "Alwood", "Aurore", "Barry", "Beauty Seedless", "Cascade", "Delaware", "Delight", "Diamond", "Dobson", "Edelweiss", "Erie", "Esprit", "Glenora", "Iona", "Lindley", "Munson", "Perlette", "Red Flame", "Royal Blue", "Ruby", "Seneca", "Swensen White", "Thompson"]
                     })
     puzzles.push({ name: "Types Of Tea",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["Bancha", "Chai", "Chamomile", "Darjeeling", "Dragon Well Green", "Earl Grey", "English Breakfast", "Flowery Orange Pekoe", "Genmaicha", "Irish Breakfast", "Jasmine", "Kukicha", "Matcha", "Orange Blossom", "Peppermint", "Pu-erh", "Rooibos", "Satsuma", "Silver Needle White", "Star of China", "black", "green", "oolong", "white"]
                     })
     puzzles.push({ name: "Types of Beans",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["Anasazi", "Asparagus", "Azuki", "Black Turtle", "Black-eyed peas", "Broad", "Cannellini", "Fava", "French haricot", "Garbanzo", "Green", "Kidney", "Lentils", "Lima", "Mung", "Navy", "Pinto", "Runner", "Scarlet Runner", "Snake", "Soybeans", "Split Peas", "String", "Wax", "Yardlong"]
                     })
     puzzles.push({ name: "Types of Chile Peppers",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["Anaheim", "Ancho", "Cayenne", "Cherry", "Chipotle", "Coronado", "Dorset Naga", "Espanola", "Jalapeno", "Manzano", "Mirasol", "Mulato", "Pasilla", "Pepperoncini", "Pimento", "Poblano", "Pulla", "Red Amazon", "Rocotillo", "Sandia", "Serrano", "Sonora", "Sweet Banana", "Sweet Bell", "Tabasco"]
                     })
     puzzles.push({ name: "Types of Tomatoes",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["Anna Russian", "Aurora", "Banana Legs", "Bingo", "Caspian Pink", "Ceylon", "Champion", "Cobra", "Delicious", "Duke", "Dutchman", "Garden Peach", "German Johnson", "Giant Belgium", "Hank", "Heidi", "Heinz", "Jubilee", "Juliet", "Nepal", "Old Virginia", "Purple Calabash", "Red Pear", "Rocky", "Spoon"]
                     })
     puzzles.push({ name: "Types of Wine",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["Asti", "Bordeaux", "Chablis", "Champagne", "Chardonnay", "Chianti", "Claret", "Cuvee", "Fume Blanc", "Grenache", "Merlot", "Muscat", "Orvieto", "Petite Syrah", "Pinor Grigio", "Pinot Noir", "Port", "Riesling", "Rose", "Sangiovese", "Sauvignon Blanc", "Sherry", "Shiraz", "Tokay", "Zinfandel"]
                     })
     puzzles.push({ name: "Veggies",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["Artichoke", "Asparagus", "Beet", "Bell Pepper", "Broccoli", "Brussels Sprouts", "Cabbage", "Carrots", "Cauliflower", "Celery", "Corn", "Cucumber", "Eggplant", "Lettuce", "Okra", "Onion", "Peas", "Potato", "Pumpkin", "Radish", "Spinach", "Squash", "String Bean", "Turnip", "Zucchini"]
                     })
     puzzles.push({ name: "Walnuts",
-                     category: "Health Foods",
+                     category: "Foods",
                      words: ["Amigo", "Ashley", "Baum", "Chico", "Cisco", "Daniels", "Drummond", "Earhorn", "El Monte", "French", "Grove", "Gustine", "Hartley", "Idaho English", "Jensen", "Lenal", "Lompoc", "Milan", "Nuggett", "Pedro", "Poe", "Serr", "Sierra Gold", "Tulare", "Vina"]
                     })
     puzzles.push({ name: "Ancient Cities",
@@ -1925,7 +1735,7 @@ namespace :db do
                     })
     puzzles.push({ name: "Bermuda Triangle",
                      category: "History",
-                     words: ["\"Deep See\"", "\"Iron Birds\"", "Anita", "Bermuda", "Connemara IV", "Ellen Austin", "Martin Mariner", "Miami", "Puerto Rico", "SS Sandra", "San Juan", "Scorpion", "Star Ariel", "Star Tiger", "The Avengers", "The Gulf Stream", "Tudor IV", "USS Cyclops", "compass variation"]
+                     words: ["Deep See", "Iron Birds", "Anita", "Bermuda", "Connemara IV", "Ellen Austin", "Martin Mariner", "Miami", "Puerto Rico", "SS Sandra", "San Juan", "Scorpion", "Star Ariel", "Star Tiger", "The Avengers", "The Gulf Stream", "Tudor IV", "USS Cyclops", "compass variation"]
                     })
     puzzles.push({ name: "California Gold Rush",
                      category: "History",
@@ -1949,7 +1759,7 @@ namespace :db do
                     })
     puzzles.push({ name: "Emperors of Japan",
                      category: "History",
-                     words: ["Emperor Ankan", "Emperor Ankō", "Emperor Annei", "Emperor Bidatsu", "Emperor Buretsu", "Emperor Chūai", "Emperor Hanzei", "Emperor Ingyō", "Emperor Itoku", "Emperor Kaika", "Emperor Keikō", "Emperor Keitai", "Emperor Kenzō", "Emperor Kimmei", "Emperor Kōan", "Emperor Kōgen", "Emperor Kōrei", "Emperor Kōshō", "Emperor Ninken", "Emperor Nintoku", "Emperor Richū", "Emperor Seimu", "Emperor Seinei", "Emperor Senka", "Emperor Suizei", "Emperor Sujin", "Emperor Yōmei", "Emperor Yūryaku", "Emperor Ōjin", "Empress Jingū"]
+                     words: ["Emperor Ankan", "Emperor Annei", "Emperor Bidatsu", "Emperor Buretsu", "Emperor Hanzei", "Emperor Itoku", "Emperor Kaika", "Emperor Keitai", "Emperor Kimmei", "Emperor Ninken", "Emperor Nintoku", "Emperor Seimu", "Emperor Seinei", "Emperor Senka", "Emperor Suizei", "Emperor Sujin"]
                     })
     puzzles.push({ name: "English Monarchs",
                      category: "History",
@@ -1961,15 +1771,11 @@ namespace :db do
                     })
     puzzles.push({ name: "Famous American Speeches",
                      category: "History",
-                     words: ["A Time for Choosing", "A Whisper of AIDS", "Atoms for Peace", "Checkers", "First Fireside Chat", "I Have A Dream", "Ich bin ein Berliner", "The Fourteen Points”", "The Great Society", "We Shall Overcome"]
+                     words: ["A Time for Choosing", "A Whisper of AIDS", "Atoms for Peace", "Checkers", "First Fireside Chat", "I Have A Dream", "Ich bin ein Berliner", "The Fourteen Points", "The Great Society", "We Shall Overcome"]
                     })
     puzzles.push({ name: "Famous Castles",
                      category: "History",
                      words: ["Akita", "Blarney", "Castel del Monte", "Castillo de Coca", "Chateau Gaillard", "Edinburgh", "Falkenstein", "Foix", "Hikone", "Himeji", "Inayama", "Kremlin", "Kumamoto", "Matsumoto", "Neuschwanstein", "Nosferatu", "Penafiel", "San Gimignano", "Shuri", "The Tower of London", "Urquhart", "Versailles", "Vincennes", "Wartburg", "Windsor"]
-                    })
-    puzzles.push({ name: "Famous Firsts By American Women",
-                     category: "History",
-                     words: []
                     })
     puzzles.push({ name: "Famous Rulers",
                      category: "History",
@@ -2069,11 +1875,11 @@ namespace :db do
                     })
     puzzles.push({ name: "Star Spangled Banner",
                      category: "History",
-                     words: ["God", "beam", "brave", "country", "flag", "free", "freemen", "gallantly", "gleaming", "glory", "home", "land", "nation", "peace", "proudly", "ramparts", "rockets’", "say", "slave", "stars", "stripes", "triumph", "trust", "war", "wave"]
+                     words: ["God", "beam", "brave", "country", "flag", "free", "freemen", "gallantly", "gleaming", "glory", "home", "land", "nation", "peace", "proudly", "ramparts", "rockets", "say", "slave", "stars", "stripes", "triumph", "trust", "war", "wave"]
                     })
     puzzles.push({ name: "Taj Mahal",
                      category: "History",
-                     words: ["\"Crown Palace\"", "Agra", "Bageecha", "Darwaza", "India", "Islamic tomb", "Masjid", "Mumtaz Mahal", "Naqqar Khana", "Rauza", "River Yamuna", "Shah Jahan", "Ustad Isa", "calligraphy", "marble", "mausoleum", "mosaic", "octagon shape"]
+                     words: ["Crown Palace", "Agra", "Bageecha", "Darwaza", "India", "Islamic tomb", "Masjid", "Mumtaz Mahal", "Naqqar Khana", "Rauza", "River Yamuna", "Shah Jahan", "Ustad Isa", "calligraphy", "marble", "mausoleum", "mosaic", "octagon shape"]
                     })
     puzzles.push({ name: "The Aztecs",
                      category: "History",
@@ -2085,7 +1891,7 @@ namespace :db do
                     })
     puzzles.push({ name: "Thomas Edisons Inventions And Discoveries",
                      category: "History",
-                     words: ["\"Edison Effect\"", "\"Edison dynamo\"", "\"Etheric Force\"", "battery", "carbon rheostat", "electric pen", "fluoroscope", "incandescent light", "motograph", "paraffin paper", "phonograph", "unison stop"]
+                     words: ["Edison Effect", "Edison dynamo", "Etheric Force", "battery", "carbon rheostat", "electric pen", "fluoroscope", "incandescent light", "motograph", "paraffin paper", "phonograph", "unison stop"]
                     })
     puzzles.push({ name: "U.S. Historic Sites and Memorials",
                      category: "History",
@@ -2115,17 +1921,17 @@ namespace :db do
                      category: "Holidays",
                      words: ["Boxing Day", "Chimney", "Cranberries", "Drummer boy", "Egg nog", "Fruitcake", "Gifts", "Holly", "Jesus", "Jingle bells", "Kris Kringle", "Manger", "Orange", "Ornament", "Red", "Santa Claus", "Shopping", "Silent night", "Stocking", "Tree", "Turkey", "White", "Wisemen", "Wreath", "Yuletide"]
                     })
-    puzzles.push({ name: "Christmas (Seasonal)",
+    puzzles.push({ name: "Christmas",
                      category: "Holidays",
                      words: ["Blitzen", "Caroling", "Chestnuts", "Christmas Tree", "Comet", "Cupid", "Dancer", "Dasher", "Donner", "Elfs", "Frosty the Snowman", "Fruitcake", "Lumps of coal", "Mistletoe", "North Pole", "Poinsettias", "Prancer", "Presents", "Reindeer", "Rudolph", "Santa Claus", "Scrooge", "Sleigh", "Stockings", "Vixen"]
                     })
-    puzzles.push({ name: "Christmas (Traditional)",
+    puzzles.push({ name: "Christmas",
                      category: "Holidays",
                      words: ["Advent", "Angels", "Balthazar", "Bethlehem", "Caspar", "Herod", "Immanuel", "Jesus", "Joseph", "Love", "Manger", "Mary", "Melchior", "Nativity", "Nazareth", "Noel", "Peace", "Savior", "Shepherds", "Star", "Wise Men", "frankincense", "gold", "myrrh"]
                     })
     puzzles.push({ name: "Cinco De Mayo",
                      category: "Holidays",
-                     words: ["Battle of Puebla", "French", "Mexican", "Zaragoza", "chili", "conquest", "dances", "fiesta", "five", "flowers", "freedom", "green", "independence", "maracas", "mariachis", "music", "parades", "piñatas", "red", "salsa", "sombrero", "tortilla", "triumph", "white", "﻿May"]
+                     words: ["Battle of Puebla", "French", "Mexican", "Zaragoza", "chili", "conquest", "dances", "fiesta", "five", "flowers", "freedom", "green", "independence", "maracas", "mariachis", "music", "parades", "red", "salsa", "sombrero", "tortilla", "triumph", "white"]
                     })
     puzzles.push({ name: "Earth Day",
                      category: "Holidays",
@@ -2165,7 +1971,7 @@ namespace :db do
                     })
     puzzles.push({ name: "Labor Day",
                      category: "Holidays",
-                     words: ["\"Back to School\"", "\"End of Summer\"", "Canada", "Central Labor Union", "Colorado", "Knights of Labor", "Massachusetts", "Matthew Maguire", "Monday", "New Jersey", "New York", "Oregon", "Peter McGuire", "September", "Union Square", "United States", "parade", "unions", "working class"]
+                     words: ["Back to School", "End of Summer", "Canada", "Central Labor Union", "Colorado", "Knights of Labor", "Massachusetts", "Matthew Maguire", "Monday", "New Jersey", "New York", "Oregon", "Peter McGuire", "September", "Union Square", "United States", "parade", "unions", "working class"]
                     })
     puzzles.push({ name: "Mother's Day",
                      category: "Holidays",
@@ -2297,11 +2103,11 @@ namespace :db do
                     })
     puzzles.push({ name: "International Goodbyes",
                      category: "Languages",
-                     words: ["adios (Spanish)", "aman (Ethiopian)", "au revoir (French)", "ba-ba (Austrian)", "bless (Icelandic)", "caw (Maltese)", "cheerio (Scottish)", "ciao (Italian)", "farvel (Danish)", "geia (Greek)", "hejdo (Swedish)", "hooroo (Australian)", "jaaw (Somalian)", "nameste (Nepali)", "nye (Guatemalan)", "pa (Romanian)", "paalam (Filipino)", "poka (Russian)", "sawatdi (Thai)", "sayonara (Japanese)", "sudie (Lithuanian)", "ta-ta (Bengali)"]
+                     words: ["adios", "aman", "au revoir", "ba-ba", "bless", "caw", "cheerio", "ciao", "farvel", "geia", "hejdo", "hooroo", "jaaw", "nameste", "nye", "pa", "paalam", "poka", "sawatdi", "sayonara", "sudie", "ta-ta"]
                     })
     puzzles.push({ name: "International Greetings",
                      category: "Languages",
-                     words: ["aloha (Hawaiian)", "bok (Croatian)", "bonjour (French)", "bore da (Welsh)", "buna (Romanian)", "ciao (Italian)", "hafa (Guamanian)", "hallo (German)", "hei (Norwegian)", "hej (Danish)", "hello (Canada)", "hoi (Dutch)", "hola (Spanish)", "jambo (Swahili)", "mambo (Congo)", "marhaba (Arabic)", "namaste (Hindi)", "oi (Portuguese)", "salam (Persian)", "sawubona (Zulu)", "shalom (Hebrew)", "tere (Finnish)"]
+                     words: ["aloha", "bok", "bonjour", "bore da", "buna", "ciao", "hafa", "hallo", "hei", "hej", "hello", "hoi", "hola", "jambo", "mambo", "marhaba", "namaste", "oi", "salam", "sawubona", "shalom", "tere"]
                     })
     puzzles.push({ name: "Italian Words And Phrases",
                      category: "Languages",
@@ -2309,7 +2115,7 @@ namespace :db do
                     })
     puzzles.push({ name: "Most Widely Spoken Languages In The World",
                      category: "Languages",
-                     words: ["Arabic", "Bengali", "English", "Farsi (Persian)", "French", "German", "Hindi", "Italian", "Japanese", "Javanese", "Korean", "Malay-Indonesian", "Mandarin (Chinese)", "Marathi", "Portuguese", "Punjabi", "Russian", "Spanish", "Tamil", "Telegu", "Thai", "Turkish", "Urdu", "Vietnamese", "Wu"]
+                     words: ["Arabic", "Bengali", "English", "Farsi", "French", "German", "Hindi", "Italian", "Japanese", "Javanese", "Korean", "Malay-Indonesian", "Mandarin", "Marathi", "Portuguese", "Punjabi", "Russian", "Spanish", "Tamil", "Telegu", "Thai", "Turkish", "Urdu", "Vietnamese", "Wu"]
                     })
     puzzles.push({ name: "Spanish Calendar",
                      category: "Languages",
@@ -2323,11 +2129,11 @@ namespace :db do
                      category: "Languages",
                      words: ["abrir", "ayudar", "comer", "comprar", "correr", "decir", "dormir", "escuchar", "estar", "hacer", "ir", "jugar", "mirar", "pensar", "poner", "preguntar", "querer", "saber", "ser", "tener", "trabajar", "usar", "vender", "ver", "vivir"]
                     })
-    puzzles.push({ name: ""The Iliad" Characters",
+    puzzles.push({ name: "The Iliad Characters",
                      category: "Literature",
                      words: ["Achilles", "Aeneas", "Agenor", "Andromache", "Antenor", "Aphrodite", "Astyanax", "Calchas", "Diomedes", "Dolon", "Glaucus", "Great Ajax", "Hector", "Hecuba", "Idomeneus", "Little Ajax", "Machaon", "Pandarus", "Paris", "Patroclus", "Peleus", "Phoenix", "Polydamas", "Priam", "The Myrmidons"]
                     })
-    puzzles.push({ name: ""The Odyssey" Characters",
+    puzzles.push({ name: "The Odyssey Characters",
                      category: "Literature",
                      words: ["Agamemnon", "Alcinous", "Amphinomus", "Antinous", "Arete", "Athena", "Calypso", "Circe", "Eumaeus", "Eurycleia", "Eurymachus", "Helen", "Laertes", "Melanthius", "Melantho", "Menelaus", "Nausicaa", "Nestor", "Odysseus", "Penelope", "Polyphemus", "Poseidon", "Telemachus", "Tiresias", "Zeus"]
                     })
@@ -2361,7 +2167,7 @@ namespace :db do
                     })
     puzzles.push({ name: "C.S. Lewis",
                      category: "Literature",
-                     words: ["\"Little Lea\"", "Christianity", "Clive Staples", "Death in Battle", "Dymer", "Hugo Dyson", "Joy Davidman Gresham", "Mere Christianity", "Nickname Jack", "Oxford scholar", "Shadowlands", "Spirits in", "Surprised by Joy", "The Allegory of Love", "The Inklings", "World War I soldier"]
+                     words: ["Little Lea", "Christianity", "Clive Staples", "Death in Battle", "Dymer", "Hugo Dyson", "Joy Davidman Gresham", "Mere Christianity", "Nickname Jack", "Oxford scholar", "Shadowlands", "Spirits in", "Surprised by Joy", "The Allegory of Love", "The Inklings", "World War I soldier"]
                     })
     puzzles.push({ name: "Canterbury Tales Characters",
                      category: "Literature",
@@ -2377,7 +2183,7 @@ namespace :db do
                     })
     puzzles.push({ name: "Children's Authors",
                      category: "Literature",
-                     words: ["Barbara Park", "Beverly Cleary", "Carolyn Keene", "Crockett Johnson", "Judy Blume", "Lemony Snicket", "Margaret Wise Brown", "Margery Williams", "Marjorie Flack", "Maurice Sendak", "Norman Bridwell", "Peggy Parish", "Rosemary Wells", "Russell Hoban", "Shel Silverstein", "Watty Piper", "﻿Roald Dahl"]
+                     words: ["Barbara Park", "Beverly Cleary", "Carolyn Keene", "Crockett Johnson", "Judy Blume", "Lemony Snicket", "Margaret Wise Brown", "Margery Williams", "Marjorie Flack", "Maurice Sendak", "Norman Bridwell", "Peggy Parish", "Rosemary Wells", "Russell Hoban", "Shel Silverstein", "Watty Piper", "Roald Dahl"]
                     })
     puzzles.push({ name: "Children's Bestselling Books ",
                      category: "Literature",
@@ -2479,10 +2285,6 @@ namespace :db do
                      category: "Literature",
                      words: ["Bobby Shaftoe", "Georgy Porgy", "Humpty Dumpty", "Jack", "Jack Horner", "Jack Sprat", "Jenny Wren", "Jill", "Jumping Joan", "Little Bo Peep", "Little Boy Blue", "Margery Daw", "Mary", "Miss Muffet", "Mother Hubbard", "Old King Cole", "Peter Piper", "Queen of Hearts", "Simple Simon", "Sulky Sue", "Three Blind Mice", "Thumbkin", "Tweedle-Dee", "Tweedle-Dum", "Wee Willie Winkie"]
                     })
-    puzzles.push({ name: "Mr. Men Books",
-                     category: "Literature",
-                     words: []
-                    })
     puzzles.push({ name: "Mrs. Piggle Wiggle",
                      category: "Literature",
                      words: ["Alison Burbank", "Anne Russell", "Bard Burbank", "Bobby Gray", "Darsie Burbank", "Dick Thompson", "Fetlock Harroway", "Hubert Prentiss", "Joan Russell", "Kitty Wheeling", "Larry Gray", "Patsy Waters", "Susan Gray", "The Not Truthful Cure", "The Radish Cure", "The Selfishness Cure", "The Tattletale Cure", "Timmy Hamilton", "Wendy Hamilton"]
@@ -2493,7 +2295,7 @@ namespace :db do
                     })
     puzzles.push({ name: "Newberry Medal Books",
                      category: "Literature",
-                     words: ["A Single Shard", "A Year Down Yonder", "Criss-Cross", "Dicey’s Song", "Holes", "Kira-Kira", "Maniac Magee", "Missing May", "Number the Stars", "Out of the Dust", "Shiloh", "The Giver", "The Hero and the Crown", "Walk Two Moons", "Whipping Boy"]
+                     words: ["A Single Shard", "A Year Down Yonder", "Criss-Cross", "Holes", "Kira-Kira", "Maniac Magee", "Missing May", "Number the Stars", "Out of the Dust", "Shiloh", "The Giver", "The Hero and the Crown", "Walk Two Moons", "Whipping Boy"]
                     })
     puzzles.push({ name: "Nicholas Sparks Books",
                      category: "Literature",
@@ -2551,18 +2353,6 @@ namespace :db do
                      category: "Literature",
                      words: ["Allure", "Cosmogirl", "Cosmopolitan", "Elle", "Essence", "Fitness", "Glamour", "Good Housekeeping", "Health", "In Style", "Jane", "Lucky", "Marie Claire", "Modern Bride", "O Magazine", "Real Simple", "Redbook", "Self", "Shape", "Vogue"]
                     })
-    puzzles.push({ name: "Addition 1 To 10",
-                     category: "Math",
-                     words: []
-                    })
-    puzzles.push({ name: "Addition 1 To 100",
-                     category: "Math",
-                     words: []
-                    })
-    puzzles.push({ name: "Additions",
-                     category: "Math",
-                     words: []
-                    })
     puzzles.push({ name: "Algebra",
                      category: "Math",
                      words: ["average", "axes", "axioms", "binomial", "coefficient", "constant", "converse", "equation", "factor", "factor set", "formula", "inequality", "linear equation", "linear function", "monomial", "polynomial", "quotient", "ratio", "reciprocals", "slope of a line", "slope-intercept", "square root", "terms", "variable"]
@@ -2570,22 +2360,6 @@ namespace :db do
     puzzles.push({ name: "Calculus",
                      category: "Math",
                      words: ["Constant Rule", "Hessian", "Power Rule", "antiderivative", "area", "derivative", "differentials", "directrix", "eccentricity", "focus", "function", "gradient", "infinity table", "isobars", "isotherms", "limit test", "logarithm", "maximum", "minimum", "paraboloid", "root test", "torque", "total differential", "unit vector", "work"]
-                    })
-    puzzles.push({ name: "Division",
-                     category: "Math",
-                     words: []
-                    })
-    puzzles.push({ name: "Division 1 To 100",
-                     category: "Math",
-                     words: []
-                    })
-    puzzles.push({ name: "Even Numbers",
-                     category: "Math",
-                     words: []
-                    })
-    puzzles.push({ name: "Fraction Multiplications",
-                     category: "Math",
-                     words: []
                     })
     puzzles.push({ name: "Geometry",
                      category: "Math",
@@ -2599,22 +2373,6 @@ namespace :db do
                      category: "Math",
                      words: ["axis label", "coordinates", "data points", "data set", "domain", "grid", "grid line", "horizontal", "increment", "intercepts", "negative slope", "origin", "positive slope", "range", "scale", "slope", "values", "variables", "vertex", "vertical", "x-axis", "y-axis", "zero slope"]
                     })
-    puzzles.push({ name: "Multiplication 1 To 10",
-                     category: "Math",
-                     words: []
-                    })
-    puzzles.push({ name: "Multiplications",
-                     category: "Math",
-                     words: []
-                    })
-    puzzles.push({ name: "Odd Numbers",
-                     category: "Math",
-                     words: []
-                    })
-    puzzles.push({ name: "Prime Numbers",
-                     category: "Math",
-                     words: []
-                    })
     puzzles.push({ name: "Roman Numerals",
                      category: "Math",
                      words: ["II", "III", "IV", "IX", "VI", "VII", "VIII", "XI", "XII", "XIII", "XIV", "XIX", "XV", "XVI", "XVII", "XVIII", "XX", "XXI", "XXII", "XXIII", "XXIV", "XXV"]
@@ -2622,18 +2380,6 @@ namespace :db do
     puzzles.push({ name: "Statistics",
                      category: "Math",
                      words: ["autocorrelation", "bias", "critical value", "discrete data", "experimental design", "extrapolation", "factorial design", "histogram", "hypothesis test", "interval scale", "matched samples", "mean", "median", "mode", "null hypothesis", "outcome", "probability", "range", "sample mean", "standard deviation", "test statistic", "unit", "variance"]
-                    })
-    puzzles.push({ name: "Subtraction 1 To 10",
-                     category: "Math",
-                     words: []
-                    })
-    puzzles.push({ name: "Subtraction 1 To 100",
-                     category: "Math",
-                     words: []
-                    })
-    puzzles.push({ name: "Subtractions",
-                     category: "Math",
-                     words: []
                     })
     puzzles.push({ name: "Airforce Bases International",
                      category: "Military",
@@ -2664,7 +2410,7 @@ namespace :db do
                      words: ["Annapolis NS", "Atlanta NAS", "Brunswick NAS", "Corpus Christi NAS", "Fallon NAS", "Jacksonville NAS", "Key West NAS", "Lemoore NAS", "Naval Base Coronado", "Naval Base Point Loma", "North Island NAS", "Patuxent River NAS", "Pensacola NAS", "Point Mugu NAS", "San Diego NS", "Santa Clara NAS", "Washington NS", "Washington Navy Yard"]
                     })
     puzzles.push({ name: "Auto Shop Tools",
-                     category: "Miscellaneous",
+                     category: "Tools",
                      words: ["air compressor", "air hose", "battery charger", "blow gun", "buffer", "drill", "extractors", "file", "flashlight", "grinder", "jack", "jack stand", "jumper cables", "lift", "pliers", "pry bar", "ratchet", "sander", "scraper", "socket", "welder", "wheel balancer", "wrench"]
                     })
     puzzles.push({ name: "Baskin Robbins Ice Cream",
@@ -2729,7 +2475,7 @@ namespace :db do
                     })
     puzzles.push({ name: "Mobile Network Operators",
                      category: "Miscellaneous",
-                     words: [" América Móvil", " BSNL", " T-Mobile", " Tata Teleservices", " Telenor", " Turkcell", " Verizon Wireless", " Vodafone", "Airtel", "Axiata Group Berhad", "China Mobile", "China Telecom", "China Unicom", "Etisalat", "MTN Group", "MTS", "Orange", "SingTel", "TeliaSonera", "Telkomsel", "VimpelCom"]
+                     words: ["BSNL", " T-Mobile", " Tata Teleservices", " Telenor", " Turkcell", " Verizon Wireless", " Vodafone", "Airtel", "Axiata Group Berhad", "China Mobile", "China Telecom", "China Unicom", "Etisalat", "MTN Group", "MTS", "Orange", "SingTel", "TeliaSonera", "Telkomsel", "VimpelCom"]
                     })
     puzzles.push({ name: "Newspaper Terms",
                      category: "Miscellaneous",
@@ -2776,7 +2522,7 @@ namespace :db do
                      words: ["Ann Taylor", "Ann Taylor Loft", "Anne Klein", "Anthropologie", "Banana Republic", "Bebe", "Charlotte Russe", "Coldwater Creek", "Esprit", "Express", "Gap ", "Guess", "Jones New York", "Max Studio", "Newport News", "Old Navy", "Talbots", "The Limited", "Wet Seal"]
                     })
     puzzles.push({ name: "Wood Shop Tools",
-                     category: "Miscellaneous",
+                     category: "Tools",
                      words: ["band saw", "bolt", "chisel", "clamp", "drill bit", "drill press", "file", "glue", "hammer", "jig saw", "jointer", "lathe", "level", "miter", "nail", "plane", "router", "router table", "sander", "screw", "screw driver", "table saw", "tape measure", "triangle", "vice"]
                     })
     puzzles.push({ name: "Animal Names Male And Female",
@@ -3163,17 +2909,13 @@ namespace :db do
                      category: "Religion",
                      words: ["Aaron", "Abraham", "Anna", "David", "Deborah", "Eli", "Esther", "Hannah", "Hosea", "Isaac", "Isaiah", "Jacob", "Jeremiah", "John", "Jonah", "Joshua", "Malachi", "Miriam", "Moses", "Nathan", "Noah", "Obadiah", "Samuel", "Sarah", "Solomon"]
                     })
-    puzzles.push({ name: "Roman Catholic Saints",
-                     category: "Religion",
-                     words: []
-                    })
     puzzles.push({ name: "Women Of The Bible",
                      category: "Religion",
                      words: ["Abigail", "Anna", "Bathsheba", "Deborah", "Elizabeth", "Esther", "Eunice", "Eve", "Hagar", "Hannah", "Leah", "Lois", "Lydia", "Martha", "Mary", "Mary Magdalene", "Miriam", "Naomi", "Rachel", "Rahab", "Rebekah", "Ruth", "Salome", "Sarah", "Tamar"]
                     })
     puzzles.push({ name: "World Religions",
                      category: "Religion",
-                     words: ["Agnostic/Atheist", "Buddhism", "Caodaism", "Christianity", "Confucianism", "Druze", "Eckankar", "Gnosticism", "Hinduism", "Islam", "Jainism", "Juche", "Judaism", "Lukumi", "Neo-Paganism", "Rastafarianism", "Scientology", "Shinto", "Sikhism", "Spiritism", "Taoism", "Tenrikyo", "Zoroastrianism"]
+                     words: ["Agnostic", "Atheist", "Buddhism", "Caodaism", "Christianity", "Confucianism", "Druze", "Eckankar", "Gnosticism", "Hinduism", "Islam", "Jainism", "Juche", "Judaism", "Lukumi", "Neo-Paganism", "Rastafarianism", "Scientology", "Shinto", "Sikhism", "Spiritism", "Taoism", "Tenrikyo", "Zoroastrianism"]
                     })
     puzzles.push({ name: "Allergens And Fungi",
                      category: "Science",
@@ -3347,29 +3089,9 @@ namespace :db do
                      category: "Science Flora Fauna",
                      words: ["Annual Bluegrass", "Aster", "Barnyard Grass", "Bittercress", "Black Medic", "Broom Sedge", "Chickweed", "Clover", "Crabgrass", "Dallisgrass", "Dandelion", "Deadnettle", "Dollarweed", "Fall Panicum", "Foxtail Barley", "Garlic Mustard", "Goosegrass", "Henbit", "Johnson Grass", "Knawel", "Knotgrass", "Large Crabgrass", "Lawn Burweed", "Milkweed", "Stinkgrass"]
                     })
-    puzzles.push({ name: "Autumn",
-                     category: "Seasons",
-                     words: ["Halloween", "Thanksgiving", "World Series", "acorns", "apples", "blustery", "brown", "cornstalks", "equinox", "fall", "gourds", "harvest moon", "leaves", "orange", "pumpkin patch", "pumpkin pie", "pumpkins", "raking", "red", "scarecrow", "school", "squash", "turkey", "wind", "yellow"]
-                    })
-    puzzles.push({ name: "Spring",
-                     category: "Seasons",
-                     words: ["April showers", "Easter", "May flowers", "baskets", "blooms", "blossoms", "bonnet", "buds", "bunny", "cleaning", "daffodil", "eggs", "grass", "green", "kites", "lambs", "migration", "planting", "plowing", "raincoat", "robins", "seeds", "spring break", "tulip", "umbrella"]
-                    })
-    puzzles.push({ name: "Summer",
-                     category: "Seasons",
-                     words: ["air conditioner", "barbeque", "bathing suit", "beach", "boardwalk", "boating", "camping", "fan", "fireflies", "fireworks", "hamburgers", "hot dogs", "ice cream", "lemonade", "mosquitoes", "ocean", "picnic", "pool", "sand", "sunglasses", "sunscreen", "sunshine", "tan", "vacation", "water ski"]
-                    })
-    puzzles.push({ name: "Winter",
-                     category: "Seasons",
-                     words: ["blizzard", "boots", "cold", "dark", "earmuffs", "flurries", "frost", "frostbite", "gloves", "hats", "hibernation", "holidays", "icicles", "jacket", "mittens", "scarf", "shovel", "sled", "sleet", "sleigh", "snow", "snowflakes", "snowman", "snowsuit", "winter solstice"]
-                    })
     puzzles.push({ name: "American Indian Tribes",
                      category: "Social Studies",
                      words: ["Apache", "Arapahoe", "Blackfeet", "Cheyenne", "Chickasaw", "Chippewa", "Choctaw", "Comanche", "Cree", "Creek", "Havasupai", "Hopi", "Kiowa", "Kumeyaay", "Lakota", "Narragansett", "Navajo", "Paiute", "Pueblo", "Samish", "Seminole", "Shawnee", "Shoshone", "Ute", "Washoe"]
-                    })
-    puzzles.push({ name: "Cities Along Mississippi River",
-                     category: "Social Studies",
-                     words: []
                     })
     puzzles.push({ name: "Japanese Prime Ministers",
                      category: "Social Studies",
@@ -3499,23 +3221,23 @@ namespace :db do
                      category: "Speech and Language",
                      words: ["saturate", "scene", "schedule", "school", "science", "scoop", "sequel", "serve", "shadow", "significant", "slight", "slumber", "social", "sonorous", "speaker", "spontaneous", "squander", "square", "stage", "stagnant", "substance", "subtle", "success", "sufficient", "system"]
                     })
-    puzzles.push({ name: "Short "A" Words",
+    puzzles.push({ name: "Short A Words",
                      category: "Speech and Language",
                      words: ["ant", "apple", "ash", "ask", "band", "can", "cat", "fan", "flash", "glad", "hand", "hat", "lack", "land", "mad", "mask", "pan", "quack", "sack", "sad", "sand", "smash", "splash", "stack", "tax"]
                     })
-    puzzles.push({ name: "Short "E" Words",
+    puzzles.push({ name: "Short E Words",
                      category: "Speech and Language",
                      words: ["bed", "bent", "checked", "deck", "egg", "end", "excel", "fed", "hen", "jet", "leg", "lemon", "lend", "nest", "net", "rest", "set", "spell", "spend", "tell", "ten", "test", "vest", "web", "went"]
                     })
-    puzzles.push({ name: "Short "I" Words",
+    puzzles.push({ name: "Short I Words",
                      category: "Speech and Language",
                      words: ["big", "bill", "dig", "dip", "fin", "fit", "gift", "igloo", "iguana", "inch", "kin", "kitten", "lip", "litter", "milk", "mitten", "pin", "pit", "ship", "silk", "sit", "slip", "spin", "stint", "win"]
                     })
-    puzzles.push({ name: "Short "O" Words",
+    puzzles.push({ name: "Short O Words",
                      category: "Speech and Language",
                      words: ["cloth", "dock", "dog", "doll", "dolphin", "frog", "gone", "hog", "lock", "log", "long", "mop", "moth", "oblong", "octagon", "odd", "olive", "option", "ostrich", "pot", "robin", "smock", "smog", "sock", "stop"]
                     })
-    puzzles.push({ name: "Short "U" Words",
+    puzzles.push({ name: "Short U Words",
                      category: "Speech and Language",
                      words: ["bug", "bus", "cuff", "cup", "drum", "dug", "fun", "fuss", "hum", "jug", "jump", "luck", "lump", "nut", "plus", "run", "stuck", "stump", "stun", "sun", "truck", "ugly", "umbrella", "uncle", "under"]
                     })
@@ -3539,15 +3261,15 @@ namespace :db do
                      category: "Speech and Language",
                      words: ["wage", "wail", "wait", "wall", "wander", "weak", "weary", "welcome", "wheel", "wield", "willing", "winner", "wisdom", "wistful", "woeful", "work", "worthy", "wrapper", "wrath", "wreckage", "wrinkle", "writhe", "written", "wrong", "wry"]
                     })
-    puzzles.push({ name: "Words Beginning With "Ea"",
+    puzzles.push({ name: "Words Beginning With Ea",
                      category: "Speech and Language",
                      words: ["each", "eager", "eagle", "ear", "earl", "earliest", "earlobe", "early", "earn", "earnest", "earphone", "earpiece", "earplug", "earring", "earshot", "earth", "earthquake", "ease", "easel", "east", "eastern", "easy", "eat", "eaves", "eavesdrop"]
                     })
-    puzzles.push({ name: "Words Beginning With "Sn"",
+    puzzles.push({ name: "Words Beginning With Sn",
                      category: "Speech and Language",
                      words: ["snack", "snag", "snail", "snake", "snap", "snare", "snarl", "snatch", "sneak", "sneaker", "sneaky", "sneer", "sneeze", "snicker", "sniff", "snip", "snipe", "snivel", "snob", "snoop", "snore", "snorkel", "snort", "snow", "snuggle"]
                     })
-    puzzles.push({ name: "Words Beginning With "Tr"",
+    puzzles.push({ name: "Words Beginning With Tr",
                      category: "Speech and Language",
                      words: ["trace", "track", "trade", "trail", "train", "trait", "transit", "trap", "trauma", "tread", "treat", "trend", "triangle", "trick", "tried", "trim", "trolley", "trophy", "trouble", "trowel", "truce", "true", "trumpet", "trunk", "truth"]
                     })
@@ -3627,23 +3349,23 @@ namespace :db do
                      category: "Speech and Language",
                      words: ["stable", "stack", "stadium", "staff", "stage", "stagnant", "stain", "stairs", "stare", "start", "startle", "starve", "state", "statistics", "step", "stern", "sticker", "stiff", "stigma", "stock", "stocking", "stomach", "stone", "stop", "stuck"]
                     })
-    puzzles.push({ name: "Words Containing "AI"",
+    puzzles.push({ name: "Words Containing AI",
                      category: "Speech and Language",
                      words: ["acclaim", "afraid", "bait", "brain", "campaign", "chain", "daily", "entail", "entertain", "faint", "frail", "gain", "grain", "hail", "maid", "nail", "ordain", "paisley", "praise", "quaint", "sail", "saint", "stain", "tail", "trail"]
                     })
-    puzzles.push({ name: "Words Containing "EA" ",
+    puzzles.push({ name: "Words Containing EA",
                      category: "Speech and Language",
                      words: ["appear", "appease", "beach", "beacon", "bead", "beak", "cease", "clean", "clear", "cleave", "cream", "defeat", "dream", "endear", "gleam", "grease", "heal", "lead", "leaf", "meal", "peace", "sneak", "steam", "teach", "treat"]
                     })
-    puzzles.push({ name: "Words Containing "EE"",
+    puzzles.push({ name: "Words Containing EE",
                      category: "Speech and Language",
                      words: ["asleep", "beep", "beseech", "careen", "career", "cheek", "deed", "deem", "esteem", "exceed", "feeble", "greed", "heed", "heel", "indeed", "jeer", "keep", "leeway", "meek", "needle", "overseer", "peel", "proceed", "queen", "redeem"]
                     })
-    puzzles.push({ name: "Words Containing "OO"",
+    puzzles.push({ name: "Words Containing OO",
                      category: "Speech and Language",
                      words: ["aloof", "balloon", "bloom", "book", "carpool", "cartoon", "choose", "cook", "drool", "flood", "foot", "good", "goose", "hoof", "hoot", "lagoon", "loose", "maroon", "noon", "proof", "room", "school", "took", "tooth", "wood"]
                     })
-    puzzles.push({ name: "Words Ending In "U"",
+    puzzles.push({ name: "Words Ending In U",
                      category: "Speech and Language",
                      words: ["bandeau", "bayou", "beau", "caribou", "chateau", "coteau", "eau", "ecru", "emu", "flu", "frau", "gnu", "haiku", "impromptu", "jujitsu", "lieu", "luau", "menu", "milieu", "plateau", "thou", "tiramisu", "tofu", "tutu", "you"]
                     })
@@ -3675,7 +3397,7 @@ namespace :db do
                      category: "Speech and Language",
                      words: ["ambiguous", "ambitious", "boisterous", "cantankerous", "carnivorous", "chivalrous", "dangerous", "delicious", "enormous", "ferocious", "furious", "glorious", "hazardous", "impervious", "joyous", "judicious", "meticulous", "notorious", "nutritious", "obnoxious", "perilous", "serious", "tedious", "vicious", "wonderous"]
                     })
-    puzzles.push({ name: "Words Ending in "EE"",
+    puzzles.push({ name: "Words Ending in EE",
                      category: "Speech and Language",
                      words: ["absentee", "agree", "bee", "carefree", "chimpanzee", "coffee", "committee", "degree", "employee", "fee", "filigree", "frisbee", "glee", "jamboree", "knee", "levee", "manatee", "nominee", "pedigree", "refugee", "see", "three", "trainee", "tree", "trustee"]
                     })
@@ -3699,7 +3421,7 @@ namespace :db do
                      category: "Speech and Language",
                      words: ["bananas", "boughs", "bows", "boys", "breeze", "cheese", "cherries", "choose", "close", "cookies", "cows", "eyes", "freeze", "keys", "ladies", "lies", "news", "noise", "nose", "peas", "rose", "shoes", "sneeze", "ties", "toys"]
                     })
-    puzzles.push({ name: "Words With "G" Sound at the End",
+    puzzles.push({ name: "Words With G Sound at the End",
                      category: "Speech and Language",
                      words: ["bag", "big", "bug", "dig", "dog", "egg", "flag", "fog", "frog", "hog", "hug", "leg", "log", "mug", "pig", "plug", "rag", "rug", "smog", "snag", "tag", "tug", "twig", "wag", "wig"]
                     })
@@ -3893,7 +3615,7 @@ namespace :db do
                     })
     puzzles.push({ name: "Germany World Cup Roster 2010 ",
                      category: "Sports",
-                     words: ["Arne Friedrich ", "Cacau ", "Dennis Aogo", "Germany", "Hans-Jörg Butt ", "Holger Badstuber", "Joachim Low", "Jérôme Boateng ", "Lukas Podolski", "Manuel Neuer", "Marcell Jansen", "Mario Gómez", "Marko Marin", "Mesut Özil ", "Miroslav Klose", "Per Mertesacker", "Philipp Lahm", "Piotr Trochowski ", "Sami Khedira", "Serdar Tasci", "Stefan Kiessling", "Thomas Müller", "Tim Wiese", "Toni Kroos"]
+                     words: ["Arne Friedrich", "Cacau ", "Dennis Aogo", "Germany", "Holger Badstuber", "Joachim Low", "Lukas Podolski", "Manuel Neuer", "Marcell Jansen", "Marko Marin", "Miroslav Klose", "Per Mertesacker", "Philipp Lahm", "Piotr Trochowski ", "Sami Khedira", "Serdar Tasci", "Stefan Kiessling", "Tim Wiese", "Toni Kroos"]
                     })
     puzzles.push({ name: "Ghana World Cup Roster 2010 ",
                      category: "Sports",
@@ -3947,19 +3669,19 @@ namespace :db do
                      category: "Sports",
                      words: ["Alexandros Tziolis", "Alexandros Tzorvas", "Angelos Charisteas ", "Avraam Papadopoulos", "Dimitris Salpigidis", "Evangelos Moras", "Giorgos Karagounis", "Giorgos Samaras", "Giorgos Seitaridis", "Greece", "Kostas Chalkias ", "Kostas Katsouranis ", "Loukas Vintra ", "Michalis Sifakis", "Nikos Spiropoulos ", "Otto Rehhagel ", "Pantelis Kapetanos", "Sakis Prittas", "Sotiris Kyrgiakos ", "Sotiris Ninis", "Stelios Malezas", "Theofanis Gekas", "Vasilis Torosidis "]
                     })
-    puzzles.push({ name: "Hall Of Fame Defensive Linemen",
+    puzzles.push({ name: "Hall Of Fame Football 1",
                      category: "Sports",
                      words: ["Alan Page", "Andy Robustelli", "Art Donovan", "Bill Willis", "Bob Lilly", "Carl Eller", "Dan Hampton", "David Jones", "Doug Atkins", "Elvin Bethea", "Ernie Stautner", "Fred Dean", "Gino Marchetti", "Henry Jordan", "Howie Long", "Jack Youngblood", "Joe Greene", "Junious Buchanan", "Lee Roy Selmon", "Len Ford", "Leo Nomellini", "Merlin Olsen", "Randy White", "Reggie White", "Willie Davis"]
                     })
-    puzzles.push({ name: "Hall of Fame Halfbacks, Fullbacks and Running Backs",
+    puzzles.push({ name: "Hall of Fame Football 2",
                      category: "Sports",
                      words: ["Barry Sanders", "Charley Trippi", "Clarke Hinkle", "Doak Walker", "Eric Dickerson", "Franco Harris", "Frank Gifford", "Gale Sayers", "Hugh McElhenny", "Jim Brown", "Jim Taylor", "Jim Thorpe", "Joe Perry", "John McNally", "John Riggins", "Ken Strong", "Lenny Moore", "Leroy Kelly", "Marcus Allen", "Marion Motley", "Ollie Matson", "Thurman Thomas", "Tony Dorsett", "Walter Payton"]
                     })
-    puzzles.push({ name: "Hall of Fame Linebacks and Defensive Backs",
+    puzzles.push({ name: "Hall of Fame Football 3",
                      category: "Sports",
                      words: ["Bill George", "Bobby Bell", "Darrell Green", "Dave Wilcox", "Dick Butkus", "Dick Lane", "Emlen Tunnell", "Emmitt Thomas", "George Connor", "Harry Carson", "Jack Ham", "Jack Lambert", "Jimmy Johnson", "Joe Schmidt", "Ken Houston", "Larrie Wilson", "Mel Blount", "Mel Renfro", "Mike Haynes", "Paul Krause", "Ronnie Lott", "Sam Huff", "Willie Brown", "Willie Wood", "Yale Lary"]
                     })
-    puzzles.push({ name: "Hall of Fame Offensive Linemen",
+    puzzles.push({ name: "Hall of Fame Football 4",
                      category: "Sports",
                      words: ["Art Shell", "Billy Shaw", "Bob Brown", "Bruce Matthews", "Chuck Bednarik", "Dwight Stephenson", "Gary Zimmerman", "Gary Zimmerman", "Gene Hickerson", "Gene Upshaw", "Jim Langer", "Jim Otto", "Jim Parker", "Jim Ringo", "John Hannah", "Larry Little", "Lou Creekmur", "Lou Groza", "Mike McCormack", "Mike Webster", "Rayfield Wright", "Ron Mix", "Ron Yary", "Stan Jones", "Tom Mack"]
                     })
@@ -3967,7 +3689,7 @@ namespace :db do
                      category: "Sports",
                      words: ["Bart Starr", "Bob Griese", "Bob Waterfield", "Bobby Layne", "Dan Fouts", "Dan Marino", "Earl Clark", "Fran Tarkenton", "George Blanda", "Jim Kelly", "Joe Montana", "Joe Namath", "John Driscoll", "John Elway", "Johnny Unitas", "Len Dawson", "Norm Van Brocklin", "Otto Graham", "Roger Staubach", "Sonny Jurgensen", "Steve Young", "Terry Bradshaw", "Troy Aikman", "Warren Moon"]
                     })
-    puzzles.push({ name: "Hall of Fame Wide Receivers and Tight Ends",
+    puzzles.push({ name: "Hall of Fame Football 5",
                      category: "Sports",
                      words: ["Art Monk", "Bill Hewitt", "Bobby Mitchell", "Charley Taylor", "Dante Lavelli", "Don Hutson", "Don Maynard", "Elroy Hirsch", "Fred Biletnikoff", "George Halas", "Guy Chamberlin", "James Lofton", "John Stallworth", "Lance Alworth", "Lynn Swann", "Michael Irvin", "Morris Badgro", "Paul Warfield", "Pete Pihos", "Ray Flaherty", "Raymond Berry", "Steve Largent", "Tom Fears", "Tommy McDonald", "Wayne Millner"]
                     })
@@ -4109,7 +3831,7 @@ namespace :db do
                     })
     puzzles.push({ name: "Track And Field",
                      category: "Sports",
-                     words: ["decathlon", "discus", "hammer", "high jump", "javelin", "long jump", "pole vault", "shot put", "triple jum["]
+                     words: ["decathlon", "discus", "hammer", "high jump", "javelin", "long jump", "pole vault", "shot put", "triple jump"]
                     })
     puzzles.push({ name: "U.S. Marathons",
                      category: "Sports",
@@ -4167,14 +3889,6 @@ namespace :db do
                      category: "Sports",
                      words: ["ace", "block", "change of court", "court", "dead ball", "defense miss", "dig", "foot fault", "kill", "offensive miss", "out of bounds", "palming", "player rotation", "playing the ball", "rally", "roof", "serve", "server", "service", "service order", "service reception", "sideout", "stuff", "term of service", "volley"]
                     })
-    puzzles.push({ name: "Wimbledon Champions Doubles: Men",
-                     category: "Sports",
-                     words: ["Don Budge/Gene Mako"]
-                    })
-    puzzles.push({ name: "Wimbledon Champions Doubles: Women",
-                     category: "Sports",
-                     words: []
-                    })
     puzzles.push({ name: "Wimbledon Champions: Men",
                      category: "Sports",
                      words: ["Anthony Wilding", "Arthur Gore", "Bill Johnston", "Bill Tilden", "Ellsworth Vines", "Ernest Renshaw", "Frank Hadlow", "Fred Perry", "Gerald Patterson", "Harold Mahoney", "Henri Cochet", "Herbert Lawford", "Jack Crawford", "Jean Borotra", "John Hartley", "Joshua Pim", "Lawrence Doherty", "Norman Brookes", "Reginald Doherty", "Rene Lacoste", "Sid Wood", "Spencer Gore", "Wilfred Baddeley", "William Renshaw", "Willoughby Hamilton"]
@@ -4226,14 +3940,6 @@ namespace :db do
     puzzles.push({ name: "World Marathons 8",
                      category: "Sports",
                      words: ["Bad Salzuflen", "Berlin", "Bodensee", "Drebber", "Dresden", "Edersee", "Elypso", "Essen", "Fulda", "Fun Run", "Hamburg", "Hamburg Region", "Hannover", "Husum Winter", "Kiel", "Leipzig", "Lengenfeld", "Marburg", "Rursee", "Silvester", "Springe-Deister", "Unnaer Stadt", "Wegberg", "Wernigerode"]
-                    })
-    puzzles.push({ name: "Linux Distributions",
-                     category: "Tools",
-                     words: ["Arch", "ArtistX", "Astruix", "BackTrack", "Baltix", "BlankOn", "Buildix", "CentOS", "Easypeasy", "Eeebuntu", "ElementOS", "Fedora", "Fluxbuntu", "Gentoo", "GeoBox", "GnackTrack", "Goobuntu", "Guadalinex", "Hiweed", "Redhat Linux", "Slackware", "Spri", "Ubuntu", "eBow", "gNewSense", "gOS"]
-                    })
-    puzzles.push({ name: "Types Of Knots",
-                     category: "Tools",
-                     words: ["Bachmann", "Bowline", "Bowline on a Bite", "Heden", "Klemheist", "Prusik", "clove hitch", "diamond knot", "double sheet bend", "figure eight", "flemish bend", "half hitch", "halyard knot", "overhand knot", "reef knot", "ring bend", "rolling hitch", "sheep shank", "sheet bend", "square knot", "studding sail", "timber hitch", "two half hitches"]
                     })
     puzzles.push({ name: "Airlines",
                      category: "Transportation",
