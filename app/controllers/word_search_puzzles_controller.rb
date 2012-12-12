@@ -72,6 +72,7 @@ class WordSearchPuzzlesController < ApplicationController
     puzzles_with_category = WordSearchPuzzle.select("DISTINCT(CATEGORY)")
     # Delete the category of puzzles that have no category (that is, user created)
     puzzles_with_category.delete_if { |puzzle| puzzle.category == "" }
+    puzzles_with_category.sort! { |a,b| a.category <=> b.category }
 
     @puzzle_count = WordSearchPuzzle.where("category <> ''").count
     @puzzle_categories = []
