@@ -18,6 +18,14 @@ namespace :db do
     make_puzzles_for_health
     make_puzzles_for_tools
     make_puzzles_for_all_others
+    sanitize_puzzles
+  end
+
+  def sanitize_puzzles
+    WordSearchPuzzle.all.each do |p|
+      p.name = p.name.category_to_link.link_to_category
+      p.save!
+    end
   end
 
   def commit_puzzles(puzzles)
