@@ -87,6 +87,7 @@ class WordSearchPuzzlesController < ApplicationController
   def category
     @category = params[:category]
     @puzzles = WordSearchPuzzle.find_all_by_category(@category.link_to_category)
+    @puzzles = @puzzles.sort! { |a,b| a.name <=> b.name }
     @puzzle_count = WordSearchPuzzle.where("category <> ''").count
     @puzzles_category_count = WordSearchPuzzle.select("DISTINCT(CATEGORY)").count - 1 #subtract out category of ""
   end
