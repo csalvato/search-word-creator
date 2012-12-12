@@ -33,23 +33,23 @@
 </div>
 <% end %>
 <%= form_tag print_path, id: "configure-puzzle" do%>
-<ul>
 	<li>
   <%= label_tag "Total Number of Puzzles" %>
-  <%= text_field_tag :num_puzzles, "1" %>
+  <%= text_field_tag :num_puzzles, "5" %>
 	</li>
 	<%= hidden_field_tag :word_search_puzzle_id, @word_search_puzzle.id %>
 
   <%= submit_tag "Print Puzzles", class: "btn btn-large btn-primary" %>
 </ul>
 <% end %>
-
-<h1>Words You've Added</h1>
-<div class="entry">
-	<ul>
-	  <% @words.each do |word| %>
-			<li><%=  word %></li>
-		<% end %>
-	</ul>
+<div class="added-words">
+	<h1>Words You've Added</h1>
+		<div class="entry">
+			<ul>
+			  <% @words.each do |word| %>
+					<li><%=  word %></li>
+				<% end %>
+			</ul>
+	</div>
 </div>
 <%= debug(@word_search_puzzle) if Rails.env.development? %>

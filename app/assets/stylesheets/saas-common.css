@@ -1193,7 +1193,7 @@ form h5 em {
 	font-weight: normal;
 }
 
-form li input {
+form li input, form li textarea {
 	width: 260px;
 	background-color: #fff;
 	border: solid 1px #bbb;

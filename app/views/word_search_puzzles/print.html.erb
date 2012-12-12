@@ -57,11 +57,18 @@
 		</div>
 	</noscript>
 <% end %>
-
-<div class="post">
-	<div class="entry">
-		<h1>Ready to download!</h1>
-		<br/>
-		<%= link_to "Click here", download_path(@file_name), class: "download-puzzles-link" %> to download your puzzles!
-	</div>
+<h1>Ready to download!</h1>
+<br/>
+<p>Your puzzles are ready to download!  Click the huge button below to download your puzzles now.  Once downloaded, open them and then print!</p>
+<%= link_to "Download Your Puzzles!", download_path(@file_name), class: "download-puzzles-link" %>
+	
+<div class="alert alert-nofity">
+	<h1>Want more ready-made puzzles?</h1>
+	<br/>
+	<p>We have <%= pluralize(@puzzle_count, "puzzle") %> in <%= pluralize(@puzzles_category_count, "category") %>!  Go to the <%= link_to "main index", word_search_puzzles_path %> to see them all!</p>
+</div>
+<div class="alert alert-info">
+	<h1>Want to make more of your own?</h1>
+	<br/>
+	<p>Just <%= link_to "click here", new_word_search_puzzle_path %> to start again and enter all of your own words for a custom set of puzzle!</p>
 </div>

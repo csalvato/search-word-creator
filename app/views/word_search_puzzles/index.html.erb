@@ -29,6 +29,10 @@
 <p>Click on the category below to see the available pre-made puzzles, ready for printing and using within seconds!</p>
 <br/>
 
+<div class="alert alert-info">
+	<h3 style="text-align: center;">We have <%= pluralize(@puzzle_count, "puzzle") %> in <%= pluralize(@puzzle_categories.count, "category") %>!</h3>
+</div>
+
 <div class="promo-row">
 <% @puzzle_categories.each_with_index do |category, index| %>
 	<% if index % 3 == 0 && index != 0 %>

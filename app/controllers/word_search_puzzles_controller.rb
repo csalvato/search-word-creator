@@ -51,6 +51,9 @@ class WordSearchPuzzlesController < ApplicationController
       @file_name = pdf.generate_pdf(num_puzzles_printed,
   																	current_user.name)
     end
+    @puzzle_count = WordSearchPuzzle.where("category <> ''").count
+    @puzzles_category_count = WordSearchPuzzle.select("DISTINCT(CATEGORY)").count - 1 #subtract out category of ""
+
   end
 
   def download
@@ -61,6 +64,8 @@ class WordSearchPuzzlesController < ApplicationController
     @category = params[:category]
     @puzzle_name = params[:name].link_to_category
     @word_search_puzzle = WordSearchPuzzle.find_by_category_and_name(@category.link_to_category, @puzzle_name)
+    @puzzle_count = WordSearchPuzzle.where("category <> ''").count
+    @puzzles_category_count = WordSearchPuzzle.select("DISTINCT(CATEGORY)").count - 1 #subtract out category of ""
   end
 
   def index
@@ -68,6 +73,7 @@ class WordSearchPuzzlesController < ApplicationController
     # Delete the category of puzzles that have no category (that is, user created)
     puzzles_with_category.delete_if { |puzzle| puzzle.category == "" }
 
+    @puzzle_count = WordSearchPuzzle.where("category <> ''").count
     @puzzle_categories = []
     puzzles_with_category.each do |puzzle|
       puzzle_category = { name: puzzle.category, 
@@ -80,6 +86,8 @@ class WordSearchPuzzlesController < ApplicationController
   def category
     @category = params[:category]
     @puzzles = WordSearchPuzzle.find_all_by_category(@category.link_to_category)
+    @puzzle_count = WordSearchPuzzle.where("category <> ''").count
+    @puzzles_category_count = WordSearchPuzzle.select("DISTINCT(CATEGORY)").count - 1 #subtract out category of ""
   end
 
   private

@@ -25,6 +25,13 @@
 <h1><%= @category.link_to_category.titlecase %> Search Word Puzzles</h1>
 <p>Below are the <strong>word search puzzles</strong> that are available for <%= @category.link_to_category.titlecase %>.  Click on any puzzle to get started <strong>creating a custom, printable search word puzzle</strong> from this word list within 15 seconds! </p>
 <br/>
+<div class="alert alert-info">
+	<h3 style="text-align: center;">We have <%= pluralize(@puzzle_count, "puzzle") %> in <%= pluralize(@puzzles_category_count, "category") %>!</h3>
+	<br/>
+	<p>Don't like anything in this category?  Go to the <%= link_to "main index", word_search_puzzles_path %> to see all <%= pluralize(@puzzles_category_count, "category") %> from which you can choose!</p>
+	<br/>
+</div>
+
 <div class="promo-row">
 <% @puzzles.each_with_index do |puzzle, index| %>
 	<% if index % 3 == 0 && index != 0 %>

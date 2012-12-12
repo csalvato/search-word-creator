@@ -26,18 +26,23 @@
 <br/>
 <img class="promo-img" src="/assets/puzzle.png" alt="Sample Puzzle"/>
 <div class="promo-text">
-	<p>These puzzles are about <%= @puzzle_name %>.</p>
+	<p>These puzzles are about <strong><%= @puzzle_name %></strong>.</p>
 	<br/>
-	<p>These are some common words or names associated with <%= @puzzle_name %>. These include words like 
+	<p>These are some common words or names associated with <strong><%= @puzzle_name %></strong>. These include words like 
 	<% @word_search_puzzle.words.each_with_index do |word, index| 
 		break if index == 4	%>
 		<% if index == 3 || index == @word_search_puzzle.words.length-2 %>
-			<%= "and #{word.titlecase}." %>
+			and <em><%= "#{word.titlecase}." %></em>
 		<% else %>
-			<%= "#{word.titlecase}," %>
+			<em><%= "#{word.titlecase}," %></em>
 		<% end %>
 	<% end %></p>
 	<br/>
-	<p>You can create puzzles like these using Search Word Creator. You can try it, totally free, for up to 15 puzzles.</p>
+	<p>You can create puzzles like these using <strong>Search Word Creator</strong>. You can try it, totally free, for up to 15 puzzles.</p>
 	<%= link_to "Print Puzzles", new_promo_word_search_puzzle_path(@word_search_puzzle), class: "promo-print-btn"%>
+	<div class="alert alert-info">
+		<h3 style="text-align: center;">We have <%= pluralize(@puzzle_count, "puzzle") %> in <%= pluralize(@puzzles_category_count, "category") %>!</h3>
+		<br/>
+		<p style="text-align: center;">Go to the <%= link_to "main index", word_search_puzzles_path %> to see all <%= pluralize(@puzzles_category_count, "category") %>!</p>
+	</div>
 </div>
