@@ -11,6 +11,8 @@
 <%= form_for(@user) do |f| %>
 	<h5>Sign up</h5>
   <%= render 'fields', f: f %>
-	
-  <%= f.submit "Create My Account", class: "btn" %>
+	<div class="signin-button">
+    <p>Already have an account? <%= link_to "Sign in here.", signin_path %><p>
+    <%= f.submit "Create My Account", class: "btn" %>
+  </div>
 <% end %>

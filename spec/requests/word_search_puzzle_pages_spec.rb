@@ -171,18 +171,18 @@ describe "WordSearchPuzzlePagesSpecs" do
 
 								it { should have_selector("h5", content:"Sign in") }
 
-								describe "and then signing in" do
-									before { valid_signin(user) }
+								describe "and then signing up" do
+									before { valid_signup }
 
 									it_should_behave_like "Step 3 Page"
 									it { should have_link("Sign out", href: signout_path) }
 									it { should_not have_link("Sign in", href: signin_path) }	
 								end
 
-								describe "and then signing up" do
+								describe "and then signing in" do
 									before do
-										click_link "Sign up now!"
-										valid_signup
+										click_link "Sign in here."
+										valid_signin(user)
 									end
 
 									it_should_behave_like "Step 3 Page"

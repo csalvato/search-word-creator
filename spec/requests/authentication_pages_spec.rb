@@ -49,17 +49,18 @@ describe "Authentication" do
     describe "in the Users controller" do
       describe "visiting the edit (Account) page" do
         before { visit edit_user_path(user) }
-        it { should have_selector('title', text: 'Sign in') }
+        it { should have_selector('title', text: 'Sign up') }
       end
 
       describe "submitting to the update action" do
         before { put user_path(user) }
-        specify { response.should redirect_to(signin_path) }
+        specify { response.should redirect_to(signup_path) }
       end
 
       describe "when attempting to visit a protected page that, when logged in, one SHOULD have access to" do
         before do
           visit edit_user_path(user)
+          click_link "Sign in here."
           fill_in "Email",    with: user.email
           fill_in "Password", with: user.password
           click_button "Sign in"
@@ -107,6 +108,7 @@ describe "Authentication" do
         let(:other_user) { FactoryGirl.create(:user) }
         before do
           visit edit_user_path(other_user)
+          click_link "Sign in here."
           fill_in "Email",    with: user.email
           fill_in "Password", with: user.password
           click_button "Sign in"
@@ -131,12 +133,12 @@ describe "Authentication" do
           click_button "Print Puzzles"
         end 
 
-        it { should have_selector('title', text: 'Sign in') }
+        it { should have_selector('title', text: 'Sign up') }
       end
       
       describe "submitting to the update action" do
         before { post print_path }
-        specify { response.should redirect_to(signin_path) }
+        specify { response.should redirect_to(signup_path) }
       end
     end
   end
