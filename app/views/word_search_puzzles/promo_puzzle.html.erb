@@ -11,8 +11,8 @@
 	<% end %>
 <% end %></p>
 
-<% provide(:meta_description, "A free, printable #{@puzzle_name.title_case} word search puzzle for ESL teachers, including the words #{meta_desc}") %>
-<% provide(:meta_keywords, "#{@category.link_to_category}, esl, teaching activity, tefl, search word creator, word search creator, word find creator, search word puzzle, word search puzzle, word find puzzle, teaching, activities, teaching activity, printable, print, printing") %>
+<% provide(:meta_description, "A free, printable #{@puzzle_name.titlecase} word search puzzle for ESL teachers, including the words #{meta_desc}") %>
+<% provide(:meta_keywords, "#{@category.link_to_category}, #{@puzzle_name.title_case}, esl, teaching activity, tefl, search word creator, word search creator, word find creator, search word puzzle, word search puzzle, word find puzzle, teaching, activities, teaching activity, printable, print, printing") %>
 <% content_for :mixpanel_tracking do %>
 	<script type="text/javascript">
   	  $(document).ready( function(){
