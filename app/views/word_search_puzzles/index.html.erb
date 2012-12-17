@@ -1,5 +1,7 @@
-<% provide(:title, "Free printable search word puzzles with Search Word Creator") %>
+<% provide(:title, "Free printable search word puzzles") %>
 <% provide(:page_type, 'page') %>
+<% provide(:meta_description, "Over #{@puzzle_count} free, printable word search puzzles available in #{@puzzle_categories.count} categories for ESL teachers.") %>
+<% provide(:meta_keywords, 'esl, teaching activity, tefl, search word creator, word search creator, word find creator, search word puzzle, word search puzzle, word find puzzle, teaching, activities, teaching activity, printable, print, printing') %>
 <% content_for :mixpanel_tracking do %>
 	<script type="text/javascript">
   	  $(document).ready( function(){

@@ -1,5 +1,7 @@
-<% provide(:title, "#{@category.link_to_category} search word puzzles with Search Word Creator") %>
+<% provide(:title, "#{@category.link_to_category} search word puzzles") %>
 <% provide(:page_type, 'page') %>
+<% provide(:meta_description, "#{@puzzles.count} free, printable word search #{"puzzle".pluralize(@puzzles.count)} available for #{@category.link_to_category} for ESL teachers.") %>
+<% provide(:meta_keywords, "#{@category.link_to_category}, esl, teaching activity, tefl, search word creator, word search creator, word find creator, search word puzzle, word search puzzle, word find puzzle, teaching, activities, teaching activity, printable, print, printing") %>
 <% content_for :mixpanel_tracking do %>
 	<script type="text/javascript">
   	  $(document).ready( function(){
