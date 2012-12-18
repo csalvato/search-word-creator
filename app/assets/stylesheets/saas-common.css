@@ -1565,7 +1565,7 @@ section,header,hgroup,footer,.btn {
 	width: 322px;
 }
 
-.col3 section .btn,.col4 section .btn,.col4 section.on .btn {
+.col3 section .btn,.col4 section .btn,.col4 section.on .btn, .col2 section .btn,  {
 	font-size: 22px;
 }
 
@@ -1575,6 +1575,27 @@ section,header,hgroup,footer,.btn {
 
 .col3 section:hover .style2,.col3 section.on .style2 {
 	font-size: 48px;
+}
+
+.col2 section {
+	width: 318px;
+}
+
+.col2 section.first {
+	margin-left: 175px;
+}
+
+.col2 section:hover,.col2 section.on {
+	width: 322px;
+}
+
+.col2 section:hover .style2,.col2 section.on .style2 {
+	font-size: 48px;
+}
+
+.col1 section.first {
+	width: 318px;
+	margin: 0 auto;
 }
 
 .col4 section {
@@ -1591,6 +1612,10 @@ section,header,hgroup,footer,.btn {
 
 .col5 section:hover,.col5 section.on {
 	width: 196px;
+}
+
+.purchase-text {
+
 }
 
 .tooltip {
