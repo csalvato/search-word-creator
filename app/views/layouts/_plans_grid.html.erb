@@ -25,7 +25,7 @@
 					<li>
 						Start Printing Puzzles Immediately! 
 					</li>
-					<li class="last"><%= link_to "Free Trial", signup_path, class: "free-trial-btn btn" %></li>
+					<li class="last"><%= link_to "Get Started", purchase_path(plan_id: "swc_trial"), class: "purchase-btn btn" %></li>
 				</ul>
 			</footer>
 		</section>
@@ -55,7 +55,7 @@
 					<li>
 						Start Printing Puzzles Immediately!
 					</li>
-					<li class="last"><%= link_to "Get Started", purchase_path, class: "purchase-btn btn" %></li>
+					<li class="last"><%= link_to "Get Started", purchase_path(plan_id: "swc_teacher"), class: "purchase-btn btn" %></li>
 				</ul>
 			</footer>
 		</section>
