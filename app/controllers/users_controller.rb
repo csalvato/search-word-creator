@@ -30,11 +30,11 @@ class UsersController < ApplicationController
 
   private
     def signed_out_user
-      redirect_to dashboard_url unless !signed_in?
+      redirect_to dashboard_path unless !signed_in?
     end
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to dashboard_url unless current_user?(@user)
+      redirect_to dashboard_path unless current_user?(@user)
     end
 end

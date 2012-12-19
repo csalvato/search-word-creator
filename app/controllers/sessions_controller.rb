@@ -17,12 +17,12 @@ class SessionsController < ApplicationController
 
 	def destroy
 		sign_out 
-		redirect_to root_url
+		redirect_to root_path
 	end
 
 	private
 		def signed_in_user_trying_to_sign_in
-			redirect_to dashboard_url unless !signed_in?
+			redirect_to dashboard_path unless !signed_in?
 		end
 
 end

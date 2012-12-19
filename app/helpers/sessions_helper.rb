@@ -11,7 +11,7 @@ module SessionsHelper
 	def signed_in_user
     unless signed_in?
       store_location
-      redirect_to signup_url, notice: "Almost there! Make an account to create a puzzle." 
+      redirect_to signup_path, notice: "Almost there! Make an account to create a puzzle." 
     end
   end
 
