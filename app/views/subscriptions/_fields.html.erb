@@ -46,5 +46,7 @@
 		</li>
 	</ul>
 	<%= hidden_field_tag :stripe_card_token %>
-	<%= hidden_field_tag :plan_id, "swc_teacher"  %>
+	<% plan_id = "swc_teacher" %>
+	<% plan_id = params[:plan_id] if params[:plan_id] == "swc_lite" %>
+	<%= hidden_field_tag :plan_id, plan_id %>
 <% end %>

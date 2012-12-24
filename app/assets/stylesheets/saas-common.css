@@ -1582,7 +1582,7 @@ section,header,hgroup,footer,.btn {
 }
 
 .col2 section.first {
-	margin-left: 175px;
+	margin-left: 155px;
 }
 
 .col2 section:hover,.col2 section.on {
@@ -1615,7 +1615,11 @@ section,header,hgroup,footer,.btn {
 }
 
 .purchase-text {
-
+	font-weight: normal; 
+	margin: 0 auto 20px auto; 
+	text-align:center; 
+	width: 75%;
+	text-shadow: 0 2px 0 rgba(0, 0, 0, 0.5);
 }
 
 .tooltip {

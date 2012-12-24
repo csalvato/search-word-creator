@@ -64,8 +64,8 @@ describe "StaticPages" do
 
     it_should_behave_like "all static pages"
     it { should have_selector( 'title' , text: "Plans and Pricing") }
-    it { should have_link("Get Started", href: purchase_path) }
-    it { should have_link("Free Trial", href: signup_path) }
+    it { should have_link("Get Started", href: purchase_path(plan_id: "swc_lite")) }
+    it { should have_link("Get Started", href: purchase_path(plan_id: "swc_teacher")) }
     it { should have_selector("div.header div.grid.col2") }
 
   end
