@@ -1,5 +1,5 @@
 class WordSearchPuzzlesController < ApplicationController 
-  before_filter :signed_in_user, only: [:destroy, :print, :download]
+  before_filter :signed_in_user, only: [:new, :edit, :create, :destroy, :print, :download]
   before_filter :blocked_trial_user, only: [:new, :edit, :create, :destroy, :print, :download]
   
   def new
@@ -37,8 +37,13 @@ class WordSearchPuzzlesController < ApplicationController
 
   def print
     loaded_params = params
-    loaded_params = YAML::load(session[:params]) unless session[:params].nil?
+    unless session[:params].nil?
+      loaded_params = YAML::load(session[:params]) 
+      session[:params] = nil
+    end
+    logger.debug "PARAMS: #{params}"
     logger.debug "SESSPARAMS: #{session[:params]}"
+    logger.debug "LOADED PARAMS: #{loaded_params}"
   	grid_size = 18
     num_puzzles_printed = Integer(loaded_params[:num_puzzles])
 		@word_search_puzzle = WordSearchPuzzle.find(loaded_params[:word_search_puzzle_id])

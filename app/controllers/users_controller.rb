@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+ class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:edit, :update, :dashboard]
   before_filter :correct_user, only: [:edit]
   before_filter :signed_out_user, only: [:create, :new]

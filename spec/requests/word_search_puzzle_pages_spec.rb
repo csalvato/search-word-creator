@@ -150,8 +150,39 @@ describe "WordSearchPuzzlePagesSpecs" do
 					it { should have_selector("h1", content: "Christmas Search Word Puzzle")}
 					it { should have_link("Print Puzzles") }
 				
-					describe "after clicking on the links to print the puzzles" do
+					describe "after clicking on the links to print the puzzles when not signed in" do
 						before do 
+							click_link "Print Puzzles"
+						end
+						
+						# Should be purchase page
+						it { should have_content("Account Details") }
+						
+						describe "after paying", js: true  do
+							let(:some_user){ FactoryGirl.build(:user) }
+							before do
+								fill_in "Full Name",						 with: some_user.name
+								fill_in "Email", 								 with: some_user.email
+								fill_in "Password", 						 with: some_user.password
+								fill_in "Confirmation", 				 with: some_user.password
+								fill_in "card_number",					 with: "4242424242424242"
+								fill_in "card_code",						 with: "123"
+								select "January", from: "card_month"
+								select (Date.today.year+1).to_s, from: "card_year"
+								click_button "Confirm Purchase"
+							end
+
+							it { should have_field("Words") }
+
+						end
+					end
+
+					describe "after clicking on the links to print the puzzles when signed in" do
+						before do
+							sign_in user
+							visit word_search_puzzles_path 
+							click_link "Holiday"
+							click_link "Christmas"  
 							click_link "Print Puzzles"
 						end
 						
@@ -168,27 +199,9 @@ describe "WordSearchPuzzlePagesSpecs" do
 
 							describe "and moving to Print the puzzles" do
 								before { click_button "Print Puzzles" }
-
-								it { should have_selector("h5", content:"Sign in") }
-
-								describe "and then signing up" do
-									before { valid_signup }
-
 									it_should_behave_like "Step 3 Page"
 									it { should have_link("Sign out", href: signout_path) }
 									it { should_not have_link("Sign in", href: signin_path) }	
-								end
-
-								describe "and then signing in" do
-									before do
-										click_link "Sign in here."
-										valid_signin(user)
-									end
-
-									it_should_behave_like "Step 3 Page"
-									it { should have_link("Sign out", href: signout_path) }
-									it { should_not have_link("Sign in", href: signin_path) }	
-								end
 							end
 						end
 					end
