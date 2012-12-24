@@ -49,12 +49,12 @@ describe "Authentication" do
     describe "in the Users controller" do
       describe "visiting the edit (Account) page" do
         before { visit edit_user_path(user) }
-        it { should have_selector('title', text: 'Sign up') }
+        it { should have_selector('title', text: 'Purchase') }
       end
 
       describe "submitting to the update action" do
         before { put user_path(user) }
-        specify { response.should redirect_to(signup_path) }
+        specify { response.should redirect_to(purchase_path) }
       end
 
       describe "when attempting to visit a protected page that, when logged in, one SHOULD have access to" do
@@ -128,17 +128,14 @@ describe "Authentication" do
       describe "visiting the new Word Search Puzzle page and trying to print puzzles" do
         before do
           visit new_word_search_puzzle_path
-          fill_in "Words", with: "test"
-          click_button "Next Step"
-          click_button "Print Puzzles"
         end 
 
-        it { should have_selector('title', text: 'Sign up') }
+        it { should have_link "Sign in here." } # Which is present on the purchase path
       end
       
       describe "submitting to the update action" do
         before { post print_path }
-        specify { response.should redirect_to(signup_path) }
+        specify { response.should redirect_to(purchase_path) }
       end
     end
   end

@@ -11,7 +11,7 @@ module SessionsHelper
 	def signed_in_user
     unless signed_in?
       store_location
-      redirect_to signup_path, notice: "Almost there! Make an account to create a puzzle." 
+      redirect_to purchase_path 
     end
   end
 
@@ -40,5 +40,6 @@ module SessionsHelper
 	def redirect_back_or(default)
 		redirect_to(session[:return_to] || default)
 		session.delete(:return_to)
+		session.delete(:params)
 	end
 end

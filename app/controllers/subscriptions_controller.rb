@@ -26,7 +26,6 @@ class SubscriptionsController < ApplicationController
 
   private
     def create_subscription
-      
       @user.subscription.plan_id = params[:plan_id]
       @user.subscription.stripe_card_token = params[:stripe_card_token]
       logger.debug "THE CARD TOKEN IN create_subscription: #{params[:stripe_card_token]}"
@@ -34,7 +33,7 @@ class SubscriptionsController < ApplicationController
         flash[:success] = "Thank you for purchasing!"
         flash[:success] += " Your subscription will expire in one year." if @user.subscription.plan_id == "swc_teacher"
         flash[:success] += " Your purchase is valid for printing 15 puzzles." if @user.subscription.plan_id == "swc_lite"
-        redirect_to new_word_search_puzzle_path
+        redirect_back_or(new_word_search_puzzle_path)
       else
         render 'new'
       end
