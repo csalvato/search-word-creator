@@ -27,7 +27,7 @@ describe "StaticPages" do
 
     it_should_behave_like "all static pages"
     it { should have_selector( 'title' , text: "Create custom printable search word puzzles") }
-    it { should have_link("Start Making Puzzles", href: signup_path) }
+    it { should have_link("Start Making Puzzles", href: new_word_search_puzzle_path) }
     it { should have_link("Make Puzzles Now!", href: signup_path) }
     it { should_not have_selector("div.header div.grid.col5") }
   end
@@ -64,7 +64,7 @@ describe "StaticPages" do
 
     it_should_behave_like "all static pages"
     it { should have_selector( 'title' , text: "Plans and Pricing") }
-    it { should have_link("Get Started", href: purchase_path(plan_id: "swc_lite")) }
+    it { should have_link("Free Trial", href: new_word_search_puzzle_path) }
     it { should have_link("Get Started", href: purchase_path(plan_id: "swc_teacher")) }
     it { should have_selector("div.header div.grid.col2") }
 
