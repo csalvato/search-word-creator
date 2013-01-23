@@ -42,7 +42,10 @@ describe User do
 		end
 		
 		describe "when user is updated after first creation" do
-			before { user.updated_at = Time.now() }
+			before do
+				user.updated_at = Time.now()
+				user.save!
+			end
 			specify { user.first_login?.should be_false} 
 		end
 	end	
