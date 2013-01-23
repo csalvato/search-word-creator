@@ -11,7 +11,8 @@ module SessionsHelper
 	def signed_in_user
     unless signed_in?
       store_location
-      redirect_to purchase_path 
+      flash[:notify] = 'You need an account to print puzzles.  Signing up is free and takes 10 seconds.'
+      redirect_to signup_path 
     end
   end
 
