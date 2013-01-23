@@ -155,26 +155,8 @@ describe "WordSearchPuzzlePagesSpecs" do
 							click_link "Print Puzzles"
 						end
 						
-						# Should be purchase page
-						it { should have_content("Account Details") }
-						
-						describe "after paying", js: true  do
-							let(:some_user){ FactoryGirl.build(:user) }
-							before do
-								fill_in "Full Name",						 with: some_user.name
-								fill_in "Email", 								 with: some_user.email
-								fill_in "Password", 						 with: some_user.password
-								fill_in "Confirmation", 				 with: some_user.password
-								fill_in "card_number",					 with: "4242424242424242"
-								fill_in "card_code",						 with: "123"
-								select "January", from: "card_month"
-								select (Date.today.year+1).to_s, from: "card_year"
-								click_button "Confirm Purchase"
-							end
-
-							it { should have_field("Words") }
-
-						end
+						# Should be sign up
+						it { should have_selector("title", content: "Sign Up") }
 					end
 
 					describe "after clicking on the links to print the puzzles when signed in" do
